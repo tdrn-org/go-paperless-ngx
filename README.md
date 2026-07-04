@@ -18,6 +18,3 @@ This project uses the official OpenAPI specification from **[Paperless-ngx](http
 * **License:** [GNU General Public License v3.0 (GPLv3)](https://github.com/blob/main/LICENSE)
 
 The OpenAPI specification file remains under the terms of the GPLv3. The Go code generator itself and any newly generated output code are licensed under the Apache License 2.0.
-
-### Disclaimer
-This project is an independent software module and is not affiliated with, endorsed by, or sponsored by FRITZ! GmbH or any of its products. The term “FRITZ!” is a registered trademark of FRITZ! GmbH. All trademarks and registered trademarks mentioned herein are the property of their respective owners. This module is provided for educational and interoperability purposes only.
