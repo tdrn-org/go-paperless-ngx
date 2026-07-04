@@ -4,8 +4,8 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=tdrn-org_go-paperless-ngx&metric=coverage)](https://sonarcloud.io/summary/new_code?id=tdrn-org_go-paperless-ngx)
 [![Go Report Card](https://goreportcard.com/badge/github.com/tdrn-org/go-paperless-ngx)](https://goreportcard.com/report/github.com/tdrn-org/go-paperless-ngx)
 
-### FRITZ! Smart-Home-API
-The [FRITZ! Smart Home system](https://fritz.com/collections/smart-home/) provides a [REST API](https://fritz.com/pages/schnittstellen/) to access Smart Home capable devices to evaluate and control the connected devices. This library provides the Go wrapper for this API. It is based on the provided [OpenAPI specification](https://fritz.com/pages/schnittstellen/).
+### Paperless NGX REST API
+The [Paperless NGX DMS](https://github.com/paperless-ngx/paperless-ngx) provides a [REST API](https://docs.paperless-ngx.com/api/) to access the DMS functions. This library provides the Go wrapper for this API.
 
 ## License & Attribution
 This project is licensed under the **Apache License 2.0** (see the [LICENSE](./LICENSE) file for details).
