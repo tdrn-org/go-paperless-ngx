@@ -120,7 +120,7 @@ func (g *wrapperGenerator) writeBody(method *types.Func, signature *types.Signat
 		g.out.WriteString(param.Name())
 		g.out.WriteString(", ")
 	}
-	g.out.WriteString("client.authenticateRequest())\n")
+	g.out.WriteString("client.prepareRequest())\n")
 	g.out.WriteString("if err != nil {\n")
 	g.out.WriteString("return nil,client.wrapSystemError(err)\n")
 	g.out.WriteString("}\n")

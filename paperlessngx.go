@@ -106,9 +106,10 @@ func NewClient(apiURL *url.URL, apiKey string, options ...ClientOption) (*Client
 	return client, nil
 }
 
-func (client *Client) authenticateRequest() api.RequestEditorFn {
+func (client *Client) prepareRequest() api.RequestEditorFn {
 	return func(ctx context.Context, req *http.Request) error {
 		req.Header.Add(api.AuthorizationHeader, client.apiKey)
+		req.Header.Set("Accept", "application/json")
 		return nil
 	}
 }
