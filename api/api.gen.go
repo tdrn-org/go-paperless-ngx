@@ -1043,8 +1043,8 @@ func (e TasksListParamsType) Valid() bool {
 }
 
 // AccountTypeEnum * `1` - IMAP
-// * `2` - Gmail-OAuth
-// * `3` - Outlook-OAuth
+// * `2` - Gmail OAuth
+// * `3` - Outlook OAuth
 type AccountTypeEnum int
 
 // AcknowledgeTasks defines model for AcknowledgeTasks.
@@ -1169,19 +1169,19 @@ type ApplicationConfigurationRequest_UnpaperClean struct {
 	union json.RawMessage
 }
 
-// AssignCorrespondentFromEnum * `1` - Keinen Korrespondenten zuweisen
-// * `2` - E-Mail-Adresse verwenden
-// * `3` - Absendername verwenden (oder E-Mail-Adresse, wenn nicht verfügbar)
-// * `4` - Nachfolgend ausgewählten Korrespondent verwenden
+// AssignCorrespondentFromEnum * `1` - Do not assign a correspondent
+// * `2` - Use mail address
+// * `3` - Use name (or mail address if not available)
+// * `4` - Use correspondent selected below
 type AssignCorrespondentFromEnum int
 
-// AssignTitleFromEnum * `1` - Betreff als Titel verwenden
-// * `2` - Dateiname des Anhangs als Titel verwenden
-// * `3` - Titel nicht aus Regel zuweisen
+// AssignTitleFromEnum * `1` - Use subject as title
+// * `2` - Use attachment filename as title
+// * `3` - Do not assign title from rule
 type AssignTitleFromEnum int
 
-// AttachmentTypeEnum * `1` - Nur Anhänge verarbeiten.
-// * `2` - Alle Dateien verarbeiten, auch 'inline'-Anhänge.
+// AttachmentTypeEnum * `1` - Only process attachments.
+// * `2` - Process all files, including 'inline' attachments.
 type AttachmentTypeEnum int
 
 // BasicUser defines model for BasicUser.
@@ -1190,7 +1190,7 @@ type BasicUser struct {
 	Id        *int    `json:"id,omitempty"`
 	LastName  *string `json:"last_name,omitempty"`
 
-	// Username Erforderlich. 150 Zeichen oder weniger. Nur Buchstaben, Ziffern und @/./+/-/_.
+	// Username Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
 	Username string `json:"username"`
 }
 
@@ -1249,7 +1249,7 @@ type Classifier struct {
 // ColorConversionStrategyEnum * `LeaveColorUnchanged` - LeaveColorUnchanged
 // * `RGB` - RGB
 // * `UseDeviceIndependentColor` - UseDeviceIndependentColor
-// * `Gray` - Grau
+// * `Gray` - Gray
 // * `CMYK` - CMYK
 type ColorConversionStrategyEnum string
 
@@ -1259,9 +1259,9 @@ type ColorConversionStrategyEnum string
 // * `lzma` - lzma
 type CompressionEnum string
 
-// ConsumptionScopeEnum * `1` - Nur Anhänge verarbeiten.
-// * `2` - Vollständige E-Mail (mit eingebetteten Anhängen in der Datei) als .eml verarbeiten
-// * `3` - Vollständige Mail (mit eingebetteten Anhängen in der Datei) als .eml verarbeiten + Anhänge als separate Dokumente verarbeiten
+// ConsumptionScopeEnum * `1` - Only process attachments.
+// * `2` - Process full Mail (with embedded attachments in file) as .eml
+// * `3` - Process full Mail (with embedded attachments in file) as .eml + process attachments as separate documents
 type ConsumptionScopeEnum int
 
 // ContentEnum * `archive` - archive
@@ -1333,7 +1333,7 @@ type CustomField struct {
 	DataType      DataTypeEnum `json:"data_type"`
 	DocumentCount *int         `json:"document_count,omitempty"`
 
-	// ExtraData Zusätzliche Daten für das benutzerdefinierte Feld, z. B. Auswahloptionen
+	// ExtraData Extra data for the custom field, such as select options
 	ExtraData interface{} `json:"extra_data,omitempty"`
 	Id        *int        `json:"id,omitempty"`
 	Name      string      `json:"name"`
@@ -1413,7 +1413,7 @@ type CustomFieldRequest struct {
 	// * `longtext` - longtext
 	DataType DataTypeEnum `json:"data_type"`
 
-	// ExtraData Zusätzliche Daten für das benutzerdefinierte Feld, z. B. Auswahloptionen
+	// ExtraData Extra data for the custom field, such as select options
 	ExtraData interface{} `json:"extra_data,omitempty"`
 	Name      string      `json:"name"`
 }
@@ -1439,20 +1439,20 @@ type Database struct {
 	Url             string          `json:"url"`
 }
 
-// DisplayModeEnum * `table` - Tabelle
-// * `smallCards` - Kleine Karten
-// * `largeCards` - Große Karten
+// DisplayModeEnum * `table` - Table
+// * `smallCards` - Small Cards
+// * `largeCards` - Large Cards
 type DisplayModeEnum string
 
 // Document Adds update nested feature
 type Document struct {
 	Added *time.Time `json:"added,omitempty"`
 
-	// ArchiveSerialNumber Die Position dieses Dokuments in Ihrem physischen Dokumentenarchiv.
+	// ArchiveSerialNumber The position of this document in your physical document archive.
 	ArchiveSerialNumber *int64  `json:"archive_serial_number,omitempty"`
 	ArchivedFileName    *string `json:"archived_file_name,omitempty"`
 
-	// Content Der Inhalt des Dokuments in Textform. Dieses Feld wird primär für die Suche verwendet.
+	// Content The raw, text-only data of the document. This field is primarily used for searching.
 	Content       *string             `json:"content,omitempty"`
 	Correspondent *int                `json:"correspondent"`
 	Created       *openapi_types.Date `json:"created,omitempty"`
@@ -1492,10 +1492,10 @@ type DocumentListRequest struct {
 
 // DocumentRequest Adds update nested feature
 type DocumentRequest struct {
-	// ArchiveSerialNumber Die Position dieses Dokuments in Ihrem physischen Dokumentenarchiv.
+	// ArchiveSerialNumber The position of this document in your physical document archive.
 	ArchiveSerialNumber *int64 `json:"archive_serial_number,omitempty"`
 
-	// Content Der Inhalt des Dokuments in Textform. Dieses Feld wird primär für die Suche verwendet.
+	// Content The raw, text-only data of the document. This field is primarily used for searching.
 	Content       *string             `json:"content,omitempty"`
 	Correspondent *int                `json:"correspondent"`
 	Created       *openapi_types.Date `json:"created,omitempty"`
@@ -1602,7 +1602,7 @@ type EmailRequest struct {
 	UseArchiveVersion *bool `json:"use_archive_version,omitempty"`
 }
 
-// FileVersionEnum * `archive` - Archiv
+// FileVersionEnum * `archive` - Archive
 // * `original` - Original
 type FileVersionEnum string
 
@@ -1619,9 +1619,9 @@ type GroupRequest struct {
 	Permissions []string `json:"permissions"`
 }
 
-// ImapSecurityEnum * `1` - Keine Verschlüsselung
-// * `2` - SSL verwenden
-// * `3` - STARTTLS verwenden
+// ImapSecurityEnum * `1` - No encryption
+// * `2` - Use SSL
+// * `3` - Use STARTTLS
 type ImapSecurityEnum int
 
 // Index defines model for Index.
@@ -1644,14 +1644,14 @@ type LogEntry struct {
 type MailAccount struct {
 	AccountType *AccountTypeEnum `json:"account_type,omitempty"`
 
-	// CharacterSet Der Zeichensatz, der bei der Kommunikation mit dem E-Mail-Server verwendet werden soll, wie z. B. „UTF-8“ oder „US-ASCII“.
+	// CharacterSet The character set to use when communicating with the mail server, such as 'UTF-8' or 'US-ASCII'.
 	CharacterSet *string `json:"character_set,omitempty"`
 
-	// Expiration Das Ablaufdatum des Aktualisierungstokens.
+	// Expiration The expiration date of the refresh token.
 	Expiration *time.Time `json:"expiration,omitempty"`
 	Id         *int       `json:"id,omitempty"`
 
-	// ImapPort Dies ist in der Regel 143 für unverschlüsselte und STARTTLS-Verbindungen und 993 für SSL-Verbindungen.
+	// ImapPort This is usually 143 for unencrypted and STARTTLS connections, and 993 for SSL connections.
 	ImapPort      *int              `json:"imap_port,omitempty"`
 	ImapSecurity  *ImapSecurityEnum `json:"imap_security,omitempty"`
 	ImapServer    string            `json:"imap_server"`
@@ -1672,13 +1672,13 @@ type MailAccountProcessResponse struct {
 type MailAccountRequest struct {
 	AccountType *AccountTypeEnum `json:"account_type,omitempty"`
 
-	// CharacterSet Der Zeichensatz, der bei der Kommunikation mit dem E-Mail-Server verwendet werden soll, wie z. B. „UTF-8“ oder „US-ASCII“.
+	// CharacterSet The character set to use when communicating with the mail server, such as 'UTF-8' or 'US-ASCII'.
 	CharacterSet *string `json:"character_set,omitempty"`
 
-	// Expiration Das Ablaufdatum des Aktualisierungstokens.
+	// Expiration The expiration date of the refresh token.
 	Expiration *time.Time `json:"expiration,omitempty"`
 
-	// ImapPort Dies ist in der Regel 143 für unverschlüsselte und STARTTLS-Verbindungen und 993 für SSL-Verbindungen.
+	// ImapPort This is usually 143 for unencrypted and STARTTLS connections, and 993 for SSL connections.
 	ImapPort       *int              `json:"imap_port,omitempty"`
 	ImapSecurity   *ImapSecurityEnum `json:"imap_security,omitempty"`
 	ImapServer     string            `json:"imap_server"`
@@ -1716,29 +1716,29 @@ type MailRule struct {
 	AssignTags              *[]*int                      `json:"assign_tags,omitempty"`
 	AssignTitleFrom         *AssignTitleFromEnum         `json:"assign_title_from,omitempty"`
 
-	// AttachmentType „Inline“-Anhänge schließen eingebettete Bilder mit ein, daher sollte diese Einstellung mit einem Dateinamenfilter kombiniert werden.
+	// AttachmentType Inline attachments include embedded images, so it's best to combine this option with a filename filter.
 	//
-	// * `1` - Nur Anhänge verarbeiten.
-	// * `2` - Alle Dateien verarbeiten, auch 'inline'-Anhänge.
+	// * `1` - Only process attachments.
+	// * `2` - Process all files, including 'inline' attachments.
 	AttachmentType   *AttachmentTypeEnum   `json:"attachment_type,omitempty"`
 	ConsumptionScope *ConsumptionScopeEnum `json:"consumption_scope,omitempty"`
 	Enabled          *bool                 `json:"enabled,omitempty"`
 
-	// FilterAttachmentFilenameExclude Dokumente, die vollständig mit diesem Dateinamen (falls angegeben) übereinstimmen, nicht verarbeiten. Platzhalter wie *.pdf oder *rechnung* sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+	// FilterAttachmentFilenameExclude Do not consume documents which entirely match this filename if specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
 	FilterAttachmentFilenameExclude *string `json:"filter_attachment_filename_exclude,omitempty"`
 
-	// FilterAttachmentFilenameInclude Nur Dokumente, die vollständig mit diesem Dateinamen (falls angegeben) übereinstimmen, verarbeiten. Platzhalter wie *.pdf oder *rechnung* sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+	// FilterAttachmentFilenameInclude Only consume documents which entirely match this filename if specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
 	FilterAttachmentFilenameInclude *string `json:"filter_attachment_filename_include,omitempty"`
 	FilterBody                      *string `json:"filter_body,omitempty"`
 	FilterFrom                      *string `json:"filter_from,omitempty"`
 	FilterSubject                   *string `json:"filter_subject,omitempty"`
 	FilterTo                        *string `json:"filter_to,omitempty"`
 
-	// Folder Unterordner müssen durch ein Trennzeichen, oft einen Punkt („.“) oder einen Schrägstrich („/“), getrennt werden. Dies variiert jedoch je nach Mailserver.
+	// Folder Subfolders must be separated by a delimiter, often a dot ('.') or slash ('/'), but it varies by mail server.
 	Folder *string `json:"folder,omitempty"`
 	Id     *int    `json:"id,omitempty"`
 
-	// MaximumAge Angegeben in Tagen.
+	// MaximumAge Specified in days.
 	MaximumAge    *int           `json:"maximum_age,omitempty"`
 	Name          string         `json:"name"`
 	Order         *int           `json:"order,omitempty"`
@@ -1747,11 +1747,11 @@ type MailRule struct {
 	UserCanChange *bool          `json:"user_can_change,omitempty"`
 }
 
-// MailRuleActionEnum * `1` - Löschen
-// * `2` - In angegebenen Ordner verschieben
-// * `3` - Als gelesen markieren, gelesene E-Mails nicht verarbeiten
-// * `4` - Als wichtig markieren, markierte E-Mails nicht verarbeiten
-// * `5` - Markiere die E-Mail mit dem angegebenen Tag, verarbeite markierte E-Mails nicht
+// MailRuleActionEnum * `1` - Delete
+// * `2` - Move to specified folder
+// * `3` - Mark as read, don't process read mails
+// * `4` - Flag the mail, don't process flagged mails
+// * `5` - Tag the mail with specified tag, don't process tagged mails
 type MailRuleActionEnum int
 
 // MailRuleRequest defines model for MailRuleRequest.
@@ -1766,28 +1766,28 @@ type MailRuleRequest struct {
 	AssignTags              *[]*int                      `json:"assign_tags,omitempty"`
 	AssignTitleFrom         *AssignTitleFromEnum         `json:"assign_title_from,omitempty"`
 
-	// AttachmentType „Inline“-Anhänge schließen eingebettete Bilder mit ein, daher sollte diese Einstellung mit einem Dateinamenfilter kombiniert werden.
+	// AttachmentType Inline attachments include embedded images, so it's best to combine this option with a filename filter.
 	//
-	// * `1` - Nur Anhänge verarbeiten.
-	// * `2` - Alle Dateien verarbeiten, auch 'inline'-Anhänge.
+	// * `1` - Only process attachments.
+	// * `2` - Process all files, including 'inline' attachments.
 	AttachmentType   *AttachmentTypeEnum   `json:"attachment_type,omitempty"`
 	ConsumptionScope *ConsumptionScopeEnum `json:"consumption_scope,omitempty"`
 	Enabled          *bool                 `json:"enabled,omitempty"`
 
-	// FilterAttachmentFilenameExclude Dokumente, die vollständig mit diesem Dateinamen (falls angegeben) übereinstimmen, nicht verarbeiten. Platzhalter wie *.pdf oder *rechnung* sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+	// FilterAttachmentFilenameExclude Do not consume documents which entirely match this filename if specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
 	FilterAttachmentFilenameExclude *string `json:"filter_attachment_filename_exclude,omitempty"`
 
-	// FilterAttachmentFilenameInclude Nur Dokumente, die vollständig mit diesem Dateinamen (falls angegeben) übereinstimmen, verarbeiten. Platzhalter wie *.pdf oder *rechnung* sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+	// FilterAttachmentFilenameInclude Only consume documents which entirely match this filename if specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
 	FilterAttachmentFilenameInclude *string `json:"filter_attachment_filename_include,omitempty"`
 	FilterBody                      *string `json:"filter_body,omitempty"`
 	FilterFrom                      *string `json:"filter_from,omitempty"`
 	FilterSubject                   *string `json:"filter_subject,omitempty"`
 	FilterTo                        *string `json:"filter_to,omitempty"`
 
-	// Folder Unterordner müssen durch ein Trennzeichen, oft einen Punkt („.“) oder einen Schrägstrich („/“), getrennt werden. Dies variiert jedoch je nach Mailserver.
+	// Folder Subfolders must be separated by a delimiter, often a dot ('.') or slash ('/'), but it varies by mail server.
 	Folder *string `json:"folder,omitempty"`
 
-	// MaximumAge Angegeben in Tagen.
+	// MaximumAge Specified in days.
 	MaximumAge     *int           `json:"maximum_age,omitempty"`
 	Name           string         `json:"name"`
 	Order          *int           `json:"order,omitempty"`
@@ -1805,13 +1805,13 @@ type MailRuleRequest struct {
 	} `json:"set_permissions,omitempty"`
 }
 
-// MatchingAlgorithm * `0` - Keine
-// * `1` - Irgendein Wort
-// * `2` - Alle Wörter
-// * `3` - Exakte Übereinstimmung
-// * `4` - Regulärer Ausdruck
-// * `5` - Ungenaues Wort
-// * `6` - Automatisch
+// MatchingAlgorithm * `0` - None
+// * `1` - Any word
+// * `2` - All words
+// * `3` - Exact match
+// * `4` - Regular expression
+// * `5` - Fuzzy word
+// * `6` - Automatic
 type MatchingAlgorithm int
 
 // Metadata defines model for Metadata.
@@ -1853,9 +1853,9 @@ type MigrationStatus struct {
 	UnappliedMigrations []string `json:"unapplied_migrations"`
 }
 
-// ModeEnum * `skip` - überspringen
-// * `redo` - wiederholen
-// * `force` - erzwingen
+// ModeEnum * `skip` - skip
+// * `redo` - redo
+// * `force` - force
 // * `skip_noarchive` - skip_noarchive
 type ModeEnum string
 
@@ -1869,7 +1869,7 @@ type Notes struct {
 	Created *time.Time `json:"created,omitempty"`
 	Id      *int       `json:"id,omitempty"`
 
-	// Note Notiz für das Dokument
+	// Note Note for the document
 	Note *string    `json:"note,omitempty"`
 	User *BasicUser `json:"user,omitempty"`
 }
@@ -2147,17 +2147,17 @@ type PatchedCustomFieldRequest struct {
 	// * `longtext` - longtext
 	DataType *DataTypeEnum `json:"data_type,omitempty"`
 
-	// ExtraData Zusätzliche Daten für das benutzerdefinierte Feld, z. B. Auswahloptionen
+	// ExtraData Extra data for the custom field, such as select options
 	ExtraData interface{} `json:"extra_data,omitempty"`
 	Name      *string     `json:"name,omitempty"`
 }
 
 // PatchedDocumentRequest Adds update nested feature
 type PatchedDocumentRequest struct {
-	// ArchiveSerialNumber Die Position dieses Dokuments in Ihrem physischen Dokumentenarchiv.
+	// ArchiveSerialNumber The position of this document in your physical document archive.
 	ArchiveSerialNumber *int64 `json:"archive_serial_number,omitempty"`
 
-	// Content Der Inhalt des Dokuments in Textform. Dieses Feld wird primär für die Suche verwendet.
+	// Content The raw, text-only data of the document. This field is primarily used for searching.
 	Content       *string             `json:"content,omitempty"`
 	Correspondent *int                `json:"correspondent,omitempty"`
 	Created       *openapi_types.Date `json:"created,omitempty"`
@@ -2212,13 +2212,13 @@ type PatchedGroupRequest struct {
 type PatchedMailAccountRequest struct {
 	AccountType *AccountTypeEnum `json:"account_type,omitempty"`
 
-	// CharacterSet Der Zeichensatz, der bei der Kommunikation mit dem E-Mail-Server verwendet werden soll, wie z. B. „UTF-8“ oder „US-ASCII“.
+	// CharacterSet The character set to use when communicating with the mail server, such as 'UTF-8' or 'US-ASCII'.
 	CharacterSet *string `json:"character_set,omitempty"`
 
-	// Expiration Das Ablaufdatum des Aktualisierungstokens.
+	// Expiration The expiration date of the refresh token.
 	Expiration *time.Time `json:"expiration,omitempty"`
 
-	// ImapPort Dies ist in der Regel 143 für unverschlüsselte und STARTTLS-Verbindungen und 993 für SSL-Verbindungen.
+	// ImapPort This is usually 143 for unencrypted and STARTTLS connections, and 993 for SSL connections.
 	ImapPort       *int              `json:"imap_port,omitempty"`
 	ImapSecurity   *ImapSecurityEnum `json:"imap_security,omitempty"`
 	ImapServer     *string           `json:"imap_server,omitempty"`
@@ -2251,28 +2251,28 @@ type PatchedMailRuleRequest struct {
 	AssignTags              *[]*int                      `json:"assign_tags,omitempty"`
 	AssignTitleFrom         *AssignTitleFromEnum         `json:"assign_title_from,omitempty"`
 
-	// AttachmentType „Inline“-Anhänge schließen eingebettete Bilder mit ein, daher sollte diese Einstellung mit einem Dateinamenfilter kombiniert werden.
+	// AttachmentType Inline attachments include embedded images, so it's best to combine this option with a filename filter.
 	//
-	// * `1` - Nur Anhänge verarbeiten.
-	// * `2` - Alle Dateien verarbeiten, auch 'inline'-Anhänge.
+	// * `1` - Only process attachments.
+	// * `2` - Process all files, including 'inline' attachments.
 	AttachmentType   *AttachmentTypeEnum   `json:"attachment_type,omitempty"`
 	ConsumptionScope *ConsumptionScopeEnum `json:"consumption_scope,omitempty"`
 	Enabled          *bool                 `json:"enabled,omitempty"`
 
-	// FilterAttachmentFilenameExclude Dokumente, die vollständig mit diesem Dateinamen (falls angegeben) übereinstimmen, nicht verarbeiten. Platzhalter wie *.pdf oder *rechnung* sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+	// FilterAttachmentFilenameExclude Do not consume documents which entirely match this filename if specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
 	FilterAttachmentFilenameExclude *string `json:"filter_attachment_filename_exclude,omitempty"`
 
-	// FilterAttachmentFilenameInclude Nur Dokumente, die vollständig mit diesem Dateinamen (falls angegeben) übereinstimmen, verarbeiten. Platzhalter wie *.pdf oder *rechnung* sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+	// FilterAttachmentFilenameInclude Only consume documents which entirely match this filename if specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
 	FilterAttachmentFilenameInclude *string `json:"filter_attachment_filename_include,omitempty"`
 	FilterBody                      *string `json:"filter_body,omitempty"`
 	FilterFrom                      *string `json:"filter_from,omitempty"`
 	FilterSubject                   *string `json:"filter_subject,omitempty"`
 	FilterTo                        *string `json:"filter_to,omitempty"`
 
-	// Folder Unterordner müssen durch ein Trennzeichen, oft einen Punkt („.“) oder einen Schrägstrich („/“), getrennt werden. Dies variiert jedoch je nach Mailserver.
+	// Folder Subfolders must be separated by a delimiter, often a dot ('.') or slash ('/'), but it varies by mail server.
 	Folder *string `json:"folder,omitempty"`
 
-	// MaximumAge Angegeben in Tagen.
+	// MaximumAge Specified in days.
 	MaximumAge     *int           `json:"maximum_age,omitempty"`
 	Name           *string        `json:"name,omitempty"`
 	Order          *int           `json:"order,omitempty"`
@@ -2341,7 +2341,7 @@ type PatchedStoragePathRequest struct {
 type PatchedTagRequest struct {
 	Color *string `json:"color,omitempty"`
 
-	// IsInboxTag Markiert das Tag als Posteingangs-Tag. Neue Dokumente werden immer mit diesem Tag versehen.
+	// IsInboxTag Marks this tag as an inbox tag: All newly consumed documents will be tagged with inbox tags.
 	IsInboxTag        *bool              `json:"is_inbox_tag,omitempty"`
 	IsInsensitive     *bool              `json:"is_insensitive,omitempty"`
 	Match             *string            `json:"match,omitempty"`
@@ -2367,22 +2367,22 @@ type PatchedUserRequest struct {
 	Email      *openapi_types.Email `json:"email,omitempty"`
 	FirstName  *string              `json:"first_name,omitempty"`
 
-	// Groups Die Gruppen, denen der Benutzer angehört. Ein Benutzer bekommt alle Berechtigungen dieser Gruppen.
+	// Groups The groups this user belongs to. A user will get all permissions granted to each of their groups.
 	Groups *[]int `json:"groups,omitempty"`
 
-	// IsActive Legt fest, ob dieser Benutzer aktiv ist. Kann deaktiviert werden, anstatt Benutzer zu löschen.
+	// IsActive Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
 	IsActive *bool `json:"is_active,omitempty"`
 
-	// IsStaff Legt fest, ob sich der Benutzer an der Administrationsseite anmelden kann.
+	// IsStaff Designates whether the user can log into this admin site.
 	IsStaff *bool `json:"is_staff,omitempty"`
 
-	// IsSuperuser Legt fest, dass der Benutzer alle Berechtigungen hat, ohne diese einzeln zuweisen zu müssen.
+	// IsSuperuser Designates that this user has all permissions without explicitly assigning them.
 	IsSuperuser     *bool     `json:"is_superuser,omitempty"`
 	LastName        *string   `json:"last_name,omitempty"`
 	Password        *string   `json:"password,omitempty"`
 	UserPermissions *[]string `json:"user_permissions,omitempty"`
 
-	// Username Erforderlich. 150 Zeichen oder weniger. Nur Buchstaben, Ziffern und @/./+/-/_.
+	// Username Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
 	Username *string `json:"username,omitempty"`
 }
 
@@ -2393,14 +2393,14 @@ type PatchedWorkflowActionRequest struct {
 	AssignCorrespondent *int   `json:"assign_correspondent,omitempty"`
 	AssignCustomFields  *[]int `json:"assign_custom_fields,omitempty"`
 
-	// AssignCustomFieldsValues Optionale Werte, die den benutzerdefinierten Feldern zugewiesen werden.
+	// AssignCustomFieldsValues Optional values to assign to the custom fields.
 	AssignCustomFieldsValues interface{} `json:"assign_custom_fields_values,omitempty"`
 	AssignDocumentType       *int        `json:"assign_document_type,omitempty"`
 	AssignOwner              *int        `json:"assign_owner,omitempty"`
 	AssignStoragePath        *int        `json:"assign_storage_path,omitempty"`
 	AssignTags               *[]*int     `json:"assign_tags,omitempty"`
 
-	// AssignTitle Dokumenttitel zuweisen (muss eine Jinja2-Vorlage sein, siehe Dokumentation).
+	// AssignTitle Assign a document title, must  be a Jinja2 template, see documentation.
 	AssignTitle             *string                       `json:"assign_title,omitempty"`
 	AssignViewGroups        *[]int                        `json:"assign_view_groups,omitempty"`
 	AssignViewUsers         *[]int                        `json:"assign_view_users,omitempty"`
@@ -2438,10 +2438,10 @@ type PatchedWorkflowRequest struct {
 
 // PatchedWorkflowTriggerRequest defines model for PatchedWorkflowTriggerRequest.
 type PatchedWorkflowTriggerRequest struct {
-	// FilterCustomFieldQuery JSON-kodierte Abfrage eines benutzerdefinierten Felds.
+	// FilterCustomFieldQuery JSON-encoded custom field query expression.
 	FilterCustomFieldQuery *string `json:"filter_custom_field_query,omitempty"`
 
-	// FilterFilename Nur Dokumente, die vollständig mit diesem Dateinamen (falls angegeben) übereinstimmen, verarbeiten. Platzhalter wie *.pdf oder *rechnung* sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+	// FilterFilename Only consume documents which entirely match this filename if specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
 	FilterFilename             *string `json:"filter_filename,omitempty"`
 	FilterHasAllTags           *[]int  `json:"filter_has_all_tags,omitempty"`
 	FilterHasCorrespondent     *int    `json:"filter_has_correspondent,omitempty"`
@@ -2454,7 +2454,7 @@ type PatchedWorkflowTriggerRequest struct {
 	FilterHasTags              *[]int  `json:"filter_has_tags,omitempty"`
 	FilterMailrule             *int    `json:"filter_mailrule,omitempty"`
 
-	// FilterPath Nur Dokumente, die mit diesem Pfad (falls angegeben) übereinstimmen, verarbeiten. Platzhalter wie * sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+	// FilterPath Only consume documents with a path that matches this if specified. Wildcards specified as * are allowed. Case insensitive.
 	FilterPath              *string                               `json:"filter_path,omitempty"`
 	Id                      *int                                  `json:"id,omitempty"`
 	IsInsensitive           *bool                                 `json:"is_insensitive,omitempty"`
@@ -2462,31 +2462,31 @@ type PatchedWorkflowTriggerRequest struct {
 	MatchingAlgorithm       *WorkflowTriggerMatchingAlgorithmEnum `json:"matching_algorithm,omitempty"`
 	ScheduleDateCustomField *int                                  `json:"schedule_date_custom_field,omitempty"`
 
-	// ScheduleDateField Das zu prüfende Feld für einen Zeitplanauslöser.
+	// ScheduleDateField The field to check for a schedule trigger.
 	//
-	// * `added` - Hinzugefügt
-	// * `created` - Ausgestellt
-	// * `modified` - Geändert
-	// * `custom_field` - Benutzerdefiniertes Feld
+	// * `added` - Added
+	// * `created` - Created
+	// * `modified` - Modified
+	// * `custom_field` - Custom Field
 	ScheduleDateField *ScheduleDateFieldEnum `json:"schedule_date_field,omitempty"`
 
-	// ScheduleIsRecurring Ob der Zeitplan wiederholt werden soll.
+	// ScheduleIsRecurring If the schedule should be recurring.
 	ScheduleIsRecurring *bool `json:"schedule_is_recurring,omitempty"`
 
-	// ScheduleOffsetDays Die Anzahl der Tage, um die der Zeitplanauslöser verschoben werden soll.
+	// ScheduleOffsetDays The number of days to offset the schedule trigger by.
 	ScheduleOffsetDays *int `json:"schedule_offset_days,omitempty"`
 
-	// ScheduleRecurringIntervalDays Die Anzahl der Tage zwischen wiederkehrenden Zeitplanauslösern.
+	// ScheduleRecurringIntervalDays The number of days between recurring schedule triggers.
 	ScheduleRecurringIntervalDays *int                     `json:"schedule_recurring_interval_days,omitempty"`
 	Sources                       *[]SourcesEnum           `json:"sources,omitempty"`
 	Type                          *WorkflowTriggerTypeEnum `json:"type,omitempty"`
 }
 
-// PdfLayoutEnum * `0` - Systemstandard
-// * `1` - Text, dann HTML
-// * `2` - HTML, dann Text
-// * `3` - Nur HTML
-// * `4` - Nur Text
+// PdfLayoutEnum * `0` - System default
+// * `1` - Text, then HTML
+// * `2` - HTML, then text
+// * `3` - HTML only
+// * `4` - Text only
 type PdfLayoutEnum int
 
 // PostDocumentRequest defines model for PostDocumentRequest.
@@ -2534,54 +2534,54 @@ type Profile struct {
 	SocialAccounts    *[]SocialAccount     `json:"social_accounts,omitempty"`
 }
 
-// RuleTypeEnum * `0` - Titel enthält
-// * `1` - Inhalt enthält
-// * `2` - ASN ist
-// * `3` - Korrespondent ist
-// * `4` - Dokumenttyp ist
-// * `5` - Ist im Posteingang
-// * `6` - Hat Tag
-// * `7` - Hat irgendein Tag
-// * `8` - Ausgestellt vor
-// * `9` - Ausgestellt nach
-// * `10` - Ausgestellt im Jahr
-// * `11` - Ausgestellt im Monat
-// * `12` - Ausstellungstag ist
-// * `13` - Hinzugefügt vor
-// * `14` - Hinzugefügt nach
-// * `15` - Geändert vor
-// * `16` - Geändert nach
-// * `17` - Hat nicht folgendes Tag
-// * `18` - Dokument hat keine ASN
-// * `19` - Titel oder Inhalt enthält
-// * `20` - Volltextsuche
-// * `21` - Ähnliche Dokumente
-// * `22` - hat Tags in
-// * `23` - ASN größer als
-// * `24` - ASN kleiner als
-// * `25` - Speicherpfad ist
-// * `26` - hat Korrespondenten in
-// * `27` - hat keinen Korrespondenten in
-// * `28` - hat Dokumenttyp in
-// * `29` - hat keinen Dokumenttyp in
-// * `30` - hat Speicherpfad in
-// * `31` - hat keinen Speicherpfad in
-// * `32` - Eigentümer ist
-// * `33` - hat Eigentümer in
-// * `34` - hat keinen Eigentümer
-// * `35` - hat keinen Eigentümer in
-// * `36` - Hat benutzerdefinierten Feld-Wert
-// * `37` - Ist von mir freigegeben
-// * `38` - hat benutzerdefinierte Felder
-// * `39` - hat die benutzerdefinierten Felder
-// * `40` - hat nicht die benutzerdefinierten Felder
-// * `41` - hat nicht das benutzerdefinierte Feld
-// * `42` - benutzerdefinierte Feldabfrage
-// * `43` - erstellt zu
-// * `44` - erstellt von
-// * `45` - hinzugefügt zu
-// * `46` - hinzugefügt von
-// * `47` - MIME-Typ ist
+// RuleTypeEnum * `0` - title contains
+// * `1` - content contains
+// * `2` - ASN is
+// * `3` - correspondent is
+// * `4` - document type is
+// * `5` - is in inbox
+// * `6` - has tag
+// * `7` - has any tag
+// * `8` - created before
+// * `9` - created after
+// * `10` - created year is
+// * `11` - created month is
+// * `12` - created day is
+// * `13` - added before
+// * `14` - added after
+// * `15` - modified before
+// * `16` - modified after
+// * `17` - does not have tag
+// * `18` - does not have ASN
+// * `19` - title or content contains
+// * `20` - fulltext query
+// * `21` - more like this
+// * `22` - has tags in
+// * `23` - ASN greater than
+// * `24` - ASN less than
+// * `25` - storage path is
+// * `26` - has correspondent in
+// * `27` - does not have correspondent in
+// * `28` - has document type in
+// * `29` - does not have document type in
+// * `30` - has storage path in
+// * `31` - does not have storage path in
+// * `32` - owner is
+// * `33` - has owner in
+// * `34` - does not have owner
+// * `35` - does not have owner in
+// * `36` - has custom field value
+// * `37` - is shared by me
+// * `38` - has custom fields
+// * `39` - has custom field in
+// * `40` - does not have custom field in
+// * `41` - does not have custom field
+// * `42` - custom fields query
+// * `43` - created to
+// * `44` - created from
+// * `45` - added to
+// * `46` - added from
+// * `47` - mime type is
 type RuleTypeEnum int
 
 // SanityCheck defines model for SanityCheck.
@@ -2643,10 +2643,10 @@ type SavedViewRequest_DisplayMode struct {
 	union json.RawMessage
 }
 
-// ScheduleDateFieldEnum * `added` - Hinzugefügt
-// * `created` - Ausgestellt
-// * `modified` - Geändert
-// * `custom_field` - Benutzerdefiniertes Feld
+// ScheduleDateFieldEnum * `added` - Added
+// * `created` - Created
+// * `modified` - Modified
+// * `custom_field` - Custom Field
 type ScheduleDateFieldEnum string
 
 // SearchResult defines model for SearchResult.
@@ -2681,7 +2681,7 @@ type ShareLink struct {
 	Document   *int       `json:"document,omitempty"`
 	Expiration *time.Time `json:"expiration,omitempty"`
 
-	// FileVersion * `archive` - Archiv
+	// FileVersion * `archive` - Archive
 	// * `original` - Original
 	FileVersion *FileVersionEnum `json:"file_version,omitempty"`
 	Id          *int             `json:"id,omitempty"`
@@ -2693,14 +2693,14 @@ type ShareLinkRequest struct {
 	Document   *int       `json:"document,omitempty"`
 	Expiration *time.Time `json:"expiration,omitempty"`
 
-	// FileVersion * `archive` - Archiv
+	// FileVersion * `archive` - Archive
 	// * `original` - Original
 	FileVersion *FileVersionEnum `json:"file_version,omitempty"`
 }
 
-// SkipArchiveFileEnum * `never` - nie
+// SkipArchiveFileEnum * `never` - never
 // * `with_text` - with_text
-// * `always` - immer
+// * `always` - always
 type SkipArchiveFileEnum string
 
 // SocialAccount defines model for SocialAccount.
@@ -2710,10 +2710,10 @@ type SocialAccount struct {
 	Provider string  `json:"provider"`
 }
 
-// SourcesEnum * `1` - Importordner
-// * `2` - API-Upload
-// * `3` - E-Mail-Abruf
-// * `4` - Weboberfläche
+// SourcesEnum * `1` - Consume Folder
+// * `2` - Api Upload
+// * `3` - Mail Fetch
+// * `4` - Web UI
 type SourcesEnum int
 
 // StatusEnum * `FAILURE` - FAILURE
@@ -2800,7 +2800,7 @@ type Tag struct {
 	DocumentCount *int    `json:"document_count,omitempty"`
 	Id            *int    `json:"id,omitempty"`
 
-	// IsInboxTag Markiert das Tag als Posteingangs-Tag. Neue Dokumente werden immer mit diesem Tag versehen.
+	// IsInboxTag Marks this tag as an inbox tag: All newly consumed documents will be tagged with inbox tags.
 	IsInboxTag        *bool              `json:"is_inbox_tag,omitempty"`
 	IsInsensitive     *bool              `json:"is_insensitive,omitempty"`
 	Match             *string            `json:"match,omitempty"`
@@ -2823,7 +2823,7 @@ type TagCounts struct {
 type TagRequest struct {
 	Color *string `json:"color,omitempty"`
 
-	// IsInboxTag Markiert das Tag als Posteingangs-Tag. Neue Dokumente werden immer mit diesem Tag versehen.
+	// IsInboxTag Marks this tag as an inbox tag: All newly consumed documents will be tagged with inbox tags.
 	IsInboxTag        *bool              `json:"is_inbox_tag,omitempty"`
 	IsInsensitive     *bool              `json:"is_insensitive,omitempty"`
 	Match             *string            `json:"match,omitempty"`
@@ -2843,10 +2843,10 @@ type TagRequest struct {
 	} `json:"set_permissions,omitempty"`
 }
 
-// TaskNameEnum * `consume_file` - Datei verarbeiten
-// * `train_classifier` - Klassifikator trainieren
-// * `check_sanity` - Plausibilität prüfen
-// * `index_optimize` - Indexoptimierung
+// TaskNameEnum * `consume_file` - Consume File
+// * `train_classifier` - Train Classifier
+// * `check_sanity` - Check Sanity
+// * `index_optimize` - Index Optimize
 type TaskNameEnum string
 
 // Tasks defines model for Tasks.
@@ -2859,22 +2859,22 @@ type Tasks struct {
 
 // TasksView defines model for TasksView.
 type TasksView struct {
-	// Acknowledged Wenn die Aufgabe über die Benutzeroberfläche oder die API bestätigt wird
+	// Acknowledged If the task is acknowledged via the frontend or API
 	Acknowledged *bool `json:"acknowledged,omitempty"`
 
-	// DateCreated Zeitpunkt, an dem das Ergebnis der Aufgabe erstellt wurde (in UTC)
+	// DateCreated Datetime field when the task result was created in UTC
 	DateCreated *time.Time `json:"date_created,omitempty"`
 
-	// DateDone Zeitpunkt, an dem die Aufgabe abgeschlossen wurde (in UTC)
+	// DateDone Datetime field when the task was completed in UTC
 	DateDone        *time.Time `json:"date_done,omitempty"`
 	Id              *int       `json:"id,omitempty"`
 	Owner           *int       `json:"owner,omitempty"`
 	RelatedDocument *string    `json:"related_document,omitempty"`
 
-	// Result Die von der Aufgabe zurückgegebenen Daten
+	// Result The data returned by the task
 	Result *string `json:"result,omitempty"`
 
-	// Status Aktueller Status der laufenden Aufgabe
+	// Status Current state of the task being run
 	//
 	// * `FAILURE` - FAILURE
 	// * `PENDING` - PENDING
@@ -2885,54 +2885,54 @@ type TasksView struct {
 	// * `SUCCESS` - SUCCESS
 	Status *StatusEnum `json:"status,omitempty"`
 
-	// TaskFileName Name der Datei, für die die Aufgabe ausgeführt wurde
+	// TaskFileName Name of the file which the Task was run for
 	TaskFileName *string `json:"task_file_name,omitempty"`
 
-	// TaskId Celery-ID für die ausgeführte Aufgabe
+	// TaskId Celery ID for the Task that was run
 	TaskId string `json:"task_id"`
 
-	// TaskName Name der ausgeführten Aufgabe
+	// TaskName Name of the task that was run
 	//
-	// * `consume_file` - Datei verarbeiten
-	// * `train_classifier` - Klassifikator trainieren
-	// * `check_sanity` - Plausibilität prüfen
-	// * `index_optimize` - Indexoptimierung
+	// * `consume_file` - Consume File
+	// * `train_classifier` - Train Classifier
+	// * `check_sanity` - Check Sanity
+	// * `index_optimize` - Index Optimize
 	TaskName *TasksView_TaskName `json:"task_name,omitempty"`
 
-	// Type Art der ausgeführten Aufgabe
+	// Type The type of task that was run
 	//
-	// * `auto_task` - Automatische Aufgabe
-	// * `scheduled_task` - Geplante Aufgabe
-	// * `manual_task` - Manuelle Aufgabe
+	// * `auto_task` - Auto Task
+	// * `scheduled_task` - Scheduled Task
+	// * `manual_task` - Manual Task
 	Type *TasksViewTypeEnum `json:"type,omitempty"`
 }
 
-// TasksView_TaskName Name der ausgeführten Aufgabe
+// TasksView_TaskName Name of the task that was run
 //
-// * `consume_file` - Datei verarbeiten
-// * `train_classifier` - Klassifikator trainieren
-// * `check_sanity` - Plausibilität prüfen
-// * `index_optimize` - Indexoptimierung
+// * `consume_file` - Consume File
+// * `train_classifier` - Train Classifier
+// * `check_sanity` - Check Sanity
+// * `index_optimize` - Index Optimize
 type TasksView_TaskName struct {
 	union json.RawMessage
 }
 
 // TasksViewRequest defines model for TasksViewRequest.
 type TasksViewRequest struct {
-	// Acknowledged Wenn die Aufgabe über die Benutzeroberfläche oder die API bestätigt wird
+	// Acknowledged If the task is acknowledged via the frontend or API
 	Acknowledged *bool `json:"acknowledged,omitempty"`
 
-	// DateCreated Zeitpunkt, an dem das Ergebnis der Aufgabe erstellt wurde (in UTC)
+	// DateCreated Datetime field when the task result was created in UTC
 	DateCreated *time.Time `json:"date_created,omitempty"`
 
-	// DateDone Zeitpunkt, an dem die Aufgabe abgeschlossen wurde (in UTC)
+	// DateDone Datetime field when the task was completed in UTC
 	DateDone *time.Time `json:"date_done,omitempty"`
 	Owner    *int       `json:"owner,omitempty"`
 
-	// Result Die von der Aufgabe zurückgegebenen Daten
+	// Result The data returned by the task
 	Result *string `json:"result,omitempty"`
 
-	// Status Aktueller Status der laufenden Aufgabe
+	// Status Current state of the task being run
 	//
 	// * `FAILURE` - FAILURE
 	// * `PENDING` - PENDING
@@ -2943,41 +2943,41 @@ type TasksViewRequest struct {
 	// * `SUCCESS` - SUCCESS
 	Status *StatusEnum `json:"status,omitempty"`
 
-	// TaskFileName Name der Datei, für die die Aufgabe ausgeführt wurde
+	// TaskFileName Name of the file which the Task was run for
 	TaskFileName *string `json:"task_file_name,omitempty"`
 
-	// TaskId Celery-ID für die ausgeführte Aufgabe
+	// TaskId Celery ID for the Task that was run
 	TaskId string `json:"task_id"`
 
-	// TaskName Name der ausgeführten Aufgabe
+	// TaskName Name of the task that was run
 	//
-	// * `consume_file` - Datei verarbeiten
-	// * `train_classifier` - Klassifikator trainieren
-	// * `check_sanity` - Plausibilität prüfen
-	// * `index_optimize` - Indexoptimierung
+	// * `consume_file` - Consume File
+	// * `train_classifier` - Train Classifier
+	// * `check_sanity` - Check Sanity
+	// * `index_optimize` - Index Optimize
 	TaskName *TasksViewRequest_TaskName `json:"task_name,omitempty"`
 
-	// Type Art der ausgeführten Aufgabe
+	// Type The type of task that was run
 	//
-	// * `auto_task` - Automatische Aufgabe
-	// * `scheduled_task` - Geplante Aufgabe
-	// * `manual_task` - Manuelle Aufgabe
+	// * `auto_task` - Auto Task
+	// * `scheduled_task` - Scheduled Task
+	// * `manual_task` - Manual Task
 	Type *TasksViewTypeEnum `json:"type,omitempty"`
 }
 
-// TasksViewRequest_TaskName Name der ausgeführten Aufgabe
+// TasksViewRequest_TaskName Name of the task that was run
 //
-// * `consume_file` - Datei verarbeiten
-// * `train_classifier` - Klassifikator trainieren
-// * `check_sanity` - Plausibilität prüfen
-// * `index_optimize` - Indexoptimierung
+// * `consume_file` - Consume File
+// * `train_classifier` - Train Classifier
+// * `check_sanity` - Check Sanity
+// * `index_optimize` - Index Optimize
 type TasksViewRequest_TaskName struct {
 	union json.RawMessage
 }
 
-// TasksViewTypeEnum * `auto_task` - Automatische Aufgabe
-// * `scheduled_task` - Geplante Aufgabe
-// * `manual_task` - Manuelle Aufgabe
+// TasksViewTypeEnum * `auto_task` - Auto Task
+// * `scheduled_task` - Scheduled Task
+// * `manual_task` - Manual Task
 type TasksViewTypeEnum string
 
 // TrashActionEnum * `restore` - restore
@@ -3001,9 +3001,9 @@ type UiSettingsViewRequest struct {
 	Settings *map[string]interface{} `json:"settings,omitempty"`
 }
 
-// UnpaperCleanEnum * `clean` - bereinigen
+// UnpaperCleanEnum * `clean` - clean
 // * `clean-final` - clean-final
-// * `none` - keine
+// * `none` - none
 type UnpaperCleanEnum string
 
 // User defines model for User.
@@ -3012,25 +3012,25 @@ type User struct {
 	Email      *openapi_types.Email `json:"email,omitempty"`
 	FirstName  *string              `json:"first_name,omitempty"`
 
-	// Groups Die Gruppen, denen der Benutzer angehört. Ein Benutzer bekommt alle Berechtigungen dieser Gruppen.
+	// Groups The groups this user belongs to. A user will get all permissions granted to each of their groups.
 	Groups               *[]int    `json:"groups,omitempty"`
 	Id                   *int      `json:"id,omitempty"`
 	InheritedPermissions *[]string `json:"inherited_permissions,omitempty"`
 
-	// IsActive Legt fest, ob dieser Benutzer aktiv ist. Kann deaktiviert werden, anstatt Benutzer zu löschen.
+	// IsActive Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
 	IsActive     *bool `json:"is_active,omitempty"`
 	IsMfaEnabled *bool `json:"is_mfa_enabled,omitempty"`
 
-	// IsStaff Legt fest, ob sich der Benutzer an der Administrationsseite anmelden kann.
+	// IsStaff Designates whether the user can log into this admin site.
 	IsStaff *bool `json:"is_staff,omitempty"`
 
-	// IsSuperuser Legt fest, dass der Benutzer alle Berechtigungen hat, ohne diese einzeln zuweisen zu müssen.
+	// IsSuperuser Designates that this user has all permissions without explicitly assigning them.
 	IsSuperuser     *bool     `json:"is_superuser,omitempty"`
 	LastName        *string   `json:"last_name,omitempty"`
 	Password        *string   `json:"password,omitempty"`
 	UserPermissions *[]string `json:"user_permissions,omitempty"`
 
-	// Username Erforderlich. 150 Zeichen oder weniger. Nur Buchstaben, Ziffern und @/./+/-/_.
+	// Username Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
 	Username string `json:"username"`
 }
 
@@ -3040,22 +3040,22 @@ type UserRequest struct {
 	Email      *openapi_types.Email `json:"email,omitempty"`
 	FirstName  *string              `json:"first_name,omitempty"`
 
-	// Groups Die Gruppen, denen der Benutzer angehört. Ein Benutzer bekommt alle Berechtigungen dieser Gruppen.
+	// Groups The groups this user belongs to. A user will get all permissions granted to each of their groups.
 	Groups *[]int `json:"groups,omitempty"`
 
-	// IsActive Legt fest, ob dieser Benutzer aktiv ist. Kann deaktiviert werden, anstatt Benutzer zu löschen.
+	// IsActive Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
 	IsActive *bool `json:"is_active,omitempty"`
 
-	// IsStaff Legt fest, ob sich der Benutzer an der Administrationsseite anmelden kann.
+	// IsStaff Designates whether the user can log into this admin site.
 	IsStaff *bool `json:"is_staff,omitempty"`
 
-	// IsSuperuser Legt fest, dass der Benutzer alle Berechtigungen hat, ohne diese einzeln zuweisen zu müssen.
+	// IsSuperuser Designates that this user has all permissions without explicitly assigning them.
 	IsSuperuser     *bool     `json:"is_superuser,omitempty"`
 	LastName        *string   `json:"last_name,omitempty"`
 	Password        *string   `json:"password,omitempty"`
 	UserPermissions *[]string `json:"user_permissions,omitempty"`
 
-	// Username Erforderlich. 150 Zeichen oder weniger. Nur Buchstaben, Ziffern und @/./+/-/_.
+	// Username Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
 	Username string `json:"username"`
 }
 
@@ -3076,14 +3076,14 @@ type WorkflowAction struct {
 	AssignCorrespondent *int   `json:"assign_correspondent,omitempty"`
 	AssignCustomFields  *[]int `json:"assign_custom_fields,omitempty"`
 
-	// AssignCustomFieldsValues Optionale Werte, die den benutzerdefinierten Feldern zugewiesen werden.
+	// AssignCustomFieldsValues Optional values to assign to the custom fields.
 	AssignCustomFieldsValues interface{} `json:"assign_custom_fields_values,omitempty"`
 	AssignDocumentType       *int        `json:"assign_document_type,omitempty"`
 	AssignOwner              *int        `json:"assign_owner,omitempty"`
 	AssignStoragePath        *int        `json:"assign_storage_path,omitempty"`
 	AssignTags               *[]*int     `json:"assign_tags,omitempty"`
 
-	// AssignTitle Dokumenttitel zuweisen (muss eine Jinja2-Vorlage sein, siehe Dokumentation).
+	// AssignTitle Assign a document title, must  be a Jinja2 template, see documentation.
 	AssignTitle             *string                 `json:"assign_title,omitempty"`
 	AssignViewGroups        *[]int                  `json:"assign_view_groups,omitempty"`
 	AssignViewUsers         *[]int                  `json:"assign_view_users,omitempty"`
@@ -3112,29 +3112,29 @@ type WorkflowAction struct {
 
 // WorkflowActionEmail defines model for WorkflowActionEmail.
 type WorkflowActionEmail struct {
-	// Body Der Text der E-Mail kann Platzhalter beinhalten, siehe Dokumentation.
+	// Body The body (message) of the email, can include some placeholders, see documentation.
 	Body            string `json:"body"`
 	Id              *int   `json:"id,omitempty"`
 	IncludeDocument *bool  `json:"include_document,omitempty"`
 
-	// Subject Der Betreff der E-Mail kann Platzhalter beinhalten, siehe Dokumentation.
+	// Subject The subject of the email, can include some placeholders, see documentation.
 	Subject string `json:"subject"`
 
-	// To Die Empfänger-E-Mail-Adressen, kommagetrennt.
+	// To The destination email addresses, comma separated.
 	To string `json:"to"`
 }
 
 // WorkflowActionEmailRequest defines model for WorkflowActionEmailRequest.
 type WorkflowActionEmailRequest struct {
-	// Body Der Text der E-Mail kann Platzhalter beinhalten, siehe Dokumentation.
+	// Body The body (message) of the email, can include some placeholders, see documentation.
 	Body            string `json:"body"`
 	Id              *int   `json:"id,omitempty"`
 	IncludeDocument *bool  `json:"include_document,omitempty"`
 
-	// Subject Der Betreff der E-Mail kann Platzhalter beinhalten, siehe Dokumentation.
+	// Subject The subject of the email, can include some placeholders, see documentation.
 	Subject string `json:"subject"`
 
-	// To Die Empfänger-E-Mail-Adressen, kommagetrennt.
+	// To The destination email addresses, comma separated.
 	To string `json:"to"`
 }
 
@@ -3145,14 +3145,14 @@ type WorkflowActionRequest struct {
 	AssignCorrespondent *int   `json:"assign_correspondent,omitempty"`
 	AssignCustomFields  *[]int `json:"assign_custom_fields,omitempty"`
 
-	// AssignCustomFieldsValues Optionale Werte, die den benutzerdefinierten Feldern zugewiesen werden.
+	// AssignCustomFieldsValues Optional values to assign to the custom fields.
 	AssignCustomFieldsValues interface{} `json:"assign_custom_fields_values,omitempty"`
 	AssignDocumentType       *int        `json:"assign_document_type,omitempty"`
 	AssignOwner              *int        `json:"assign_owner,omitempty"`
 	AssignStoragePath        *int        `json:"assign_storage_path,omitempty"`
 	AssignTags               *[]*int     `json:"assign_tags,omitempty"`
 
-	// AssignTitle Dokumenttitel zuweisen (muss eine Jinja2-Vorlage sein, siehe Dokumentation).
+	// AssignTitle Assign a document title, must  be a Jinja2 template, see documentation.
 	AssignTitle             *string                       `json:"assign_title,omitempty"`
 	AssignViewGroups        *[]int                        `json:"assign_view_groups,omitempty"`
 	AssignViewUsers         *[]int                        `json:"assign_view_users,omitempty"`
@@ -3179,9 +3179,9 @@ type WorkflowActionRequest struct {
 	Webhook                 *WorkflowActionWebhookRequest `json:"webhook,omitempty"`
 }
 
-// WorkflowActionTypeEnum * `1` - Zuordnung
-// * `2` - Entfernung
-// * `3` - E-Mail
+// WorkflowActionTypeEnum * `1` - Assignment
+// * `2` - Removal
+// * `3` - Email
 // * `4` - Webhook
 type WorkflowActionTypeEnum int
 
@@ -3189,18 +3189,18 @@ type WorkflowActionTypeEnum int
 type WorkflowActionWebhook struct {
 	AsJson *bool `json:"as_json,omitempty"`
 
-	// Body Der Inhalt, der mit der Webhook-URL gesendet werden soll, wenn Parameter nicht verwendet werden.
+	// Body The body to send with the webhook URL if parameters not used.
 	Body *string `json:"body,omitempty"`
 
-	// Headers Die Kopfzeilen, die mit der Webhook-URL gesendet werden sollen.
+	// Headers The headers to send with the webhook URL.
 	Headers         interface{} `json:"headers,omitempty"`
 	Id              *int        `json:"id,omitempty"`
 	IncludeDocument *bool       `json:"include_document,omitempty"`
 
-	// Params Die Parameter, die mit der Webhook-URL gesendet werden sollen, wenn kein Inhalt verwendet wird.
+	// Params The parameters to send with the webhook URL if body not used.
 	Params interface{} `json:"params,omitempty"`
 
-	// Url Die Ziel-URL für die Benachrichtigung.
+	// Url The destination URL for the notification.
 	Url       string `json:"url"`
 	UseParams *bool  `json:"use_params,omitempty"`
 }
@@ -3209,18 +3209,18 @@ type WorkflowActionWebhook struct {
 type WorkflowActionWebhookRequest struct {
 	AsJson *bool `json:"as_json,omitempty"`
 
-	// Body Der Inhalt, der mit der Webhook-URL gesendet werden soll, wenn Parameter nicht verwendet werden.
+	// Body The body to send with the webhook URL if parameters not used.
 	Body *string `json:"body,omitempty"`
 
-	// Headers Die Kopfzeilen, die mit der Webhook-URL gesendet werden sollen.
+	// Headers The headers to send with the webhook URL.
 	Headers         interface{} `json:"headers,omitempty"`
 	Id              *int        `json:"id,omitempty"`
 	IncludeDocument *bool       `json:"include_document,omitempty"`
 
-	// Params Die Parameter, die mit der Webhook-URL gesendet werden sollen, wenn kein Inhalt verwendet wird.
+	// Params The parameters to send with the webhook URL if body not used.
 	Params interface{} `json:"params,omitempty"`
 
-	// Url Die Ziel-URL für die Benachrichtigung.
+	// Url The destination URL for the notification.
 	Url       string `json:"url"`
 	UseParams *bool  `json:"use_params,omitempty"`
 }
@@ -3236,10 +3236,10 @@ type WorkflowRequest struct {
 
 // WorkflowTrigger defines model for WorkflowTrigger.
 type WorkflowTrigger struct {
-	// FilterCustomFieldQuery JSON-kodierte Abfrage eines benutzerdefinierten Felds.
+	// FilterCustomFieldQuery JSON-encoded custom field query expression.
 	FilterCustomFieldQuery *string `json:"filter_custom_field_query,omitempty"`
 
-	// FilterFilename Nur Dokumente, die vollständig mit diesem Dateinamen (falls angegeben) übereinstimmen, verarbeiten. Platzhalter wie *.pdf oder *rechnung* sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+	// FilterFilename Only consume documents which entirely match this filename if specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
 	FilterFilename             *string `json:"filter_filename,omitempty"`
 	FilterHasAllTags           *[]int  `json:"filter_has_all_tags,omitempty"`
 	FilterHasCorrespondent     *int    `json:"filter_has_correspondent,omitempty"`
@@ -3252,7 +3252,7 @@ type WorkflowTrigger struct {
 	FilterHasTags              *[]int  `json:"filter_has_tags,omitempty"`
 	FilterMailrule             *int    `json:"filter_mailrule,omitempty"`
 
-	// FilterPath Nur Dokumente, die mit diesem Pfad (falls angegeben) übereinstimmen, verarbeiten. Platzhalter wie * sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+	// FilterPath Only consume documents with a path that matches this if specified. Wildcards specified as * are allowed. Case insensitive.
 	FilterPath              *string                               `json:"filter_path,omitempty"`
 	Id                      *int                                  `json:"id,omitempty"`
 	IsInsensitive           *bool                                 `json:"is_insensitive,omitempty"`
@@ -3260,40 +3260,40 @@ type WorkflowTrigger struct {
 	MatchingAlgorithm       *WorkflowTriggerMatchingAlgorithmEnum `json:"matching_algorithm,omitempty"`
 	ScheduleDateCustomField *int                                  `json:"schedule_date_custom_field,omitempty"`
 
-	// ScheduleDateField Das zu prüfende Feld für einen Zeitplanauslöser.
+	// ScheduleDateField The field to check for a schedule trigger.
 	//
-	// * `added` - Hinzugefügt
-	// * `created` - Ausgestellt
-	// * `modified` - Geändert
-	// * `custom_field` - Benutzerdefiniertes Feld
+	// * `added` - Added
+	// * `created` - Created
+	// * `modified` - Modified
+	// * `custom_field` - Custom Field
 	ScheduleDateField *ScheduleDateFieldEnum `json:"schedule_date_field,omitempty"`
 
-	// ScheduleIsRecurring Ob der Zeitplan wiederholt werden soll.
+	// ScheduleIsRecurring If the schedule should be recurring.
 	ScheduleIsRecurring *bool `json:"schedule_is_recurring,omitempty"`
 
-	// ScheduleOffsetDays Die Anzahl der Tage, um die der Zeitplanauslöser verschoben werden soll.
+	// ScheduleOffsetDays The number of days to offset the schedule trigger by.
 	ScheduleOffsetDays *int `json:"schedule_offset_days,omitempty"`
 
-	// ScheduleRecurringIntervalDays Die Anzahl der Tage zwischen wiederkehrenden Zeitplanauslösern.
+	// ScheduleRecurringIntervalDays The number of days between recurring schedule triggers.
 	ScheduleRecurringIntervalDays *int                    `json:"schedule_recurring_interval_days,omitempty"`
 	Sources                       *[]SourcesEnum          `json:"sources,omitempty"`
 	Type                          WorkflowTriggerTypeEnum `json:"type"`
 }
 
-// WorkflowTriggerMatchingAlgorithmEnum * `0` - Keine
-// * `1` - Irgendein Wort
-// * `2` - Alle Wörter
-// * `3` - Exakte Übereinstimmung
-// * `4` - Regulärer Ausdruck
-// * `5` - Ungenaues Wort
+// WorkflowTriggerMatchingAlgorithmEnum * `0` - None
+// * `1` - Any word
+// * `2` - All words
+// * `3` - Exact match
+// * `4` - Regular expression
+// * `5` - Fuzzy word
 type WorkflowTriggerMatchingAlgorithmEnum int
 
 // WorkflowTriggerRequest defines model for WorkflowTriggerRequest.
 type WorkflowTriggerRequest struct {
-	// FilterCustomFieldQuery JSON-kodierte Abfrage eines benutzerdefinierten Felds.
+	// FilterCustomFieldQuery JSON-encoded custom field query expression.
 	FilterCustomFieldQuery *string `json:"filter_custom_field_query,omitempty"`
 
-	// FilterFilename Nur Dokumente, die vollständig mit diesem Dateinamen (falls angegeben) übereinstimmen, verarbeiten. Platzhalter wie *.pdf oder *rechnung* sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+	// FilterFilename Only consume documents which entirely match this filename if specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
 	FilterFilename             *string `json:"filter_filename,omitempty"`
 	FilterHasAllTags           *[]int  `json:"filter_has_all_tags,omitempty"`
 	FilterHasCorrespondent     *int    `json:"filter_has_correspondent,omitempty"`
@@ -3306,7 +3306,7 @@ type WorkflowTriggerRequest struct {
 	FilterHasTags              *[]int  `json:"filter_has_tags,omitempty"`
 	FilterMailrule             *int    `json:"filter_mailrule,omitempty"`
 
-	// FilterPath Nur Dokumente, die mit diesem Pfad (falls angegeben) übereinstimmen, verarbeiten. Platzhalter wie * sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+	// FilterPath Only consume documents with a path that matches this if specified. Wildcards specified as * are allowed. Case insensitive.
 	FilterPath              *string                               `json:"filter_path,omitempty"`
 	Id                      *int                                  `json:"id,omitempty"`
 	IsInsensitive           *bool                                 `json:"is_insensitive,omitempty"`
@@ -3314,30 +3314,30 @@ type WorkflowTriggerRequest struct {
 	MatchingAlgorithm       *WorkflowTriggerMatchingAlgorithmEnum `json:"matching_algorithm,omitempty"`
 	ScheduleDateCustomField *int                                  `json:"schedule_date_custom_field,omitempty"`
 
-	// ScheduleDateField Das zu prüfende Feld für einen Zeitplanauslöser.
+	// ScheduleDateField The field to check for a schedule trigger.
 	//
-	// * `added` - Hinzugefügt
-	// * `created` - Ausgestellt
-	// * `modified` - Geändert
-	// * `custom_field` - Benutzerdefiniertes Feld
+	// * `added` - Added
+	// * `created` - Created
+	// * `modified` - Modified
+	// * `custom_field` - Custom Field
 	ScheduleDateField *ScheduleDateFieldEnum `json:"schedule_date_field,omitempty"`
 
-	// ScheduleIsRecurring Ob der Zeitplan wiederholt werden soll.
+	// ScheduleIsRecurring If the schedule should be recurring.
 	ScheduleIsRecurring *bool `json:"schedule_is_recurring,omitempty"`
 
-	// ScheduleOffsetDays Die Anzahl der Tage, um die der Zeitplanauslöser verschoben werden soll.
+	// ScheduleOffsetDays The number of days to offset the schedule trigger by.
 	ScheduleOffsetDays *int `json:"schedule_offset_days,omitempty"`
 
-	// ScheduleRecurringIntervalDays Die Anzahl der Tage zwischen wiederkehrenden Zeitplanauslösern.
+	// ScheduleRecurringIntervalDays The number of days between recurring schedule triggers.
 	ScheduleRecurringIntervalDays *int                    `json:"schedule_recurring_interval_days,omitempty"`
 	Sources                       *[]SourcesEnum          `json:"sources,omitempty"`
 	Type                          WorkflowTriggerTypeEnum `json:"type"`
 }
 
-// WorkflowTriggerTypeEnum * `1` - Verarbeitung gestartet
-// * `2` - Dokument hinzugefügt
-// * `3` - Dokument aktualisiert
-// * `4` - Geplant
+// WorkflowTriggerTypeEnum * `1` - Consumption Started
+// * `2` - Document Added
+// * `3` - Document Updated
+// * `4` - Scheduled
 type WorkflowTriggerTypeEnum int
 
 // paperelessBasicAuthenticationContextKey is the context key for PaperelessBasicAuthentication security scheme
@@ -3354,20 +3354,20 @@ type CorrespondentsListParams struct {
 	FullPerms *bool `form:"full_perms,omitempty" json:"full_perms,omitempty"`
 	Id        *int  `form:"id,omitempty" json:"id,omitempty"`
 
-	// IdIn Mehrere Werte können durch Kommas getrennt sein.
+	// IdIn Multiple values may be separated by commas.
 	IdIn            *[]int  `form:"id__in,omitempty" json:"id__in,omitempty"`
 	NameIcontains   *string `form:"name__icontains,omitempty" json:"name__icontains,omitempty"`
 	NameIendswith   *string `form:"name__iendswith,omitempty" json:"name__iendswith,omitempty"`
 	NameIexact      *string `form:"name__iexact,omitempty" json:"name__iexact,omitempty"`
 	NameIstartswith *string `form:"name__istartswith,omitempty" json:"name__istartswith,omitempty"`
 
-	// Ordering Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+	// Ordering Which field to use when ordering the results.
 	Ordering *string `form:"ordering,omitempty" json:"ordering,omitempty"`
 
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize *int `form:"page_size,omitempty" json:"page_size,omitempty"`
 }
 
@@ -3380,20 +3380,20 @@ type CorrespondentsRetrieveParams struct {
 type CustomFieldsListParams struct {
 	Id *int `form:"id,omitempty" json:"id,omitempty"`
 
-	// IdIn Mehrere Werte können durch Kommas getrennt sein.
+	// IdIn Multiple values may be separated by commas.
 	IdIn            *[]int  `form:"id__in,omitempty" json:"id__in,omitempty"`
 	NameIcontains   *string `form:"name__icontains,omitempty" json:"name__icontains,omitempty"`
 	NameIendswith   *string `form:"name__iendswith,omitempty" json:"name__iendswith,omitempty"`
 	NameIexact      *string `form:"name__iexact,omitempty" json:"name__iexact,omitempty"`
 	NameIstartswith *string `form:"name__istartswith,omitempty" json:"name__istartswith,omitempty"`
 
-	// Ordering Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+	// Ordering Which field to use when ordering the results.
 	Ordering *string `form:"ordering,omitempty" json:"ordering,omitempty"`
 
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize *int `form:"page_size,omitempty" json:"page_size,omitempty"`
 }
 
@@ -3402,20 +3402,20 @@ type DocumentTypesListParams struct {
 	FullPerms *bool `form:"full_perms,omitempty" json:"full_perms,omitempty"`
 	Id        *int  `form:"id,omitempty" json:"id,omitempty"`
 
-	// IdIn Mehrere Werte können durch Kommas getrennt sein.
+	// IdIn Multiple values may be separated by commas.
 	IdIn            *[]int  `form:"id__in,omitempty" json:"id__in,omitempty"`
 	NameIcontains   *string `form:"name__icontains,omitempty" json:"name__icontains,omitempty"`
 	NameIendswith   *string `form:"name__iendswith,omitempty" json:"name__iendswith,omitempty"`
 	NameIexact      *string `form:"name__iexact,omitempty" json:"name__iexact,omitempty"`
 	NameIstartswith *string `form:"name__istartswith,omitempty" json:"name__istartswith,omitempty"`
 
-	// Ordering Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+	// Ordering Which field to use when ordering the results.
 	Ordering *string `form:"ordering,omitempty" json:"ordering,omitempty"`
 
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize *int `form:"page_size,omitempty" json:"page_size,omitempty"`
 }
 
@@ -3453,7 +3453,7 @@ type DocumentsListParams struct {
 	ContentIstartswith        *string             `form:"content__istartswith,omitempty" json:"content__istartswith,omitempty"`
 	CorrespondentId           *int                `form:"correspondent__id,omitempty" json:"correspondent__id,omitempty"`
 
-	// CorrespondentIdIn Mehrere Werte können durch Kommas getrennt sein.
+	// CorrespondentIdIn Multiple values may be separated by commas.
 	CorrespondentIdIn            *[]int              `form:"correspondent__id__in,omitempty" json:"correspondent__id__in,omitempty"`
 	CorrespondentIdNone          *int                `form:"correspondent__id__none,omitempty" json:"correspondent__id__none,omitempty"`
 	CorrespondentIsnull          *bool               `form:"correspondent__isnull,omitempty" json:"correspondent__isnull,omitempty"`
@@ -3479,7 +3479,7 @@ type DocumentsListParams struct {
 	CustomFieldsIdNone           *int                `form:"custom_fields__id__none,omitempty" json:"custom_fields__id__none,omitempty"`
 	DocumentTypeId               *int                `form:"document_type__id,omitempty" json:"document_type__id,omitempty"`
 
-	// DocumentTypeIdIn Mehrere Werte können durch Kommas getrennt sein.
+	// DocumentTypeIdIn Multiple values may be separated by commas.
 	DocumentTypeIdIn            *[]int    `form:"document_type__id__in,omitempty" json:"document_type__id__in,omitempty"`
 	DocumentTypeIdNone          *int      `form:"document_type__id__none,omitempty" json:"document_type__id__none,omitempty"`
 	DocumentTypeIsnull          *bool     `form:"document_type__isnull,omitempty" json:"document_type__isnull,omitempty"`
@@ -3494,7 +3494,7 @@ type DocumentsListParams struct {
 	HasCustomFields *bool `form:"has_custom_fields,omitempty" json:"has_custom_fields,omitempty"`
 	Id              *int  `form:"id,omitempty" json:"id,omitempty"`
 
-	// IdIn Mehrere Werte können durch Kommas getrennt sein.
+	// IdIn Multiple values may be separated by commas.
 	IdIn      *[]int `form:"id__in,omitempty" json:"id__in,omitempty"`
 	IsInInbox *bool  `form:"is_in_inbox,omitempty" json:"is_in_inbox,omitempty"`
 
@@ -3513,7 +3513,7 @@ type DocumentsListParams struct {
 	ModifiedMonth   *float32            `form:"modified__month,omitempty" json:"modified__month,omitempty"`
 	ModifiedYear    *float32            `form:"modified__year,omitempty" json:"modified__year,omitempty"`
 
-	// Ordering Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+	// Ordering Which field to use when ordering the results.
 	Ordering                    *string `form:"ordering,omitempty" json:"ordering,omitempty"`
 	OriginalFilenameIcontains   *string `form:"original_filename__icontains,omitempty" json:"original_filename__icontains,omitempty"`
 	OriginalFilenameIendswith   *string `form:"original_filename__iendswith,omitempty" json:"original_filename__iendswith,omitempty"`
@@ -3521,26 +3521,26 @@ type DocumentsListParams struct {
 	OriginalFilenameIstartswith *string `form:"original_filename__istartswith,omitempty" json:"original_filename__istartswith,omitempty"`
 	OwnerId                     *int    `form:"owner__id,omitempty" json:"owner__id,omitempty"`
 
-	// OwnerIdIn Mehrere Werte können durch Kommas getrennt sein.
+	// OwnerIdIn Multiple values may be separated by commas.
 	OwnerIdIn   *[]int `form:"owner__id__in,omitempty" json:"owner__id__in,omitempty"`
 	OwnerIdNone *int   `form:"owner__id__none,omitempty" json:"owner__id__none,omitempty"`
 	OwnerIsnull *bool  `form:"owner__isnull,omitempty" json:"owner__isnull,omitempty"`
 
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize *int `form:"page_size,omitempty" json:"page_size,omitempty"`
 
 	// Query Advanced search query string
 	Query *string `form:"query,omitempty" json:"query,omitempty"`
 
-	// Search Ein Suchbegriff.
+	// Search A search term.
 	Search        *string `form:"search,omitempty" json:"search,omitempty"`
 	SharedById    *bool   `form:"shared_by__id,omitempty" json:"shared_by__id,omitempty"`
 	StoragePathId *int    `form:"storage_path__id,omitempty" json:"storage_path__id,omitempty"`
 
-	// StoragePathIdIn Mehrere Werte können durch Kommas getrennt sein.
+	// StoragePathIdIn Multiple values may be separated by commas.
 	StoragePathIdIn            *[]int  `form:"storage_path__id__in,omitempty" json:"storage_path__id__in,omitempty"`
 	StoragePathIdNone          *int    `form:"storage_path__id__none,omitempty" json:"storage_path__id__none,omitempty"`
 	StoragePathIsnull          *bool   `form:"storage_path__isnull,omitempty" json:"storage_path__isnull,omitempty"`
@@ -3576,10 +3576,10 @@ type DocumentsDownloadRetrieveParams struct {
 
 // DocumentsHistoryListParams defines parameters for DocumentsHistoryList.
 type DocumentsHistoryListParams struct {
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize *int `form:"page_size,omitempty" json:"page_size,omitempty"`
 }
 
@@ -3608,13 +3608,13 @@ type GroupsListParams struct {
 	NameIexact      *string `form:"name__iexact,omitempty" json:"name__iexact,omitempty"`
 	NameIstartswith *string `form:"name__istartswith,omitempty" json:"name__istartswith,omitempty"`
 
-	// Ordering Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+	// Ordering Which field to use when ordering the results.
 	Ordering *string `form:"ordering,omitempty" json:"ordering,omitempty"`
 
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize *int `form:"page_size,omitempty" json:"page_size,omitempty"`
 }
 
@@ -3626,31 +3626,31 @@ type RetrieveLogParams struct {
 
 // MailAccountsListParams defines parameters for MailAccountsList.
 type MailAccountsListParams struct {
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize *int `form:"page_size,omitempty" json:"page_size,omitempty"`
 }
 
 // MailRulesListParams defines parameters for MailRulesList.
 type MailRulesListParams struct {
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize *int `form:"page_size,omitempty" json:"page_size,omitempty"`
 }
 
 // ProcessedMailListParams defines parameters for ProcessedMailList.
 type ProcessedMailListParams struct {
-	// Ordering Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+	// Ordering Which field to use when ordering the results.
 	Ordering *string `form:"ordering,omitempty" json:"ordering,omitempty"`
 
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize *int    `form:"page_size,omitempty" json:"page_size,omitempty"`
 	Rule     *int    `form:"rule,omitempty" json:"rule,omitempty"`
 	Status   *string `form:"status,omitempty" json:"status,omitempty"`
@@ -3669,10 +3669,10 @@ type ProfileTotpCreateJSONBody struct {
 
 // SavedViewsListParams defines parameters for SavedViewsList.
 type SavedViewsListParams struct {
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize *int `form:"page_size,omitempty" json:"page_size,omitempty"`
 }
 
@@ -3719,13 +3719,13 @@ type ShareLinksListParams struct {
 	ExpirationMonth   *float32            `form:"expiration__month,omitempty" json:"expiration__month,omitempty"`
 	ExpirationYear    *float32            `form:"expiration__year,omitempty" json:"expiration__year,omitempty"`
 
-	// Ordering Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+	// Ordering Which field to use when ordering the results.
 	Ordering *string `form:"ordering,omitempty" json:"ordering,omitempty"`
 
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize *int `form:"page_size,omitempty" json:"page_size,omitempty"`
 }
 
@@ -3734,20 +3734,20 @@ type StoragePathsListParams struct {
 	FullPerms *bool `form:"full_perms,omitempty" json:"full_perms,omitempty"`
 	Id        *int  `form:"id,omitempty" json:"id,omitempty"`
 
-	// IdIn Mehrere Werte können durch Kommas getrennt sein.
+	// IdIn Multiple values may be separated by commas.
 	IdIn            *[]int  `form:"id__in,omitempty" json:"id__in,omitempty"`
 	NameIcontains   *string `form:"name__icontains,omitempty" json:"name__icontains,omitempty"`
 	NameIendswith   *string `form:"name__iendswith,omitempty" json:"name__iendswith,omitempty"`
 	NameIexact      *string `form:"name__iexact,omitempty" json:"name__iexact,omitempty"`
 	NameIstartswith *string `form:"name__istartswith,omitempty" json:"name__istartswith,omitempty"`
 
-	// Ordering Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+	// Ordering Which field to use when ordering the results.
 	Ordering *string `form:"ordering,omitempty" json:"ordering,omitempty"`
 
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize        *int    `form:"page_size,omitempty" json:"page_size,omitempty"`
 	PathIcontains   *string `form:"path__icontains,omitempty" json:"path__icontains,omitempty"`
 	PathIendswith   *string `form:"path__iendswith,omitempty" json:"path__iendswith,omitempty"`
@@ -3765,7 +3765,7 @@ type TagsListParams struct {
 	FullPerms *bool `form:"full_perms,omitempty" json:"full_perms,omitempty"`
 	Id        *int  `form:"id,omitempty" json:"id,omitempty"`
 
-	// IdIn Mehrere Werte können durch Kommas getrennt sein.
+	// IdIn Multiple values may be separated by commas.
 	IdIn *[]int `form:"id__in,omitempty" json:"id__in,omitempty"`
 
 	// IsRoot Is root tag
@@ -3775,13 +3775,13 @@ type TagsListParams struct {
 	NameIexact      *string `form:"name__iexact,omitempty" json:"name__iexact,omitempty"`
 	NameIstartswith *string `form:"name__istartswith,omitempty" json:"name__istartswith,omitempty"`
 
-	// Ordering Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+	// Ordering Which field to use when ordering the results.
 	Ordering *string `form:"ordering,omitempty" json:"ordering,omitempty"`
 
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize *int `form:"page_size,omitempty" json:"page_size,omitempty"`
 }
 
@@ -3795,10 +3795,10 @@ type TasksListParams struct {
 	// Acknowledged Acknowledged
 	Acknowledged *bool `form:"acknowledged,omitempty" json:"acknowledged,omitempty"`
 
-	// Ordering Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+	// Ordering Which field to use when ordering the results.
 	Ordering *string `form:"ordering,omitempty" json:"ordering,omitempty"`
 
-	// Status Aktueller Status der laufenden Aufgabe
+	// Status Current state of the task being run
 	//
 	// * `FAILURE` - FAILURE
 	// * `PENDING` - PENDING
@@ -3812,19 +3812,19 @@ type TasksListParams struct {
 	// TaskId Filter tasks by Celery UUID
 	TaskId *string `form:"task_id,omitempty" json:"task_id,omitempty"`
 
-	// TaskName Name der ausgeführten Aufgabe
+	// TaskName Name of the task that was run
 	//
-	// * `consume_file` - Datei verarbeiten
-	// * `train_classifier` - Klassifikator trainieren
-	// * `check_sanity` - Plausibilität prüfen
-	// * `index_optimize` - Indexoptimierung
+	// * `consume_file` - Consume File
+	// * `train_classifier` - Train Classifier
+	// * `check_sanity` - Check Sanity
+	// * `index_optimize` - Index Optimize
 	TaskName *TasksListParamsTaskName `form:"task_name,omitempty" json:"task_name,omitempty"`
 
-	// Type Art der ausgeführten Aufgabe
+	// Type The type of task that was run
 	//
-	// * `auto_task` - Automatische Aufgabe
-	// * `scheduled_task` - Geplante Aufgabe
-	// * `manual_task` - Manuelle Aufgabe
+	// * `auto_task` - Auto Task
+	// * `scheduled_task` - Scheduled Task
+	// * `manual_task` - Manual Task
 	Type *TasksListParamsType `form:"type,omitempty" json:"type,omitempty"`
 }
 
@@ -3862,22 +3862,22 @@ type TasksRetrieveParams struct {
 
 // TrashListParams defines parameters for TrashList.
 type TrashListParams struct {
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize *int `form:"page_size,omitempty" json:"page_size,omitempty"`
 }
 
 // UsersListParams defines parameters for UsersList.
 type UsersListParams struct {
-	// Ordering Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+	// Ordering Which field to use when ordering the results.
 	Ordering *string `form:"ordering,omitempty" json:"ordering,omitempty"`
 
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize            *int    `form:"page_size,omitempty" json:"page_size,omitempty"`
 	UsernameIcontains   *string `form:"username__icontains,omitempty" json:"username__icontains,omitempty"`
 	UsernameIendswith   *string `form:"username__iendswith,omitempty" json:"username__iendswith,omitempty"`
@@ -3887,28 +3887,28 @@ type UsersListParams struct {
 
 // WorkflowActionsListParams defines parameters for WorkflowActionsList.
 type WorkflowActionsListParams struct {
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize *int `form:"page_size,omitempty" json:"page_size,omitempty"`
 }
 
 // WorkflowTriggersListParams defines parameters for WorkflowTriggersList.
 type WorkflowTriggersListParams struct {
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize *int `form:"page_size,omitempty" json:"page_size,omitempty"`
 }
 
 // WorkflowsListParams defines parameters for WorkflowsList.
 type WorkflowsListParams struct {
-	// Page Eine Seitenzahl in der paginierten Ergebnismenge.
+	// Page A page number within the paginated result set.
 	Page *int `form:"page,omitempty" json:"page,omitempty"`
 
-	// PageSize Anzahl der pro Seite zurückzugebenden Ergebnisse.
+	// PageSize Number of results to return per page.
 	PageSize *int `form:"page_size,omitempty" json:"page_size,omitempty"`
 }
 
@@ -10269,7 +10269,7 @@ func NewBulkEditObjectsRequestWithBody(server string, contentType string, body i
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/bulk_edit_objects/")
+	operationPath := fmt.Sprintf("/api/bulk_edit_objects/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10298,7 +10298,7 @@ func NewConfigListRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/config/")
+	operationPath := fmt.Sprintf("/api/config/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10332,7 +10332,7 @@ func NewConfigDestroyRequest(server string, id int) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/config/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/config/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10366,7 +10366,7 @@ func NewConfigRetrieveRequest(server string, id int) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/config/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/config/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10422,7 +10422,7 @@ func NewConfigPartialUpdateRequestWithBody(server string, id int, contentType st
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/config/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/config/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10480,7 +10480,7 @@ func NewConfigUpdateRequestWithBody(server string, id int, contentType string, b
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/config/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/config/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10509,7 +10509,7 @@ func NewCorrespondentsListRequest(server string, params *CorrespondentsListParam
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/correspondents/")
+	operationPath := fmt.Sprintf("/api/correspondents/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10693,7 +10693,7 @@ func NewCorrespondentsCreateRequestWithBody(server string, contentType string, b
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/correspondents/")
+	operationPath := fmt.Sprintf("/api/correspondents/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10729,7 +10729,7 @@ func NewCorrespondentsDestroyRequest(server string, id int) (*http.Request, erro
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/correspondents/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/correspondents/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10763,7 +10763,7 @@ func NewCorrespondentsRetrieveRequest(server string, id int, params *Corresponde
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/correspondents/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/correspondents/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10846,7 +10846,7 @@ func NewCorrespondentsPartialUpdateRequestWithBody(server string, id int, conten
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/correspondents/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/correspondents/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10904,7 +10904,7 @@ func NewCorrespondentsUpdateRequestWithBody(server string, id int, contentType s
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/correspondents/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/correspondents/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -10933,7 +10933,7 @@ func NewCustomFieldsListRequest(server string, params *CustomFieldsListParams) (
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/custom_fields/")
+	operationPath := fmt.Sprintf("/api/custom_fields/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11105,7 +11105,7 @@ func NewCustomFieldsCreateRequestWithBody(server string, contentType string, bod
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/custom_fields/")
+	operationPath := fmt.Sprintf("/api/custom_fields/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11141,7 +11141,7 @@ func NewCustomFieldsDestroyRequest(server string, id int) (*http.Request, error)
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/custom_fields/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/custom_fields/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11175,7 +11175,7 @@ func NewCustomFieldsRetrieveRequest(server string, id int) (*http.Request, error
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/custom_fields/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/custom_fields/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11231,7 +11231,7 @@ func NewCustomFieldsPartialUpdateRequestWithBody(server string, id int, contentT
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/custom_fields/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/custom_fields/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11289,7 +11289,7 @@ func NewCustomFieldsUpdateRequestWithBody(server string, id int, contentType str
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/custom_fields/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/custom_fields/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11318,7 +11318,7 @@ func NewDocumentTypesListRequest(server string, params *DocumentTypesListParams)
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/document_types/")
+	operationPath := fmt.Sprintf("/api/document_types/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11502,7 +11502,7 @@ func NewDocumentTypesCreateRequestWithBody(server string, contentType string, bo
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/document_types/")
+	operationPath := fmt.Sprintf("/api/document_types/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11538,7 +11538,7 @@ func NewDocumentTypesDestroyRequest(server string, id int) (*http.Request, error
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/document_types/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/document_types/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11572,7 +11572,7 @@ func NewDocumentTypesRetrieveRequest(server string, id int, params *DocumentType
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/document_types/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/document_types/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11655,7 +11655,7 @@ func NewDocumentTypesPartialUpdateRequestWithBody(server string, id int, content
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/document_types/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/document_types/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11713,7 +11713,7 @@ func NewDocumentTypesUpdateRequestWithBody(server string, id int, contentType st
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/document_types/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/document_types/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -11742,7 +11742,7 @@ func NewDocumentsListRequest(server string, params *DocumentsListParams) (*http.
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/")
+	operationPath := fmt.Sprintf("/api/documents/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -13127,7 +13127,7 @@ func NewDocumentsBulkDownloadCreateRequestWithBody(server string, contentType st
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/bulk_download/")
+	operationPath := fmt.Sprintf("/api/documents/bulk_download/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -13167,7 +13167,7 @@ func NewBulkEditRequestWithBody(server string, contentType string, body io.Reade
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/bulk_edit/")
+	operationPath := fmt.Sprintf("/api/documents/bulk_edit/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -13218,7 +13218,7 @@ func NewEmailDocumentsRequestWithBody(server string, contentType string, body io
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/email/")
+	operationPath := fmt.Sprintf("/api/documents/email/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -13247,7 +13247,7 @@ func NewDocumentsNextAsnRetrieveRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/next_asn/")
+	operationPath := fmt.Sprintf("/api/documents/next_asn/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -13274,7 +13274,7 @@ func NewDocumentsPostDocumentCreateRequestWithBody(server string, contentType st
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/post_document/")
+	operationPath := fmt.Sprintf("/api/documents/post_document/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -13314,7 +13314,7 @@ func NewDocumentsSelectionDataCreateRequestWithBody(server string, contentType s
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/selection_data/")
+	operationPath := fmt.Sprintf("/api/documents/selection_data/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -13350,7 +13350,7 @@ func NewDocumentsDestroyRequest(server string, id int) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/documents/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -13384,7 +13384,7 @@ func NewDocumentsRetrieveRequest(server string, id int, params *DocumentsRetriev
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/documents/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -13479,7 +13479,7 @@ func NewDocumentsPartialUpdateRequestWithBody(server string, id int, contentType
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/documents/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -13537,7 +13537,7 @@ func NewDocumentsUpdateRequestWithBody(server string, id int, contentType string
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/documents/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -13573,7 +13573,7 @@ func NewDocumentsDownloadRetrieveRequest(server string, id int, params *Document
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/%s/download/", pathParam0)
+	operationPath := fmt.Sprintf("/api/documents/%s/download/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -13656,7 +13656,7 @@ func NewDocumentsEmailCreateRequestWithBody(server string, id int, contentType s
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/%s/email/", pathParam0)
+	operationPath := fmt.Sprintf("/api/documents/%s/email/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -13692,7 +13692,7 @@ func NewDocumentsHistoryListRequest(server string, id int, params *DocumentsHist
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/%s/history/", pathParam0)
+	operationPath := fmt.Sprintf("/api/documents/%s/history/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -13765,7 +13765,7 @@ func NewDocumentsMetadataRetrieveRequest(server string, id int) (*http.Request, 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/%s/metadata/", pathParam0)
+	operationPath := fmt.Sprintf("/api/documents/%s/metadata/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -13799,7 +13799,7 @@ func NewDocumentsNotesDestroyRequest(server string, id int, params *DocumentsNot
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/%s/notes/", pathParam0)
+	operationPath := fmt.Sprintf("/api/documents/%s/notes/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -13860,7 +13860,7 @@ func NewDocumentsNotesListRequest(server string, id int, params *DocumentsNotesL
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/%s/notes/", pathParam0)
+	operationPath := fmt.Sprintf("/api/documents/%s/notes/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -13943,7 +13943,7 @@ func NewDocumentsNotesCreateRequestWithBody(server string, id int, params *Docum
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/%s/notes/", pathParam0)
+	operationPath := fmt.Sprintf("/api/documents/%s/notes/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14006,7 +14006,7 @@ func NewDocumentsPreviewRetrieveRequest(server string, id int) (*http.Request, e
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/%s/preview/", pathParam0)
+	operationPath := fmt.Sprintf("/api/documents/%s/preview/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14040,7 +14040,7 @@ func NewDocumentShareLinksRequest(server string, id string) (*http.Request, erro
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/%s/share_links/", pathParam0)
+	operationPath := fmt.Sprintf("/api/documents/%s/share_links/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14074,7 +14074,7 @@ func NewDocumentsSuggestionsRetrieveRequest(server string, id int) (*http.Reques
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/%s/suggestions/", pathParam0)
+	operationPath := fmt.Sprintf("/api/documents/%s/suggestions/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14108,7 +14108,7 @@ func NewDocumentsThumbRetrieveRequest(server string, id int) (*http.Request, err
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/documents/%s/thumb/", pathParam0)
+	operationPath := fmt.Sprintf("/api/documents/%s/thumb/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14135,7 +14135,7 @@ func NewGroupsListRequest(server string, params *GroupsListParams) (*http.Reques
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/groups/")
+	operationPath := fmt.Sprintf("/api/groups/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14283,7 +14283,7 @@ func NewGroupsCreateRequestWithBody(server string, contentType string, body io.R
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/groups/")
+	operationPath := fmt.Sprintf("/api/groups/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14319,7 +14319,7 @@ func NewGroupsDestroyRequest(server string, id int) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/groups/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/groups/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14353,7 +14353,7 @@ func NewGroupsRetrieveRequest(server string, id int) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/groups/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/groups/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14409,7 +14409,7 @@ func NewGroupsPartialUpdateRequestWithBody(server string, id int, contentType st
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/groups/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/groups/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14467,7 +14467,7 @@ func NewGroupsUpdateRequestWithBody(server string, id int, contentType string, b
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/groups/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/groups/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14496,7 +14496,7 @@ func NewLogsListRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/logs/")
+	operationPath := fmt.Sprintf("/api/logs/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14530,7 +14530,7 @@ func NewRetrieveLogRequest(server string, id string, params *RetrieveLogParams) 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/logs/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/logs/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14584,7 +14584,7 @@ func NewMailAccountsListRequest(server string, params *MailAccountsListParams) (
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/mail_accounts/")
+	operationPath := fmt.Sprintf("/api/mail_accounts/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14672,7 +14672,7 @@ func NewMailAccountsCreateRequestWithBody(server string, contentType string, bod
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/mail_accounts/")
+	operationPath := fmt.Sprintf("/api/mail_accounts/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14723,7 +14723,7 @@ func NewMailAccountTestRequestWithBody(server string, contentType string, body i
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/mail_accounts/test/")
+	operationPath := fmt.Sprintf("/api/mail_accounts/test/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14759,7 +14759,7 @@ func NewMailAccountsDestroyRequest(server string, id int) (*http.Request, error)
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/mail_accounts/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/mail_accounts/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14793,7 +14793,7 @@ func NewMailAccountsRetrieveRequest(server string, id int) (*http.Request, error
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/mail_accounts/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/mail_accounts/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14849,7 +14849,7 @@ func NewMailAccountsPartialUpdateRequestWithBody(server string, id int, contentT
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/mail_accounts/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/mail_accounts/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14907,7 +14907,7 @@ func NewMailAccountsUpdateRequestWithBody(server string, id int, contentType str
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/mail_accounts/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/mail_accounts/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14965,7 +14965,7 @@ func NewMailAccountProcessRequestWithBody(server string, id int, contentType str
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/mail_accounts/%s/process/", pathParam0)
+	operationPath := fmt.Sprintf("/api/mail_accounts/%s/process/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -14994,7 +14994,7 @@ func NewMailRulesListRequest(server string, params *MailRulesListParams) (*http.
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/mail_rules/")
+	operationPath := fmt.Sprintf("/api/mail_rules/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15082,7 +15082,7 @@ func NewMailRulesCreateRequestWithBody(server string, contentType string, body i
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/mail_rules/")
+	operationPath := fmt.Sprintf("/api/mail_rules/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15118,7 +15118,7 @@ func NewMailRulesDestroyRequest(server string, id int) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/mail_rules/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/mail_rules/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15152,7 +15152,7 @@ func NewMailRulesRetrieveRequest(server string, id int) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/mail_rules/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/mail_rules/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15208,7 +15208,7 @@ func NewMailRulesPartialUpdateRequestWithBody(server string, id int, contentType
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/mail_rules/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/mail_rules/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15266,7 +15266,7 @@ func NewMailRulesUpdateRequestWithBody(server string, id int, contentType string
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/mail_rules/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/mail_rules/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15295,7 +15295,7 @@ func NewOauthCallbackRetrieveRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/oauth/callback/")
+	operationPath := fmt.Sprintf("/api/oauth/callback/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15322,7 +15322,7 @@ func NewProcessedMailListRequest(server string, params *ProcessedMailListParams)
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/processed_mail/")
+	operationPath := fmt.Sprintf("/api/processed_mail/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15446,7 +15446,7 @@ func NewProcessedMailBulkDeleteCreateRequestWithBody(server string, contentType 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/processed_mail/bulk_delete/")
+	operationPath := fmt.Sprintf("/api/processed_mail/bulk_delete/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15482,7 +15482,7 @@ func NewProcessedMailRetrieveRequest(server string, id int) (*http.Request, erro
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/processed_mail/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/processed_mail/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15509,7 +15509,7 @@ func NewProfileRetrieveRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/profile/")
+	operationPath := fmt.Sprintf("/api/profile/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15558,7 +15558,7 @@ func NewProfilePartialUpdateRequestWithBody(server string, contentType string, b
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/profile/")
+	operationPath := fmt.Sprintf("/api/profile/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15598,7 +15598,7 @@ func NewProfileDisconnectSocialAccountCreateRequestWithBody(server string, conte
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/profile/disconnect_social_account/")
+	operationPath := fmt.Sprintf("/api/profile/disconnect_social_account/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15627,7 +15627,7 @@ func NewProfileGenerateAuthTokenCreateRequest(server string) (*http.Request, err
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/profile/generate_auth_token/")
+	operationPath := fmt.Sprintf("/api/profile/generate_auth_token/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15654,7 +15654,7 @@ func NewProfileSocialAccountProvidersRetrieveRequest(server string) (*http.Reque
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/profile/social_account_providers/")
+	operationPath := fmt.Sprintf("/api/profile/social_account_providers/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15681,7 +15681,7 @@ func NewProfileTotpDestroyRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/profile/totp/")
+	operationPath := fmt.Sprintf("/api/profile/totp/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15708,7 +15708,7 @@ func NewProfileTotpRetrieveRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/profile/totp/")
+	operationPath := fmt.Sprintf("/api/profile/totp/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15746,7 +15746,7 @@ func NewProfileTotpCreateRequestWithBody(server string, contentType string, body
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/profile/totp/")
+	operationPath := fmt.Sprintf("/api/profile/totp/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15775,7 +15775,7 @@ func NewRemoteVersionRetrieveRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/remote_version/")
+	operationPath := fmt.Sprintf("/api/remote_version/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15802,7 +15802,7 @@ func NewSavedViewsListRequest(server string, params *SavedViewsListParams) (*htt
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/saved_views/")
+	operationPath := fmt.Sprintf("/api/saved_views/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15890,7 +15890,7 @@ func NewSavedViewsCreateRequestWithBody(server string, contentType string, body 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/saved_views/")
+	operationPath := fmt.Sprintf("/api/saved_views/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15926,7 +15926,7 @@ func NewSavedViewsDestroyRequest(server string, id int) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/saved_views/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/saved_views/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -15960,7 +15960,7 @@ func NewSavedViewsRetrieveRequest(server string, id int) (*http.Request, error) 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/saved_views/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/saved_views/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -16016,7 +16016,7 @@ func NewSavedViewsPartialUpdateRequestWithBody(server string, id int, contentTyp
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/saved_views/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/saved_views/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -16074,7 +16074,7 @@ func NewSavedViewsUpdateRequestWithBody(server string, id int, contentType strin
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/saved_views/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/saved_views/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -16103,7 +16103,7 @@ func NewSearchRetrieveRequest(server string, params *SearchRetrieveParams) (*htt
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/search/")
+	operationPath := fmt.Sprintf("/api/search/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -16165,7 +16165,7 @@ func NewSearchAutocompleteListRequest(server string, params *SearchAutocompleteL
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/search/autocomplete/")
+	operationPath := fmt.Sprintf("/api/search/autocomplete/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -16231,7 +16231,7 @@ func NewShareLinksListRequest(server string, params *ShareLinksListParams) (*htt
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/share_links/")
+	operationPath := fmt.Sprintf("/api/share_links/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -16595,7 +16595,7 @@ func NewShareLinksCreateRequestWithBody(server string, contentType string, body 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/share_links/")
+	operationPath := fmt.Sprintf("/api/share_links/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -16631,7 +16631,7 @@ func NewShareLinksDestroyRequest(server string, id int) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/share_links/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/share_links/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -16665,7 +16665,7 @@ func NewShareLinksRetrieveRequest(server string, id int) (*http.Request, error) 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/share_links/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/share_links/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -16692,7 +16692,7 @@ func NewStatisticsRetrieveRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/statistics/")
+	operationPath := fmt.Sprintf("/api/statistics/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -16719,7 +16719,7 @@ func NewStatusRetrieveRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/status/")
+	operationPath := fmt.Sprintf("/api/status/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -16746,7 +16746,7 @@ func NewStoragePathsListRequest(server string, params *StoragePathsListParams) (
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/storage_paths/")
+	operationPath := fmt.Sprintf("/api/storage_paths/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -16978,7 +16978,7 @@ func NewStoragePathsCreateRequestWithBody(server string, contentType string, bod
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/storage_paths/")
+	operationPath := fmt.Sprintf("/api/storage_paths/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -17029,7 +17029,7 @@ func NewStoragePathsTestCreateRequestWithBody(server string, contentType string,
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/storage_paths/test/")
+	operationPath := fmt.Sprintf("/api/storage_paths/test/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -17065,7 +17065,7 @@ func NewStoragePathsDestroyRequest(server string, id int) (*http.Request, error)
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/storage_paths/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/storage_paths/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -17099,7 +17099,7 @@ func NewStoragePathsRetrieveRequest(server string, id int, params *StoragePathsR
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/storage_paths/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/storage_paths/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -17182,7 +17182,7 @@ func NewStoragePathsPartialUpdateRequestWithBody(server string, id int, contentT
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/storage_paths/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/storage_paths/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -17240,7 +17240,7 @@ func NewStoragePathsUpdateRequestWithBody(server string, id int, contentType str
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/storage_paths/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/storage_paths/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -17269,7 +17269,7 @@ func NewTagsListRequest(server string, params *TagsListParams) (*http.Request, e
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/tags/")
+	operationPath := fmt.Sprintf("/api/tags/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -17465,7 +17465,7 @@ func NewTagsCreateRequestWithBody(server string, contentType string, body io.Rea
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/tags/")
+	operationPath := fmt.Sprintf("/api/tags/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -17501,7 +17501,7 @@ func NewTagsDestroyRequest(server string, id int) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/tags/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/tags/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -17535,7 +17535,7 @@ func NewTagsRetrieveRequest(server string, id int, params *TagsRetrieveParams) (
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/tags/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/tags/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -17618,7 +17618,7 @@ func NewTagsPartialUpdateRequestWithBody(server string, id int, contentType stri
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/tags/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/tags/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -17676,7 +17676,7 @@ func NewTagsUpdateRequestWithBody(server string, id int, contentType string, bod
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/tags/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/tags/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -17705,7 +17705,7 @@ func NewTasksListRequest(server string, params *TasksListParams) (*http.Request,
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/tasks/")
+	operationPath := fmt.Sprintf("/api/tasks/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -17830,7 +17830,7 @@ func NewAcknowledgeTasksRequestWithBody(server string, params *AcknowledgeTasksP
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/tasks/acknowledge/")
+	operationPath := fmt.Sprintf("/api/tasks/acknowledge/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -17908,7 +17908,7 @@ func NewTasksRunCreateRequestWithBody(server string, params *TasksRunCreateParam
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/tasks/run/")
+	operationPath := fmt.Sprintf("/api/tasks/run/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -17971,7 +17971,7 @@ func NewTasksRetrieveRequest(server string, id int, params *TasksRetrieveParams)
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/tasks/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/tasks/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18047,7 +18047,7 @@ func NewTokenCreateRequestWithBody(server string, contentType string, body io.Re
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/token/")
+	operationPath := fmt.Sprintf("/api/token/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18076,7 +18076,7 @@ func NewTrashListRequest(server string, params *TrashListParams) (*http.Request,
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/trash/")
+	operationPath := fmt.Sprintf("/api/trash/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18164,7 +18164,7 @@ func NewTrashCreateRequestWithBody(server string, contentType string, body io.Re
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/trash/")
+	operationPath := fmt.Sprintf("/api/trash/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18193,7 +18193,7 @@ func NewUiSettingsRetrieveRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/ui_settings/")
+	operationPath := fmt.Sprintf("/api/ui_settings/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18242,7 +18242,7 @@ func NewUiSettingsCreateRequestWithBody(server string, contentType string, body 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/ui_settings/")
+	operationPath := fmt.Sprintf("/api/ui_settings/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18271,7 +18271,7 @@ func NewUsersListRequest(server string, params *UsersListParams) (*http.Request,
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/users/")
+	operationPath := fmt.Sprintf("/api/users/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18419,7 +18419,7 @@ func NewUsersCreateRequestWithBody(server string, contentType string, body io.Re
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/users/")
+	operationPath := fmt.Sprintf("/api/users/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18455,7 +18455,7 @@ func NewUsersDestroyRequest(server string, id int) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/users/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/users/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18489,7 +18489,7 @@ func NewUsersRetrieveRequest(server string, id int) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/users/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/users/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18545,7 +18545,7 @@ func NewUsersPartialUpdateRequestWithBody(server string, id int, contentType str
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/users/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/users/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18603,7 +18603,7 @@ func NewUsersUpdateRequestWithBody(server string, id int, contentType string, bo
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/users/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/users/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18639,7 +18639,7 @@ func NewUsersDeactivateTotpCreateRequest(server string, id int) (*http.Request, 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/users/%s/deactivate_totp/", pathParam0)
+	operationPath := fmt.Sprintf("/api/users/%s/deactivate_totp/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18666,7 +18666,7 @@ func NewWorkflowActionsListRequest(server string, params *WorkflowActionsListPar
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflow_actions/")
+	operationPath := fmt.Sprintf("/api/workflow_actions/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18754,7 +18754,7 @@ func NewWorkflowActionsCreateRequestWithBody(server string, contentType string, 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflow_actions/")
+	operationPath := fmt.Sprintf("/api/workflow_actions/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18790,7 +18790,7 @@ func NewWorkflowActionsDestroyRequest(server string, id int) (*http.Request, err
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflow_actions/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/workflow_actions/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18824,7 +18824,7 @@ func NewWorkflowActionsRetrieveRequest(server string, id int) (*http.Request, er
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflow_actions/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/workflow_actions/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18880,7 +18880,7 @@ func NewWorkflowActionsPartialUpdateRequestWithBody(server string, id int, conte
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflow_actions/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/workflow_actions/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18938,7 +18938,7 @@ func NewWorkflowActionsUpdateRequestWithBody(server string, id int, contentType 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflow_actions/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/workflow_actions/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -18967,7 +18967,7 @@ func NewWorkflowTriggersListRequest(server string, params *WorkflowTriggersListP
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflow_triggers/")
+	operationPath := fmt.Sprintf("/api/workflow_triggers/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -19055,7 +19055,7 @@ func NewWorkflowTriggersCreateRequestWithBody(server string, contentType string,
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflow_triggers/")
+	operationPath := fmt.Sprintf("/api/workflow_triggers/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -19091,7 +19091,7 @@ func NewWorkflowTriggersDestroyRequest(server string, id int) (*http.Request, er
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflow_triggers/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/workflow_triggers/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -19125,7 +19125,7 @@ func NewWorkflowTriggersRetrieveRequest(server string, id int) (*http.Request, e
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflow_triggers/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/workflow_triggers/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -19181,7 +19181,7 @@ func NewWorkflowTriggersPartialUpdateRequestWithBody(server string, id int, cont
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflow_triggers/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/workflow_triggers/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -19239,7 +19239,7 @@ func NewWorkflowTriggersUpdateRequestWithBody(server string, id int, contentType
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflow_triggers/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/workflow_triggers/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -19268,7 +19268,7 @@ func NewWorkflowsListRequest(server string, params *WorkflowsListParams) (*http.
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflows/")
+	operationPath := fmt.Sprintf("/api/workflows/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -19356,7 +19356,7 @@ func NewWorkflowsCreateRequestWithBody(server string, contentType string, body i
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflows/")
+	operationPath := fmt.Sprintf("/api/workflows/")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -19392,7 +19392,7 @@ func NewWorkflowsDestroyRequest(server string, id int) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflows/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/workflows/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -19426,7 +19426,7 @@ func NewWorkflowsRetrieveRequest(server string, id int) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflows/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/workflows/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -19482,7 +19482,7 @@ func NewWorkflowsPartialUpdateRequestWithBody(server string, id int, contentType
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflows/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/workflows/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -19540,7 +19540,7 @@ func NewWorkflowsUpdateRequestWithBody(server string, id int, contentType string
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/home/paperless/api/workflows/%s/", pathParam0)
+	operationPath := fmt.Sprintf("/api/workflows/%s/", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -30286,430 +30286,430 @@ func ParseWorkflowsUpdateResponse(rsp *http.Response) (*WorkflowsUpdateResponse,
 // ServerInterface represents all server handlers.
 type ServerInterface interface {
 
-	// (POST /home/paperless/api/bulk_edit_objects/)
+	// (POST /api/bulk_edit_objects/)
 	BulkEditObjects(w http.ResponseWriter, r *http.Request)
 
-	// (GET /home/paperless/api/config/)
+	// (GET /api/config/)
 	ConfigList(w http.ResponseWriter, r *http.Request)
 
-	// (DELETE /home/paperless/api/config/{id}/)
+	// (DELETE /api/config/{id}/)
 	ConfigDestroy(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/config/{id}/)
+	// (GET /api/config/{id}/)
 	ConfigRetrieve(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PATCH /home/paperless/api/config/{id}/)
+	// (PATCH /api/config/{id}/)
 	ConfigPartialUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PUT /home/paperless/api/config/{id}/)
+	// (PUT /api/config/{id}/)
 	ConfigUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/correspondents/)
+	// (GET /api/correspondents/)
 	CorrespondentsList(w http.ResponseWriter, r *http.Request, params CorrespondentsListParams)
 
-	// (POST /home/paperless/api/correspondents/)
+	// (POST /api/correspondents/)
 	CorrespondentsCreate(w http.ResponseWriter, r *http.Request)
 
-	// (DELETE /home/paperless/api/correspondents/{id}/)
+	// (DELETE /api/correspondents/{id}/)
 	CorrespondentsDestroy(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/correspondents/{id}/)
+	// (GET /api/correspondents/{id}/)
 	CorrespondentsRetrieve(w http.ResponseWriter, r *http.Request, id int, params CorrespondentsRetrieveParams)
 
-	// (PATCH /home/paperless/api/correspondents/{id}/)
+	// (PATCH /api/correspondents/{id}/)
 	CorrespondentsPartialUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PUT /home/paperless/api/correspondents/{id}/)
+	// (PUT /api/correspondents/{id}/)
 	CorrespondentsUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/custom_fields/)
+	// (GET /api/custom_fields/)
 	CustomFieldsList(w http.ResponseWriter, r *http.Request, params CustomFieldsListParams)
 
-	// (POST /home/paperless/api/custom_fields/)
+	// (POST /api/custom_fields/)
 	CustomFieldsCreate(w http.ResponseWriter, r *http.Request)
 
-	// (DELETE /home/paperless/api/custom_fields/{id}/)
+	// (DELETE /api/custom_fields/{id}/)
 	CustomFieldsDestroy(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/custom_fields/{id}/)
+	// (GET /api/custom_fields/{id}/)
 	CustomFieldsRetrieve(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PATCH /home/paperless/api/custom_fields/{id}/)
+	// (PATCH /api/custom_fields/{id}/)
 	CustomFieldsPartialUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PUT /home/paperless/api/custom_fields/{id}/)
+	// (PUT /api/custom_fields/{id}/)
 	CustomFieldsUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/document_types/)
+	// (GET /api/document_types/)
 	DocumentTypesList(w http.ResponseWriter, r *http.Request, params DocumentTypesListParams)
 
-	// (POST /home/paperless/api/document_types/)
+	// (POST /api/document_types/)
 	DocumentTypesCreate(w http.ResponseWriter, r *http.Request)
 
-	// (DELETE /home/paperless/api/document_types/{id}/)
+	// (DELETE /api/document_types/{id}/)
 	DocumentTypesDestroy(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/document_types/{id}/)
+	// (GET /api/document_types/{id}/)
 	DocumentTypesRetrieve(w http.ResponseWriter, r *http.Request, id int, params DocumentTypesRetrieveParams)
 
-	// (PATCH /home/paperless/api/document_types/{id}/)
+	// (PATCH /api/document_types/{id}/)
 	DocumentTypesPartialUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PUT /home/paperless/api/document_types/{id}/)
+	// (PUT /api/document_types/{id}/)
 	DocumentTypesUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/documents/)
+	// (GET /api/documents/)
 	DocumentsList(w http.ResponseWriter, r *http.Request, params DocumentsListParams)
 
-	// (POST /home/paperless/api/documents/bulk_download/)
+	// (POST /api/documents/bulk_download/)
 	DocumentsBulkDownloadCreate(w http.ResponseWriter, r *http.Request)
 
-	// (POST /home/paperless/api/documents/bulk_edit/)
+	// (POST /api/documents/bulk_edit/)
 	BulkEdit(w http.ResponseWriter, r *http.Request)
 
-	// (POST /home/paperless/api/documents/email/)
+	// (POST /api/documents/email/)
 	EmailDocuments(w http.ResponseWriter, r *http.Request)
 
-	// (GET /home/paperless/api/documents/next_asn/)
+	// (GET /api/documents/next_asn/)
 	DocumentsNextAsnRetrieve(w http.ResponseWriter, r *http.Request)
 
-	// (POST /home/paperless/api/documents/post_document/)
+	// (POST /api/documents/post_document/)
 	DocumentsPostDocumentCreate(w http.ResponseWriter, r *http.Request)
 
-	// (POST /home/paperless/api/documents/selection_data/)
+	// (POST /api/documents/selection_data/)
 	DocumentsSelectionDataCreate(w http.ResponseWriter, r *http.Request)
 
-	// (DELETE /home/paperless/api/documents/{id}/)
+	// (DELETE /api/documents/{id}/)
 	DocumentsDestroy(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/documents/{id}/)
+	// (GET /api/documents/{id}/)
 	DocumentsRetrieve(w http.ResponseWriter, r *http.Request, id int, params DocumentsRetrieveParams)
 
-	// (PATCH /home/paperless/api/documents/{id}/)
+	// (PATCH /api/documents/{id}/)
 	DocumentsPartialUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PUT /home/paperless/api/documents/{id}/)
+	// (PUT /api/documents/{id}/)
 	DocumentsUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/documents/{id}/download/)
+	// (GET /api/documents/{id}/download/)
 	DocumentsDownloadRetrieve(w http.ResponseWriter, r *http.Request, id int, params DocumentsDownloadRetrieveParams)
 
-	// (POST /home/paperless/api/documents/{id}/email/)
+	// (POST /api/documents/{id}/email/)
 	DocumentsEmailCreate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/documents/{id}/history/)
+	// (GET /api/documents/{id}/history/)
 	DocumentsHistoryList(w http.ResponseWriter, r *http.Request, id int, params DocumentsHistoryListParams)
 
-	// (GET /home/paperless/api/documents/{id}/metadata/)
+	// (GET /api/documents/{id}/metadata/)
 	DocumentsMetadataRetrieve(w http.ResponseWriter, r *http.Request, id int)
 
-	// (DELETE /home/paperless/api/documents/{id}/notes/)
+	// (DELETE /api/documents/{id}/notes/)
 	DocumentsNotesDestroy(w http.ResponseWriter, r *http.Request, id int, params DocumentsNotesDestroyParams)
 
-	// (GET /home/paperless/api/documents/{id}/notes/)
+	// (GET /api/documents/{id}/notes/)
 	DocumentsNotesList(w http.ResponseWriter, r *http.Request, id int, params DocumentsNotesListParams)
 
-	// (POST /home/paperless/api/documents/{id}/notes/)
+	// (POST /api/documents/{id}/notes/)
 	DocumentsNotesCreate(w http.ResponseWriter, r *http.Request, id int, params DocumentsNotesCreateParams)
 
-	// (GET /home/paperless/api/documents/{id}/preview/)
+	// (GET /api/documents/{id}/preview/)
 	DocumentsPreviewRetrieve(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/documents/{id}/share_links/)
+	// (GET /api/documents/{id}/share_links/)
 	DocumentShareLinks(w http.ResponseWriter, r *http.Request, id string)
 
-	// (GET /home/paperless/api/documents/{id}/suggestions/)
+	// (GET /api/documents/{id}/suggestions/)
 	DocumentsSuggestionsRetrieve(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/documents/{id}/thumb/)
+	// (GET /api/documents/{id}/thumb/)
 	DocumentsThumbRetrieve(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/groups/)
+	// (GET /api/groups/)
 	GroupsList(w http.ResponseWriter, r *http.Request, params GroupsListParams)
 
-	// (POST /home/paperless/api/groups/)
+	// (POST /api/groups/)
 	GroupsCreate(w http.ResponseWriter, r *http.Request)
 
-	// (DELETE /home/paperless/api/groups/{id}/)
+	// (DELETE /api/groups/{id}/)
 	GroupsDestroy(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/groups/{id}/)
+	// (GET /api/groups/{id}/)
 	GroupsRetrieve(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PATCH /home/paperless/api/groups/{id}/)
+	// (PATCH /api/groups/{id}/)
 	GroupsPartialUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PUT /home/paperless/api/groups/{id}/)
+	// (PUT /api/groups/{id}/)
 	GroupsUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/logs/)
+	// (GET /api/logs/)
 	LogsList(w http.ResponseWriter, r *http.Request)
 
-	// (GET /home/paperless/api/logs/{id}/)
+	// (GET /api/logs/{id}/)
 	RetrieveLog(w http.ResponseWriter, r *http.Request, id string, params RetrieveLogParams)
 
-	// (GET /home/paperless/api/mail_accounts/)
+	// (GET /api/mail_accounts/)
 	MailAccountsList(w http.ResponseWriter, r *http.Request, params MailAccountsListParams)
 
-	// (POST /home/paperless/api/mail_accounts/)
+	// (POST /api/mail_accounts/)
 	MailAccountsCreate(w http.ResponseWriter, r *http.Request)
 
-	// (POST /home/paperless/api/mail_accounts/test/)
+	// (POST /api/mail_accounts/test/)
 	MailAccountTest(w http.ResponseWriter, r *http.Request)
 
-	// (DELETE /home/paperless/api/mail_accounts/{id}/)
+	// (DELETE /api/mail_accounts/{id}/)
 	MailAccountsDestroy(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/mail_accounts/{id}/)
+	// (GET /api/mail_accounts/{id}/)
 	MailAccountsRetrieve(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PATCH /home/paperless/api/mail_accounts/{id}/)
+	// (PATCH /api/mail_accounts/{id}/)
 	MailAccountsPartialUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PUT /home/paperless/api/mail_accounts/{id}/)
+	// (PUT /api/mail_accounts/{id}/)
 	MailAccountsUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (POST /home/paperless/api/mail_accounts/{id}/process/)
+	// (POST /api/mail_accounts/{id}/process/)
 	MailAccountProcess(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/mail_rules/)
+	// (GET /api/mail_rules/)
 	MailRulesList(w http.ResponseWriter, r *http.Request, params MailRulesListParams)
 
-	// (POST /home/paperless/api/mail_rules/)
+	// (POST /api/mail_rules/)
 	MailRulesCreate(w http.ResponseWriter, r *http.Request)
 
-	// (DELETE /home/paperless/api/mail_rules/{id}/)
+	// (DELETE /api/mail_rules/{id}/)
 	MailRulesDestroy(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/mail_rules/{id}/)
+	// (GET /api/mail_rules/{id}/)
 	MailRulesRetrieve(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PATCH /home/paperless/api/mail_rules/{id}/)
+	// (PATCH /api/mail_rules/{id}/)
 	MailRulesPartialUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PUT /home/paperless/api/mail_rules/{id}/)
+	// (PUT /api/mail_rules/{id}/)
 	MailRulesUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/oauth/callback/)
+	// (GET /api/oauth/callback/)
 	OauthCallbackRetrieve(w http.ResponseWriter, r *http.Request)
 
-	// (GET /home/paperless/api/processed_mail/)
+	// (GET /api/processed_mail/)
 	ProcessedMailList(w http.ResponseWriter, r *http.Request, params ProcessedMailListParams)
 
-	// (POST /home/paperless/api/processed_mail/bulk_delete/)
+	// (POST /api/processed_mail/bulk_delete/)
 	ProcessedMailBulkDeleteCreate(w http.ResponseWriter, r *http.Request)
 
-	// (GET /home/paperless/api/processed_mail/{id}/)
+	// (GET /api/processed_mail/{id}/)
 	ProcessedMailRetrieve(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/profile/)
+	// (GET /api/profile/)
 	ProfileRetrieve(w http.ResponseWriter, r *http.Request)
 
-	// (PATCH /home/paperless/api/profile/)
+	// (PATCH /api/profile/)
 	ProfilePartialUpdate(w http.ResponseWriter, r *http.Request)
 
-	// (POST /home/paperless/api/profile/disconnect_social_account/)
+	// (POST /api/profile/disconnect_social_account/)
 	ProfileDisconnectSocialAccountCreate(w http.ResponseWriter, r *http.Request)
 
-	// (POST /home/paperless/api/profile/generate_auth_token/)
+	// (POST /api/profile/generate_auth_token/)
 	ProfileGenerateAuthTokenCreate(w http.ResponseWriter, r *http.Request)
 
-	// (GET /home/paperless/api/profile/social_account_providers/)
+	// (GET /api/profile/social_account_providers/)
 	ProfileSocialAccountProvidersRetrieve(w http.ResponseWriter, r *http.Request)
 
-	// (DELETE /home/paperless/api/profile/totp/)
+	// (DELETE /api/profile/totp/)
 	ProfileTotpDestroy(w http.ResponseWriter, r *http.Request)
 
-	// (GET /home/paperless/api/profile/totp/)
+	// (GET /api/profile/totp/)
 	ProfileTotpRetrieve(w http.ResponseWriter, r *http.Request)
 
-	// (POST /home/paperless/api/profile/totp/)
+	// (POST /api/profile/totp/)
 	ProfileTotpCreate(w http.ResponseWriter, r *http.Request)
 
-	// (GET /home/paperless/api/remote_version/)
+	// (GET /api/remote_version/)
 	RemoteVersionRetrieve(w http.ResponseWriter, r *http.Request)
 
-	// (GET /home/paperless/api/saved_views/)
+	// (GET /api/saved_views/)
 	SavedViewsList(w http.ResponseWriter, r *http.Request, params SavedViewsListParams)
 
-	// (POST /home/paperless/api/saved_views/)
+	// (POST /api/saved_views/)
 	SavedViewsCreate(w http.ResponseWriter, r *http.Request)
 
-	// (DELETE /home/paperless/api/saved_views/{id}/)
+	// (DELETE /api/saved_views/{id}/)
 	SavedViewsDestroy(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/saved_views/{id}/)
+	// (GET /api/saved_views/{id}/)
 	SavedViewsRetrieve(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PATCH /home/paperless/api/saved_views/{id}/)
+	// (PATCH /api/saved_views/{id}/)
 	SavedViewsPartialUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PUT /home/paperless/api/saved_views/{id}/)
+	// (PUT /api/saved_views/{id}/)
 	SavedViewsUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/search/)
+	// (GET /api/search/)
 	SearchRetrieve(w http.ResponseWriter, r *http.Request, params SearchRetrieveParams)
 
-	// (GET /home/paperless/api/search/autocomplete/)
+	// (GET /api/search/autocomplete/)
 	SearchAutocompleteList(w http.ResponseWriter, r *http.Request, params SearchAutocompleteListParams)
 
-	// (GET /home/paperless/api/share_links/)
+	// (GET /api/share_links/)
 	ShareLinksList(w http.ResponseWriter, r *http.Request, params ShareLinksListParams)
 
-	// (POST /home/paperless/api/share_links/)
+	// (POST /api/share_links/)
 	ShareLinksCreate(w http.ResponseWriter, r *http.Request)
 
-	// (DELETE /home/paperless/api/share_links/{id}/)
+	// (DELETE /api/share_links/{id}/)
 	ShareLinksDestroy(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/share_links/{id}/)
+	// (GET /api/share_links/{id}/)
 	ShareLinksRetrieve(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/statistics/)
+	// (GET /api/statistics/)
 	StatisticsRetrieve(w http.ResponseWriter, r *http.Request)
 
-	// (GET /home/paperless/api/status/)
+	// (GET /api/status/)
 	StatusRetrieve(w http.ResponseWriter, r *http.Request)
 
-	// (GET /home/paperless/api/storage_paths/)
+	// (GET /api/storage_paths/)
 	StoragePathsList(w http.ResponseWriter, r *http.Request, params StoragePathsListParams)
 
-	// (POST /home/paperless/api/storage_paths/)
+	// (POST /api/storage_paths/)
 	StoragePathsCreate(w http.ResponseWriter, r *http.Request)
 
-	// (POST /home/paperless/api/storage_paths/test/)
+	// (POST /api/storage_paths/test/)
 	StoragePathsTestCreate(w http.ResponseWriter, r *http.Request)
 
-	// (DELETE /home/paperless/api/storage_paths/{id}/)
+	// (DELETE /api/storage_paths/{id}/)
 	StoragePathsDestroy(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/storage_paths/{id}/)
+	// (GET /api/storage_paths/{id}/)
 	StoragePathsRetrieve(w http.ResponseWriter, r *http.Request, id int, params StoragePathsRetrieveParams)
 
-	// (PATCH /home/paperless/api/storage_paths/{id}/)
+	// (PATCH /api/storage_paths/{id}/)
 	StoragePathsPartialUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PUT /home/paperless/api/storage_paths/{id}/)
+	// (PUT /api/storage_paths/{id}/)
 	StoragePathsUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/tags/)
+	// (GET /api/tags/)
 	TagsList(w http.ResponseWriter, r *http.Request, params TagsListParams)
 
-	// (POST /home/paperless/api/tags/)
+	// (POST /api/tags/)
 	TagsCreate(w http.ResponseWriter, r *http.Request)
 
-	// (DELETE /home/paperless/api/tags/{id}/)
+	// (DELETE /api/tags/{id}/)
 	TagsDestroy(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/tags/{id}/)
+	// (GET /api/tags/{id}/)
 	TagsRetrieve(w http.ResponseWriter, r *http.Request, id int, params TagsRetrieveParams)
 
-	// (PATCH /home/paperless/api/tags/{id}/)
+	// (PATCH /api/tags/{id}/)
 	TagsPartialUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PUT /home/paperless/api/tags/{id}/)
+	// (PUT /api/tags/{id}/)
 	TagsUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/tasks/)
+	// (GET /api/tasks/)
 	TasksList(w http.ResponseWriter, r *http.Request, params TasksListParams)
 
-	// (POST /home/paperless/api/tasks/acknowledge/)
+	// (POST /api/tasks/acknowledge/)
 	AcknowledgeTasks(w http.ResponseWriter, r *http.Request, params AcknowledgeTasksParams)
 
-	// (POST /home/paperless/api/tasks/run/)
+	// (POST /api/tasks/run/)
 	TasksRunCreate(w http.ResponseWriter, r *http.Request, params TasksRunCreateParams)
 
-	// (GET /home/paperless/api/tasks/{id}/)
+	// (GET /api/tasks/{id}/)
 	TasksRetrieve(w http.ResponseWriter, r *http.Request, id int, params TasksRetrieveParams)
 
-	// (POST /home/paperless/api/token/)
+	// (POST /api/token/)
 	TokenCreate(w http.ResponseWriter, r *http.Request)
 
-	// (GET /home/paperless/api/trash/)
+	// (GET /api/trash/)
 	TrashList(w http.ResponseWriter, r *http.Request, params TrashListParams)
 
-	// (POST /home/paperless/api/trash/)
+	// (POST /api/trash/)
 	TrashCreate(w http.ResponseWriter, r *http.Request)
 
-	// (GET /home/paperless/api/ui_settings/)
+	// (GET /api/ui_settings/)
 	UiSettingsRetrieve(w http.ResponseWriter, r *http.Request)
 
-	// (POST /home/paperless/api/ui_settings/)
+	// (POST /api/ui_settings/)
 	UiSettingsCreate(w http.ResponseWriter, r *http.Request)
 
-	// (GET /home/paperless/api/users/)
+	// (GET /api/users/)
 	UsersList(w http.ResponseWriter, r *http.Request, params UsersListParams)
 
-	// (POST /home/paperless/api/users/)
+	// (POST /api/users/)
 	UsersCreate(w http.ResponseWriter, r *http.Request)
 
-	// (DELETE /home/paperless/api/users/{id}/)
+	// (DELETE /api/users/{id}/)
 	UsersDestroy(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/users/{id}/)
+	// (GET /api/users/{id}/)
 	UsersRetrieve(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PATCH /home/paperless/api/users/{id}/)
+	// (PATCH /api/users/{id}/)
 	UsersPartialUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PUT /home/paperless/api/users/{id}/)
+	// (PUT /api/users/{id}/)
 	UsersUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (POST /home/paperless/api/users/{id}/deactivate_totp/)
+	// (POST /api/users/{id}/deactivate_totp/)
 	UsersDeactivateTotpCreate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/workflow_actions/)
+	// (GET /api/workflow_actions/)
 	WorkflowActionsList(w http.ResponseWriter, r *http.Request, params WorkflowActionsListParams)
 
-	// (POST /home/paperless/api/workflow_actions/)
+	// (POST /api/workflow_actions/)
 	WorkflowActionsCreate(w http.ResponseWriter, r *http.Request)
 
-	// (DELETE /home/paperless/api/workflow_actions/{id}/)
+	// (DELETE /api/workflow_actions/{id}/)
 	WorkflowActionsDestroy(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/workflow_actions/{id}/)
+	// (GET /api/workflow_actions/{id}/)
 	WorkflowActionsRetrieve(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PATCH /home/paperless/api/workflow_actions/{id}/)
+	// (PATCH /api/workflow_actions/{id}/)
 	WorkflowActionsPartialUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PUT /home/paperless/api/workflow_actions/{id}/)
+	// (PUT /api/workflow_actions/{id}/)
 	WorkflowActionsUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/workflow_triggers/)
+	// (GET /api/workflow_triggers/)
 	WorkflowTriggersList(w http.ResponseWriter, r *http.Request, params WorkflowTriggersListParams)
 
-	// (POST /home/paperless/api/workflow_triggers/)
+	// (POST /api/workflow_triggers/)
 	WorkflowTriggersCreate(w http.ResponseWriter, r *http.Request)
 
-	// (DELETE /home/paperless/api/workflow_triggers/{id}/)
+	// (DELETE /api/workflow_triggers/{id}/)
 	WorkflowTriggersDestroy(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/workflow_triggers/{id}/)
+	// (GET /api/workflow_triggers/{id}/)
 	WorkflowTriggersRetrieve(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PATCH /home/paperless/api/workflow_triggers/{id}/)
+	// (PATCH /api/workflow_triggers/{id}/)
 	WorkflowTriggersPartialUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PUT /home/paperless/api/workflow_triggers/{id}/)
+	// (PUT /api/workflow_triggers/{id}/)
 	WorkflowTriggersUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/workflows/)
+	// (GET /api/workflows/)
 	WorkflowsList(w http.ResponseWriter, r *http.Request, params WorkflowsListParams)
 
-	// (POST /home/paperless/api/workflows/)
+	// (POST /api/workflows/)
 	WorkflowsCreate(w http.ResponseWriter, r *http.Request)
 
-	// (DELETE /home/paperless/api/workflows/{id}/)
+	// (DELETE /api/workflows/{id}/)
 	WorkflowsDestroy(w http.ResponseWriter, r *http.Request, id int)
 
-	// (GET /home/paperless/api/workflows/{id}/)
+	// (GET /api/workflows/{id}/)
 	WorkflowsRetrieve(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PATCH /home/paperless/api/workflows/{id}/)
+	// (PATCH /api/workflows/{id}/)
 	WorkflowsPartialUpdate(w http.ResponseWriter, r *http.Request, id int)
 
-	// (PUT /home/paperless/api/workflows/{id}/)
+	// (PUT /api/workflows/{id}/)
 	WorkflowsUpdate(w http.ResponseWriter, r *http.Request, id int)
 }
 
@@ -38591,148 +38591,148 @@ func HandlerWithOptions(si ServerInterface, options StdHTTPServerOptions) http.H
 		ErrorHandlerFunc:   options.ErrorHandlerFunc,
 	}
 
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/bulk_edit_objects/", wrapper.BulkEditObjects)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/config/", wrapper.ConfigList)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/config/{id}/", wrapper.ConfigDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/config/{id}/", wrapper.ConfigRetrieve)
-	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/home/paperless/api/config/{id}/", wrapper.ConfigPartialUpdate)
-	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/home/paperless/api/config/{id}/", wrapper.ConfigUpdate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/correspondents/", wrapper.CorrespondentsList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/correspondents/", wrapper.CorrespondentsCreate)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/correspondents/{id}/", wrapper.CorrespondentsDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/correspondents/{id}/", wrapper.CorrespondentsRetrieve)
-	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/home/paperless/api/correspondents/{id}/", wrapper.CorrespondentsPartialUpdate)
-	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/home/paperless/api/correspondents/{id}/", wrapper.CorrespondentsUpdate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/custom_fields/", wrapper.CustomFieldsList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/custom_fields/", wrapper.CustomFieldsCreate)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/custom_fields/{id}/", wrapper.CustomFieldsDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/custom_fields/{id}/", wrapper.CustomFieldsRetrieve)
-	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/home/paperless/api/custom_fields/{id}/", wrapper.CustomFieldsPartialUpdate)
-	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/home/paperless/api/custom_fields/{id}/", wrapper.CustomFieldsUpdate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/document_types/", wrapper.DocumentTypesList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/document_types/", wrapper.DocumentTypesCreate)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/document_types/{id}/", wrapper.DocumentTypesDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/document_types/{id}/", wrapper.DocumentTypesRetrieve)
-	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/home/paperless/api/document_types/{id}/", wrapper.DocumentTypesPartialUpdate)
-	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/home/paperless/api/document_types/{id}/", wrapper.DocumentTypesUpdate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/documents/", wrapper.DocumentsList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/documents/bulk_download/", wrapper.DocumentsBulkDownloadCreate)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/documents/bulk_edit/", wrapper.BulkEdit)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/documents/email/", wrapper.EmailDocuments)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/documents/next_asn/", wrapper.DocumentsNextAsnRetrieve)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/documents/post_document/", wrapper.DocumentsPostDocumentCreate)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/documents/selection_data/", wrapper.DocumentsSelectionDataCreate)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/documents/{id}/", wrapper.DocumentsDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/documents/{id}/", wrapper.DocumentsRetrieve)
-	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/home/paperless/api/documents/{id}/", wrapper.DocumentsPartialUpdate)
-	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/home/paperless/api/documents/{id}/", wrapper.DocumentsUpdate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/documents/{id}/download/", wrapper.DocumentsDownloadRetrieve)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/documents/{id}/email/", wrapper.DocumentsEmailCreate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/documents/{id}/history/", wrapper.DocumentsHistoryList)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/documents/{id}/metadata/", wrapper.DocumentsMetadataRetrieve)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/documents/{id}/notes/", wrapper.DocumentsNotesDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/documents/{id}/notes/", wrapper.DocumentsNotesList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/documents/{id}/notes/", wrapper.DocumentsNotesCreate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/documents/{id}/preview/", wrapper.DocumentsPreviewRetrieve)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/documents/{id}/share_links/", wrapper.DocumentShareLinks)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/documents/{id}/suggestions/", wrapper.DocumentsSuggestionsRetrieve)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/documents/{id}/thumb/", wrapper.DocumentsThumbRetrieve)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/groups/", wrapper.GroupsList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/groups/", wrapper.GroupsCreate)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/groups/{id}/", wrapper.GroupsDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/groups/{id}/", wrapper.GroupsRetrieve)
-	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/home/paperless/api/groups/{id}/", wrapper.GroupsPartialUpdate)
-	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/home/paperless/api/groups/{id}/", wrapper.GroupsUpdate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/logs/", wrapper.LogsList)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/logs/{id}/", wrapper.RetrieveLog)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/mail_accounts/", wrapper.MailAccountsList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/mail_accounts/", wrapper.MailAccountsCreate)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/mail_accounts/test/", wrapper.MailAccountTest)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/mail_accounts/{id}/", wrapper.MailAccountsDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/mail_accounts/{id}/", wrapper.MailAccountsRetrieve)
-	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/home/paperless/api/mail_accounts/{id}/", wrapper.MailAccountsPartialUpdate)
-	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/home/paperless/api/mail_accounts/{id}/", wrapper.MailAccountsUpdate)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/mail_accounts/{id}/process/", wrapper.MailAccountProcess)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/mail_rules/", wrapper.MailRulesList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/mail_rules/", wrapper.MailRulesCreate)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/mail_rules/{id}/", wrapper.MailRulesDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/mail_rules/{id}/", wrapper.MailRulesRetrieve)
-	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/home/paperless/api/mail_rules/{id}/", wrapper.MailRulesPartialUpdate)
-	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/home/paperless/api/mail_rules/{id}/", wrapper.MailRulesUpdate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/oauth/callback/", wrapper.OauthCallbackRetrieve)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/processed_mail/", wrapper.ProcessedMailList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/processed_mail/bulk_delete/", wrapper.ProcessedMailBulkDeleteCreate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/processed_mail/{id}/", wrapper.ProcessedMailRetrieve)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/profile/", wrapper.ProfileRetrieve)
-	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/home/paperless/api/profile/", wrapper.ProfilePartialUpdate)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/profile/disconnect_social_account/", wrapper.ProfileDisconnectSocialAccountCreate)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/profile/generate_auth_token/", wrapper.ProfileGenerateAuthTokenCreate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/profile/social_account_providers/", wrapper.ProfileSocialAccountProvidersRetrieve)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/profile/totp/", wrapper.ProfileTotpDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/profile/totp/", wrapper.ProfileTotpRetrieve)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/profile/totp/", wrapper.ProfileTotpCreate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/remote_version/", wrapper.RemoteVersionRetrieve)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/saved_views/", wrapper.SavedViewsList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/saved_views/", wrapper.SavedViewsCreate)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/saved_views/{id}/", wrapper.SavedViewsDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/saved_views/{id}/", wrapper.SavedViewsRetrieve)
-	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/home/paperless/api/saved_views/{id}/", wrapper.SavedViewsPartialUpdate)
-	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/home/paperless/api/saved_views/{id}/", wrapper.SavedViewsUpdate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/search/", wrapper.SearchRetrieve)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/search/autocomplete/", wrapper.SearchAutocompleteList)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/share_links/", wrapper.ShareLinksList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/share_links/", wrapper.ShareLinksCreate)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/share_links/{id}/", wrapper.ShareLinksDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/share_links/{id}/", wrapper.ShareLinksRetrieve)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/statistics/", wrapper.StatisticsRetrieve)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/status/", wrapper.StatusRetrieve)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/storage_paths/", wrapper.StoragePathsList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/storage_paths/", wrapper.StoragePathsCreate)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/storage_paths/test/", wrapper.StoragePathsTestCreate)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/storage_paths/{id}/", wrapper.StoragePathsDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/storage_paths/{id}/", wrapper.StoragePathsRetrieve)
-	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/home/paperless/api/storage_paths/{id}/", wrapper.StoragePathsPartialUpdate)
-	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/home/paperless/api/storage_paths/{id}/", wrapper.StoragePathsUpdate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/tags/", wrapper.TagsList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/tags/", wrapper.TagsCreate)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/tags/{id}/", wrapper.TagsDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/tags/{id}/", wrapper.TagsRetrieve)
-	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/home/paperless/api/tags/{id}/", wrapper.TagsPartialUpdate)
-	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/home/paperless/api/tags/{id}/", wrapper.TagsUpdate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/tasks/", wrapper.TasksList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/tasks/acknowledge/", wrapper.AcknowledgeTasks)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/tasks/run/", wrapper.TasksRunCreate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/tasks/{id}/", wrapper.TasksRetrieve)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/token/", wrapper.TokenCreate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/trash/", wrapper.TrashList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/trash/", wrapper.TrashCreate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/ui_settings/", wrapper.UiSettingsRetrieve)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/ui_settings/", wrapper.UiSettingsCreate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/users/", wrapper.UsersList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/users/", wrapper.UsersCreate)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/users/{id}/", wrapper.UsersDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/users/{id}/", wrapper.UsersRetrieve)
-	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/home/paperless/api/users/{id}/", wrapper.UsersPartialUpdate)
-	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/home/paperless/api/users/{id}/", wrapper.UsersUpdate)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/users/{id}/deactivate_totp/", wrapper.UsersDeactivateTotpCreate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/workflow_actions/", wrapper.WorkflowActionsList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/workflow_actions/", wrapper.WorkflowActionsCreate)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/workflow_actions/{id}/", wrapper.WorkflowActionsDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/workflow_actions/{id}/", wrapper.WorkflowActionsRetrieve)
-	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/home/paperless/api/workflow_actions/{id}/", wrapper.WorkflowActionsPartialUpdate)
-	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/home/paperless/api/workflow_actions/{id}/", wrapper.WorkflowActionsUpdate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/workflow_triggers/", wrapper.WorkflowTriggersList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/workflow_triggers/", wrapper.WorkflowTriggersCreate)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/workflow_triggers/{id}/", wrapper.WorkflowTriggersDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/workflow_triggers/{id}/", wrapper.WorkflowTriggersRetrieve)
-	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/home/paperless/api/workflow_triggers/{id}/", wrapper.WorkflowTriggersPartialUpdate)
-	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/home/paperless/api/workflow_triggers/{id}/", wrapper.WorkflowTriggersUpdate)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/workflows/", wrapper.WorkflowsList)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/home/paperless/api/workflows/", wrapper.WorkflowsCreate)
-	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/home/paperless/api/workflows/{id}/", wrapper.WorkflowsDestroy)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/home/paperless/api/workflows/{id}/", wrapper.WorkflowsRetrieve)
-	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/home/paperless/api/workflows/{id}/", wrapper.WorkflowsPartialUpdate)
-	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/home/paperless/api/workflows/{id}/", wrapper.WorkflowsUpdate)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/bulk_edit_objects/", wrapper.BulkEditObjects)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/config/", wrapper.ConfigList)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/config/{id}/", wrapper.ConfigDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/config/{id}/", wrapper.ConfigRetrieve)
+	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/api/config/{id}/", wrapper.ConfigPartialUpdate)
+	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/api/config/{id}/", wrapper.ConfigUpdate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/correspondents/", wrapper.CorrespondentsList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/correspondents/", wrapper.CorrespondentsCreate)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/correspondents/{id}/", wrapper.CorrespondentsDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/correspondents/{id}/", wrapper.CorrespondentsRetrieve)
+	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/api/correspondents/{id}/", wrapper.CorrespondentsPartialUpdate)
+	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/api/correspondents/{id}/", wrapper.CorrespondentsUpdate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/custom_fields/", wrapper.CustomFieldsList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/custom_fields/", wrapper.CustomFieldsCreate)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/custom_fields/{id}/", wrapper.CustomFieldsDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/custom_fields/{id}/", wrapper.CustomFieldsRetrieve)
+	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/api/custom_fields/{id}/", wrapper.CustomFieldsPartialUpdate)
+	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/api/custom_fields/{id}/", wrapper.CustomFieldsUpdate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/document_types/", wrapper.DocumentTypesList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/document_types/", wrapper.DocumentTypesCreate)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/document_types/{id}/", wrapper.DocumentTypesDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/document_types/{id}/", wrapper.DocumentTypesRetrieve)
+	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/api/document_types/{id}/", wrapper.DocumentTypesPartialUpdate)
+	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/api/document_types/{id}/", wrapper.DocumentTypesUpdate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/documents/", wrapper.DocumentsList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/documents/bulk_download/", wrapper.DocumentsBulkDownloadCreate)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/documents/bulk_edit/", wrapper.BulkEdit)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/documents/email/", wrapper.EmailDocuments)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/documents/next_asn/", wrapper.DocumentsNextAsnRetrieve)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/documents/post_document/", wrapper.DocumentsPostDocumentCreate)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/documents/selection_data/", wrapper.DocumentsSelectionDataCreate)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/documents/{id}/", wrapper.DocumentsDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/documents/{id}/", wrapper.DocumentsRetrieve)
+	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/api/documents/{id}/", wrapper.DocumentsPartialUpdate)
+	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/api/documents/{id}/", wrapper.DocumentsUpdate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/documents/{id}/download/", wrapper.DocumentsDownloadRetrieve)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/documents/{id}/email/", wrapper.DocumentsEmailCreate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/documents/{id}/history/", wrapper.DocumentsHistoryList)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/documents/{id}/metadata/", wrapper.DocumentsMetadataRetrieve)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/documents/{id}/notes/", wrapper.DocumentsNotesDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/documents/{id}/notes/", wrapper.DocumentsNotesList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/documents/{id}/notes/", wrapper.DocumentsNotesCreate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/documents/{id}/preview/", wrapper.DocumentsPreviewRetrieve)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/documents/{id}/share_links/", wrapper.DocumentShareLinks)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/documents/{id}/suggestions/", wrapper.DocumentsSuggestionsRetrieve)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/documents/{id}/thumb/", wrapper.DocumentsThumbRetrieve)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/groups/", wrapper.GroupsList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/groups/", wrapper.GroupsCreate)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/groups/{id}/", wrapper.GroupsDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/groups/{id}/", wrapper.GroupsRetrieve)
+	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/api/groups/{id}/", wrapper.GroupsPartialUpdate)
+	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/api/groups/{id}/", wrapper.GroupsUpdate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/logs/", wrapper.LogsList)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/logs/{id}/", wrapper.RetrieveLog)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/mail_accounts/", wrapper.MailAccountsList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/mail_accounts/", wrapper.MailAccountsCreate)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/mail_accounts/test/", wrapper.MailAccountTest)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/mail_accounts/{id}/", wrapper.MailAccountsDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/mail_accounts/{id}/", wrapper.MailAccountsRetrieve)
+	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/api/mail_accounts/{id}/", wrapper.MailAccountsPartialUpdate)
+	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/api/mail_accounts/{id}/", wrapper.MailAccountsUpdate)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/mail_accounts/{id}/process/", wrapper.MailAccountProcess)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/mail_rules/", wrapper.MailRulesList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/mail_rules/", wrapper.MailRulesCreate)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/mail_rules/{id}/", wrapper.MailRulesDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/mail_rules/{id}/", wrapper.MailRulesRetrieve)
+	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/api/mail_rules/{id}/", wrapper.MailRulesPartialUpdate)
+	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/api/mail_rules/{id}/", wrapper.MailRulesUpdate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/oauth/callback/", wrapper.OauthCallbackRetrieve)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/processed_mail/", wrapper.ProcessedMailList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/processed_mail/bulk_delete/", wrapper.ProcessedMailBulkDeleteCreate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/processed_mail/{id}/", wrapper.ProcessedMailRetrieve)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/profile/", wrapper.ProfileRetrieve)
+	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/api/profile/", wrapper.ProfilePartialUpdate)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/profile/disconnect_social_account/", wrapper.ProfileDisconnectSocialAccountCreate)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/profile/generate_auth_token/", wrapper.ProfileGenerateAuthTokenCreate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/profile/social_account_providers/", wrapper.ProfileSocialAccountProvidersRetrieve)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/profile/totp/", wrapper.ProfileTotpDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/profile/totp/", wrapper.ProfileTotpRetrieve)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/profile/totp/", wrapper.ProfileTotpCreate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/remote_version/", wrapper.RemoteVersionRetrieve)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/saved_views/", wrapper.SavedViewsList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/saved_views/", wrapper.SavedViewsCreate)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/saved_views/{id}/", wrapper.SavedViewsDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/saved_views/{id}/", wrapper.SavedViewsRetrieve)
+	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/api/saved_views/{id}/", wrapper.SavedViewsPartialUpdate)
+	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/api/saved_views/{id}/", wrapper.SavedViewsUpdate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/search/", wrapper.SearchRetrieve)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/search/autocomplete/", wrapper.SearchAutocompleteList)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/share_links/", wrapper.ShareLinksList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/share_links/", wrapper.ShareLinksCreate)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/share_links/{id}/", wrapper.ShareLinksDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/share_links/{id}/", wrapper.ShareLinksRetrieve)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/statistics/", wrapper.StatisticsRetrieve)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/status/", wrapper.StatusRetrieve)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/storage_paths/", wrapper.StoragePathsList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/storage_paths/", wrapper.StoragePathsCreate)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/storage_paths/test/", wrapper.StoragePathsTestCreate)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/storage_paths/{id}/", wrapper.StoragePathsDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/storage_paths/{id}/", wrapper.StoragePathsRetrieve)
+	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/api/storage_paths/{id}/", wrapper.StoragePathsPartialUpdate)
+	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/api/storage_paths/{id}/", wrapper.StoragePathsUpdate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/tags/", wrapper.TagsList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/tags/", wrapper.TagsCreate)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/tags/{id}/", wrapper.TagsDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/tags/{id}/", wrapper.TagsRetrieve)
+	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/api/tags/{id}/", wrapper.TagsPartialUpdate)
+	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/api/tags/{id}/", wrapper.TagsUpdate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/tasks/", wrapper.TasksList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/tasks/acknowledge/", wrapper.AcknowledgeTasks)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/tasks/run/", wrapper.TasksRunCreate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/tasks/{id}/", wrapper.TasksRetrieve)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/token/", wrapper.TokenCreate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/trash/", wrapper.TrashList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/trash/", wrapper.TrashCreate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/ui_settings/", wrapper.UiSettingsRetrieve)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/ui_settings/", wrapper.UiSettingsCreate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/users/", wrapper.UsersList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/users/", wrapper.UsersCreate)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/users/{id}/", wrapper.UsersDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/users/{id}/", wrapper.UsersRetrieve)
+	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/api/users/{id}/", wrapper.UsersPartialUpdate)
+	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/api/users/{id}/", wrapper.UsersUpdate)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/users/{id}/deactivate_totp/", wrapper.UsersDeactivateTotpCreate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/workflow_actions/", wrapper.WorkflowActionsList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/workflow_actions/", wrapper.WorkflowActionsCreate)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/workflow_actions/{id}/", wrapper.WorkflowActionsDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/workflow_actions/{id}/", wrapper.WorkflowActionsRetrieve)
+	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/api/workflow_actions/{id}/", wrapper.WorkflowActionsPartialUpdate)
+	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/api/workflow_actions/{id}/", wrapper.WorkflowActionsUpdate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/workflow_triggers/", wrapper.WorkflowTriggersList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/workflow_triggers/", wrapper.WorkflowTriggersCreate)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/workflow_triggers/{id}/", wrapper.WorkflowTriggersDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/workflow_triggers/{id}/", wrapper.WorkflowTriggersRetrieve)
+	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/api/workflow_triggers/{id}/", wrapper.WorkflowTriggersPartialUpdate)
+	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/api/workflow_triggers/{id}/", wrapper.WorkflowTriggersUpdate)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/workflows/", wrapper.WorkflowsList)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/api/workflows/", wrapper.WorkflowsCreate)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/api/workflows/{id}/", wrapper.WorkflowsDestroy)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/api/workflows/{id}/", wrapper.WorkflowsRetrieve)
+	m.HandleFunc(http.MethodPatch+" "+options.BaseURL+"/api/workflows/{id}/", wrapper.WorkflowsPartialUpdate)
+	m.HandleFunc(http.MethodPut+" "+options.BaseURL+"/api/workflows/{id}/", wrapper.WorkflowsUpdate)
 
 	return m
 }
@@ -42222,430 +42222,430 @@ func (response WorkflowsUpdate200JSONResponse) VisitWorkflowsUpdateResponse(w ht
 // StrictServerInterface represents all server handlers.
 type StrictServerInterface interface {
 
-	// (POST /home/paperless/api/bulk_edit_objects/)
+	// (POST /api/bulk_edit_objects/)
 	BulkEditObjects(ctx context.Context, request BulkEditObjectsRequestObject) (BulkEditObjectsResponseObject, error)
 
-	// (GET /home/paperless/api/config/)
+	// (GET /api/config/)
 	ConfigList(ctx context.Context, request ConfigListRequestObject) (ConfigListResponseObject, error)
 
-	// (DELETE /home/paperless/api/config/{id}/)
+	// (DELETE /api/config/{id}/)
 	ConfigDestroy(ctx context.Context, request ConfigDestroyRequestObject) (ConfigDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/config/{id}/)
+	// (GET /api/config/{id}/)
 	ConfigRetrieve(ctx context.Context, request ConfigRetrieveRequestObject) (ConfigRetrieveResponseObject, error)
 
-	// (PATCH /home/paperless/api/config/{id}/)
+	// (PATCH /api/config/{id}/)
 	ConfigPartialUpdate(ctx context.Context, request ConfigPartialUpdateRequestObject) (ConfigPartialUpdateResponseObject, error)
 
-	// (PUT /home/paperless/api/config/{id}/)
+	// (PUT /api/config/{id}/)
 	ConfigUpdate(ctx context.Context, request ConfigUpdateRequestObject) (ConfigUpdateResponseObject, error)
 
-	// (GET /home/paperless/api/correspondents/)
+	// (GET /api/correspondents/)
 	CorrespondentsList(ctx context.Context, request CorrespondentsListRequestObject) (CorrespondentsListResponseObject, error)
 
-	// (POST /home/paperless/api/correspondents/)
+	// (POST /api/correspondents/)
 	CorrespondentsCreate(ctx context.Context, request CorrespondentsCreateRequestObject) (CorrespondentsCreateResponseObject, error)
 
-	// (DELETE /home/paperless/api/correspondents/{id}/)
+	// (DELETE /api/correspondents/{id}/)
 	CorrespondentsDestroy(ctx context.Context, request CorrespondentsDestroyRequestObject) (CorrespondentsDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/correspondents/{id}/)
+	// (GET /api/correspondents/{id}/)
 	CorrespondentsRetrieve(ctx context.Context, request CorrespondentsRetrieveRequestObject) (CorrespondentsRetrieveResponseObject, error)
 
-	// (PATCH /home/paperless/api/correspondents/{id}/)
+	// (PATCH /api/correspondents/{id}/)
 	CorrespondentsPartialUpdate(ctx context.Context, request CorrespondentsPartialUpdateRequestObject) (CorrespondentsPartialUpdateResponseObject, error)
 
-	// (PUT /home/paperless/api/correspondents/{id}/)
+	// (PUT /api/correspondents/{id}/)
 	CorrespondentsUpdate(ctx context.Context, request CorrespondentsUpdateRequestObject) (CorrespondentsUpdateResponseObject, error)
 
-	// (GET /home/paperless/api/custom_fields/)
+	// (GET /api/custom_fields/)
 	CustomFieldsList(ctx context.Context, request CustomFieldsListRequestObject) (CustomFieldsListResponseObject, error)
 
-	// (POST /home/paperless/api/custom_fields/)
+	// (POST /api/custom_fields/)
 	CustomFieldsCreate(ctx context.Context, request CustomFieldsCreateRequestObject) (CustomFieldsCreateResponseObject, error)
 
-	// (DELETE /home/paperless/api/custom_fields/{id}/)
+	// (DELETE /api/custom_fields/{id}/)
 	CustomFieldsDestroy(ctx context.Context, request CustomFieldsDestroyRequestObject) (CustomFieldsDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/custom_fields/{id}/)
+	// (GET /api/custom_fields/{id}/)
 	CustomFieldsRetrieve(ctx context.Context, request CustomFieldsRetrieveRequestObject) (CustomFieldsRetrieveResponseObject, error)
 
-	// (PATCH /home/paperless/api/custom_fields/{id}/)
+	// (PATCH /api/custom_fields/{id}/)
 	CustomFieldsPartialUpdate(ctx context.Context, request CustomFieldsPartialUpdateRequestObject) (CustomFieldsPartialUpdateResponseObject, error)
 
-	// (PUT /home/paperless/api/custom_fields/{id}/)
+	// (PUT /api/custom_fields/{id}/)
 	CustomFieldsUpdate(ctx context.Context, request CustomFieldsUpdateRequestObject) (CustomFieldsUpdateResponseObject, error)
 
-	// (GET /home/paperless/api/document_types/)
+	// (GET /api/document_types/)
 	DocumentTypesList(ctx context.Context, request DocumentTypesListRequestObject) (DocumentTypesListResponseObject, error)
 
-	// (POST /home/paperless/api/document_types/)
+	// (POST /api/document_types/)
 	DocumentTypesCreate(ctx context.Context, request DocumentTypesCreateRequestObject) (DocumentTypesCreateResponseObject, error)
 
-	// (DELETE /home/paperless/api/document_types/{id}/)
+	// (DELETE /api/document_types/{id}/)
 	DocumentTypesDestroy(ctx context.Context, request DocumentTypesDestroyRequestObject) (DocumentTypesDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/document_types/{id}/)
+	// (GET /api/document_types/{id}/)
 	DocumentTypesRetrieve(ctx context.Context, request DocumentTypesRetrieveRequestObject) (DocumentTypesRetrieveResponseObject, error)
 
-	// (PATCH /home/paperless/api/document_types/{id}/)
+	// (PATCH /api/document_types/{id}/)
 	DocumentTypesPartialUpdate(ctx context.Context, request DocumentTypesPartialUpdateRequestObject) (DocumentTypesPartialUpdateResponseObject, error)
 
-	// (PUT /home/paperless/api/document_types/{id}/)
+	// (PUT /api/document_types/{id}/)
 	DocumentTypesUpdate(ctx context.Context, request DocumentTypesUpdateRequestObject) (DocumentTypesUpdateResponseObject, error)
 
-	// (GET /home/paperless/api/documents/)
+	// (GET /api/documents/)
 	DocumentsList(ctx context.Context, request DocumentsListRequestObject) (DocumentsListResponseObject, error)
 
-	// (POST /home/paperless/api/documents/bulk_download/)
+	// (POST /api/documents/bulk_download/)
 	DocumentsBulkDownloadCreate(ctx context.Context, request DocumentsBulkDownloadCreateRequestObject) (DocumentsBulkDownloadCreateResponseObject, error)
 
-	// (POST /home/paperless/api/documents/bulk_edit/)
+	// (POST /api/documents/bulk_edit/)
 	BulkEdit(ctx context.Context, request BulkEditRequestObject) (BulkEditResponseObject, error)
 
-	// (POST /home/paperless/api/documents/email/)
+	// (POST /api/documents/email/)
 	EmailDocuments(ctx context.Context, request EmailDocumentsRequestObject) (EmailDocumentsResponseObject, error)
 
-	// (GET /home/paperless/api/documents/next_asn/)
+	// (GET /api/documents/next_asn/)
 	DocumentsNextAsnRetrieve(ctx context.Context, request DocumentsNextAsnRetrieveRequestObject) (DocumentsNextAsnRetrieveResponseObject, error)
 
-	// (POST /home/paperless/api/documents/post_document/)
+	// (POST /api/documents/post_document/)
 	DocumentsPostDocumentCreate(ctx context.Context, request DocumentsPostDocumentCreateRequestObject) (DocumentsPostDocumentCreateResponseObject, error)
 
-	// (POST /home/paperless/api/documents/selection_data/)
+	// (POST /api/documents/selection_data/)
 	DocumentsSelectionDataCreate(ctx context.Context, request DocumentsSelectionDataCreateRequestObject) (DocumentsSelectionDataCreateResponseObject, error)
 
-	// (DELETE /home/paperless/api/documents/{id}/)
+	// (DELETE /api/documents/{id}/)
 	DocumentsDestroy(ctx context.Context, request DocumentsDestroyRequestObject) (DocumentsDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/documents/{id}/)
+	// (GET /api/documents/{id}/)
 	DocumentsRetrieve(ctx context.Context, request DocumentsRetrieveRequestObject) (DocumentsRetrieveResponseObject, error)
 
-	// (PATCH /home/paperless/api/documents/{id}/)
+	// (PATCH /api/documents/{id}/)
 	DocumentsPartialUpdate(ctx context.Context, request DocumentsPartialUpdateRequestObject) (DocumentsPartialUpdateResponseObject, error)
 
-	// (PUT /home/paperless/api/documents/{id}/)
+	// (PUT /api/documents/{id}/)
 	DocumentsUpdate(ctx context.Context, request DocumentsUpdateRequestObject) (DocumentsUpdateResponseObject, error)
 
-	// (GET /home/paperless/api/documents/{id}/download/)
+	// (GET /api/documents/{id}/download/)
 	DocumentsDownloadRetrieve(ctx context.Context, request DocumentsDownloadRetrieveRequestObject) (DocumentsDownloadRetrieveResponseObject, error)
 
-	// (POST /home/paperless/api/documents/{id}/email/)
+	// (POST /api/documents/{id}/email/)
 	DocumentsEmailCreate(ctx context.Context, request DocumentsEmailCreateRequestObject) (DocumentsEmailCreateResponseObject, error)
 
-	// (GET /home/paperless/api/documents/{id}/history/)
+	// (GET /api/documents/{id}/history/)
 	DocumentsHistoryList(ctx context.Context, request DocumentsHistoryListRequestObject) (DocumentsHistoryListResponseObject, error)
 
-	// (GET /home/paperless/api/documents/{id}/metadata/)
+	// (GET /api/documents/{id}/metadata/)
 	DocumentsMetadataRetrieve(ctx context.Context, request DocumentsMetadataRetrieveRequestObject) (DocumentsMetadataRetrieveResponseObject, error)
 
-	// (DELETE /home/paperless/api/documents/{id}/notes/)
+	// (DELETE /api/documents/{id}/notes/)
 	DocumentsNotesDestroy(ctx context.Context, request DocumentsNotesDestroyRequestObject) (DocumentsNotesDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/documents/{id}/notes/)
+	// (GET /api/documents/{id}/notes/)
 	DocumentsNotesList(ctx context.Context, request DocumentsNotesListRequestObject) (DocumentsNotesListResponseObject, error)
 
-	// (POST /home/paperless/api/documents/{id}/notes/)
+	// (POST /api/documents/{id}/notes/)
 	DocumentsNotesCreate(ctx context.Context, request DocumentsNotesCreateRequestObject) (DocumentsNotesCreateResponseObject, error)
 
-	// (GET /home/paperless/api/documents/{id}/preview/)
+	// (GET /api/documents/{id}/preview/)
 	DocumentsPreviewRetrieve(ctx context.Context, request DocumentsPreviewRetrieveRequestObject) (DocumentsPreviewRetrieveResponseObject, error)
 
-	// (GET /home/paperless/api/documents/{id}/share_links/)
+	// (GET /api/documents/{id}/share_links/)
 	DocumentShareLinks(ctx context.Context, request DocumentShareLinksRequestObject) (DocumentShareLinksResponseObject, error)
 
-	// (GET /home/paperless/api/documents/{id}/suggestions/)
+	// (GET /api/documents/{id}/suggestions/)
 	DocumentsSuggestionsRetrieve(ctx context.Context, request DocumentsSuggestionsRetrieveRequestObject) (DocumentsSuggestionsRetrieveResponseObject, error)
 
-	// (GET /home/paperless/api/documents/{id}/thumb/)
+	// (GET /api/documents/{id}/thumb/)
 	DocumentsThumbRetrieve(ctx context.Context, request DocumentsThumbRetrieveRequestObject) (DocumentsThumbRetrieveResponseObject, error)
 
-	// (GET /home/paperless/api/groups/)
+	// (GET /api/groups/)
 	GroupsList(ctx context.Context, request GroupsListRequestObject) (GroupsListResponseObject, error)
 
-	// (POST /home/paperless/api/groups/)
+	// (POST /api/groups/)
 	GroupsCreate(ctx context.Context, request GroupsCreateRequestObject) (GroupsCreateResponseObject, error)
 
-	// (DELETE /home/paperless/api/groups/{id}/)
+	// (DELETE /api/groups/{id}/)
 	GroupsDestroy(ctx context.Context, request GroupsDestroyRequestObject) (GroupsDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/groups/{id}/)
+	// (GET /api/groups/{id}/)
 	GroupsRetrieve(ctx context.Context, request GroupsRetrieveRequestObject) (GroupsRetrieveResponseObject, error)
 
-	// (PATCH /home/paperless/api/groups/{id}/)
+	// (PATCH /api/groups/{id}/)
 	GroupsPartialUpdate(ctx context.Context, request GroupsPartialUpdateRequestObject) (GroupsPartialUpdateResponseObject, error)
 
-	// (PUT /home/paperless/api/groups/{id}/)
+	// (PUT /api/groups/{id}/)
 	GroupsUpdate(ctx context.Context, request GroupsUpdateRequestObject) (GroupsUpdateResponseObject, error)
 
-	// (GET /home/paperless/api/logs/)
+	// (GET /api/logs/)
 	LogsList(ctx context.Context, request LogsListRequestObject) (LogsListResponseObject, error)
 
-	// (GET /home/paperless/api/logs/{id}/)
+	// (GET /api/logs/{id}/)
 	RetrieveLog(ctx context.Context, request RetrieveLogRequestObject) (RetrieveLogResponseObject, error)
 
-	// (GET /home/paperless/api/mail_accounts/)
+	// (GET /api/mail_accounts/)
 	MailAccountsList(ctx context.Context, request MailAccountsListRequestObject) (MailAccountsListResponseObject, error)
 
-	// (POST /home/paperless/api/mail_accounts/)
+	// (POST /api/mail_accounts/)
 	MailAccountsCreate(ctx context.Context, request MailAccountsCreateRequestObject) (MailAccountsCreateResponseObject, error)
 
-	// (POST /home/paperless/api/mail_accounts/test/)
+	// (POST /api/mail_accounts/test/)
 	MailAccountTest(ctx context.Context, request MailAccountTestRequestObject) (MailAccountTestResponseObject, error)
 
-	// (DELETE /home/paperless/api/mail_accounts/{id}/)
+	// (DELETE /api/mail_accounts/{id}/)
 	MailAccountsDestroy(ctx context.Context, request MailAccountsDestroyRequestObject) (MailAccountsDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/mail_accounts/{id}/)
+	// (GET /api/mail_accounts/{id}/)
 	MailAccountsRetrieve(ctx context.Context, request MailAccountsRetrieveRequestObject) (MailAccountsRetrieveResponseObject, error)
 
-	// (PATCH /home/paperless/api/mail_accounts/{id}/)
+	// (PATCH /api/mail_accounts/{id}/)
 	MailAccountsPartialUpdate(ctx context.Context, request MailAccountsPartialUpdateRequestObject) (MailAccountsPartialUpdateResponseObject, error)
 
-	// (PUT /home/paperless/api/mail_accounts/{id}/)
+	// (PUT /api/mail_accounts/{id}/)
 	MailAccountsUpdate(ctx context.Context, request MailAccountsUpdateRequestObject) (MailAccountsUpdateResponseObject, error)
 
-	// (POST /home/paperless/api/mail_accounts/{id}/process/)
+	// (POST /api/mail_accounts/{id}/process/)
 	MailAccountProcess(ctx context.Context, request MailAccountProcessRequestObject) (MailAccountProcessResponseObject, error)
 
-	// (GET /home/paperless/api/mail_rules/)
+	// (GET /api/mail_rules/)
 	MailRulesList(ctx context.Context, request MailRulesListRequestObject) (MailRulesListResponseObject, error)
 
-	// (POST /home/paperless/api/mail_rules/)
+	// (POST /api/mail_rules/)
 	MailRulesCreate(ctx context.Context, request MailRulesCreateRequestObject) (MailRulesCreateResponseObject, error)
 
-	// (DELETE /home/paperless/api/mail_rules/{id}/)
+	// (DELETE /api/mail_rules/{id}/)
 	MailRulesDestroy(ctx context.Context, request MailRulesDestroyRequestObject) (MailRulesDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/mail_rules/{id}/)
+	// (GET /api/mail_rules/{id}/)
 	MailRulesRetrieve(ctx context.Context, request MailRulesRetrieveRequestObject) (MailRulesRetrieveResponseObject, error)
 
-	// (PATCH /home/paperless/api/mail_rules/{id}/)
+	// (PATCH /api/mail_rules/{id}/)
 	MailRulesPartialUpdate(ctx context.Context, request MailRulesPartialUpdateRequestObject) (MailRulesPartialUpdateResponseObject, error)
 
-	// (PUT /home/paperless/api/mail_rules/{id}/)
+	// (PUT /api/mail_rules/{id}/)
 	MailRulesUpdate(ctx context.Context, request MailRulesUpdateRequestObject) (MailRulesUpdateResponseObject, error)
 
-	// (GET /home/paperless/api/oauth/callback/)
+	// (GET /api/oauth/callback/)
 	OauthCallbackRetrieve(ctx context.Context, request OauthCallbackRetrieveRequestObject) (OauthCallbackRetrieveResponseObject, error)
 
-	// (GET /home/paperless/api/processed_mail/)
+	// (GET /api/processed_mail/)
 	ProcessedMailList(ctx context.Context, request ProcessedMailListRequestObject) (ProcessedMailListResponseObject, error)
 
-	// (POST /home/paperless/api/processed_mail/bulk_delete/)
+	// (POST /api/processed_mail/bulk_delete/)
 	ProcessedMailBulkDeleteCreate(ctx context.Context, request ProcessedMailBulkDeleteCreateRequestObject) (ProcessedMailBulkDeleteCreateResponseObject, error)
 
-	// (GET /home/paperless/api/processed_mail/{id}/)
+	// (GET /api/processed_mail/{id}/)
 	ProcessedMailRetrieve(ctx context.Context, request ProcessedMailRetrieveRequestObject) (ProcessedMailRetrieveResponseObject, error)
 
-	// (GET /home/paperless/api/profile/)
+	// (GET /api/profile/)
 	ProfileRetrieve(ctx context.Context, request ProfileRetrieveRequestObject) (ProfileRetrieveResponseObject, error)
 
-	// (PATCH /home/paperless/api/profile/)
+	// (PATCH /api/profile/)
 	ProfilePartialUpdate(ctx context.Context, request ProfilePartialUpdateRequestObject) (ProfilePartialUpdateResponseObject, error)
 
-	// (POST /home/paperless/api/profile/disconnect_social_account/)
+	// (POST /api/profile/disconnect_social_account/)
 	ProfileDisconnectSocialAccountCreate(ctx context.Context, request ProfileDisconnectSocialAccountCreateRequestObject) (ProfileDisconnectSocialAccountCreateResponseObject, error)
 
-	// (POST /home/paperless/api/profile/generate_auth_token/)
+	// (POST /api/profile/generate_auth_token/)
 	ProfileGenerateAuthTokenCreate(ctx context.Context, request ProfileGenerateAuthTokenCreateRequestObject) (ProfileGenerateAuthTokenCreateResponseObject, error)
 
-	// (GET /home/paperless/api/profile/social_account_providers/)
+	// (GET /api/profile/social_account_providers/)
 	ProfileSocialAccountProvidersRetrieve(ctx context.Context, request ProfileSocialAccountProvidersRetrieveRequestObject) (ProfileSocialAccountProvidersRetrieveResponseObject, error)
 
-	// (DELETE /home/paperless/api/profile/totp/)
+	// (DELETE /api/profile/totp/)
 	ProfileTotpDestroy(ctx context.Context, request ProfileTotpDestroyRequestObject) (ProfileTotpDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/profile/totp/)
+	// (GET /api/profile/totp/)
 	ProfileTotpRetrieve(ctx context.Context, request ProfileTotpRetrieveRequestObject) (ProfileTotpRetrieveResponseObject, error)
 
-	// (POST /home/paperless/api/profile/totp/)
+	// (POST /api/profile/totp/)
 	ProfileTotpCreate(ctx context.Context, request ProfileTotpCreateRequestObject) (ProfileTotpCreateResponseObject, error)
 
-	// (GET /home/paperless/api/remote_version/)
+	// (GET /api/remote_version/)
 	RemoteVersionRetrieve(ctx context.Context, request RemoteVersionRetrieveRequestObject) (RemoteVersionRetrieveResponseObject, error)
 
-	// (GET /home/paperless/api/saved_views/)
+	// (GET /api/saved_views/)
 	SavedViewsList(ctx context.Context, request SavedViewsListRequestObject) (SavedViewsListResponseObject, error)
 
-	// (POST /home/paperless/api/saved_views/)
+	// (POST /api/saved_views/)
 	SavedViewsCreate(ctx context.Context, request SavedViewsCreateRequestObject) (SavedViewsCreateResponseObject, error)
 
-	// (DELETE /home/paperless/api/saved_views/{id}/)
+	// (DELETE /api/saved_views/{id}/)
 	SavedViewsDestroy(ctx context.Context, request SavedViewsDestroyRequestObject) (SavedViewsDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/saved_views/{id}/)
+	// (GET /api/saved_views/{id}/)
 	SavedViewsRetrieve(ctx context.Context, request SavedViewsRetrieveRequestObject) (SavedViewsRetrieveResponseObject, error)
 
-	// (PATCH /home/paperless/api/saved_views/{id}/)
+	// (PATCH /api/saved_views/{id}/)
 	SavedViewsPartialUpdate(ctx context.Context, request SavedViewsPartialUpdateRequestObject) (SavedViewsPartialUpdateResponseObject, error)
 
-	// (PUT /home/paperless/api/saved_views/{id}/)
+	// (PUT /api/saved_views/{id}/)
 	SavedViewsUpdate(ctx context.Context, request SavedViewsUpdateRequestObject) (SavedViewsUpdateResponseObject, error)
 
-	// (GET /home/paperless/api/search/)
+	// (GET /api/search/)
 	SearchRetrieve(ctx context.Context, request SearchRetrieveRequestObject) (SearchRetrieveResponseObject, error)
 
-	// (GET /home/paperless/api/search/autocomplete/)
+	// (GET /api/search/autocomplete/)
 	SearchAutocompleteList(ctx context.Context, request SearchAutocompleteListRequestObject) (SearchAutocompleteListResponseObject, error)
 
-	// (GET /home/paperless/api/share_links/)
+	// (GET /api/share_links/)
 	ShareLinksList(ctx context.Context, request ShareLinksListRequestObject) (ShareLinksListResponseObject, error)
 
-	// (POST /home/paperless/api/share_links/)
+	// (POST /api/share_links/)
 	ShareLinksCreate(ctx context.Context, request ShareLinksCreateRequestObject) (ShareLinksCreateResponseObject, error)
 
-	// (DELETE /home/paperless/api/share_links/{id}/)
+	// (DELETE /api/share_links/{id}/)
 	ShareLinksDestroy(ctx context.Context, request ShareLinksDestroyRequestObject) (ShareLinksDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/share_links/{id}/)
+	// (GET /api/share_links/{id}/)
 	ShareLinksRetrieve(ctx context.Context, request ShareLinksRetrieveRequestObject) (ShareLinksRetrieveResponseObject, error)
 
-	// (GET /home/paperless/api/statistics/)
+	// (GET /api/statistics/)
 	StatisticsRetrieve(ctx context.Context, request StatisticsRetrieveRequestObject) (StatisticsRetrieveResponseObject, error)
 
-	// (GET /home/paperless/api/status/)
+	// (GET /api/status/)
 	StatusRetrieve(ctx context.Context, request StatusRetrieveRequestObject) (StatusRetrieveResponseObject, error)
 
-	// (GET /home/paperless/api/storage_paths/)
+	// (GET /api/storage_paths/)
 	StoragePathsList(ctx context.Context, request StoragePathsListRequestObject) (StoragePathsListResponseObject, error)
 
-	// (POST /home/paperless/api/storage_paths/)
+	// (POST /api/storage_paths/)
 	StoragePathsCreate(ctx context.Context, request StoragePathsCreateRequestObject) (StoragePathsCreateResponseObject, error)
 
-	// (POST /home/paperless/api/storage_paths/test/)
+	// (POST /api/storage_paths/test/)
 	StoragePathsTestCreate(ctx context.Context, request StoragePathsTestCreateRequestObject) (StoragePathsTestCreateResponseObject, error)
 
-	// (DELETE /home/paperless/api/storage_paths/{id}/)
+	// (DELETE /api/storage_paths/{id}/)
 	StoragePathsDestroy(ctx context.Context, request StoragePathsDestroyRequestObject) (StoragePathsDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/storage_paths/{id}/)
+	// (GET /api/storage_paths/{id}/)
 	StoragePathsRetrieve(ctx context.Context, request StoragePathsRetrieveRequestObject) (StoragePathsRetrieveResponseObject, error)
 
-	// (PATCH /home/paperless/api/storage_paths/{id}/)
+	// (PATCH /api/storage_paths/{id}/)
 	StoragePathsPartialUpdate(ctx context.Context, request StoragePathsPartialUpdateRequestObject) (StoragePathsPartialUpdateResponseObject, error)
 
-	// (PUT /home/paperless/api/storage_paths/{id}/)
+	// (PUT /api/storage_paths/{id}/)
 	StoragePathsUpdate(ctx context.Context, request StoragePathsUpdateRequestObject) (StoragePathsUpdateResponseObject, error)
 
-	// (GET /home/paperless/api/tags/)
+	// (GET /api/tags/)
 	TagsList(ctx context.Context, request TagsListRequestObject) (TagsListResponseObject, error)
 
-	// (POST /home/paperless/api/tags/)
+	// (POST /api/tags/)
 	TagsCreate(ctx context.Context, request TagsCreateRequestObject) (TagsCreateResponseObject, error)
 
-	// (DELETE /home/paperless/api/tags/{id}/)
+	// (DELETE /api/tags/{id}/)
 	TagsDestroy(ctx context.Context, request TagsDestroyRequestObject) (TagsDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/tags/{id}/)
+	// (GET /api/tags/{id}/)
 	TagsRetrieve(ctx context.Context, request TagsRetrieveRequestObject) (TagsRetrieveResponseObject, error)
 
-	// (PATCH /home/paperless/api/tags/{id}/)
+	// (PATCH /api/tags/{id}/)
 	TagsPartialUpdate(ctx context.Context, request TagsPartialUpdateRequestObject) (TagsPartialUpdateResponseObject, error)
 
-	// (PUT /home/paperless/api/tags/{id}/)
+	// (PUT /api/tags/{id}/)
 	TagsUpdate(ctx context.Context, request TagsUpdateRequestObject) (TagsUpdateResponseObject, error)
 
-	// (GET /home/paperless/api/tasks/)
+	// (GET /api/tasks/)
 	TasksList(ctx context.Context, request TasksListRequestObject) (TasksListResponseObject, error)
 
-	// (POST /home/paperless/api/tasks/acknowledge/)
+	// (POST /api/tasks/acknowledge/)
 	AcknowledgeTasks(ctx context.Context, request AcknowledgeTasksRequestObject) (AcknowledgeTasksResponseObject, error)
 
-	// (POST /home/paperless/api/tasks/run/)
+	// (POST /api/tasks/run/)
 	TasksRunCreate(ctx context.Context, request TasksRunCreateRequestObject) (TasksRunCreateResponseObject, error)
 
-	// (GET /home/paperless/api/tasks/{id}/)
+	// (GET /api/tasks/{id}/)
 	TasksRetrieve(ctx context.Context, request TasksRetrieveRequestObject) (TasksRetrieveResponseObject, error)
 
-	// (POST /home/paperless/api/token/)
+	// (POST /api/token/)
 	TokenCreate(ctx context.Context, request TokenCreateRequestObject) (TokenCreateResponseObject, error)
 
-	// (GET /home/paperless/api/trash/)
+	// (GET /api/trash/)
 	TrashList(ctx context.Context, request TrashListRequestObject) (TrashListResponseObject, error)
 
-	// (POST /home/paperless/api/trash/)
+	// (POST /api/trash/)
 	TrashCreate(ctx context.Context, request TrashCreateRequestObject) (TrashCreateResponseObject, error)
 
-	// (GET /home/paperless/api/ui_settings/)
+	// (GET /api/ui_settings/)
 	UiSettingsRetrieve(ctx context.Context, request UiSettingsRetrieveRequestObject) (UiSettingsRetrieveResponseObject, error)
 
-	// (POST /home/paperless/api/ui_settings/)
+	// (POST /api/ui_settings/)
 	UiSettingsCreate(ctx context.Context, request UiSettingsCreateRequestObject) (UiSettingsCreateResponseObject, error)
 
-	// (GET /home/paperless/api/users/)
+	// (GET /api/users/)
 	UsersList(ctx context.Context, request UsersListRequestObject) (UsersListResponseObject, error)
 
-	// (POST /home/paperless/api/users/)
+	// (POST /api/users/)
 	UsersCreate(ctx context.Context, request UsersCreateRequestObject) (UsersCreateResponseObject, error)
 
-	// (DELETE /home/paperless/api/users/{id}/)
+	// (DELETE /api/users/{id}/)
 	UsersDestroy(ctx context.Context, request UsersDestroyRequestObject) (UsersDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/users/{id}/)
+	// (GET /api/users/{id}/)
 	UsersRetrieve(ctx context.Context, request UsersRetrieveRequestObject) (UsersRetrieveResponseObject, error)
 
-	// (PATCH /home/paperless/api/users/{id}/)
+	// (PATCH /api/users/{id}/)
 	UsersPartialUpdate(ctx context.Context, request UsersPartialUpdateRequestObject) (UsersPartialUpdateResponseObject, error)
 
-	// (PUT /home/paperless/api/users/{id}/)
+	// (PUT /api/users/{id}/)
 	UsersUpdate(ctx context.Context, request UsersUpdateRequestObject) (UsersUpdateResponseObject, error)
 
-	// (POST /home/paperless/api/users/{id}/deactivate_totp/)
+	// (POST /api/users/{id}/deactivate_totp/)
 	UsersDeactivateTotpCreate(ctx context.Context, request UsersDeactivateTotpCreateRequestObject) (UsersDeactivateTotpCreateResponseObject, error)
 
-	// (GET /home/paperless/api/workflow_actions/)
+	// (GET /api/workflow_actions/)
 	WorkflowActionsList(ctx context.Context, request WorkflowActionsListRequestObject) (WorkflowActionsListResponseObject, error)
 
-	// (POST /home/paperless/api/workflow_actions/)
+	// (POST /api/workflow_actions/)
 	WorkflowActionsCreate(ctx context.Context, request WorkflowActionsCreateRequestObject) (WorkflowActionsCreateResponseObject, error)
 
-	// (DELETE /home/paperless/api/workflow_actions/{id}/)
+	// (DELETE /api/workflow_actions/{id}/)
 	WorkflowActionsDestroy(ctx context.Context, request WorkflowActionsDestroyRequestObject) (WorkflowActionsDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/workflow_actions/{id}/)
+	// (GET /api/workflow_actions/{id}/)
 	WorkflowActionsRetrieve(ctx context.Context, request WorkflowActionsRetrieveRequestObject) (WorkflowActionsRetrieveResponseObject, error)
 
-	// (PATCH /home/paperless/api/workflow_actions/{id}/)
+	// (PATCH /api/workflow_actions/{id}/)
 	WorkflowActionsPartialUpdate(ctx context.Context, request WorkflowActionsPartialUpdateRequestObject) (WorkflowActionsPartialUpdateResponseObject, error)
 
-	// (PUT /home/paperless/api/workflow_actions/{id}/)
+	// (PUT /api/workflow_actions/{id}/)
 	WorkflowActionsUpdate(ctx context.Context, request WorkflowActionsUpdateRequestObject) (WorkflowActionsUpdateResponseObject, error)
 
-	// (GET /home/paperless/api/workflow_triggers/)
+	// (GET /api/workflow_triggers/)
 	WorkflowTriggersList(ctx context.Context, request WorkflowTriggersListRequestObject) (WorkflowTriggersListResponseObject, error)
 
-	// (POST /home/paperless/api/workflow_triggers/)
+	// (POST /api/workflow_triggers/)
 	WorkflowTriggersCreate(ctx context.Context, request WorkflowTriggersCreateRequestObject) (WorkflowTriggersCreateResponseObject, error)
 
-	// (DELETE /home/paperless/api/workflow_triggers/{id}/)
+	// (DELETE /api/workflow_triggers/{id}/)
 	WorkflowTriggersDestroy(ctx context.Context, request WorkflowTriggersDestroyRequestObject) (WorkflowTriggersDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/workflow_triggers/{id}/)
+	// (GET /api/workflow_triggers/{id}/)
 	WorkflowTriggersRetrieve(ctx context.Context, request WorkflowTriggersRetrieveRequestObject) (WorkflowTriggersRetrieveResponseObject, error)
 
-	// (PATCH /home/paperless/api/workflow_triggers/{id}/)
+	// (PATCH /api/workflow_triggers/{id}/)
 	WorkflowTriggersPartialUpdate(ctx context.Context, request WorkflowTriggersPartialUpdateRequestObject) (WorkflowTriggersPartialUpdateResponseObject, error)
 
-	// (PUT /home/paperless/api/workflow_triggers/{id}/)
+	// (PUT /api/workflow_triggers/{id}/)
 	WorkflowTriggersUpdate(ctx context.Context, request WorkflowTriggersUpdateRequestObject) (WorkflowTriggersUpdateResponseObject, error)
 
-	// (GET /home/paperless/api/workflows/)
+	// (GET /api/workflows/)
 	WorkflowsList(ctx context.Context, request WorkflowsListRequestObject) (WorkflowsListResponseObject, error)
 
-	// (POST /home/paperless/api/workflows/)
+	// (POST /api/workflows/)
 	WorkflowsCreate(ctx context.Context, request WorkflowsCreateRequestObject) (WorkflowsCreateResponseObject, error)
 
-	// (DELETE /home/paperless/api/workflows/{id}/)
+	// (DELETE /api/workflows/{id}/)
 	WorkflowsDestroy(ctx context.Context, request WorkflowsDestroyRequestObject) (WorkflowsDestroyResponseObject, error)
 
-	// (GET /home/paperless/api/workflows/{id}/)
+	// (GET /api/workflows/{id}/)
 	WorkflowsRetrieve(ctx context.Context, request WorkflowsRetrieveRequestObject) (WorkflowsRetrieveResponseObject, error)
 
-	// (PATCH /home/paperless/api/workflows/{id}/)
+	// (PATCH /api/workflows/{id}/)
 	WorkflowsPartialUpdate(ctx context.Context, request WorkflowsPartialUpdateRequestObject) (WorkflowsPartialUpdateResponseObject, error)
 
-	// (PUT /home/paperless/api/workflows/{id}/)
+	// (PUT /api/workflows/{id}/)
 	WorkflowsUpdate(ctx context.Context, request WorkflowsUpdateRequestObject) (WorkflowsUpdateResponseObject, error)
 }
 

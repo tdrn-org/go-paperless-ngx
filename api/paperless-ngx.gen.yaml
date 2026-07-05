@@ -4,7 +4,7 @@ info:
   version: 6.0.0 (9)
   description: OpenAPI Spec for Paperless-ngx
 paths:
-  /home/paperless/api/bulk_edit_objects/:
+  /api/bulk_edit_objects/:
     post:
       operationId: bulk_edit_objects
       description: Perform a bulk edit operation on a list of objects
@@ -30,7 +30,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/BulkEditResult'
           description: ''
-  /home/paperless/api/config/:
+  /api/config/:
     get:
       operationId: config_list
       description: Get the application configuration
@@ -52,7 +52,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ApplicationConfiguration'
           description: ''
-  /home/paperless/api/config/{id}/:
+  /api/config/{id}/:
     get:
       operationId: config_retrieve
       parameters:
@@ -60,8 +60,8 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Paperless-ngx-Anwendungseinstellungen
-          identifiziert.
+        description: A unique integer value identifying this paperless application
+          settings.
         required: true
       tags:
       - config
@@ -83,8 +83,8 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Paperless-ngx-Anwendungseinstellungen
-          identifiziert.
+        description: A unique integer value identifying this paperless application
+          settings.
         required: true
       tags:
       - config
@@ -118,8 +118,8 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Paperless-ngx-Anwendungseinstellungen
-          identifiziert.
+        description: A unique integer value identifying this paperless application
+          settings.
         required: true
       tags:
       - config
@@ -152,8 +152,8 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Paperless-ngx-Anwendungseinstellungen
-          identifiziert.
+        description: A unique integer value identifying this paperless application
+          settings.
         required: true
       tags:
       - config
@@ -164,7 +164,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /home/paperless/api/correspondents/:
+  /api/correspondents/:
     get:
       operationId: correspondents_list
       description: Mixin to add document count to queryset, permissions-aware if needed
@@ -183,7 +183,7 @@ paths:
           type: array
           items:
             type: integer
-        description: Mehrere Werte können durch Kommas getrennt sein.
+        description: Multiple values may be separated by commas.
         explode: false
         style: form
       - in: query
@@ -205,19 +205,19 @@ paths:
       - name: ordering
         required: false
         in: query
-        description: Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+        description: Which field to use when ordering the results.
         schema:
           type: string
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       tags:
@@ -261,7 +261,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Correspondent'
           description: ''
-  /home/paperless/api/correspondents/{id}/:
+  /api/correspondents/{id}/:
     get:
       operationId: correspondents_retrieve
       description: Mixin to add document count to queryset, permissions-aware if needed
@@ -274,7 +274,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Korrespondent identifiziert.
+        description: A unique integer value identifying this correspondent.
         required: true
       tags:
       - correspondents
@@ -297,7 +297,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Korrespondent identifiziert.
+        description: A unique integer value identifying this correspondent.
         required: true
       tags:
       - correspondents
@@ -332,7 +332,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Korrespondent identifiziert.
+        description: A unique integer value identifying this correspondent.
         required: true
       tags:
       - correspondents
@@ -366,7 +366,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Korrespondent identifiziert.
+        description: A unique integer value identifying this correspondent.
         required: true
       tags:
       - correspondents
@@ -377,7 +377,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /home/paperless/api/custom_fields/:
+  /api/custom_fields/:
     get:
       operationId: custom_fields_list
       description: Mixin to add document count to queryset, permissions-aware if needed
@@ -392,7 +392,7 @@ paths:
           type: array
           items:
             type: integer
-        description: Mehrere Werte können durch Kommas getrennt sein.
+        description: Multiple values may be separated by commas.
         explode: false
         style: form
       - in: query
@@ -414,19 +414,19 @@ paths:
       - name: ordering
         required: false
         in: query
-        description: Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+        description: Which field to use when ordering the results.
         schema:
           type: string
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       tags:
@@ -470,7 +470,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/CustomField'
           description: ''
-  /home/paperless/api/custom_fields/{id}/:
+  /api/custom_fields/{id}/:
     get:
       operationId: custom_fields_retrieve
       description: Mixin to add document count to queryset, permissions-aware if needed
@@ -479,7 +479,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Benutzerdefiniertes Feld identifiziert.
+        description: A unique integer value identifying this custom field.
         required: true
       tags:
       - custom_fields
@@ -502,7 +502,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Benutzerdefiniertes Feld identifiziert.
+        description: A unique integer value identifying this custom field.
         required: true
       tags:
       - custom_fields
@@ -537,7 +537,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Benutzerdefiniertes Feld identifiziert.
+        description: A unique integer value identifying this custom field.
         required: true
       tags:
       - custom_fields
@@ -571,7 +571,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Benutzerdefiniertes Feld identifiziert.
+        description: A unique integer value identifying this custom field.
         required: true
       tags:
       - custom_fields
@@ -582,7 +582,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /home/paperless/api/document_types/:
+  /api/document_types/:
     get:
       operationId: document_types_list
       description: Mixin to add document count to queryset, permissions-aware if needed
@@ -601,7 +601,7 @@ paths:
           type: array
           items:
             type: integer
-        description: Mehrere Werte können durch Kommas getrennt sein.
+        description: Multiple values may be separated by commas.
         explode: false
         style: form
       - in: query
@@ -623,19 +623,19 @@ paths:
       - name: ordering
         required: false
         in: query
-        description: Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+        description: Which field to use when ordering the results.
         schema:
           type: string
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       tags:
@@ -679,7 +679,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/DocumentType'
           description: ''
-  /home/paperless/api/document_types/{id}/:
+  /api/document_types/{id}/:
     get:
       operationId: document_types_retrieve
       description: Mixin to add document count to queryset, permissions-aware if needed
@@ -692,7 +692,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokumenttyp identifiziert.
+        description: A unique integer value identifying this document type.
         required: true
       tags:
       - document_types
@@ -715,7 +715,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokumenttyp identifiziert.
+        description: A unique integer value identifying this document type.
         required: true
       tags:
       - document_types
@@ -750,7 +750,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokumenttyp identifiziert.
+        description: A unique integer value identifying this document type.
         required: true
       tags:
       - document_types
@@ -784,7 +784,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokumenttyp identifiziert.
+        description: A unique integer value identifying this document type.
         required: true
       tags:
       - document_types
@@ -795,7 +795,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /home/paperless/api/documents/:
+  /api/documents/:
     get:
       operationId: documents_list
       description: Document views including search
@@ -918,7 +918,7 @@ paths:
           type: array
           items:
             type: integer
-        description: Mehrere Werte können durch Kommas getrennt sein.
+        description: Multiple values may be separated by commas.
         explode: false
         style: form
       - in: query
@@ -1029,7 +1029,7 @@ paths:
           type: array
           items:
             type: integer
-        description: Mehrere Werte können durch Kommas getrennt sein.
+        description: Multiple values may be separated by commas.
         explode: false
         style: form
       - in: query
@@ -1081,7 +1081,7 @@ paths:
           type: array
           items:
             type: integer
-        description: Mehrere Werte können durch Kommas getrennt sein.
+        description: Multiple values may be separated by commas.
         explode: false
         style: form
       - in: query
@@ -1097,7 +1097,6 @@ paths:
         name: mime_type
         schema:
           type: string
-          title: MIME-Typ
       - in: query
         name: modified__date__gt
         schema:
@@ -1153,7 +1152,7 @@ paths:
       - name: ordering
         required: false
         in: query
-        description: Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+        description: Which field to use when ordering the results.
         schema:
           type: string
       - in: query
@@ -1182,7 +1181,7 @@ paths:
           type: array
           items:
             type: integer
-        description: Mehrere Werte können durch Kommas getrennt sein.
+        description: Multiple values may be separated by commas.
         explode: false
         style: form
       - in: query
@@ -1196,13 +1195,13 @@ paths:
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       - in: query
@@ -1213,7 +1212,7 @@ paths:
       - name: search
         required: false
         in: query
-        description: Ein Suchbegriff.
+        description: A search term.
         schema:
           type: string
       - in: query
@@ -1230,7 +1229,7 @@ paths:
           type: array
           items:
             type: integer
-        description: Mehrere Werte können durch Kommas getrennt sein.
+        description: Multiple values may be separated by commas.
         explode: false
         style: form
       - in: query
@@ -1323,7 +1322,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedDocumentList'
           description: ''
-  /home/paperless/api/documents/{id}/:
+  /api/documents/{id}/:
     get:
       operationId: documents_retrieve
       description: Retrieve a single document
@@ -1342,7 +1341,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokument identifiziert.
+        description: A unique integer value identifying this document.
         required: true
       tags:
       - documents
@@ -1367,7 +1366,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokument identifiziert.
+        description: A unique integer value identifying this document.
         required: true
       tags:
       - documents
@@ -1402,7 +1401,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokument identifiziert.
+        description: A unique integer value identifying this document.
         required: true
       tags:
       - documents
@@ -1436,7 +1435,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokument identifiziert.
+        description: A unique integer value identifying this document.
         required: true
       tags:
       - documents
@@ -1447,7 +1446,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /home/paperless/api/documents/{id}/download/:
+  /api/documents/{id}/download/:
     get:
       operationId: documents_download_retrieve
       description: Download the document
@@ -1456,7 +1455,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokument identifiziert.
+        description: A unique integer value identifying this document.
         required: true
       - in: query
         name: original
@@ -1476,7 +1475,7 @@ paths:
                 type: string
                 format: binary
           description: ''
-  /home/paperless/api/documents/{id}/email/:
+  /api/documents/{id}/email/:
     post:
       operationId: documents_email_create
       description: Email the document to one or more recipients as an attachment.
@@ -1485,7 +1484,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokument identifiziert.
+        description: A unique integer value identifying this document.
         required: true
       tags:
       - documents
@@ -1521,7 +1520,7 @@ paths:
           description: No response body
         '500':
           description: No response body
-  /home/paperless/api/documents/{id}/history/:
+  /api/documents/{id}/history/:
     get:
       operationId: documents_history_list
       description: View the document history
@@ -1530,18 +1529,18 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokument identifiziert.
+        description: A unique integer value identifying this document.
         required: true
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       tags:
@@ -1563,7 +1562,7 @@ paths:
           description: No response body
         '404':
           description: No response body
-  /home/paperless/api/documents/{id}/metadata/:
+  /api/documents/{id}/metadata/:
     get:
       operationId: documents_metadata_retrieve
       description: View the document metadata
@@ -1572,7 +1571,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokument identifiziert.
+        description: A unique integer value identifying this document.
         required: true
       tags:
       - documents
@@ -1593,7 +1592,7 @@ paths:
           description: No response body
         '404':
           description: No response body
-  /home/paperless/api/documents/{id}/notes/:
+  /api/documents/{id}/notes/:
     get:
       operationId: documents_notes_list
       description: View, add, or delete notes for the document
@@ -1602,7 +1601,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokument identifiziert.
+        description: A unique integer value identifying this document.
         required: true
       - in: query
         name: id
@@ -1638,7 +1637,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokument identifiziert.
+        description: A unique integer value identifying this document.
         required: true
       - in: query
         name: id
@@ -1686,7 +1685,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokument identifiziert.
+        description: A unique integer value identifying this document.
         required: true
       - in: query
         name: id
@@ -1714,7 +1713,7 @@ paths:
           description: No response body
         '404':
           description: No response body
-  /home/paperless/api/documents/{id}/preview/:
+  /api/documents/{id}/preview/:
     get:
       operationId: documents_preview_retrieve
       description: View the document preview
@@ -1723,7 +1722,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokument identifiziert.
+        description: A unique integer value identifying this document.
         required: true
       tags:
       - documents
@@ -1739,7 +1738,7 @@ paths:
                 type: string
                 format: binary
           description: ''
-  /home/paperless/api/documents/{id}/share_links/:
+  /api/documents/{id}/share_links/:
     get:
       operationId: document_share_links
       description: View share links for the document
@@ -1781,7 +1780,7 @@ paths:
           description: No response body
         '404':
           description: No response body
-  /home/paperless/api/documents/{id}/suggestions/:
+  /api/documents/{id}/suggestions/:
     get:
       operationId: documents_suggestions_retrieve
       description: View suggestions for the document
@@ -1790,7 +1789,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokument identifiziert.
+        description: A unique integer value identifying this document.
         required: true
       tags:
       - documents
@@ -1811,7 +1810,7 @@ paths:
           description: No response body
         '404':
           description: No response body
-  /home/paperless/api/documents/{id}/thumb/:
+  /api/documents/{id}/thumb/:
     get:
       operationId: documents_thumb_retrieve
       description: View the document thumbnail
@@ -1820,7 +1819,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Dokument identifiziert.
+        description: A unique integer value identifying this document.
         required: true
       tags:
       - documents
@@ -1836,7 +1835,7 @@ paths:
                 type: string
                 format: binary
           description: ''
-  /home/paperless/api/documents/bulk_download/:
+  /api/documents/bulk_download/:
     post:
       operationId: documents_bulk_download_create
       tags:
@@ -1858,7 +1857,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/BulkDownload'
           description: ''
-  /home/paperless/api/documents/bulk_edit/:
+  /api/documents/bulk_edit/:
     post:
       operationId: bulk_edit
       description: Perform a bulk edit operation on a list of documents
@@ -1884,7 +1883,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/BulkEditDocumentsResult'
           description: ''
-  /home/paperless/api/documents/email/:
+  /api/documents/email/:
     post:
       operationId: email_documents
       description: Email one or more documents as attachments to one or more recipients.
@@ -1921,7 +1920,7 @@ paths:
           description: No response body
         '500':
           description: No response body
-  /home/paperless/api/documents/next_asn/:
+  /api/documents/next_asn/:
     get:
       operationId: documents_next_asn_retrieve
       description: Get the next available Archive Serial Number (ASN) for a new document
@@ -1938,7 +1937,7 @@ paths:
               schema:
                 type: integer
           description: ''
-  /home/paperless/api/documents/post_document/:
+  /api/documents/post_document/:
     post:
       operationId: documents_post_document_create
       description: Upload a document via the API
@@ -1964,7 +1963,7 @@ paths:
               schema:
                 type: string
           description: ''
-  /home/paperless/api/documents/selection_data/:
+  /api/documents/selection_data/:
     post:
       operationId: documents_selection_data_create
       description: Get selection data for the selected documents
@@ -1990,7 +1989,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SelectionData'
           description: ''
-  /home/paperless/api/groups/:
+  /api/groups/:
     get:
       operationId: groups_list
       parameters:
@@ -2013,19 +2012,19 @@ paths:
       - name: ordering
         required: false
         in: query
-        description: Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+        description: Which field to use when ordering the results.
         schema:
           type: string
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       tags:
@@ -2068,7 +2067,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Group'
           description: ''
-  /home/paperless/api/groups/{id}/:
+  /api/groups/{id}/:
     get:
       operationId: groups_retrieve
       parameters:
@@ -2076,7 +2075,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Gruppe identifiziert.
+        description: A unique integer value identifying this group.
         required: true
       tags:
       - groups
@@ -2098,7 +2097,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Gruppe identifiziert.
+        description: A unique integer value identifying this group.
         required: true
       tags:
       - groups
@@ -2132,7 +2131,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Gruppe identifiziert.
+        description: A unique integer value identifying this group.
         required: true
       tags:
       - groups
@@ -2165,7 +2164,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Gruppe identifiziert.
+        description: A unique integer value identifying this group.
         required: true
       tags:
       - groups
@@ -2176,7 +2175,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /home/paperless/api/logs/:
+  /api/logs/:
     get:
       operationId: logs_list
       description: Logs view
@@ -2195,7 +2194,7 @@ paths:
                 items:
                   type: string
           description: ''
-  /home/paperless/api/logs/{id}/:
+  /api/logs/{id}/:
     get:
       operationId: retrieve_log
       description: Single log view
@@ -2227,20 +2226,20 @@ paths:
           description: ''
         '404':
           description: No response body
-  /home/paperless/api/mail_accounts/:
+  /api/mail_accounts/:
     get:
       operationId: mail_accounts_list
       parameters:
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       tags:
@@ -2283,7 +2282,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/MailAccount'
           description: ''
-  /home/paperless/api/mail_accounts/{id}/:
+  /api/mail_accounts/{id}/:
     get:
       operationId: mail_accounts_retrieve
       parameters:
@@ -2291,7 +2290,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der E-Mail-Konto identifiziert.
+        description: A unique integer value identifying this mail account.
         required: true
       tags:
       - mail_accounts
@@ -2313,7 +2312,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der E-Mail-Konto identifiziert.
+        description: A unique integer value identifying this mail account.
         required: true
       tags:
       - mail_accounts
@@ -2347,7 +2346,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der E-Mail-Konto identifiziert.
+        description: A unique integer value identifying this mail account.
         required: true
       tags:
       - mail_accounts
@@ -2380,7 +2379,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der E-Mail-Konto identifiziert.
+        description: A unique integer value identifying this mail account.
         required: true
       tags:
       - mail_accounts
@@ -2391,7 +2390,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /home/paperless/api/mail_accounts/{id}/process/:
+  /api/mail_accounts/{id}/process/:
     post:
       operationId: mail_account_process
       description: Manually process the selected mail account for new messages.
@@ -2400,7 +2399,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der E-Mail-Konto identifiziert.
+        description: A unique integer value identifying this mail account.
         required: true
       tags:
       - mail_accounts
@@ -2429,7 +2428,7 @@ paths:
           description: ''
         '404':
           description: No response body
-  /home/paperless/api/mail_accounts/test/:
+  /api/mail_accounts/test/:
     post:
       operationId: mail_account_test
       description: Test a mail account
@@ -2464,20 +2463,20 @@ paths:
               schema:
                 type: string
           description: ''
-  /home/paperless/api/mail_rules/:
+  /api/mail_rules/:
     get:
       operationId: mail_rules_list
       parameters:
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       tags:
@@ -2520,7 +2519,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/MailRule'
           description: ''
-  /home/paperless/api/mail_rules/{id}/:
+  /api/mail_rules/{id}/:
     get:
       operationId: mail_rules_retrieve
       parameters:
@@ -2528,7 +2527,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der E-Mail-Regel identifiziert.
+        description: A unique integer value identifying this mail rule.
         required: true
       tags:
       - mail_rules
@@ -2550,7 +2549,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der E-Mail-Regel identifiziert.
+        description: A unique integer value identifying this mail rule.
         required: true
       tags:
       - mail_rules
@@ -2584,7 +2583,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der E-Mail-Regel identifiziert.
+        description: A unique integer value identifying this mail rule.
         required: true
       tags:
       - mail_rules
@@ -2617,7 +2616,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der E-Mail-Regel identifiziert.
+        description: A unique integer value identifying this mail rule.
         required: true
       tags:
       - mail_rules
@@ -2628,7 +2627,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /home/paperless/api/oauth/callback/:
+  /api/oauth/callback/:
     get:
       operationId: oauth_callback_retrieve
       description: Callback view for OAuth2 authentication
@@ -2641,26 +2640,26 @@ paths:
       responses:
         '200':
           description: No response body
-  /home/paperless/api/processed_mail/:
+  /api/processed_mail/:
     get:
       operationId: processed_mail_list
       parameters:
       - name: ordering
         required: false
         in: query
-        description: Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+        description: Which field to use when ordering the results.
         schema:
           type: string
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       - in: query
@@ -2684,7 +2683,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedProcessedMailList'
           description: ''
-  /home/paperless/api/processed_mail/{id}/:
+  /api/processed_mail/{id}/:
     get:
       operationId: processed_mail_retrieve
       parameters:
@@ -2692,7 +2691,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der processed mail identifiziert.
+        description: A unique integer value identifying this processed mail.
         required: true
       tags:
       - processed_mail
@@ -2707,7 +2706,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProcessedMail'
           description: ''
-  /home/paperless/api/processed_mail/bulk_delete/:
+  /api/processed_mail/bulk_delete/:
     post:
       operationId: processed_mail_bulk_delete_create
       tags:
@@ -2734,7 +2733,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProcessedMail'
           description: ''
-  /home/paperless/api/profile/:
+  /api/profile/:
     get:
       operationId: profile_retrieve
       description: User profile view, only available when logged in
@@ -2778,7 +2777,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Profile'
           description: ''
-  /home/paperless/api/profile/disconnect_social_account/:
+  /api/profile/disconnect_social_account/:
     post:
       operationId: profile_disconnect_social_account_create
       description: Disconnects a social account provider from the user account
@@ -2811,7 +2810,7 @@ paths:
               schema:
                 type: string
           description: ''
-  /home/paperless/api/profile/generate_auth_token/:
+  /api/profile/generate_auth_token/:
     post:
       operationId: profile_generate_auth_token_create
       description: |-
@@ -2830,7 +2829,7 @@ paths:
               schema:
                 type: string
           description: ''
-  /home/paperless/api/profile/social_account_providers/:
+  /api/profile/social_account_providers/:
     get:
       operationId: profile_social_account_providers_retrieve
       description: List of social account providers
@@ -2848,7 +2847,7 @@ paths:
                 type: object
                 additionalProperties: {}
           description: ''
-  /home/paperless/api/profile/totp/:
+  /api/profile/totp/:
     get:
       operationId: profile_totp_retrieve
       description: Generates a new TOTP secret and returns the URL and SVG
@@ -2918,7 +2917,7 @@ paths:
               schema:
                 type: string
           description: ''
-  /home/paperless/api/remote_version/:
+  /api/remote_version/:
     get:
       operationId: remote_version_retrieve
       description: Get the current version of the Paperless-NGX server
@@ -2937,20 +2936,20 @@ paths:
                 type: object
                 additionalProperties: {}
           description: ''
-  /home/paperless/api/saved_views/:
+  /api/saved_views/:
     get:
       operationId: saved_views_list
       parameters:
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       tags:
@@ -2993,7 +2992,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SavedView'
           description: ''
-  /home/paperless/api/saved_views/{id}/:
+  /api/saved_views/{id}/:
     get:
       operationId: saved_views_retrieve
       parameters:
@@ -3001,7 +3000,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Gespeicherte Ansicht identifiziert.
+        description: A unique integer value identifying this saved view.
         required: true
       tags:
       - saved_views
@@ -3023,7 +3022,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Gespeicherte Ansicht identifiziert.
+        description: A unique integer value identifying this saved view.
         required: true
       tags:
       - saved_views
@@ -3057,7 +3056,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Gespeicherte Ansicht identifiziert.
+        description: A unique integer value identifying this saved view.
         required: true
       tags:
       - saved_views
@@ -3090,7 +3089,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Gespeicherte Ansicht identifiziert.
+        description: A unique integer value identifying this saved view.
         required: true
       tags:
       - saved_views
@@ -3101,7 +3100,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /home/paperless/api/search/:
+  /api/search/:
     get:
       operationId: search_retrieve
       description: Global search
@@ -3130,7 +3129,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SearchResult'
           description: ''
-  /home/paperless/api/search/autocomplete/:
+  /api/search/autocomplete/:
     get:
       operationId: search_autocomplete_list
       description: Get a list of all available tags
@@ -3160,7 +3159,7 @@ paths:
                 items:
                   type: string
           description: ''
-  /home/paperless/api/share_links/:
+  /api/share_links/:
     get:
       operationId: share_links_list
       description: Pass a user object to serializer
@@ -3272,19 +3271,19 @@ paths:
       - name: ordering
         required: false
         in: query
-        description: Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+        description: Which field to use when ordering the results.
         schema:
           type: string
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       tags:
@@ -3327,7 +3326,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ShareLink'
           description: ''
-  /home/paperless/api/share_links/{id}/:
+  /api/share_links/{id}/:
     get:
       operationId: share_links_retrieve
       description: Pass a user object to serializer
@@ -3336,7 +3335,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Freigabelink identifiziert.
+        description: A unique integer value identifying this share link.
         required: true
       tags:
       - share_links
@@ -3359,7 +3358,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Freigabelink identifiziert.
+        description: A unique integer value identifying this share link.
         required: true
       tags:
       - share_links
@@ -3370,7 +3369,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /home/paperless/api/statistics/:
+  /api/statistics/:
     get:
       operationId: statistics_retrieve
       description: Get statistics for the current user
@@ -3388,7 +3387,7 @@ paths:
                 type: object
                 additionalProperties: {}
           description: ''
-  /home/paperless/api/status/:
+  /api/status/:
     get:
       operationId: status_retrieve
       description: Get the current system status of the Paperless-NGX server
@@ -3405,7 +3404,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SystemStatus'
           description: ''
-  /home/paperless/api/storage_paths/:
+  /api/storage_paths/:
     get:
       operationId: storage_paths_list
       description: Mixin to add document count to queryset, permissions-aware if needed
@@ -3424,7 +3423,7 @@ paths:
           type: array
           items:
             type: integer
-        description: Mehrere Werte können durch Kommas getrennt sein.
+        description: Multiple values may be separated by commas.
         explode: false
         style: form
       - in: query
@@ -3446,19 +3445,19 @@ paths:
       - name: ordering
         required: false
         in: query
-        description: Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+        description: Which field to use when ordering the results.
         schema:
           type: string
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       - in: query
@@ -3518,7 +3517,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/StoragePath'
           description: ''
-  /home/paperless/api/storage_paths/{id}/:
+  /api/storage_paths/{id}/:
     get:
       operationId: storage_paths_retrieve
       description: Mixin to add document count to queryset, permissions-aware if needed
@@ -3531,7 +3530,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Speicherpfad identifiziert.
+        description: A unique integer value identifying this storage path.
         required: true
       tags:
       - storage_paths
@@ -3554,7 +3553,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Speicherpfad identifiziert.
+        description: A unique integer value identifying this storage path.
         required: true
       tags:
       - storage_paths
@@ -3589,7 +3588,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Speicherpfad identifiziert.
+        description: A unique integer value identifying this storage path.
         required: true
       tags:
       - storage_paths
@@ -3625,7 +3624,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Speicherpfad identifiziert.
+        description: A unique integer value identifying this storage path.
         required: true
       tags:
       - storage_paths
@@ -3636,7 +3635,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /home/paperless/api/storage_paths/test/:
+  /api/storage_paths/test/:
     post:
       operationId: storage_paths_test_create
       description: Test storage path against a document
@@ -3665,7 +3664,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/StoragePath'
           description: ''
-  /home/paperless/api/tags/:
+  /api/tags/:
     get:
       operationId: tags_list
       description: Build a children map once to avoid per-parent queries in the serializer.
@@ -3684,7 +3683,7 @@ paths:
           type: array
           items:
             type: integer
-        description: Mehrere Werte können durch Kommas getrennt sein.
+        description: Multiple values may be separated by commas.
         explode: false
         style: form
       - in: query
@@ -3711,19 +3710,19 @@ paths:
       - name: ordering
         required: false
         in: query
-        description: Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+        description: Which field to use when ordering the results.
         schema:
           type: string
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       tags:
@@ -3767,7 +3766,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Tag'
           description: ''
-  /home/paperless/api/tags/{id}/:
+  /api/tags/{id}/:
     get:
       operationId: tags_retrieve
       description: Mixin to add document count to queryset, permissions-aware if needed
@@ -3780,7 +3779,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Tag identifiziert.
+        description: A unique integer value identifying this tag.
         required: true
       tags:
       - tags
@@ -3803,7 +3802,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Tag identifiziert.
+        description: A unique integer value identifying this tag.
         required: true
       tags:
       - tags
@@ -3838,7 +3837,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Tag identifiziert.
+        description: A unique integer value identifying this tag.
         required: true
       tags:
       - tags
@@ -3872,7 +3871,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Tag identifiziert.
+        description: A unique integer value identifying this tag.
         required: true
       tags:
       - tags
@@ -3883,7 +3882,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /home/paperless/api/tasks/:
+  /api/tasks/:
     get:
       operationId: tasks_list
       parameters:
@@ -3895,14 +3894,14 @@ paths:
       - name: ordering
         required: false
         in: query
-        description: Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+        description: Which field to use when ordering the results.
         schema:
           type: string
       - in: query
         name: status
         schema:
           type: string
-          title: Aufgabenstatus
+          title: Task State
           enum:
           - FAILURE
           - PENDING
@@ -3912,7 +3911,7 @@ paths:
           - STARTED
           - SUCCESS
         description: |-
-          Aktueller Status der laufenden Aufgabe
+          Current state of the task being run
 
           * `FAILURE` - FAILURE
           * `PENDING` - PENDING
@@ -3931,34 +3930,33 @@ paths:
         schema:
           type: string
           nullable: true
-          title: Aufgabenname
           enum:
           - check_sanity
           - consume_file
           - index_optimize
           - train_classifier
         description: |-
-          Name der ausgeführten Aufgabe
+          Name of the task that was run
 
-          * `consume_file` - Datei verarbeiten
-          * `train_classifier` - Klassifikator trainieren
-          * `check_sanity` - Plausibilität prüfen
-          * `index_optimize` - Indexoptimierung
+          * `consume_file` - Consume File
+          * `train_classifier` - Train Classifier
+          * `check_sanity` - Check Sanity
+          * `index_optimize` - Index Optimize
       - in: query
         name: type
         schema:
           type: string
-          title: Aufgabentyp
+          title: Task Type
           enum:
           - auto_task
           - manual_task
           - scheduled_task
         description: |-
-          Art der ausgeführten Aufgabe
+          The type of task that was run
 
-          * `auto_task` - Automatische Aufgabe
-          * `scheduled_task` - Geplante Aufgabe
-          * `manual_task` - Manuelle Aufgabe
+          * `auto_task` - Auto Task
+          * `scheduled_task` - Scheduled Task
+          * `manual_task` - Manual Task
       tags:
       - tasks
       security:
@@ -3974,7 +3972,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/TasksView'
           description: ''
-  /home/paperless/api/tasks/{id}/:
+  /api/tasks/{id}/:
     get:
       operationId: tasks_retrieve
       parameters:
@@ -3982,7 +3980,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der paperless task identifiziert.
+        description: A unique integer value identifying this paperless task.
         required: true
       - in: query
         name: task_id
@@ -4002,7 +4000,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TasksView'
           description: ''
-  /home/paperless/api/tasks/acknowledge/:
+  /api/tasks/acknowledge/:
     post:
       operationId: acknowledge_tasks
       description: Acknowledge a list of tasks
@@ -4039,7 +4037,7 @@ paths:
           description: ''
         '400':
           description: No response body
-  /home/paperless/api/tasks/run/:
+  /api/tasks/run/:
     post:
       operationId: tasks_run_create
       parameters:
@@ -4073,7 +4071,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TasksView'
           description: ''
-  /home/paperless/api/token/:
+  /api/token/:
     post:
       operationId: token_create
       tags:
@@ -4101,20 +4099,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaperlessAuthToken'
           description: ''
-  /home/paperless/api/trash/:
+  /api/trash/:
     get:
       operationId: trash_list
       parameters:
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       tags:
@@ -4149,7 +4147,7 @@ paths:
       responses:
         '200':
           description: No response body
-  /home/paperless/api/ui_settings/:
+  /api/ui_settings/:
     get:
       operationId: ui_settings_retrieve
       tags:
@@ -4191,26 +4189,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/UiSettingsView'
           description: ''
-  /home/paperless/api/users/:
+  /api/users/:
     get:
       operationId: users_list
       parameters:
       - name: ordering
         required: false
         in: query
-        description: Feld, das zum Sortieren der Ergebnisse verwendet werden soll.
+        description: Which field to use when ordering the results.
         schema:
           type: string
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       - in: query
@@ -4269,7 +4267,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/User'
           description: ''
-  /home/paperless/api/users/{id}/:
+  /api/users/{id}/:
     get:
       operationId: users_retrieve
       parameters:
@@ -4277,7 +4275,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Benutzer identifiziert.
+        description: A unique integer value identifying this user.
         required: true
       tags:
       - users
@@ -4299,7 +4297,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Benutzer identifiziert.
+        description: A unique integer value identifying this user.
         required: true
       tags:
       - users
@@ -4333,7 +4331,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Benutzer identifiziert.
+        description: A unique integer value identifying this user.
         required: true
       tags:
       - users
@@ -4366,7 +4364,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Benutzer identifiziert.
+        description: A unique integer value identifying this user.
         required: true
       tags:
       - users
@@ -4377,7 +4375,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /home/paperless/api/users/{id}/deactivate_totp/:
+  /api/users/{id}/deactivate_totp/:
     post:
       operationId: users_deactivate_totp_create
       parameters:
@@ -4385,7 +4383,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Benutzer identifiziert.
+        description: A unique integer value identifying this user.
         required: true
       tags:
       - users
@@ -4406,20 +4404,20 @@ paths:
               schema:
                 type: string
           description: ''
-  /home/paperless/api/workflow_actions/:
+  /api/workflow_actions/:
     get:
       operationId: workflow_actions_list
       parameters:
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       tags:
@@ -4461,7 +4459,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/WorkflowAction'
           description: ''
-  /home/paperless/api/workflow_actions/{id}/:
+  /api/workflow_actions/{id}/:
     get:
       operationId: workflow_actions_retrieve
       parameters:
@@ -4469,7 +4467,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Arbeitsablauf-Aktion identifiziert.
+        description: A unique integer value identifying this workflow action.
         required: true
       tags:
       - workflow_actions
@@ -4491,7 +4489,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Arbeitsablauf-Aktion identifiziert.
+        description: A unique integer value identifying this workflow action.
         required: true
       tags:
       - workflow_actions
@@ -4524,7 +4522,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Arbeitsablauf-Aktion identifiziert.
+        description: A unique integer value identifying this workflow action.
         required: true
       tags:
       - workflow_actions
@@ -4557,7 +4555,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Arbeitsablauf-Aktion identifiziert.
+        description: A unique integer value identifying this workflow action.
         required: true
       tags:
       - workflow_actions
@@ -4568,20 +4566,20 @@ paths:
       responses:
         '204':
           description: No response body
-  /home/paperless/api/workflow_triggers/:
+  /api/workflow_triggers/:
     get:
       operationId: workflow_triggers_list
       parameters:
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       tags:
@@ -4624,7 +4622,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/WorkflowTrigger'
           description: ''
-  /home/paperless/api/workflow_triggers/{id}/:
+  /api/workflow_triggers/{id}/:
     get:
       operationId: workflow_triggers_retrieve
       parameters:
@@ -4632,7 +4630,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Arbeitsablauf-Auslöser identifiziert.
+        description: A unique integer value identifying this workflow trigger.
         required: true
       tags:
       - workflow_triggers
@@ -4654,7 +4652,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Arbeitsablauf-Auslöser identifiziert.
+        description: A unique integer value identifying this workflow trigger.
         required: true
       tags:
       - workflow_triggers
@@ -4688,7 +4686,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Arbeitsablauf-Auslöser identifiziert.
+        description: A unique integer value identifying this workflow trigger.
         required: true
       tags:
       - workflow_triggers
@@ -4721,7 +4719,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der Arbeitsablauf-Auslöser identifiziert.
+        description: A unique integer value identifying this workflow trigger.
         required: true
       tags:
       - workflow_triggers
@@ -4732,20 +4730,20 @@ paths:
       responses:
         '204':
           description: No response body
-  /home/paperless/api/workflows/:
+  /api/workflows/:
     get:
       operationId: workflows_list
       parameters:
       - name: page
         required: false
         in: query
-        description: Eine Seitenzahl in der paginierten Ergebnismenge.
+        description: A page number within the paginated result set.
         schema:
           type: integer
       - name: page_size
         required: false
         in: query
-        description: Anzahl der pro Seite zurückzugebenden Ergebnisse.
+        description: Number of results to return per page.
         schema:
           type: integer
       tags:
@@ -4788,7 +4786,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Workflow'
           description: ''
-  /home/paperless/api/workflows/{id}/:
+  /api/workflows/{id}/:
     get:
       operationId: workflows_retrieve
       parameters:
@@ -4796,7 +4794,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der workflow identifiziert.
+        description: A unique integer value identifying this workflow.
         required: true
       tags:
       - workflows
@@ -4818,7 +4816,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der workflow identifiziert.
+        description: A unique integer value identifying this workflow.
         required: true
       tags:
       - workflows
@@ -4852,7 +4850,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der workflow identifiziert.
+        description: A unique integer value identifying this workflow.
         required: true
       tags:
       - workflows
@@ -4885,7 +4883,7 @@ paths:
         name: id
         schema:
           type: integer
-        description: Ein eindeutiger Ganzzahl-Wert, der workflow identifiziert.
+        description: A unique integer value identifying this workflow.
         required: true
       tags:
       - workflows
@@ -4906,8 +4904,8 @@ components:
       type: integer
       description: |-
         * `1` - IMAP
-        * `2` - Gmail-OAuth
-        * `3` - Outlook-OAuth
+        * `2` - Gmail OAuth
+        * `3` - Outlook OAuth
     AcknowledgeTasks:
       type: object
       properties:
@@ -4937,7 +4935,7 @@ components:
           nullable: true
         output_type:
           nullable: true
-          title: Legt den PDF-Typ der Ausgabedatei fest
+          title: Sets the output PDF type
           oneOf:
           - $ref: '#/components/schemas/OutputTypeEnum'
           - $ref: '#/components/schemas/BlankEnum'
@@ -4947,22 +4945,22 @@ components:
           maximum: 2147483647
           minimum: 1
           nullable: true
-          title: OCR von Seite 1 bis zu diesem Wert durchführen
+          title: Do OCR from page 1 to this value
         language:
           type: string
           nullable: true
-          title: OCR für diese Sprachen durchführen
+          title: Do OCR using these languages
           maxLength: 32
         mode:
           nullable: true
-          title: Legt den OCR-Modus fest
+          title: Sets the OCR mode
           oneOf:
           - $ref: '#/components/schemas/ModeEnum'
           - $ref: '#/components/schemas/BlankEnum'
           - $ref: '#/components/schemas/NullEnum'
         skip_archive_file:
           nullable: true
-          title: Steuert die Erzeugung einer Archivdatei
+          title: Controls the generation of an archive file
           oneOf:
           - $ref: '#/components/schemas/SkipArchiveFileEnum'
           - $ref: '#/components/schemas/BlankEnum'
@@ -4972,10 +4970,10 @@ components:
           maximum: 2147483647
           minimum: 1
           nullable: true
-          title: Setzt den Bild-DPI Fallback-Wert
+          title: Sets image DPI fallback value
         unpaper_clean:
           nullable: true
-          title: Steuert die unpaper-Bereinigung
+          title: Controls the unpaper cleaning
           oneOf:
           - $ref: '#/components/schemas/UnpaperCleanEnum'
           - $ref: '#/components/schemas/BlankEnum'
@@ -4983,26 +4981,26 @@ components:
         deskew:
           type: boolean
           nullable: true
-          title: Aktiviert die Schräglagenkorrektur
+          title: Enables deskew
         rotate_pages:
           type: boolean
           nullable: true
-          title: Aktiviert Seitenrotation
+          title: Enables page rotation
         rotate_pages_threshold:
           type: number
           format: double
           minimum: 0.0
           nullable: true
-          title: Legt die Schwelle für die Seitenrotation fest
+          title: Sets the threshold for rotation of pages
         max_image_pixels:
           type: number
           format: double
           minimum: 0.0
           nullable: true
-          title: Legt die maximale Bildgröße für die Dekomprimierung fest
+          title: Sets the maximum image size for decompression
         color_conversion_strategy:
           nullable: true
-          title: Legt die Ghostscript-Farbkonvertierungsstrategie fest
+          title: Sets the Ghostscript color conversion strategy
           oneOf:
           - $ref: '#/components/schemas/ColorConversionStrategyEnum'
           - $ref: '#/components/schemas/BlankEnum'
@@ -5010,62 +5008,62 @@ components:
         app_title:
           type: string
           nullable: true
-          title: Anwendungstitel
+          title: Application title
           maxLength: 48
         app_logo:
           type: string
           format: uri
           nullable: true
-          title: Anwendungslogo
+          title: Application logo
           pattern: (?:jpg|png|gif|svg)$
         barcodes_enabled:
           type: boolean
           nullable: true
-          title: Aktiviert Barcode-Scan
+          title: Enables barcode scanning
         barcode_enable_tiff_support:
           type: boolean
           nullable: true
-          title: Aktiviert Barcode-TIFF-Unterstützung
+          title: Enables barcode TIFF support
         barcode_string:
           type: string
           nullable: true
-          title: Legt die Barcode-Zeichenkette fest
+          title: Sets the barcode string
           maxLength: 32
         barcode_retain_split_pages:
           type: boolean
           nullable: true
-          title: Behält geteilte Seiten
+          title: Retains split pages
         barcode_enable_asn:
           type: boolean
           nullable: true
-          title: Aktiviert ASN-Barcode
+          title: Enables ASN barcode
         barcode_asn_prefix:
           type: string
           nullable: true
-          title: Legt den ASN-Barcodepräfix fest
+          title: Sets the ASN barcode prefix
           maxLength: 32
         barcode_upscale:
           type: number
           format: double
           minimum: 1.0
           nullable: true
-          title: Legt den Barcode-Hochskalierungsfaktor fest
+          title: Sets the barcode upscale factor
         barcode_dpi:
           type: integer
           maximum: 2147483647
           minimum: 1
           nullable: true
-          title: Legt die Barcode-DPI fest
+          title: Sets the barcode DPI
         barcode_max_pages:
           type: integer
           maximum: 2147483647
           minimum: 1
           nullable: true
-          title: Legt die maximale Anzahl an Seiten für Barcodes fest
+          title: Sets the maximum pages for barcode
         barcode_enable_tag:
           type: boolean
           nullable: true
-          title: Aktiviert Tag-Barcode
+          title: Enables tag barcode
       required:
       - barcode_tag_mapping
       - id
@@ -5079,7 +5077,7 @@ components:
           nullable: true
         output_type:
           nullable: true
-          title: Legt den PDF-Typ der Ausgabedatei fest
+          title: Sets the output PDF type
           oneOf:
           - $ref: '#/components/schemas/OutputTypeEnum'
           - $ref: '#/components/schemas/BlankEnum'
@@ -5089,22 +5087,22 @@ components:
           maximum: 2147483647
           minimum: 1
           nullable: true
-          title: OCR von Seite 1 bis zu diesem Wert durchführen
+          title: Do OCR from page 1 to this value
         language:
           type: string
           nullable: true
-          title: OCR für diese Sprachen durchführen
+          title: Do OCR using these languages
           maxLength: 32
         mode:
           nullable: true
-          title: Legt den OCR-Modus fest
+          title: Sets the OCR mode
           oneOf:
           - $ref: '#/components/schemas/ModeEnum'
           - $ref: '#/components/schemas/BlankEnum'
           - $ref: '#/components/schemas/NullEnum'
         skip_archive_file:
           nullable: true
-          title: Steuert die Erzeugung einer Archivdatei
+          title: Controls the generation of an archive file
           oneOf:
           - $ref: '#/components/schemas/SkipArchiveFileEnum'
           - $ref: '#/components/schemas/BlankEnum'
@@ -5114,10 +5112,10 @@ components:
           maximum: 2147483647
           minimum: 1
           nullable: true
-          title: Setzt den Bild-DPI Fallback-Wert
+          title: Sets image DPI fallback value
         unpaper_clean:
           nullable: true
-          title: Steuert die unpaper-Bereinigung
+          title: Controls the unpaper cleaning
           oneOf:
           - $ref: '#/components/schemas/UnpaperCleanEnum'
           - $ref: '#/components/schemas/BlankEnum'
@@ -5125,26 +5123,26 @@ components:
         deskew:
           type: boolean
           nullable: true
-          title: Aktiviert die Schräglagenkorrektur
+          title: Enables deskew
         rotate_pages:
           type: boolean
           nullable: true
-          title: Aktiviert Seitenrotation
+          title: Enables page rotation
         rotate_pages_threshold:
           type: number
           format: double
           minimum: 0.0
           nullable: true
-          title: Legt die Schwelle für die Seitenrotation fest
+          title: Sets the threshold for rotation of pages
         max_image_pixels:
           type: number
           format: double
           minimum: 0.0
           nullable: true
-          title: Legt die maximale Bildgröße für die Dekomprimierung fest
+          title: Sets the maximum image size for decompression
         color_conversion_strategy:
           nullable: true
-          title: Legt die Ghostscript-Farbkonvertierungsstrategie fest
+          title: Sets the Ghostscript color conversion strategy
           oneOf:
           - $ref: '#/components/schemas/ColorConversionStrategyEnum'
           - $ref: '#/components/schemas/BlankEnum'
@@ -5152,62 +5150,62 @@ components:
         app_title:
           type: string
           nullable: true
-          title: Anwendungstitel
+          title: Application title
           maxLength: 48
         app_logo:
           type: string
           format: binary
           nullable: true
-          title: Anwendungslogo
+          title: Application logo
           pattern: (?:jpg|png|gif|svg)$
         barcodes_enabled:
           type: boolean
           nullable: true
-          title: Aktiviert Barcode-Scan
+          title: Enables barcode scanning
         barcode_enable_tiff_support:
           type: boolean
           nullable: true
-          title: Aktiviert Barcode-TIFF-Unterstützung
+          title: Enables barcode TIFF support
         barcode_string:
           type: string
           nullable: true
-          title: Legt die Barcode-Zeichenkette fest
+          title: Sets the barcode string
           maxLength: 32
         barcode_retain_split_pages:
           type: boolean
           nullable: true
-          title: Behält geteilte Seiten
+          title: Retains split pages
         barcode_enable_asn:
           type: boolean
           nullable: true
-          title: Aktiviert ASN-Barcode
+          title: Enables ASN barcode
         barcode_asn_prefix:
           type: string
           nullable: true
-          title: Legt den ASN-Barcodepräfix fest
+          title: Sets the ASN barcode prefix
           maxLength: 32
         barcode_upscale:
           type: number
           format: double
           minimum: 1.0
           nullable: true
-          title: Legt den Barcode-Hochskalierungsfaktor fest
+          title: Sets the barcode upscale factor
         barcode_dpi:
           type: integer
           maximum: 2147483647
           minimum: 1
           nullable: true
-          title: Legt die Barcode-DPI fest
+          title: Sets the barcode DPI
         barcode_max_pages:
           type: integer
           maximum: 2147483647
           minimum: 1
           nullable: true
-          title: Legt die maximale Anzahl an Seiten für Barcodes fest
+          title: Sets the maximum pages for barcode
         barcode_enable_tag:
           type: boolean
           nullable: true
-          title: Aktiviert Tag-Barcode
+          title: Enables tag barcode
       required:
       - barcode_tag_mapping
       - user_args
@@ -5219,10 +5217,10 @@ components:
       - 4
       type: integer
       description: |-
-        * `1` - Keinen Korrespondenten zuweisen
-        * `2` - E-Mail-Adresse verwenden
-        * `3` - Absendername verwenden (oder E-Mail-Adresse, wenn nicht verfügbar)
-        * `4` - Nachfolgend ausgewählten Korrespondent verwenden
+        * `1` - Do not assign a correspondent
+        * `2` - Use mail address
+        * `3` - Use name (or mail address if not available)
+        * `4` - Use correspondent selected below
     AssignTitleFromEnum:
       enum:
       - 1
@@ -5230,17 +5228,17 @@ components:
       - 3
       type: integer
       description: |-
-        * `1` - Betreff als Titel verwenden
-        * `2` - Dateiname des Anhangs als Titel verwenden
-        * `3` - Titel nicht aus Regel zuweisen
+        * `1` - Use subject as title
+        * `2` - Use attachment filename as title
+        * `3` - Do not assign title from rule
     AttachmentTypeEnum:
       enum:
       - 1
       - 2
       type: integer
       description: |-
-        * `1` - Nur Anhänge verarbeiten.
-        * `2` - Alle Dateien verarbeiten, auch 'inline'-Anhänge.
+        * `1` - Only process attachments.
+        * `2` - Process all files, including 'inline' attachments.
     BasicUser:
       type: object
       properties:
@@ -5249,18 +5247,15 @@ components:
           readOnly: true
         username:
           type: string
-          title: Benutzername
-          description: Erforderlich. 150 Zeichen oder weniger. Nur Buchstaben, Ziffern
-            und @/./+/-/_.
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
           pattern: ^[\w.@+-]+$
           maxLength: 150
         first_name:
           type: string
-          title: Vorname
           maxLength: 150
         last_name:
           type: string
-          title: Nachname
           maxLength: 150
       required:
       - id
@@ -5271,18 +5266,15 @@ components:
         username:
           type: string
           minLength: 1
-          title: Benutzername
-          description: Erforderlich. 150 Zeichen oder weniger. Nur Buchstaben, Ziffern
-            und @/./+/-/_.
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
           pattern: ^[\w.@+-]+$
           maxLength: 150
         first_name:
           type: string
-          title: Vorname
           maxLength: 150
         last_name:
           type: string
-          title: Nachname
           maxLength: 150
       required:
       - username
@@ -5416,7 +5408,7 @@ components:
         * `LeaveColorUnchanged` - LeaveColorUnchanged
         * `RGB` - RGB
         * `UseDeviceIndependentColor` - UseDeviceIndependentColor
-        * `Gray` - Grau
+        * `Gray` - Gray
         * `CMYK` - CMYK
     CompressionEnum:
       enum:
@@ -5437,9 +5429,9 @@ components:
       - 3
       type: integer
       description: |-
-        * `1` - Nur Anhänge verarbeiten.
-        * `2` - Vollständige E-Mail (mit eingebetteten Anhängen in der Datei) als .eml verarbeiten
-        * `3` - Vollständige Mail (mit eingebetteten Anhängen in der Datei) als .eml verarbeiten + Anhänge als separate Dokumente verarbeiten
+        * `1` - Only process attachments.
+        * `2` - Process full Mail (with embedded attachments in file) as .eml
+        * `3` - Process full Mail (with embedded attachments in file) as .eml + process attachments as separate documents
     ContentEnum:
       enum:
       - archive
@@ -5464,17 +5456,14 @@ components:
           maxLength: 128
         match:
           type: string
-          title: Zuweisungsmuster
           maxLength: 256
         matching_algorithm:
           allOf:
           - $ref: '#/components/schemas/MatchingAlgorithm'
-          title: Zuweisungsalgorithmus
           minimum: 0
           maximum: 2147483647
         is_insensitive:
           type: boolean
-          title: Groß-/Kleinschreibung irrelevant
         document_count:
           type: integer
           readOnly: true
@@ -5485,7 +5474,6 @@ components:
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         permissions:
           type: object
           properties:
@@ -5542,21 +5530,17 @@ components:
           maxLength: 128
         match:
           type: string
-          title: Zuweisungsmuster
           maxLength: 256
         matching_algorithm:
           allOf:
           - $ref: '#/components/schemas/MatchingAlgorithm'
-          title: Zuweisungsalgorithmus
           minimum: 0
           maximum: 2147483647
         is_insensitive:
           type: boolean
-          title: Groß-/Kleinschreibung irrelevant
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         set_permissions:
           type: object
           properties:
@@ -5598,8 +5582,7 @@ components:
           $ref: '#/components/schemas/DataTypeEnum'
         extra_data:
           nullable: true
-          title: Zusätzliche Daten
-          description: Zusätzliche Daten für das benutzerdefinierte Feld, z. B. Auswahloptionen
+          description: Extra data for the custom field, such as select options
         document_count:
           type: integer
           readOnly: true
@@ -5669,8 +5652,7 @@ components:
           $ref: '#/components/schemas/DataTypeEnum'
         extra_data:
           nullable: true
-          title: Zusätzliche Daten
-          description: Zusätzliche Daten für das benutzerdefinierte Feld, z. B. Auswahloptionen
+          description: Extra data for the custom field, such as select options
       required:
       - data_type
       - name
@@ -5724,9 +5706,9 @@ components:
       - largeCards
       type: string
       description: |-
-        * `table` - Tabelle
-        * `smallCards` - Kleine Karten
-        * `largeCards` - Große Karten
+        * `table` - Table
+        * `smallCards` - Small Cards
+        * `largeCards` - Large Cards
     Document:
       type: object
       description: Adds update nested feature
@@ -5745,13 +5727,11 @@ components:
           nullable: true
         title:
           type: string
-          title: Titel
           maxLength: 128
         content:
           type: string
-          title: Inhalt
-          description: Der Inhalt des Dokuments in Textform. Dieses Feld wird primär
-            für die Suche verwendet.
+          description: The raw, text-only data of the document. This field is primarily
+            used for searching.
         tags:
           type: array
           items:
@@ -5759,7 +5739,6 @@ components:
         created:
           type: string
           format: date
-          title: Ausgestellt
         created_date:
           type: string
           format: date
@@ -5768,12 +5747,10 @@ components:
           type: string
           format: date-time
           readOnly: true
-          title: Geändert
         added:
           type: string
           format: date-time
           readOnly: true
-          title: Hinzugefügt
         deleted_at:
           type: string
           format: date-time
@@ -5784,8 +5761,7 @@ components:
           minimum: 0
           format: int64
           nullable: true
-          title: Archiv-Seriennummer
-          description: Die Position dieses Dokuments in Ihrem physischen Dokumentenarchiv.
+          description: The position of this document in your physical document archive.
         original_file_name:
           type: string
           nullable: true
@@ -5845,7 +5821,6 @@ components:
         mime_type:
           type: string
           readOnly: true
-          title: MIME-Typ
       required:
       - added
       - archived_file_name
@@ -5887,13 +5862,11 @@ components:
           nullable: true
         title:
           type: string
-          title: Titel
           maxLength: 128
         content:
           type: string
-          title: Inhalt
-          description: Der Inhalt des Dokuments in Textform. Dieses Feld wird primär
-            für die Suche verwendet.
+          description: The raw, text-only data of the document. This field is primarily
+            used for searching.
         tags:
           type: array
           items:
@@ -5901,7 +5874,6 @@ components:
         created:
           type: string
           format: date
-          title: Ausgestellt
         created_date:
           type: string
           format: date
@@ -5916,8 +5888,7 @@ components:
           minimum: 0
           format: int64
           nullable: true
-          title: Archiv-Seriennummer
-          description: Die Position dieses Dokuments in Ihrem physischen Dokumentenarchiv.
+          description: The position of this document in your physical document archive.
         owner:
           type: integer
           nullable: true
@@ -5975,24 +5946,20 @@ components:
           maxLength: 128
         match:
           type: string
-          title: Zuweisungsmuster
           maxLength: 256
         matching_algorithm:
           allOf:
           - $ref: '#/components/schemas/MatchingAlgorithm'
-          title: Zuweisungsalgorithmus
           minimum: 0
           maximum: 2147483647
         is_insensitive:
           type: boolean
-          title: Groß-/Kleinschreibung irrelevant
         document_count:
           type: integer
           readOnly: true
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         permissions:
           type: object
           properties:
@@ -6048,21 +6015,17 @@ components:
           maxLength: 128
         match:
           type: string
-          title: Zuweisungsmuster
           maxLength: 256
         matching_algorithm:
           allOf:
           - $ref: '#/components/schemas/MatchingAlgorithm'
-          title: Zuweisungsalgorithmus
           minimum: 0
           maximum: 2147483647
         is_insensitive:
           type: boolean
-          title: Groß-/Kleinschreibung irrelevant
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         set_permissions:
           type: object
           properties:
@@ -6165,7 +6128,7 @@ components:
       - original
       type: string
       description: |-
-        * `archive` - Archiv
+        * `archive` - Archive
         * `original` - Original
     Group:
       type: object
@@ -6206,9 +6169,9 @@ components:
       - 3
       type: integer
       description: |-
-        * `1` - Keine Verschlüsselung
-        * `2` - SSL verwenden
-        * `3` - STARTTLS verwenden
+        * `1` - No encryption
+        * `2` - Use SSL
+        * `3` - Use STARTTLS
     Index:
       type: object
       properties:
@@ -6261,48 +6224,42 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           nullable: true
-          description: Dies ist in der Regel 143 für unverschlüsselte und STARTTLS-Verbindungen
-            und 993 für SSL-Verbindungen.
+          description: This is usually 143 for unencrypted and STARTTLS connections,
+            and 993 for SSL connections.
         imap_security:
           allOf:
           - $ref: '#/components/schemas/ImapSecurityEnum'
-          title: IMAP-Sicherheit
           minimum: 0
           maximum: 2147483647
         username:
           type: string
-          title: Benutzername
           maxLength: 256
         password:
           type: string
         character_set:
           type: string
-          title: Zeichensatz
-          description: Der Zeichensatz, der bei der Kommunikation mit dem E-Mail-Server
-            verwendet werden soll, wie z. B. „UTF-8“ oder „US-ASCII“.
+          description: The character set to use when communicating with the mail server,
+            such as 'UTF-8' or 'US-ASCII'.
           maxLength: 256
         is_token:
           type: boolean
-          title: Ist Tokenauthentifizierung
+          title: Is token authentication
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         user_can_change:
           type: boolean
           readOnly: true
         account_type:
           allOf:
           - $ref: '#/components/schemas/AccountTypeEnum'
-          title: Kontotyp
           minimum: 0
           maximum: 2147483647
         expiration:
           type: string
           format: date-time
           nullable: true
-          title: Ablauf
-          description: 'Das Ablaufdatum des Aktualisierungstokens. '
+          description: 'The expiration date of the refresh token. '
       required:
       - id
       - imap_server
@@ -6332,18 +6289,16 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           nullable: true
-          description: Dies ist in der Regel 143 für unverschlüsselte und STARTTLS-Verbindungen
-            und 993 für SSL-Verbindungen.
+          description: This is usually 143 for unencrypted and STARTTLS connections,
+            and 993 for SSL connections.
         imap_security:
           allOf:
           - $ref: '#/components/schemas/ImapSecurityEnum'
-          title: IMAP-Sicherheit
           minimum: 0
           maximum: 2147483647
         username:
           type: string
           minLength: 1
-          title: Benutzername
           maxLength: 256
         password:
           type: string
@@ -6351,17 +6306,15 @@ components:
         character_set:
           type: string
           minLength: 1
-          title: Zeichensatz
-          description: Der Zeichensatz, der bei der Kommunikation mit dem E-Mail-Server
-            verwendet werden soll, wie z. B. „UTF-8“ oder „US-ASCII“.
+          description: The character set to use when communicating with the mail server,
+            such as 'UTF-8' or 'US-ASCII'.
           maxLength: 256
         is_token:
           type: boolean
-          title: Ist Tokenauthentifizierung
+          title: Is token authentication
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         set_permissions:
           type: object
           properties:
@@ -6391,15 +6344,13 @@ components:
         account_type:
           allOf:
           - $ref: '#/components/schemas/AccountTypeEnum'
-          title: Kontotyp
           minimum: 0
           maximum: 2147483647
         expiration:
           type: string
           format: date-time
           nullable: true
-          title: Ablauf
-          description: 'Das Ablaufdatum des Aktualisierungstokens. '
+          description: 'The expiration date of the refresh token. '
       required:
       - imap_server
       - name
@@ -6425,60 +6376,49 @@ components:
           type: integer
         enabled:
           type: boolean
-          title: Aktiviert
         folder:
           type: string
-          title: Ordner
-          description: Unterordner müssen durch ein Trennzeichen, oft einen Punkt
-            („.“) oder einen Schrägstrich („/“), getrennt werden. Dies variiert jedoch
-            je nach Mailserver.
+          description: Subfolders must be separated by a delimiter, often a dot ('.')
+            or slash ('/'), but it varies by mail server.
           maxLength: 256
         filter_from:
           type: string
           nullable: true
-          title: Absender filtern
           maxLength: 256
         filter_to:
           type: string
           nullable: true
-          title: Empfänger filtern
           maxLength: 256
         filter_subject:
           type: string
           nullable: true
-          title: Betreff filtern
           maxLength: 256
         filter_body:
           type: string
           nullable: true
-          title: Nachrichteninhalt filtern
           maxLength: 256
         filter_attachment_filename_include:
           type: string
           nullable: true
-          title: 'Filter: Anhang-Dateiname (inklusiv)'
-          description: Nur Dokumente, die vollständig mit diesem Dateinamen (falls
-            angegeben) übereinstimmen, verarbeiten. Platzhalter wie *.pdf oder *rechnung*
-            sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+          title: Filter attachment filename inclusive
+          description: Only consume documents which entirely match this filename if
+            specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
           maxLength: 256
         filter_attachment_filename_exclude:
           type: string
           nullable: true
-          title: 'Filter: Anhang-Dateiname (exklusiv)'
-          description: Dokumente, die vollständig mit diesem Dateinamen (falls angegeben)
-            übereinstimmen, nicht verarbeiten. Platzhalter wie *.pdf oder *rechnung*
-            sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+          title: Filter attachment filename exclusive
+          description: Do not consume documents which entirely match this filename
+            if specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
           maxLength: 256
         maximum_age:
           type: integer
           maximum: 2147483647
           minimum: 0
-          title: Maximales Alter
-          description: Angegeben in Tagen.
+          description: Specified in days.
         action:
           allOf:
           - $ref: '#/components/schemas/MailRuleActionEnum'
-          title: Aktion
           minimum: 0
           maximum: 2147483647
         action_parameter:
@@ -6488,7 +6428,6 @@ components:
         assign_title_from:
           allOf:
           - $ref: '#/components/schemas/AssignTitleFromEnum'
-          title: Titel zuweisen von
           minimum: 0
           maximum: 2147483647
         assign_tags:
@@ -6499,7 +6438,6 @@ components:
         assign_correspondent_from:
           allOf:
           - $ref: '#/components/schemas/AssignCorrespondentFromEnum'
-          title: Korrespondent zuweisen von
           minimum: 0
           maximum: 2147483647
         assign_correspondent:
@@ -6510,24 +6448,22 @@ components:
           nullable: true
         assign_owner_from_rule:
           type: boolean
-          title: Dokumenten den Regeleigentümer zuweisen
+          title: Assign the rule owner to documents
         order:
           type: integer
         attachment_type:
           allOf:
           - $ref: '#/components/schemas/AttachmentTypeEnum'
-          title: Dateianhangstyp
           description: |-
-            „Inline“-Anhänge schließen eingebettete Bilder mit ein, daher sollte diese Einstellung mit einem Dateinamenfilter kombiniert werden.
+            Inline attachments include embedded images, so it's best to combine this option with a filename filter.
 
-            * `1` - Nur Anhänge verarbeiten.
-            * `2` - Alle Dateien verarbeiten, auch 'inline'-Anhänge.
+            * `1` - Only process attachments.
+            * `2` - Process all files, including 'inline' attachments.
           minimum: 0
           maximum: 2147483647
         consumption_scope:
           allOf:
           - $ref: '#/components/schemas/ConsumptionScopeEnum'
-          title: Verarbeitungsumfang
           minimum: 0
           maximum: 2147483647
         pdf_layout:
@@ -6538,7 +6474,6 @@ components:
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         user_can_change:
           type: boolean
           readOnly: true
@@ -6556,11 +6491,11 @@ components:
       - 5
       type: integer
       description: |-
-        * `1` - Löschen
-        * `2` - In angegebenen Ordner verschieben
-        * `3` - Als gelesen markieren, gelesene E-Mails nicht verarbeiten
-        * `4` - Als wichtig markieren, markierte E-Mails nicht verarbeiten
-        * `5` - Markiere die E-Mail mit dem angegebenen Tag, verarbeite markierte E-Mails nicht
+        * `1` - Delete
+        * `2` - Move to specified folder
+        * `3` - Mark as read, don't process read mails
+        * `4` - Flag the mail, don't process flagged mails
+        * `5` - Tag the mail with specified tag, don't process tagged mails
     MailRuleRequest:
       type: object
       properties:
@@ -6572,61 +6507,50 @@ components:
           type: integer
         enabled:
           type: boolean
-          title: Aktiviert
         folder:
           type: string
           minLength: 1
-          title: Ordner
-          description: Unterordner müssen durch ein Trennzeichen, oft einen Punkt
-            („.“) oder einen Schrägstrich („/“), getrennt werden. Dies variiert jedoch
-            je nach Mailserver.
+          description: Subfolders must be separated by a delimiter, often a dot ('.')
+            or slash ('/'), but it varies by mail server.
           maxLength: 256
         filter_from:
           type: string
           nullable: true
-          title: Absender filtern
           maxLength: 256
         filter_to:
           type: string
           nullable: true
-          title: Empfänger filtern
           maxLength: 256
         filter_subject:
           type: string
           nullable: true
-          title: Betreff filtern
           maxLength: 256
         filter_body:
           type: string
           nullable: true
-          title: Nachrichteninhalt filtern
           maxLength: 256
         filter_attachment_filename_include:
           type: string
           nullable: true
-          title: 'Filter: Anhang-Dateiname (inklusiv)'
-          description: Nur Dokumente, die vollständig mit diesem Dateinamen (falls
-            angegeben) übereinstimmen, verarbeiten. Platzhalter wie *.pdf oder *rechnung*
-            sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+          title: Filter attachment filename inclusive
+          description: Only consume documents which entirely match this filename if
+            specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
           maxLength: 256
         filter_attachment_filename_exclude:
           type: string
           nullable: true
-          title: 'Filter: Anhang-Dateiname (exklusiv)'
-          description: Dokumente, die vollständig mit diesem Dateinamen (falls angegeben)
-            übereinstimmen, nicht verarbeiten. Platzhalter wie *.pdf oder *rechnung*
-            sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+          title: Filter attachment filename exclusive
+          description: Do not consume documents which entirely match this filename
+            if specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
           maxLength: 256
         maximum_age:
           type: integer
           maximum: 2147483647
           minimum: 0
-          title: Maximales Alter
-          description: Angegeben in Tagen.
+          description: Specified in days.
         action:
           allOf:
           - $ref: '#/components/schemas/MailRuleActionEnum'
-          title: Aktion
           minimum: 0
           maximum: 2147483647
         action_parameter:
@@ -6637,7 +6561,6 @@ components:
         assign_title_from:
           allOf:
           - $ref: '#/components/schemas/AssignTitleFromEnum'
-          title: Titel zuweisen von
           minimum: 0
           maximum: 2147483647
         assign_tags:
@@ -6648,7 +6571,6 @@ components:
         assign_correspondent_from:
           allOf:
           - $ref: '#/components/schemas/AssignCorrespondentFromEnum'
-          title: Korrespondent zuweisen von
           minimum: 0
           maximum: 2147483647
         assign_correspondent:
@@ -6659,24 +6581,22 @@ components:
           nullable: true
         assign_owner_from_rule:
           type: boolean
-          title: Dokumenten den Regeleigentümer zuweisen
+          title: Assign the rule owner to documents
         order:
           type: integer
         attachment_type:
           allOf:
           - $ref: '#/components/schemas/AttachmentTypeEnum'
-          title: Dateianhangstyp
           description: |-
-            „Inline“-Anhänge schließen eingebettete Bilder mit ein, daher sollte diese Einstellung mit einem Dateinamenfilter kombiniert werden.
+            Inline attachments include embedded images, so it's best to combine this option with a filename filter.
 
-            * `1` - Nur Anhänge verarbeiten.
-            * `2` - Alle Dateien verarbeiten, auch 'inline'-Anhänge.
+            * `1` - Only process attachments.
+            * `2` - Process all files, including 'inline' attachments.
           minimum: 0
           maximum: 2147483647
         consumption_scope:
           allOf:
           - $ref: '#/components/schemas/ConsumptionScopeEnum'
-          title: Verarbeitungsumfang
           minimum: 0
           maximum: 2147483647
         pdf_layout:
@@ -6687,7 +6607,6 @@ components:
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         set_permissions:
           type: object
           properties:
@@ -6728,13 +6647,13 @@ components:
       - 6
       type: integer
       description: |-
-        * `0` - Keine
-        * `1` - Irgendein Wort
-        * `2` - Alle Wörter
-        * `3` - Exakte Übereinstimmung
-        * `4` - Regulärer Ausdruck
-        * `5` - Ungenaues Wort
-        * `6` - Automatisch
+        * `0` - None
+        * `1` - Any word
+        * `2` - All words
+        * `3` - Exact match
+        * `4` - Regular expression
+        * `5` - Fuzzy word
+        * `6` - Automatic
     Metadata:
       type: object
       properties:
@@ -6831,9 +6750,9 @@ components:
       - skip_noarchive
       type: string
       description: |-
-        * `skip` - überspringen
-        * `redo` - wiederholen
-        * `force` - erzwingen
+        * `skip` - skip
+        * `redo` - redo
+        * `force` - force
         * `skip_noarchive` - skip_noarchive
     NoteCreateRequestRequest:
       type: object
@@ -6851,12 +6770,11 @@ components:
           readOnly: true
         note:
           type: string
-          title: Inhalt
-          description: Notiz für das Dokument
+          title: Content
+          description: Note for the document
         created:
           type: string
           format: date-time
-          title: Ausgestellt
         user:
           allOf:
           - $ref: '#/components/schemas/BasicUser'
@@ -6869,12 +6787,11 @@ components:
       properties:
         note:
           type: string
-          title: Inhalt
-          description: Notiz für das Dokument
+          title: Content
+          description: Note for the document
         created:
           type: string
           format: date-time
-          title: Ausgestellt
     NullEnum:
       enum:
       - null
@@ -7403,12 +7320,10 @@ components:
           type: string
           writeOnly: true
           minLength: 1
-          title: Benutzername
         password:
           type: string
           writeOnly: true
           minLength: 1
-          title: Kennwort
         code:
           type: string
           writeOnly: true
@@ -7426,7 +7341,7 @@ components:
           nullable: true
         output_type:
           nullable: true
-          title: Legt den PDF-Typ der Ausgabedatei fest
+          title: Sets the output PDF type
           oneOf:
           - $ref: '#/components/schemas/OutputTypeEnum'
           - $ref: '#/components/schemas/BlankEnum'
@@ -7436,22 +7351,22 @@ components:
           maximum: 2147483647
           minimum: 1
           nullable: true
-          title: OCR von Seite 1 bis zu diesem Wert durchführen
+          title: Do OCR from page 1 to this value
         language:
           type: string
           nullable: true
-          title: OCR für diese Sprachen durchführen
+          title: Do OCR using these languages
           maxLength: 32
         mode:
           nullable: true
-          title: Legt den OCR-Modus fest
+          title: Sets the OCR mode
           oneOf:
           - $ref: '#/components/schemas/ModeEnum'
           - $ref: '#/components/schemas/BlankEnum'
           - $ref: '#/components/schemas/NullEnum'
         skip_archive_file:
           nullable: true
-          title: Steuert die Erzeugung einer Archivdatei
+          title: Controls the generation of an archive file
           oneOf:
           - $ref: '#/components/schemas/SkipArchiveFileEnum'
           - $ref: '#/components/schemas/BlankEnum'
@@ -7461,10 +7376,10 @@ components:
           maximum: 2147483647
           minimum: 1
           nullable: true
-          title: Setzt den Bild-DPI Fallback-Wert
+          title: Sets image DPI fallback value
         unpaper_clean:
           nullable: true
-          title: Steuert die unpaper-Bereinigung
+          title: Controls the unpaper cleaning
           oneOf:
           - $ref: '#/components/schemas/UnpaperCleanEnum'
           - $ref: '#/components/schemas/BlankEnum'
@@ -7472,26 +7387,26 @@ components:
         deskew:
           type: boolean
           nullable: true
-          title: Aktiviert die Schräglagenkorrektur
+          title: Enables deskew
         rotate_pages:
           type: boolean
           nullable: true
-          title: Aktiviert Seitenrotation
+          title: Enables page rotation
         rotate_pages_threshold:
           type: number
           format: double
           minimum: 0.0
           nullable: true
-          title: Legt die Schwelle für die Seitenrotation fest
+          title: Sets the threshold for rotation of pages
         max_image_pixels:
           type: number
           format: double
           minimum: 0.0
           nullable: true
-          title: Legt die maximale Bildgröße für die Dekomprimierung fest
+          title: Sets the maximum image size for decompression
         color_conversion_strategy:
           nullable: true
-          title: Legt die Ghostscript-Farbkonvertierungsstrategie fest
+          title: Sets the Ghostscript color conversion strategy
           oneOf:
           - $ref: '#/components/schemas/ColorConversionStrategyEnum'
           - $ref: '#/components/schemas/BlankEnum'
@@ -7499,62 +7414,62 @@ components:
         app_title:
           type: string
           nullable: true
-          title: Anwendungstitel
+          title: Application title
           maxLength: 48
         app_logo:
           type: string
           format: binary
           nullable: true
-          title: Anwendungslogo
+          title: Application logo
           pattern: (?:jpg|png|gif|svg)$
         barcodes_enabled:
           type: boolean
           nullable: true
-          title: Aktiviert Barcode-Scan
+          title: Enables barcode scanning
         barcode_enable_tiff_support:
           type: boolean
           nullable: true
-          title: Aktiviert Barcode-TIFF-Unterstützung
+          title: Enables barcode TIFF support
         barcode_string:
           type: string
           nullable: true
-          title: Legt die Barcode-Zeichenkette fest
+          title: Sets the barcode string
           maxLength: 32
         barcode_retain_split_pages:
           type: boolean
           nullable: true
-          title: Behält geteilte Seiten
+          title: Retains split pages
         barcode_enable_asn:
           type: boolean
           nullable: true
-          title: Aktiviert ASN-Barcode
+          title: Enables ASN barcode
         barcode_asn_prefix:
           type: string
           nullable: true
-          title: Legt den ASN-Barcodepräfix fest
+          title: Sets the ASN barcode prefix
           maxLength: 32
         barcode_upscale:
           type: number
           format: double
           minimum: 1.0
           nullable: true
-          title: Legt den Barcode-Hochskalierungsfaktor fest
+          title: Sets the barcode upscale factor
         barcode_dpi:
           type: integer
           maximum: 2147483647
           minimum: 1
           nullable: true
-          title: Legt die Barcode-DPI fest
+          title: Sets the barcode DPI
         barcode_max_pages:
           type: integer
           maximum: 2147483647
           minimum: 1
           nullable: true
-          title: Legt die maximale Anzahl an Seiten für Barcodes fest
+          title: Sets the maximum pages for barcode
         barcode_enable_tag:
           type: boolean
           nullable: true
-          title: Aktiviert Tag-Barcode
+          title: Enables tag barcode
     PatchedCorrespondentRequest:
       type: object
       properties:
@@ -7564,21 +7479,17 @@ components:
           maxLength: 128
         match:
           type: string
-          title: Zuweisungsmuster
           maxLength: 256
         matching_algorithm:
           allOf:
           - $ref: '#/components/schemas/MatchingAlgorithm'
-          title: Zuweisungsalgorithmus
           minimum: 0
           maximum: 2147483647
         is_insensitive:
           type: boolean
-          title: Groß-/Kleinschreibung irrelevant
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         set_permissions:
           type: object
           properties:
@@ -7616,8 +7527,7 @@ components:
           $ref: '#/components/schemas/DataTypeEnum'
         extra_data:
           nullable: true
-          title: Zusätzliche Daten
-          description: Zusätzliche Daten für das benutzerdefinierte Feld, z. B. Auswahloptionen
+          description: Extra data for the custom field, such as select options
     PatchedDocumentRequest:
       type: object
       description: Adds update nested feature
@@ -7633,13 +7543,11 @@ components:
           nullable: true
         title:
           type: string
-          title: Titel
           maxLength: 128
         content:
           type: string
-          title: Inhalt
-          description: Der Inhalt des Dokuments in Textform. Dieses Feld wird primär
-            für die Suche verwendet.
+          description: The raw, text-only data of the document. This field is primarily
+            used for searching.
         tags:
           type: array
           items:
@@ -7647,7 +7555,6 @@ components:
         created:
           type: string
           format: date
-          title: Ausgestellt
         created_date:
           type: string
           format: date
@@ -7662,8 +7569,7 @@ components:
           minimum: 0
           format: int64
           nullable: true
-          title: Archiv-Seriennummer
-          description: Die Position dieses Dokuments in Ihrem physischen Dokumentenarchiv.
+          description: The position of this document in your physical document archive.
         owner:
           type: integer
           nullable: true
@@ -7711,21 +7617,17 @@ components:
           maxLength: 128
         match:
           type: string
-          title: Zuweisungsmuster
           maxLength: 256
         matching_algorithm:
           allOf:
           - $ref: '#/components/schemas/MatchingAlgorithm'
-          title: Zuweisungsalgorithmus
           minimum: 0
           maximum: 2147483647
         is_insensitive:
           type: boolean
-          title: Groß-/Kleinschreibung irrelevant
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         set_permissions:
           type: object
           properties:
@@ -7780,18 +7682,16 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           nullable: true
-          description: Dies ist in der Regel 143 für unverschlüsselte und STARTTLS-Verbindungen
-            und 993 für SSL-Verbindungen.
+          description: This is usually 143 for unencrypted and STARTTLS connections,
+            and 993 for SSL connections.
         imap_security:
           allOf:
           - $ref: '#/components/schemas/ImapSecurityEnum'
-          title: IMAP-Sicherheit
           minimum: 0
           maximum: 2147483647
         username:
           type: string
           minLength: 1
-          title: Benutzername
           maxLength: 256
         password:
           type: string
@@ -7799,17 +7699,15 @@ components:
         character_set:
           type: string
           minLength: 1
-          title: Zeichensatz
-          description: Der Zeichensatz, der bei der Kommunikation mit dem E-Mail-Server
-            verwendet werden soll, wie z. B. „UTF-8“ oder „US-ASCII“.
+          description: The character set to use when communicating with the mail server,
+            such as 'UTF-8' or 'US-ASCII'.
           maxLength: 256
         is_token:
           type: boolean
-          title: Ist Tokenauthentifizierung
+          title: Is token authentication
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         set_permissions:
           type: object
           properties:
@@ -7839,15 +7737,13 @@ components:
         account_type:
           allOf:
           - $ref: '#/components/schemas/AccountTypeEnum'
-          title: Kontotyp
           minimum: 0
           maximum: 2147483647
         expiration:
           type: string
           format: date-time
           nullable: true
-          title: Ablauf
-          description: 'Das Ablaufdatum des Aktualisierungstokens. '
+          description: 'The expiration date of the refresh token. '
     PatchedMailRuleRequest:
       type: object
       properties:
@@ -7859,61 +7755,50 @@ components:
           type: integer
         enabled:
           type: boolean
-          title: Aktiviert
         folder:
           type: string
           minLength: 1
-          title: Ordner
-          description: Unterordner müssen durch ein Trennzeichen, oft einen Punkt
-            („.“) oder einen Schrägstrich („/“), getrennt werden. Dies variiert jedoch
-            je nach Mailserver.
+          description: Subfolders must be separated by a delimiter, often a dot ('.')
+            or slash ('/'), but it varies by mail server.
           maxLength: 256
         filter_from:
           type: string
           nullable: true
-          title: Absender filtern
           maxLength: 256
         filter_to:
           type: string
           nullable: true
-          title: Empfänger filtern
           maxLength: 256
         filter_subject:
           type: string
           nullable: true
-          title: Betreff filtern
           maxLength: 256
         filter_body:
           type: string
           nullable: true
-          title: Nachrichteninhalt filtern
           maxLength: 256
         filter_attachment_filename_include:
           type: string
           nullable: true
-          title: 'Filter: Anhang-Dateiname (inklusiv)'
-          description: Nur Dokumente, die vollständig mit diesem Dateinamen (falls
-            angegeben) übereinstimmen, verarbeiten. Platzhalter wie *.pdf oder *rechnung*
-            sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+          title: Filter attachment filename inclusive
+          description: Only consume documents which entirely match this filename if
+            specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
           maxLength: 256
         filter_attachment_filename_exclude:
           type: string
           nullable: true
-          title: 'Filter: Anhang-Dateiname (exklusiv)'
-          description: Dokumente, die vollständig mit diesem Dateinamen (falls angegeben)
-            übereinstimmen, nicht verarbeiten. Platzhalter wie *.pdf oder *rechnung*
-            sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+          title: Filter attachment filename exclusive
+          description: Do not consume documents which entirely match this filename
+            if specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
           maxLength: 256
         maximum_age:
           type: integer
           maximum: 2147483647
           minimum: 0
-          title: Maximales Alter
-          description: Angegeben in Tagen.
+          description: Specified in days.
         action:
           allOf:
           - $ref: '#/components/schemas/MailRuleActionEnum'
-          title: Aktion
           minimum: 0
           maximum: 2147483647
         action_parameter:
@@ -7924,7 +7809,6 @@ components:
         assign_title_from:
           allOf:
           - $ref: '#/components/schemas/AssignTitleFromEnum'
-          title: Titel zuweisen von
           minimum: 0
           maximum: 2147483647
         assign_tags:
@@ -7935,7 +7819,6 @@ components:
         assign_correspondent_from:
           allOf:
           - $ref: '#/components/schemas/AssignCorrespondentFromEnum'
-          title: Korrespondent zuweisen von
           minimum: 0
           maximum: 2147483647
         assign_correspondent:
@@ -7946,24 +7829,22 @@ components:
           nullable: true
         assign_owner_from_rule:
           type: boolean
-          title: Dokumenten den Regeleigentümer zuweisen
+          title: Assign the rule owner to documents
         order:
           type: integer
         attachment_type:
           allOf:
           - $ref: '#/components/schemas/AttachmentTypeEnum'
-          title: Dateianhangstyp
           description: |-
-            „Inline“-Anhänge schließen eingebettete Bilder mit ein, daher sollte diese Einstellung mit einem Dateinamenfilter kombiniert werden.
+            Inline attachments include embedded images, so it's best to combine this option with a filename filter.
 
-            * `1` - Nur Anhänge verarbeiten.
-            * `2` - Alle Dateien verarbeiten, auch 'inline'-Anhänge.
+            * `1` - Only process attachments.
+            * `2` - Process all files, including 'inline' attachments.
           minimum: 0
           maximum: 2147483647
         consumption_scope:
           allOf:
           - $ref: '#/components/schemas/ConsumptionScopeEnum'
-          title: Verarbeitungsumfang
           minimum: 0
           maximum: 2147483647
         pdf_layout:
@@ -7974,7 +7855,6 @@ components:
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         set_permissions:
           type: object
           properties:
@@ -8012,11 +7892,9 @@ components:
           minLength: 1
         first_name:
           type: string
-          title: Vorname
           maxLength: 150
         last_name:
           type: string
-          title: Nachname
           maxLength: 150
     PatchedSavedViewRequest:
       type: object
@@ -8027,18 +7905,14 @@ components:
           maxLength: 128
         show_on_dashboard:
           type: boolean
-          title: Auf Startseite zeigen
         show_in_sidebar:
           type: boolean
-          title: In Seitenleiste zeigen
         sort_field:
           type: string
           nullable: true
-          title: Sortierfeld
           maxLength: 128
         sort_reverse:
           type: boolean
-          title: Umgekehrte Sortierung
         filter_rules:
           type: array
           items:
@@ -8048,21 +7922,20 @@ components:
           maximum: 2147483647
           minimum: 1
           nullable: true
-          title: Ansichts-Seitengröße
+          title: View page size
         display_mode:
           nullable: true
-          title: Ansichts-Anzeigemodus
+          title: View display mode
           oneOf:
           - $ref: '#/components/schemas/DisplayModeEnum'
           - $ref: '#/components/schemas/BlankEnum'
           - $ref: '#/components/schemas/NullEnum'
         display_fields:
           nullable: true
-          title: Angezeigte Dokumentenfelder
+          title: Document display fields
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
     PatchedStoragePathRequest:
       type: object
       properties:
@@ -8073,24 +7946,19 @@ components:
         path:
           type: string
           minLength: 1
-          title: Pfad
         match:
           type: string
-          title: Zuweisungsmuster
           maxLength: 256
         matching_algorithm:
           allOf:
           - $ref: '#/components/schemas/MatchingAlgorithm'
-          title: Zuweisungsalgorithmus
           minimum: 0
           maximum: 2147483647
         is_insensitive:
           type: boolean
-          title: Groß-/Kleinschreibung irrelevant
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         set_permissions:
           type: object
           properties:
@@ -8127,30 +7995,24 @@ components:
         color:
           type: string
           minLength: 1
-          title: Farbe
           maxLength: 7
         match:
           type: string
-          title: Zuweisungsmuster
           maxLength: 256
         matching_algorithm:
           allOf:
           - $ref: '#/components/schemas/MatchingAlgorithm'
-          title: Zuweisungsalgorithmus
           minimum: 0
           maximum: 2147483647
         is_insensitive:
           type: boolean
-          title: Groß-/Kleinschreibung irrelevant
         is_inbox_tag:
           type: boolean
-          title: Posteingangs-Tag
-          description: Markiert das Tag als Posteingangs-Tag. Neue Dokumente werden
-            immer mit diesem Tag versehen.
+          description: 'Marks this tag as an inbox tag: All newly consumed documents
+            will be tagged with inbox tags.'
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         set_permissions:
           type: object
           properties:
@@ -8186,54 +8048,47 @@ components:
         username:
           type: string
           minLength: 1
-          title: Benutzername
-          description: Erforderlich. 150 Zeichen oder weniger. Nur Buchstaben, Ziffern
-            und @/./+/-/_.
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
           pattern: ^[\w.@+-]+$
           maxLength: 150
         email:
           type: string
           format: email
-          title: E-Mail-Adresse
+          title: Email address
           maxLength: 254
         password:
           type: string
           minLength: 1
         first_name:
           type: string
-          title: Vorname
           maxLength: 150
         last_name:
           type: string
-          title: Nachname
           maxLength: 150
         date_joined:
           type: string
           format: date-time
-          title: Mitglied seit
         is_staff:
           type: boolean
-          title: Mitarbeiter-Status
-          description: Legt fest, ob sich der Benutzer an der Administrationsseite
-            anmelden kann.
+          title: Staff status
+          description: Designates whether the user can log into this admin site.
         is_active:
           type: boolean
-          title: Aktiv
-          description: Legt fest, ob dieser Benutzer aktiv ist. Kann deaktiviert werden,
-            anstatt Benutzer zu löschen.
+          title: Active
+          description: Designates whether this user should be treated as active. Unselect
+            this instead of deleting accounts.
         is_superuser:
           type: boolean
-          title: Administrator-Status
-          description: Legt fest, dass der Benutzer alle Berechtigungen hat, ohne
-            diese einzeln zuweisen zu müssen.
+          title: Superuser status
+          description: Designates that this user has all permissions without explicitly
+            assigning them.
         groups:
           type: array
           items:
             type: integer
-            title: Gruppen
-          title: Gruppen
-          description: Die Gruppen, denen der Benutzer angehört. Ein Benutzer bekommt
-            alle Berechtigungen dieser Gruppen.
+          description: The groups this user belongs to. A user will get all permissions
+            granted to each of their groups.
         user_permissions:
           type: array
           items:
@@ -8248,15 +8103,13 @@ components:
         type:
           allOf:
           - $ref: '#/components/schemas/WorkflowActionTypeEnum'
-          title: Arbeitsablauf-Aktionstyp
+          title: Workflow Action Type
           minimum: 0
           maximum: 2147483647
         assign_title:
           type: string
           nullable: true
-          title: Titel zuweisen
-          description: Dokumenttitel zuweisen (muss eine Jinja2-Vorlage sein, siehe
-            Dokumentation).
+          description: Assign a document title, must  be a Jinja2 template, see documentation.
         assign_tags:
           type: array
           items:
@@ -8274,123 +8127,115 @@ components:
         assign_owner:
           type: integer
           nullable: true
-          title: Diesen Eigentümer zuordnen
+          title: Assign this owner
         assign_view_users:
           type: array
           items:
             type: integer
-            title: Diesen Benutzern Anzeigeberechtigungen erteilen
-          title: Diesen Benutzern Anzeigeberechtigungen erteilen
+            title: Grant view permissions to these users
+          title: Grant view permissions to these users
         assign_view_groups:
           type: array
           items:
             type: integer
-            title: Diesen Gruppen Anzeigeberechtigungen erteilen
-          title: Diesen Gruppen Anzeigeberechtigungen erteilen
+            title: Grant view permissions to these groups
+          title: Grant view permissions to these groups
         assign_change_users:
           type: array
           items:
             type: integer
-            title: Diesen Benutzern Bearbeitungsberechtigungen erteilen
-          title: Diesen Benutzern Bearbeitungsberechtigungen erteilen
+            title: Grant change permissions to these users
+          title: Grant change permissions to these users
         assign_change_groups:
           type: array
           items:
             type: integer
-            title: Diesen Gruppen Bearbeitungsberechtigungen erteilen
-          title: Diesen Gruppen Bearbeitungsberechtigungen erteilen
+            title: Grant change permissions to these groups
+          title: Grant change permissions to these groups
         assign_custom_fields:
           type: array
           items:
             type: integer
-            title: Diese benutzerdefinierten Felder zuweisen
-          title: Diese benutzerdefinierten Felder zuweisen
+            title: Assign these custom fields
+          title: Assign these custom fields
         assign_custom_fields_values:
           nullable: true
-          title: Benutzerdefinierte Feldwerte
-          description: Optionale Werte, die den benutzerdefinierten Feldern zugewiesen
-            werden.
+          title: Custom field values
+          description: Optional values to assign to the custom fields.
         remove_all_tags:
           type: boolean
-          title: Alle Tags entfernen
         remove_tags:
           type: array
           items:
             type: integer
-            title: Diese(n) Tag(s) entfernen
-          title: Diese(n) Tag(s) entfernen
+            title: Remove these tag(s)
+          title: Remove these tag(s)
         remove_all_correspondents:
           type: boolean
-          title: Alle Korrespondenten entfernen
         remove_correspondents:
           type: array
           items:
             type: integer
-            title: Diese(n) Korrespondenten entfernen
-          title: Diese(n) Korrespondenten entfernen
+            title: Remove these correspondent(s)
+          title: Remove these correspondent(s)
         remove_all_document_types:
           type: boolean
-          title: Alle Dokumenttypen entfernen
         remove_document_types:
           type: array
           items:
             type: integer
-            title: Diese(n) Dokumenttyp(en) entfernen
-          title: Diese(n) Dokumenttyp(en) entfernen
+            title: Remove these document type(s)
+          title: Remove these document type(s)
         remove_all_storage_paths:
           type: boolean
-          title: Alle Speicherpfade entfernen
         remove_storage_paths:
           type: array
           items:
             type: integer
-            title: Diese(n) Speicherpfad(e) entfernen
-          title: Diese(n) Speicherpfad(e) entfernen
+            title: Remove these storage path(s)
+          title: Remove these storage path(s)
         remove_custom_fields:
           type: array
           items:
             type: integer
-            title: Diese benutzerdefinierten Felder entfernen
-          title: Diese benutzerdefinierten Felder entfernen
+            title: Remove these custom fields
+          title: Remove these custom fields
         remove_all_custom_fields:
           type: boolean
-          title: Alle benutzerdefinierten Felder entfernen
         remove_all_owners:
           type: boolean
-          title: Alle Eigentümer entfernen
         remove_owners:
           type: array
           items:
             type: integer
-            title: Diese(n) Eigentümer entfernen
-          title: Diese(n) Eigentümer entfernen
+            title: Remove these owner(s)
+          title: Remove these owner(s)
         remove_all_permissions:
           type: boolean
-          title: Alle Berechtigungen entfernen
         remove_view_users:
           type: array
           items:
             type: integer
-            title: Anzeigeberechtigungen für diese Benutzer entfernen
-          title: Anzeigeberechtigungen für diese Benutzer entfernen
+            title: Remove view permissions for these users
+          title: Remove view permissions for these users
         remove_view_groups:
           type: array
           items:
             type: integer
-            title: Anzeigeberechtigungen für diese Gruppen entfernen
-          title: Anzeigeberechtigungen für diese Gruppen entfernen
+            title: Remove view permissions for these groups
+          title: Remove view permissions for these groups
         remove_change_users:
           type: array
           items:
             type: integer
-            title: Bearbeitungsberechtigungen für diese Benutzer entfernen
-          title: Bearbeitungsberechtigungen für diese Benutzer entfernen
+            title: Remove change permissions for these users
+          title: Remove change permissions for these users
         remove_change_groups:
           type: array
           items:
             type: integer
-            title: Bearbeitungsberechtigungen für diese Gruppen entfernen
-          title: Bearbeitungsberechtigungen für diese Gruppen entfernen
+            title: Remove change permissions for these groups
+          title: Remove change permissions for these groups
         email:
           allOf:
           - $ref: '#/components/schemas/WorkflowActionEmailRequest'
@@ -8410,7 +8255,6 @@ components:
           type: integer
         enabled:
           type: boolean
-          title: Aktiviert
         triggers:
           type: array
           items:
@@ -8440,121 +8284,108 @@ components:
         filter_path:
           type: string
           nullable: true
-          title: Pfad filtern
-          description: Nur Dokumente, die mit diesem Pfad (falls angegeben) übereinstimmen,
-            verarbeiten. Platzhalter wie * sind erlaubt. Groß- und Kleinschreibung
-            wird nicht beachtet.
+          description: Only consume documents with a path that matches this if specified.
+            Wildcards specified as * are allowed. Case insensitive.
           maxLength: 256
         filter_filename:
           type: string
           nullable: true
-          title: Dateinamen filtern
-          description: Nur Dokumente, die vollständig mit diesem Dateinamen (falls
-            angegeben) übereinstimmen, verarbeiten. Platzhalter wie *.pdf oder *rechnung*
-            sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+          description: Only consume documents which entirely match this filename if
+            specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
           maxLength: 256
         filter_mailrule:
           type: integer
           nullable: true
-          title: Dokumente aus dieser E-Mail-Regel filtern
+          title: Filter documents from this mail rule
         matching_algorithm:
           allOf:
           - $ref: '#/components/schemas/WorkflowTriggerMatchingAlgorithmEnum'
-          title: Zuweisungsalgorithmus
           minimum: 0
           maximum: 2147483647
         match:
           type: string
-          title: Zuweisungsmuster
           maxLength: 256
         is_insensitive:
           type: boolean
-          title: Groß-/Kleinschreibung irrelevant
         filter_has_tags:
           type: array
           items:
             type: integer
-            title: Hat diese(n) Tag(s)
-          title: Hat diese(n) Tag(s)
+            title: Has these tag(s)
+          title: Has these tag(s)
         filter_has_all_tags:
           type: array
           items:
             type: integer
-            title: Hat alle diese Tags
-          title: Hat alle diese Tags
+            title: Has all of these tag(s)
+          title: Has all of these tag(s)
         filter_has_not_tags:
           type: array
           items:
             type: integer
-            title: Hat diese Tags nicht
-          title: Hat diese Tags nicht
+            title: Does not have these tag(s)
+          title: Does not have these tag(s)
         filter_custom_field_query:
           type: string
           nullable: true
-          title: Filtern Benutzerdefinierte Feldabfrage
-          description: JSON-kodierte Abfrage eines benutzerdefinierten Felds.
+          description: JSON-encoded custom field query expression.
         filter_has_not_correspondents:
           type: array
           items:
             type: integer
-            title: Hat diese Korrespondenten nicht
-          title: Hat diese Korrespondenten nicht
+            title: Does not have these correspondent(s)
+          title: Does not have these correspondent(s)
         filter_has_not_document_types:
           type: array
           items:
             type: integer
-            title: Hat diese Dokumenttypen nicht
-          title: Hat diese Dokumenttypen nicht
+            title: Does not have these document type(s)
+          title: Does not have these document type(s)
         filter_has_not_storage_paths:
           type: array
           items:
             type: integer
-            title: Hat diese Speicherpfade nicht
-          title: Hat diese Speicherpfade nicht
+            title: Does not have these storage path(s)
+          title: Does not have these storage path(s)
         filter_has_correspondent:
           type: integer
           nullable: true
-          title: Hat diesen Korrespondenten
+          title: Has this correspondent
         filter_has_document_type:
           type: integer
           nullable: true
-          title: Hat diesen Dokumenttyp
+          title: Has this document type
         filter_has_storage_path:
           type: integer
           nullable: true
-          title: Hat diesen Speicherpfad
+          title: Has this storage path
         schedule_offset_days:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
-          title: Zeitplanversatz (Tage)
-          description: Die Anzahl der Tage, um die der Zeitplanauslöser verschoben
-            werden soll.
+          description: The number of days to offset the schedule trigger by.
         schedule_is_recurring:
           type: boolean
-          title: Zeitplan wiederholt sich
-          description: Ob der Zeitplan wiederholt werden soll.
+          description: If the schedule should be recurring.
         schedule_recurring_interval_days:
           type: integer
           maximum: 2147483647
           minimum: 1
-          title: Zeitplan-Wiederholungsverzögerung in Tagen
-          description: Die Anzahl der Tage zwischen wiederkehrenden Zeitplanauslösern.
+          title: Schedule recurring delay in days
+          description: The number of days between recurring schedule triggers.
         schedule_date_field:
           allOf:
           - $ref: '#/components/schemas/ScheduleDateFieldEnum'
-          title: Zeitplan-Datumsfeld
           description: |-
-            Das zu prüfende Feld für einen Zeitplanauslöser.
+            The field to check for a schedule trigger.
 
-            * `added` - Hinzugefügt
-            * `created` - Ausgestellt
-            * `modified` - Geändert
-            * `custom_field` - Benutzerdefiniertes Feld
+            * `added` - Added
+            * `created` - Created
+            * `modified` - Modified
+            * `custom_field` - Custom Field
         schedule_date_custom_field:
           type: integer
           nullable: true
-          title: Benutzerdefiniertes Zeitplan-Datumsfeld
     PdfLayoutEnum:
       enum:
       - 0
@@ -8564,11 +8395,11 @@ components:
       - 4
       type: integer
       description: |-
-        * `0` - Systemstandard
-        * `1` - Text, dann HTML
-        * `2` - HTML, dann Text
-        * `3` - Nur HTML
-        * `4` - Nur Text
+        * `0` - System default
+        * `1` - Text, then HTML
+        * `2` - HTML, then text
+        * `3` - HTML only
+        * `4` - Text only
     PostDocumentRequest:
       type: object
       properties:
@@ -8628,31 +8459,26 @@ components:
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         rule:
           type: integer
           readOnly: true
         folder:
           type: string
           readOnly: true
-          title: Ordner
         uid:
           type: string
           readOnly: true
         subject:
           type: string
           readOnly: true
-          title: Betreff
         received:
           type: string
           format: date-time
           readOnly: true
-          title: Empfangen
         processed:
           type: string
           format: date-time
           readOnly: true
-          title: Verarbeitet
         status:
           type: string
           readOnly: true
@@ -8660,7 +8486,6 @@ components:
           type: string
           readOnly: true
           nullable: true
-          title: Fehler
       required:
       - error
       - folder
@@ -8677,7 +8502,6 @@ components:
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
     Profile:
       type: object
       properties:
@@ -8688,15 +8512,12 @@ components:
           type: string
         first_name:
           type: string
-          title: Vorname
           maxLength: 150
         last_name:
           type: string
-          title: Nachname
           maxLength: 150
         auth_token:
           type: string
-          title: Schlüssel
           readOnly: true
         social_accounts:
           type: array
@@ -8766,54 +8587,54 @@ components:
       - 47
       type: integer
       description: |-
-        * `0` - Titel enthält
-        * `1` - Inhalt enthält
-        * `2` - ASN ist
-        * `3` - Korrespondent ist
-        * `4` - Dokumenttyp ist
-        * `5` - Ist im Posteingang
-        * `6` - Hat Tag
-        * `7` - Hat irgendein Tag
-        * `8` - Ausgestellt vor
-        * `9` - Ausgestellt nach
-        * `10` - Ausgestellt im Jahr
-        * `11` - Ausgestellt im Monat
-        * `12` - Ausstellungstag ist
-        * `13` - Hinzugefügt vor
-        * `14` - Hinzugefügt nach
-        * `15` - Geändert vor
-        * `16` - Geändert nach
-        * `17` - Hat nicht folgendes Tag
-        * `18` - Dokument hat keine ASN
-        * `19` - Titel oder Inhalt enthält
-        * `20` - Volltextsuche
-        * `21` - Ähnliche Dokumente
-        * `22` - hat Tags in
-        * `23` - ASN größer als
-        * `24` - ASN kleiner als
-        * `25` - Speicherpfad ist
-        * `26` - hat Korrespondenten in
-        * `27` - hat keinen Korrespondenten in
-        * `28` - hat Dokumenttyp in
-        * `29` - hat keinen Dokumenttyp in
-        * `30` - hat Speicherpfad in
-        * `31` - hat keinen Speicherpfad in
-        * `32` - Eigentümer ist
-        * `33` - hat Eigentümer in
-        * `34` - hat keinen Eigentümer
-        * `35` - hat keinen Eigentümer in
-        * `36` - Hat benutzerdefinierten Feld-Wert
-        * `37` - Ist von mir freigegeben
-        * `38` - hat benutzerdefinierte Felder
-        * `39` - hat die benutzerdefinierten Felder
-        * `40` - hat nicht die benutzerdefinierten Felder
-        * `41` - hat nicht das benutzerdefinierte Feld
-        * `42` - benutzerdefinierte Feldabfrage
-        * `43` - erstellt zu
-        * `44` - erstellt von
-        * `45` - hinzugefügt zu
-        * `46` - hinzugefügt von
-        * `47` - MIME-Typ ist
+        * `0` - title contains
+        * `1` - content contains
+        * `2` - ASN is
+        * `3` - correspondent is
+        * `4` - document type is
+        * `5` - is in inbox
+        * `6` - has tag
+        * `7` - has any tag
+        * `8` - created before
+        * `9` - created after
+        * `10` - created year is
+        * `11` - created month is
+        * `12` - created day is
+        * `13` - added before
+        * `14` - added after
+        * `15` - modified before
+        * `16` - modified after
+        * `17` - does not have tag
+        * `18` - does not have ASN
+        * `19` - title or content contains
+        * `20` - fulltext query
+        * `21` - more like this
+        * `22` - has tags in
+        * `23` - ASN greater than
+        * `24` - ASN less than
+        * `25` - storage path is
+        * `26` - has correspondent in
+        * `27` - does not have correspondent in
+        * `28` - has document type in
+        * `29` - does not have document type in
+        * `30` - has storage path in
+        * `31` - does not have storage path in
+        * `32` - owner is
+        * `33` - has owner in
+        * `34` - does not have owner
+        * `35` - does not have owner in
+        * `36` - has custom field value
+        * `37` - is shared by me
+        * `38` - has custom fields
+        * `39` - has custom field in
+        * `40` - does not have custom field in
+        * `41` - does not have custom field
+        * `42` - custom fields query
+        * `43` - created to
+        * `44` - created from
+        * `45` - added to
+        * `46` - added from
+        * `47` - mime type is
     SanityCheck:
       type: object
       properties:
@@ -8839,18 +8660,14 @@ components:
           maxLength: 128
         show_on_dashboard:
           type: boolean
-          title: Auf Startseite zeigen
         show_in_sidebar:
           type: boolean
-          title: In Seitenleiste zeigen
         sort_field:
           type: string
           nullable: true
-          title: Sortierfeld
           maxLength: 128
         sort_reverse:
           type: boolean
-          title: Umgekehrte Sortierung
         filter_rules:
           type: array
           items:
@@ -8860,21 +8677,20 @@ components:
           maximum: 2147483647
           minimum: 1
           nullable: true
-          title: Ansichts-Seitengröße
+          title: View page size
         display_mode:
           nullable: true
-          title: Ansichts-Anzeigemodus
+          title: View display mode
           oneOf:
           - $ref: '#/components/schemas/DisplayModeEnum'
           - $ref: '#/components/schemas/BlankEnum'
           - $ref: '#/components/schemas/NullEnum'
         display_fields:
           nullable: true
-          title: Angezeigte Dokumentenfelder
+          title: Document display fields
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         user_can_change:
           type: boolean
           readOnly: true
@@ -8891,13 +8707,11 @@ components:
         rule_type:
           allOf:
           - $ref: '#/components/schemas/RuleTypeEnum'
-          title: Regeltyp
           minimum: 0
           maximum: 2147483647
         value:
           type: string
           nullable: true
-          title: Wert
           maxLength: 255
       required:
       - rule_type
@@ -8907,13 +8721,11 @@ components:
         rule_type:
           allOf:
           - $ref: '#/components/schemas/RuleTypeEnum'
-          title: Regeltyp
           minimum: 0
           maximum: 2147483647
         value:
           type: string
           nullable: true
-          title: Wert
           maxLength: 255
       required:
       - rule_type
@@ -8926,18 +8738,14 @@ components:
           maxLength: 128
         show_on_dashboard:
           type: boolean
-          title: Auf Startseite zeigen
         show_in_sidebar:
           type: boolean
-          title: In Seitenleiste zeigen
         sort_field:
           type: string
           nullable: true
-          title: Sortierfeld
           maxLength: 128
         sort_reverse:
           type: boolean
-          title: Umgekehrte Sortierung
         filter_rules:
           type: array
           items:
@@ -8947,21 +8755,20 @@ components:
           maximum: 2147483647
           minimum: 1
           nullable: true
-          title: Ansichts-Seitengröße
+          title: View page size
         display_mode:
           nullable: true
-          title: Ansichts-Anzeigemodus
+          title: View display mode
           oneOf:
           - $ref: '#/components/schemas/DisplayModeEnum'
           - $ref: '#/components/schemas/BlankEnum'
           - $ref: '#/components/schemas/NullEnum'
         display_fields:
           nullable: true
-          title: Angezeigte Dokumentenfelder
+          title: Document display fields
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
       required:
       - filter_rules
       - name
@@ -8975,10 +8782,10 @@ components:
       - custom_field
       type: string
       description: |-
-        * `added` - Hinzugefügt
-        * `created` - Ausgestellt
-        * `modified` - Geändert
-        * `custom_field` - Benutzerdefiniertes Feld
+        * `added` - Added
+        * `created` - Created
+        * `modified` - Modified
+        * `custom_field` - Custom Field
     SearchResult:
       type: object
       properties:
@@ -9085,19 +8892,16 @@ components:
           type: string
           format: date-time
           readOnly: true
-          title: Ausgestellt
         expiration:
           type: string
           format: date-time
           nullable: true
-          title: Ablauf
         slug:
           type: string
           readOnly: true
           pattern: ^[-a-zA-Z0-9_]+$
         document:
           type: integer
-          title: Dokument
         file_version:
           $ref: '#/components/schemas/FileVersionEnum'
       required:
@@ -9111,10 +8915,8 @@ components:
           type: string
           format: date-time
           nullable: true
-          title: Ablauf
         document:
           type: integer
-          title: Dokument
         file_version:
           $ref: '#/components/schemas/FileVersionEnum'
     SkipArchiveFileEnum:
@@ -9124,9 +8926,9 @@ components:
       - always
       type: string
       description: |-
-        * `never` - nie
+        * `never` - never
         * `with_text` - with_text
-        * `always` - immer
+        * `always` - always
     SocialAccount:
       type: object
       properties:
@@ -9135,7 +8937,6 @@ components:
           readOnly: true
         provider:
           type: string
-          title: Anbieter
           maxLength: 200
         name:
           type: string
@@ -9150,7 +8951,6 @@ components:
         provider:
           type: string
           minLength: 1
-          title: Anbieter
           maxLength: 200
       required:
       - provider
@@ -9162,10 +8962,10 @@ components:
       - 4
       type: integer
       description: |-
-        * `1` - Importordner
-        * `2` - API-Upload
-        * `3` - E-Mail-Abruf
-        * `4` - Weboberfläche
+        * `1` - Consume Folder
+        * `2` - Api Upload
+        * `3` - Mail Fetch
+        * `4` - Web UI
     StatusEnum:
       enum:
       - FAILURE
@@ -9208,27 +9008,22 @@ components:
           maxLength: 128
         path:
           type: string
-          title: Pfad
         match:
           type: string
-          title: Zuweisungsmuster
           maxLength: 256
         matching_algorithm:
           allOf:
           - $ref: '#/components/schemas/MatchingAlgorithm'
-          title: Zuweisungsalgorithmus
           minimum: 0
           maximum: 2147483647
         is_insensitive:
           type: boolean
-          title: Groß-/Kleinschreibung irrelevant
         document_count:
           type: integer
           readOnly: true
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         user_can_change:
           type: boolean
           readOnly: true
@@ -9259,24 +9054,19 @@ components:
         path:
           type: string
           minLength: 1
-          title: Pfad
         match:
           type: string
-          title: Zuweisungsmuster
           maxLength: 256
         matching_algorithm:
           allOf:
           - $ref: '#/components/schemas/MatchingAlgorithm'
-          title: Zuweisungsalgorithmus
           minimum: 0
           maximum: 2147483647
         is_insensitive:
           type: boolean
-          title: Groß-/Kleinschreibung irrelevant
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         set_permissions:
           type: object
           properties:
@@ -9380,36 +9170,30 @@ components:
           maxLength: 128
         color:
           type: string
-          title: Farbe
           maxLength: 7
         text_color:
           type: string
           readOnly: true
         match:
           type: string
-          title: Zuweisungsmuster
           maxLength: 256
         matching_algorithm:
           allOf:
           - $ref: '#/components/schemas/MatchingAlgorithm'
-          title: Zuweisungsalgorithmus
           minimum: 0
           maximum: 2147483647
         is_insensitive:
           type: boolean
-          title: Groß-/Kleinschreibung irrelevant
         is_inbox_tag:
           type: boolean
-          title: Posteingangs-Tag
-          description: Markiert das Tag als Posteingangs-Tag. Neue Dokumente werden
-            immer mit diesem Tag versehen.
+          description: 'Marks this tag as an inbox tag: All newly consumed documents
+            will be tagged with inbox tags.'
         document_count:
           type: integer
           readOnly: true
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         user_can_change:
           type: boolean
           readOnly: true
@@ -9449,30 +9233,24 @@ components:
         color:
           type: string
           minLength: 1
-          title: Farbe
           maxLength: 7
         match:
           type: string
-          title: Zuweisungsmuster
           maxLength: 256
         matching_algorithm:
           allOf:
           - $ref: '#/components/schemas/MatchingAlgorithm'
-          title: Zuweisungsalgorithmus
           minimum: 0
           maximum: 2147483647
         is_insensitive:
           type: boolean
-          title: Groß-/Kleinschreibung irrelevant
         is_inbox_tag:
           type: boolean
-          title: Posteingangs-Tag
-          description: Markiert das Tag als Posteingangs-Tag. Neue Dokumente werden
-            immer mit diesem Tag versehen.
+          description: 'Marks this tag as an inbox tag: All newly consumed documents
+            will be tagged with inbox tags.'
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
         set_permissions:
           type: object
           properties:
@@ -9512,10 +9290,10 @@ components:
       - index_optimize
       type: string
       description: |-
-        * `consume_file` - Datei verarbeiten
-        * `train_classifier` - Klassifikator trainieren
-        * `check_sanity` - Plausibilität prüfen
-        * `index_optimize` - Indexoptimierung
+        * `consume_file` - Consume File
+        * `train_classifier` - Train Classifier
+        * `check_sanity` - Check Sanity
+        * `index_optimize` - Index Optimize
     Tasks:
       type: object
       properties:
@@ -9540,57 +9318,54 @@ components:
           readOnly: true
         task_id:
           type: string
-          title: Aufgaben-ID
-          description: Celery-ID für die ausgeführte Aufgabe
+          description: Celery ID for the Task that was run
           maxLength: 255
         task_name:
           nullable: true
-          title: Aufgabenname
           description: |-
-            Name der ausgeführten Aufgabe
+            Name of the task that was run
 
-            * `consume_file` - Datei verarbeiten
-            * `train_classifier` - Klassifikator trainieren
-            * `check_sanity` - Plausibilität prüfen
-            * `index_optimize` - Indexoptimierung
+            * `consume_file` - Consume File
+            * `train_classifier` - Train Classifier
+            * `check_sanity` - Check Sanity
+            * `index_optimize` - Index Optimize
           oneOf:
           - $ref: '#/components/schemas/TaskNameEnum'
           - $ref: '#/components/schemas/NullEnum'
         task_file_name:
           type: string
           nullable: true
-          title: Aufgaben-Dateiname
-          description: Name der Datei, für die die Aufgabe ausgeführt wurde
+          title: Task Filename
+          description: Name of the file which the Task was run for
           maxLength: 255
         date_created:
           type: string
           format: date-time
           nullable: true
-          title: Erstellungsdatum/-zeit
-          description: Zeitpunkt, an dem das Ergebnis der Aufgabe erstellt wurde (in
-            UTC)
+          title: Created DateTime
+          description: Datetime field when the task result was created in UTC
         date_done:
           type: string
           format: date-time
           nullable: true
-          title: Abschlussdatum/-zeit
-          description: Zeitpunkt, an dem die Aufgabe abgeschlossen wurde (in UTC)
+          title: Completed DateTime
+          description: Datetime field when the task was completed in UTC
         type:
           allOf:
           - $ref: '#/components/schemas/TasksViewTypeEnum'
-          title: Aufgabentyp
+          title: Task Type
           description: |-
-            Art der ausgeführten Aufgabe
+            The type of task that was run
 
-            * `auto_task` - Automatische Aufgabe
-            * `scheduled_task` - Geplante Aufgabe
-            * `manual_task` - Manuelle Aufgabe
+            * `auto_task` - Auto Task
+            * `scheduled_task` - Scheduled Task
+            * `manual_task` - Manual Task
         status:
           allOf:
           - $ref: '#/components/schemas/StatusEnum'
-          title: Aufgabenstatus
+          title: Task State
           description: |-
-            Aktueller Status der laufenden Aufgabe
+            Current state of the task being run
 
             * `FAILURE` - FAILURE
             * `PENDING` - PENDING
@@ -9602,13 +9377,11 @@ components:
         result:
           type: string
           nullable: true
-          title: Ergebnisdaten
-          description: Die von der Aufgabe zurückgegebenen Daten
+          title: Result Data
+          description: The data returned by the task
         acknowledged:
           type: boolean
-          title: Bestätigt
-          description: Wenn die Aufgabe über die Benutzeroberfläche oder die API bestätigt
-            wird
+          description: If the task is acknowledged via the frontend or API
         related_document:
           type: string
           nullable: true
@@ -9616,7 +9389,6 @@ components:
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
       required:
       - id
       - related_document
@@ -9627,19 +9399,17 @@ components:
         task_id:
           type: string
           minLength: 1
-          title: Aufgaben-ID
-          description: Celery-ID für die ausgeführte Aufgabe
+          description: Celery ID for the Task that was run
           maxLength: 255
         task_name:
           nullable: true
-          title: Aufgabenname
           description: |-
-            Name der ausgeführten Aufgabe
+            Name of the task that was run
 
-            * `consume_file` - Datei verarbeiten
-            * `train_classifier` - Klassifikator trainieren
-            * `check_sanity` - Plausibilität prüfen
-            * `index_optimize` - Indexoptimierung
+            * `consume_file` - Consume File
+            * `train_classifier` - Train Classifier
+            * `check_sanity` - Check Sanity
+            * `index_optimize` - Index Optimize
           oneOf:
           - $ref: '#/components/schemas/TaskNameEnum'
           - $ref: '#/components/schemas/NullEnum'
@@ -9647,38 +9417,37 @@ components:
           type: string
           nullable: true
           minLength: 1
-          title: Aufgaben-Dateiname
-          description: Name der Datei, für die die Aufgabe ausgeführt wurde
+          title: Task Filename
+          description: Name of the file which the Task was run for
           maxLength: 255
         date_created:
           type: string
           format: date-time
           nullable: true
-          title: Erstellungsdatum/-zeit
-          description: Zeitpunkt, an dem das Ergebnis der Aufgabe erstellt wurde (in
-            UTC)
+          title: Created DateTime
+          description: Datetime field when the task result was created in UTC
         date_done:
           type: string
           format: date-time
           nullable: true
-          title: Abschlussdatum/-zeit
-          description: Zeitpunkt, an dem die Aufgabe abgeschlossen wurde (in UTC)
+          title: Completed DateTime
+          description: Datetime field when the task was completed in UTC
         type:
           allOf:
           - $ref: '#/components/schemas/TasksViewTypeEnum'
-          title: Aufgabentyp
+          title: Task Type
           description: |-
-            Art der ausgeführten Aufgabe
+            The type of task that was run
 
-            * `auto_task` - Automatische Aufgabe
-            * `scheduled_task` - Geplante Aufgabe
-            * `manual_task` - Manuelle Aufgabe
+            * `auto_task` - Auto Task
+            * `scheduled_task` - Scheduled Task
+            * `manual_task` - Manual Task
         status:
           allOf:
           - $ref: '#/components/schemas/StatusEnum'
-          title: Aufgabenstatus
+          title: Task State
           description: |-
-            Aktueller Status der laufenden Aufgabe
+            Current state of the task being run
 
             * `FAILURE` - FAILURE
             * `PENDING` - PENDING
@@ -9691,17 +9460,14 @@ components:
           type: string
           nullable: true
           minLength: 1
-          title: Ergebnisdaten
-          description: Die von der Aufgabe zurückgegebenen Daten
+          title: Result Data
+          description: The data returned by the task
         acknowledged:
           type: boolean
-          title: Bestätigt
-          description: Wenn die Aufgabe über die Benutzeroberfläche oder die API bestätigt
-            wird
+          description: If the task is acknowledged via the frontend or API
         owner:
           type: integer
           nullable: true
-          title: Eigentümer
       required:
       - task_id
     TasksViewTypeEnum:
@@ -9711,9 +9477,9 @@ components:
       - manual_task
       type: string
       description: |-
-        * `auto_task` - Automatische Aufgabe
-        * `scheduled_task` - Geplante Aufgabe
-        * `manual_task` - Manuelle Aufgabe
+        * `auto_task` - Auto Task
+        * `scheduled_task` - Scheduled Task
+        * `manual_task` - Manual Task
     TrashActionEnum:
       enum:
       - restore
@@ -9762,9 +9528,9 @@ components:
       - none
       type: string
       description: |-
-        * `clean` - bereinigen
+        * `clean` - clean
         * `clean-final` - clean-final
-        * `none` - keine
+        * `none` - none
     User:
       type: object
       properties:
@@ -9773,53 +9539,47 @@ components:
           readOnly: true
         username:
           type: string
-          title: Benutzername
-          description: Erforderlich. 150 Zeichen oder weniger. Nur Buchstaben, Ziffern
-            und @/./+/-/_.
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
           pattern: ^[\w.@+-]+$
           maxLength: 150
         email:
           type: string
           format: email
-          title: E-Mail-Adresse
+          title: Email address
           maxLength: 254
         password:
           type: string
         first_name:
           type: string
-          title: Vorname
           maxLength: 150
         last_name:
           type: string
-          title: Nachname
           maxLength: 150
         date_joined:
           type: string
           format: date-time
-          title: Mitglied seit
         is_staff:
           type: boolean
-          title: Mitarbeiter-Status
-          description: Legt fest, ob sich der Benutzer an der Administrationsseite
-            anmelden kann.
+          title: Staff status
+          description: Designates whether the user can log into this admin site.
         is_active:
           type: boolean
-          title: Aktiv
-          description: Legt fest, ob dieser Benutzer aktiv ist. Kann deaktiviert werden,
-            anstatt Benutzer zu löschen.
+          title: Active
+          description: Designates whether this user should be treated as active. Unselect
+            this instead of deleting accounts.
         is_superuser:
           type: boolean
-          title: Administrator-Status
-          description: Legt fest, dass der Benutzer alle Berechtigungen hat, ohne
-            diese einzeln zuweisen zu müssen.
+          title: Superuser status
+          description: Designates that this user has all permissions without explicitly
+            assigning them.
         groups:
           type: array
           items:
             type: integer
-            title: Gruppen
-          title: Gruppen
-          description: Die Gruppen, denen der Benutzer angehört. Ein Benutzer bekommt
-            alle Berechtigungen dieser Gruppen.
+            title: Groups
+          description: The groups this user belongs to. A user will get all permissions
+            granted to each of their groups.
         user_permissions:
           type: array
           items:
@@ -9843,54 +9603,47 @@ components:
         username:
           type: string
           minLength: 1
-          title: Benutzername
-          description: Erforderlich. 150 Zeichen oder weniger. Nur Buchstaben, Ziffern
-            und @/./+/-/_.
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
           pattern: ^[\w.@+-]+$
           maxLength: 150
         email:
           type: string
           format: email
-          title: E-Mail-Adresse
+          title: Email address
           maxLength: 254
         password:
           type: string
           minLength: 1
         first_name:
           type: string
-          title: Vorname
           maxLength: 150
         last_name:
           type: string
-          title: Nachname
           maxLength: 150
         date_joined:
           type: string
           format: date-time
-          title: Mitglied seit
         is_staff:
           type: boolean
-          title: Mitarbeiter-Status
-          description: Legt fest, ob sich der Benutzer an der Administrationsseite
-            anmelden kann.
+          title: Staff status
+          description: Designates whether the user can log into this admin site.
         is_active:
           type: boolean
-          title: Aktiv
-          description: Legt fest, ob dieser Benutzer aktiv ist. Kann deaktiviert werden,
-            anstatt Benutzer zu löschen.
+          title: Active
+          description: Designates whether this user should be treated as active. Unselect
+            this instead of deleting accounts.
         is_superuser:
           type: boolean
-          title: Administrator-Status
-          description: Legt fest, dass der Benutzer alle Berechtigungen hat, ohne
-            diese einzeln zuweisen zu müssen.
+          title: Superuser status
+          description: Designates that this user has all permissions without explicitly
+            assigning them.
         groups:
           type: array
           items:
             type: integer
-            title: Gruppen
-          title: Gruppen
-          description: Die Gruppen, denen der Benutzer angehört. Ein Benutzer bekommt
-            alle Berechtigungen dieser Gruppen.
+          description: The groups this user belongs to. A user will get all permissions
+            granted to each of their groups.
         user_permissions:
           type: array
           items:
@@ -9911,7 +9664,6 @@ components:
           type: integer
         enabled:
           type: boolean
-          title: Aktiviert
         triggers:
           type: array
           items:
@@ -9934,15 +9686,13 @@ components:
         type:
           allOf:
           - $ref: '#/components/schemas/WorkflowActionTypeEnum'
-          title: Arbeitsablauf-Aktionstyp
+          title: Workflow Action Type
           minimum: 0
           maximum: 2147483647
         assign_title:
           type: string
           nullable: true
-          title: Titel zuweisen
-          description: Dokumenttitel zuweisen (muss eine Jinja2-Vorlage sein, siehe
-            Dokumentation).
+          description: Assign a document title, must  be a Jinja2 template, see documentation.
         assign_tags:
           type: array
           items:
@@ -9960,123 +9710,115 @@ components:
         assign_owner:
           type: integer
           nullable: true
-          title: Diesen Eigentümer zuordnen
+          title: Assign this owner
         assign_view_users:
           type: array
           items:
             type: integer
-            title: Diesen Benutzern Anzeigeberechtigungen erteilen
-          title: Diesen Benutzern Anzeigeberechtigungen erteilen
+            title: Grant view permissions to these users
+          title: Grant view permissions to these users
         assign_view_groups:
           type: array
           items:
             type: integer
-            title: Diesen Gruppen Anzeigeberechtigungen erteilen
-          title: Diesen Gruppen Anzeigeberechtigungen erteilen
+            title: Grant view permissions to these groups
+          title: Grant view permissions to these groups
         assign_change_users:
           type: array
           items:
             type: integer
-            title: Diesen Benutzern Bearbeitungsberechtigungen erteilen
-          title: Diesen Benutzern Bearbeitungsberechtigungen erteilen
+            title: Grant change permissions to these users
+          title: Grant change permissions to these users
         assign_change_groups:
           type: array
           items:
             type: integer
-            title: Diesen Gruppen Bearbeitungsberechtigungen erteilen
-          title: Diesen Gruppen Bearbeitungsberechtigungen erteilen
+            title: Grant change permissions to these groups
+          title: Grant change permissions to these groups
         assign_custom_fields:
           type: array
           items:
             type: integer
-            title: Diese benutzerdefinierten Felder zuweisen
-          title: Diese benutzerdefinierten Felder zuweisen
+            title: Assign these custom fields
+          title: Assign these custom fields
         assign_custom_fields_values:
           nullable: true
-          title: Benutzerdefinierte Feldwerte
-          description: Optionale Werte, die den benutzerdefinierten Feldern zugewiesen
-            werden.
+          title: Custom field values
+          description: Optional values to assign to the custom fields.
         remove_all_tags:
           type: boolean
-          title: Alle Tags entfernen
         remove_tags:
           type: array
           items:
             type: integer
-            title: Diese(n) Tag(s) entfernen
-          title: Diese(n) Tag(s) entfernen
+            title: Remove these tag(s)
+          title: Remove these tag(s)
         remove_all_correspondents:
           type: boolean
-          title: Alle Korrespondenten entfernen
         remove_correspondents:
           type: array
           items:
             type: integer
-            title: Diese(n) Korrespondenten entfernen
-          title: Diese(n) Korrespondenten entfernen
+            title: Remove these correspondent(s)
+          title: Remove these correspondent(s)
         remove_all_document_types:
           type: boolean
-          title: Alle Dokumenttypen entfernen
         remove_document_types:
           type: array
           items:
             type: integer
-            title: Diese(n) Dokumenttyp(en) entfernen
-          title: Diese(n) Dokumenttyp(en) entfernen
+            title: Remove these document type(s)
+          title: Remove these document type(s)
         remove_all_storage_paths:
           type: boolean
-          title: Alle Speicherpfade entfernen
         remove_storage_paths:
           type: array
           items:
             type: integer
-            title: Diese(n) Speicherpfad(e) entfernen
-          title: Diese(n) Speicherpfad(e) entfernen
+            title: Remove these storage path(s)
+          title: Remove these storage path(s)
         remove_custom_fields:
           type: array
           items:
             type: integer
-            title: Diese benutzerdefinierten Felder entfernen
-          title: Diese benutzerdefinierten Felder entfernen
+            title: Remove these custom fields
+          title: Remove these custom fields
         remove_all_custom_fields:
           type: boolean
-          title: Alle benutzerdefinierten Felder entfernen
         remove_all_owners:
           type: boolean
-          title: Alle Eigentümer entfernen
         remove_owners:
           type: array
           items:
             type: integer
-            title: Diese(n) Eigentümer entfernen
-          title: Diese(n) Eigentümer entfernen
+            title: Remove these owner(s)
+          title: Remove these owner(s)
         remove_all_permissions:
           type: boolean
-          title: Alle Berechtigungen entfernen
         remove_view_users:
           type: array
           items:
             type: integer
-            title: Anzeigeberechtigungen für diese Benutzer entfernen
-          title: Anzeigeberechtigungen für diese Benutzer entfernen
+            title: Remove view permissions for these users
+          title: Remove view permissions for these users
         remove_view_groups:
           type: array
           items:
             type: integer
-            title: Anzeigeberechtigungen für diese Gruppen entfernen
-          title: Anzeigeberechtigungen für diese Gruppen entfernen
+            title: Remove view permissions for these groups
+          title: Remove view permissions for these groups
         remove_change_users:
           type: array
           items:
             type: integer
-            title: Bearbeitungsberechtigungen für diese Benutzer entfernen
-          title: Bearbeitungsberechtigungen für diese Benutzer entfernen
+            title: Remove change permissions for these users
+          title: Remove change permissions for these users
         remove_change_groups:
           type: array
           items:
             type: integer
-            title: Bearbeitungsberechtigungen für diese Gruppen entfernen
-          title: Bearbeitungsberechtigungen für diese Gruppen entfernen
+            title: Remove change permissions for these groups
+          title: Remove change permissions for these groups
         email:
           allOf:
           - $ref: '#/components/schemas/WorkflowActionEmail'
@@ -10093,20 +9835,22 @@ components:
           nullable: true
         subject:
           type: string
-          title: E-Mail-Betreff
-          description: Der Betreff der E-Mail kann Platzhalter beinhalten, siehe Dokumentation.
+          title: Email subject
+          description: The subject of the email, can include some placeholders, see
+            documentation.
           maxLength: 256
         body:
           type: string
-          title: E-Mail-Inhalt
-          description: Der Text der E-Mail kann Platzhalter beinhalten, siehe Dokumentation.
+          title: Email body
+          description: The body (message) of the email, can include some placeholders,
+            see documentation.
         to:
           type: string
-          title: E-Mails an
-          description: Die Empfänger-E-Mail-Adressen, kommagetrennt.
+          title: Emails to
+          description: The destination email addresses, comma separated.
         include_document:
           type: boolean
-          title: Dokument in E-Mail einbeziehen
+          title: Include document in email
       required:
       - body
       - subject
@@ -10120,22 +9864,24 @@ components:
         subject:
           type: string
           minLength: 1
-          title: E-Mail-Betreff
-          description: Der Betreff der E-Mail kann Platzhalter beinhalten, siehe Dokumentation.
+          title: Email subject
+          description: The subject of the email, can include some placeholders, see
+            documentation.
           maxLength: 256
         body:
           type: string
           minLength: 1
-          title: E-Mail-Inhalt
-          description: Der Text der E-Mail kann Platzhalter beinhalten, siehe Dokumentation.
+          title: Email body
+          description: The body (message) of the email, can include some placeholders,
+            see documentation.
         to:
           type: string
           minLength: 1
-          title: E-Mails an
-          description: Die Empfänger-E-Mail-Adressen, kommagetrennt.
+          title: Emails to
+          description: The destination email addresses, comma separated.
         include_document:
           type: boolean
-          title: Dokument in E-Mail einbeziehen
+          title: Include document in email
       required:
       - body
       - subject
@@ -10149,15 +9895,13 @@ components:
         type:
           allOf:
           - $ref: '#/components/schemas/WorkflowActionTypeEnum'
-          title: Arbeitsablauf-Aktionstyp
+          title: Workflow Action Type
           minimum: 0
           maximum: 2147483647
         assign_title:
           type: string
           nullable: true
-          title: Titel zuweisen
-          description: Dokumenttitel zuweisen (muss eine Jinja2-Vorlage sein, siehe
-            Dokumentation).
+          description: Assign a document title, must  be a Jinja2 template, see documentation.
         assign_tags:
           type: array
           items:
@@ -10175,123 +9919,115 @@ components:
         assign_owner:
           type: integer
           nullable: true
-          title: Diesen Eigentümer zuordnen
+          title: Assign this owner
         assign_view_users:
           type: array
           items:
             type: integer
-            title: Diesen Benutzern Anzeigeberechtigungen erteilen
-          title: Diesen Benutzern Anzeigeberechtigungen erteilen
+            title: Grant view permissions to these users
+          title: Grant view permissions to these users
         assign_view_groups:
           type: array
           items:
             type: integer
-            title: Diesen Gruppen Anzeigeberechtigungen erteilen
-          title: Diesen Gruppen Anzeigeberechtigungen erteilen
+            title: Grant view permissions to these groups
+          title: Grant view permissions to these groups
         assign_change_users:
           type: array
           items:
             type: integer
-            title: Diesen Benutzern Bearbeitungsberechtigungen erteilen
-          title: Diesen Benutzern Bearbeitungsberechtigungen erteilen
+            title: Grant change permissions to these users
+          title: Grant change permissions to these users
         assign_change_groups:
           type: array
           items:
             type: integer
-            title: Diesen Gruppen Bearbeitungsberechtigungen erteilen
-          title: Diesen Gruppen Bearbeitungsberechtigungen erteilen
+            title: Grant change permissions to these groups
+          title: Grant change permissions to these groups
         assign_custom_fields:
           type: array
           items:
             type: integer
-            title: Diese benutzerdefinierten Felder zuweisen
-          title: Diese benutzerdefinierten Felder zuweisen
+            title: Assign these custom fields
+          title: Assign these custom fields
         assign_custom_fields_values:
           nullable: true
-          title: Benutzerdefinierte Feldwerte
-          description: Optionale Werte, die den benutzerdefinierten Feldern zugewiesen
-            werden.
+          title: Custom field values
+          description: Optional values to assign to the custom fields.
         remove_all_tags:
           type: boolean
-          title: Alle Tags entfernen
         remove_tags:
           type: array
           items:
             type: integer
-            title: Diese(n) Tag(s) entfernen
-          title: Diese(n) Tag(s) entfernen
+            title: Remove these tag(s)
+          title: Remove these tag(s)
         remove_all_correspondents:
           type: boolean
-          title: Alle Korrespondenten entfernen
         remove_correspondents:
           type: array
           items:
             type: integer
-            title: Diese(n) Korrespondenten entfernen
-          title: Diese(n) Korrespondenten entfernen
+            title: Remove these correspondent(s)
+          title: Remove these correspondent(s)
         remove_all_document_types:
           type: boolean
-          title: Alle Dokumenttypen entfernen
         remove_document_types:
           type: array
           items:
             type: integer
-            title: Diese(n) Dokumenttyp(en) entfernen
-          title: Diese(n) Dokumenttyp(en) entfernen
+            title: Remove these document type(s)
+          title: Remove these document type(s)
         remove_all_storage_paths:
           type: boolean
-          title: Alle Speicherpfade entfernen
         remove_storage_paths:
           type: array
           items:
             type: integer
-            title: Diese(n) Speicherpfad(e) entfernen
-          title: Diese(n) Speicherpfad(e) entfernen
+            title: Remove these storage path(s)
+          title: Remove these storage path(s)
         remove_custom_fields:
           type: array
           items:
             type: integer
-            title: Diese benutzerdefinierten Felder entfernen
-          title: Diese benutzerdefinierten Felder entfernen
+            title: Remove these custom fields
+          title: Remove these custom fields
         remove_all_custom_fields:
           type: boolean
-          title: Alle benutzerdefinierten Felder entfernen
         remove_all_owners:
           type: boolean
-          title: Alle Eigentümer entfernen
         remove_owners:
           type: array
           items:
             type: integer
-            title: Diese(n) Eigentümer entfernen
-          title: Diese(n) Eigentümer entfernen
+            title: Remove these owner(s)
+          title: Remove these owner(s)
         remove_all_permissions:
           type: boolean
-          title: Alle Berechtigungen entfernen
         remove_view_users:
           type: array
           items:
             type: integer
-            title: Anzeigeberechtigungen für diese Benutzer entfernen
-          title: Anzeigeberechtigungen für diese Benutzer entfernen
+            title: Remove view permissions for these users
+          title: Remove view permissions for these users
         remove_view_groups:
           type: array
           items:
             type: integer
-            title: Anzeigeberechtigungen für diese Gruppen entfernen
-          title: Anzeigeberechtigungen für diese Gruppen entfernen
+            title: Remove view permissions for these groups
+          title: Remove view permissions for these groups
         remove_change_users:
           type: array
           items:
             type: integer
-            title: Bearbeitungsberechtigungen für diese Benutzer entfernen
-          title: Bearbeitungsberechtigungen für diese Benutzer entfernen
+            title: Remove change permissions for these users
+          title: Remove change permissions for these users
         remove_change_groups:
           type: array
           items:
             type: integer
-            title: Bearbeitungsberechtigungen für diese Gruppen entfernen
-          title: Bearbeitungsberechtigungen für diese Gruppen entfernen
+            title: Remove change permissions for these groups
+          title: Remove change permissions for these groups
         email:
           allOf:
           - $ref: '#/components/schemas/WorkflowActionEmailRequest'
@@ -10308,9 +10044,9 @@ components:
       - 4
       type: integer
       description: |-
-        * `1` - Zuordnung
-        * `2` - Entfernung
-        * `3` - E-Mail
+        * `1` - Assignment
+        * `2` - Removal
+        * `3` - Email
         * `4` - Webhook
     WorkflowActionWebhook:
       type: object
@@ -10320,33 +10056,31 @@ components:
           nullable: true
         url:
           type: string
-          title: Webhook-URL
-          description: Die Ziel-URL für die Benachrichtigung.
+          title: Webhook url
+          description: The destination URL for the notification.
           maxLength: 256
         use_params:
           type: boolean
-          title: Verwende Parameter
+          title: Use parameters
         as_json:
           type: boolean
-          title: Als JSON senden
+          title: Send as JSON
         params:
           nullable: true
-          title: Webhook-Parameter
-          description: Die Parameter, die mit der Webhook-URL gesendet werden sollen,
-            wenn kein Inhalt verwendet wird.
+          title: Webhook parameters
+          description: The parameters to send with the webhook URL if body not used.
         body:
           type: string
           nullable: true
-          title: Webhook-Inhalt
-          description: Der Inhalt, der mit der Webhook-URL gesendet werden soll, wenn
-            Parameter nicht verwendet werden.
+          title: Webhook body
+          description: The body to send with the webhook URL if parameters not used.
         headers:
           nullable: true
-          title: Webhook-Kopfzeilen
-          description: Die Kopfzeilen, die mit der Webhook-URL gesendet werden sollen.
+          title: Webhook headers
+          description: The headers to send with the webhook URL.
         include_document:
           type: boolean
-          title: Dokument in Webhook einbeziehen
+          title: Include document in webhook
       required:
       - url
     WorkflowActionWebhookRequest:
@@ -10358,33 +10092,31 @@ components:
         url:
           type: string
           minLength: 1
-          title: Webhook-URL
-          description: Die Ziel-URL für die Benachrichtigung.
+          title: Webhook url
+          description: The destination URL for the notification.
           maxLength: 256
         use_params:
           type: boolean
-          title: Verwende Parameter
+          title: Use parameters
         as_json:
           type: boolean
-          title: Als JSON senden
+          title: Send as JSON
         params:
           nullable: true
-          title: Webhook-Parameter
-          description: Die Parameter, die mit der Webhook-URL gesendet werden sollen,
-            wenn kein Inhalt verwendet wird.
+          title: Webhook parameters
+          description: The parameters to send with the webhook URL if body not used.
         body:
           type: string
           nullable: true
-          title: Webhook-Inhalt
-          description: Der Inhalt, der mit der Webhook-URL gesendet werden soll, wenn
-            Parameter nicht verwendet werden.
+          title: Webhook body
+          description: The body to send with the webhook URL if parameters not used.
         headers:
           nullable: true
-          title: Webhook-Kopfzeilen
-          description: Die Kopfzeilen, die mit der Webhook-URL gesendet werden sollen.
+          title: Webhook headers
+          description: The headers to send with the webhook URL.
         include_document:
           type: boolean
-          title: Dokument in Webhook einbeziehen
+          title: Include document in webhook
       required:
       - url
     WorkflowRequest:
@@ -10398,7 +10130,6 @@ components:
           type: integer
         enabled:
           type: boolean
-          title: Aktiviert
         triggers:
           type: array
           items:
@@ -10432,121 +10163,108 @@ components:
         filter_path:
           type: string
           nullable: true
-          title: Pfad filtern
-          description: Nur Dokumente, die mit diesem Pfad (falls angegeben) übereinstimmen,
-            verarbeiten. Platzhalter wie * sind erlaubt. Groß- und Kleinschreibung
-            wird nicht beachtet.
+          description: Only consume documents with a path that matches this if specified.
+            Wildcards specified as * are allowed. Case insensitive.
           maxLength: 256
         filter_filename:
           type: string
           nullable: true
-          title: Dateinamen filtern
-          description: Nur Dokumente, die vollständig mit diesem Dateinamen (falls
-            angegeben) übereinstimmen, verarbeiten. Platzhalter wie *.pdf oder *rechnung*
-            sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+          description: Only consume documents which entirely match this filename if
+            specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
           maxLength: 256
         filter_mailrule:
           type: integer
           nullable: true
-          title: Dokumente aus dieser E-Mail-Regel filtern
+          title: Filter documents from this mail rule
         matching_algorithm:
           allOf:
           - $ref: '#/components/schemas/WorkflowTriggerMatchingAlgorithmEnum'
-          title: Zuweisungsalgorithmus
           minimum: 0
           maximum: 2147483647
         match:
           type: string
-          title: Zuweisungsmuster
           maxLength: 256
         is_insensitive:
           type: boolean
-          title: Groß-/Kleinschreibung irrelevant
         filter_has_tags:
           type: array
           items:
             type: integer
-            title: Hat diese(n) Tag(s)
-          title: Hat diese(n) Tag(s)
+            title: Has these tag(s)
+          title: Has these tag(s)
         filter_has_all_tags:
           type: array
           items:
             type: integer
-            title: Hat alle diese Tags
-          title: Hat alle diese Tags
+            title: Has all of these tag(s)
+          title: Has all of these tag(s)
         filter_has_not_tags:
           type: array
           items:
             type: integer
-            title: Hat diese Tags nicht
-          title: Hat diese Tags nicht
+            title: Does not have these tag(s)
+          title: Does not have these tag(s)
         filter_custom_field_query:
           type: string
           nullable: true
-          title: Filtern Benutzerdefinierte Feldabfrage
-          description: JSON-kodierte Abfrage eines benutzerdefinierten Felds.
+          description: JSON-encoded custom field query expression.
         filter_has_not_correspondents:
           type: array
           items:
             type: integer
-            title: Hat diese Korrespondenten nicht
-          title: Hat diese Korrespondenten nicht
+            title: Does not have these correspondent(s)
+          title: Does not have these correspondent(s)
         filter_has_not_document_types:
           type: array
           items:
             type: integer
-            title: Hat diese Dokumenttypen nicht
-          title: Hat diese Dokumenttypen nicht
+            title: Does not have these document type(s)
+          title: Does not have these document type(s)
         filter_has_not_storage_paths:
           type: array
           items:
             type: integer
-            title: Hat diese Speicherpfade nicht
-          title: Hat diese Speicherpfade nicht
+            title: Does not have these storage path(s)
+          title: Does not have these storage path(s)
         filter_has_correspondent:
           type: integer
           nullable: true
-          title: Hat diesen Korrespondenten
+          title: Has this correspondent
         filter_has_document_type:
           type: integer
           nullable: true
-          title: Hat diesen Dokumenttyp
+          title: Has this document type
         filter_has_storage_path:
           type: integer
           nullable: true
-          title: Hat diesen Speicherpfad
+          title: Has this storage path
         schedule_offset_days:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
-          title: Zeitplanversatz (Tage)
-          description: Die Anzahl der Tage, um die der Zeitplanauslöser verschoben
-            werden soll.
+          description: The number of days to offset the schedule trigger by.
         schedule_is_recurring:
           type: boolean
-          title: Zeitplan wiederholt sich
-          description: Ob der Zeitplan wiederholt werden soll.
+          description: If the schedule should be recurring.
         schedule_recurring_interval_days:
           type: integer
           maximum: 2147483647
           minimum: 1
-          title: Zeitplan-Wiederholungsverzögerung in Tagen
-          description: Die Anzahl der Tage zwischen wiederkehrenden Zeitplanauslösern.
+          title: Schedule recurring delay in days
+          description: The number of days between recurring schedule triggers.
         schedule_date_field:
           allOf:
           - $ref: '#/components/schemas/ScheduleDateFieldEnum'
-          title: Zeitplan-Datumsfeld
           description: |-
-            Das zu prüfende Feld für einen Zeitplanauslöser.
+            The field to check for a schedule trigger.
 
-            * `added` - Hinzugefügt
-            * `created` - Ausgestellt
-            * `modified` - Geändert
-            * `custom_field` - Benutzerdefiniertes Feld
+            * `added` - Added
+            * `created` - Created
+            * `modified` - Modified
+            * `custom_field` - Custom Field
         schedule_date_custom_field:
           type: integer
           nullable: true
-          title: Benutzerdefiniertes Zeitplan-Datumsfeld
       required:
       - type
     WorkflowTriggerMatchingAlgorithmEnum:
@@ -10559,12 +10277,12 @@ components:
       - 5
       type: integer
       description: |-
-        * `0` - Keine
-        * `1` - Irgendein Wort
-        * `2` - Alle Wörter
-        * `3` - Exakte Übereinstimmung
-        * `4` - Regulärer Ausdruck
-        * `5` - Ungenaues Wort
+        * `0` - None
+        * `1` - Any word
+        * `2` - All words
+        * `3` - Exact match
+        * `4` - Regular expression
+        * `5` - Fuzzy word
     WorkflowTriggerRequest:
       type: object
       properties:
@@ -10586,121 +10304,108 @@ components:
         filter_path:
           type: string
           nullable: true
-          title: Pfad filtern
-          description: Nur Dokumente, die mit diesem Pfad (falls angegeben) übereinstimmen,
-            verarbeiten. Platzhalter wie * sind erlaubt. Groß- und Kleinschreibung
-            wird nicht beachtet.
+          description: Only consume documents with a path that matches this if specified.
+            Wildcards specified as * are allowed. Case insensitive.
           maxLength: 256
         filter_filename:
           type: string
           nullable: true
-          title: Dateinamen filtern
-          description: Nur Dokumente, die vollständig mit diesem Dateinamen (falls
-            angegeben) übereinstimmen, verarbeiten. Platzhalter wie *.pdf oder *rechnung*
-            sind erlaubt. Groß- und Kleinschreibung wird nicht beachtet.
+          description: Only consume documents which entirely match this filename if
+            specified. Wildcards such as *.pdf or *invoice* are allowed. Case insensitive.
           maxLength: 256
         filter_mailrule:
           type: integer
           nullable: true
-          title: Dokumente aus dieser E-Mail-Regel filtern
+          title: Filter documents from this mail rule
         matching_algorithm:
           allOf:
           - $ref: '#/components/schemas/WorkflowTriggerMatchingAlgorithmEnum'
-          title: Zuweisungsalgorithmus
           minimum: 0
           maximum: 2147483647
         match:
           type: string
-          title: Zuweisungsmuster
           maxLength: 256
         is_insensitive:
           type: boolean
-          title: Groß-/Kleinschreibung irrelevant
         filter_has_tags:
           type: array
           items:
             type: integer
-            title: Hat diese(n) Tag(s)
-          title: Hat diese(n) Tag(s)
+            title: Has these tag(s)
+          title: Has these tag(s)
         filter_has_all_tags:
           type: array
           items:
             type: integer
-            title: Hat alle diese Tags
-          title: Hat alle diese Tags
+            title: Has all of these tag(s)
+          title: Has all of these tag(s)
         filter_has_not_tags:
           type: array
           items:
             type: integer
-            title: Hat diese Tags nicht
-          title: Hat diese Tags nicht
+            title: Does not have these tag(s)
+          title: Does not have these tag(s)
         filter_custom_field_query:
           type: string
           nullable: true
-          title: Filtern Benutzerdefinierte Feldabfrage
-          description: JSON-kodierte Abfrage eines benutzerdefinierten Felds.
+          description: JSON-encoded custom field query expression.
         filter_has_not_correspondents:
           type: array
           items:
             type: integer
-            title: Hat diese Korrespondenten nicht
-          title: Hat diese Korrespondenten nicht
+            title: Does not have these correspondent(s)
+          title: Does not have these correspondent(s)
         filter_has_not_document_types:
           type: array
           items:
             type: integer
-            title: Hat diese Dokumenttypen nicht
-          title: Hat diese Dokumenttypen nicht
+            title: Does not have these document type(s)
+          title: Does not have these document type(s)
         filter_has_not_storage_paths:
           type: array
           items:
             type: integer
-            title: Hat diese Speicherpfade nicht
-          title: Hat diese Speicherpfade nicht
+            title: Does not have these storage path(s)
+          title: Does not have these storage path(s)
         filter_has_correspondent:
           type: integer
           nullable: true
-          title: Hat diesen Korrespondenten
+          title: Has this correspondent
         filter_has_document_type:
           type: integer
           nullable: true
-          title: Hat diesen Dokumenttyp
+          title: Has this document type
         filter_has_storage_path:
           type: integer
           nullable: true
-          title: Hat diesen Speicherpfad
+          title: Has this storage path
         schedule_offset_days:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
-          title: Zeitplanversatz (Tage)
-          description: Die Anzahl der Tage, um die der Zeitplanauslöser verschoben
-            werden soll.
+          description: The number of days to offset the schedule trigger by.
         schedule_is_recurring:
           type: boolean
-          title: Zeitplan wiederholt sich
-          description: Ob der Zeitplan wiederholt werden soll.
+          description: If the schedule should be recurring.
         schedule_recurring_interval_days:
           type: integer
           maximum: 2147483647
           minimum: 1
-          title: Zeitplan-Wiederholungsverzögerung in Tagen
-          description: Die Anzahl der Tage zwischen wiederkehrenden Zeitplanauslösern.
+          title: Schedule recurring delay in days
+          description: The number of days between recurring schedule triggers.
         schedule_date_field:
           allOf:
           - $ref: '#/components/schemas/ScheduleDateFieldEnum'
-          title: Zeitplan-Datumsfeld
           description: |-
-            Das zu prüfende Feld für einen Zeitplanauslöser.
+            The field to check for a schedule trigger.
 
-            * `added` - Hinzugefügt
-            * `created` - Ausgestellt
-            * `modified` - Geändert
-            * `custom_field` - Benutzerdefiniertes Feld
+            * `added` - Added
+            * `created` - Created
+            * `modified` - Modified
+            * `custom_field` - Custom Field
         schedule_date_custom_field:
           type: integer
           nullable: true
-          title: Benutzerdefiniertes Zeitplan-Datumsfeld
       required:
       - type
     WorkflowTriggerTypeEnum:
@@ -10711,10 +10416,10 @@ components:
       - 4
       type: integer
       description: |-
-        * `1` - Verarbeitung gestartet
-        * `2` - Dokument hinzugefügt
-        * `3` - Dokument aktualisiert
-        * `4` - Geplant
+        * `1` - Consumption Started
+        * `2` - Document Added
+        * `3` - Document Updated
+        * `4` - Scheduled
   securitySchemes:
     PaperelessBasicAuthentication:
       type: http

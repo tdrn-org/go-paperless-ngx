@@ -116,11 +116,13 @@ func (g *wrapperGenerator) writeBody(method *types.Func, signature *types.Signat
 	params := signature.Params()
 	g.out.WriteString("response, err := client.apiClient." + method.Name() + "(")
 	for i := 0; i < params.Len()-1; i++ {
+		if i > 0 {
+			g.out.WriteString(", ")
+		}
 		param := params.At(i)
 		g.out.WriteString(param.Name())
-		g.out.WriteString(", ")
 	}
-	g.out.WriteString("client.prepareRequest())\n")
+	g.out.WriteString(")\n")
 	g.out.WriteString("if err != nil {\n")
 	g.out.WriteString("return nil,client.wrapSystemError(err)\n")
 	g.out.WriteString("}\n")

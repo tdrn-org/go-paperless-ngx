@@ -98,7 +98,7 @@ func NewClient(apiURL *url.URL, apiKey string, options ...ClientOption) (*Client
 		apiClient.Client = client.httpClient
 		return nil
 	}
-	apiClient, err := api.NewClientWithResponses(apiURL.String(), httpClientOption)
+	apiClient, err := api.NewClientWithResponses(apiURL.String(), api.WithRequestEditorFn(client.prepareRequest()), httpClientOption)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create client (cause: %w)", err)
 	}
@@ -108,7 +108,7 @@ func NewClient(apiURL *url.URL, apiKey string, options ...ClientOption) (*Client
 
 func (client *Client) prepareRequest() api.RequestEditorFn {
 	return func(ctx context.Context, req *http.Request) error {
-		req.Header.Add(api.AuthorizationHeader, client.apiKey)
+		req.Header.Set(api.AuthorizationHeader, fmt.Sprintf("Token %s", client.apiKey))
 		req.Header.Set("Accept", "application/json")
 		return nil
 	}
