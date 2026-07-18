@@ -3,7 +3,7 @@ module github.com/tdrn-org/go-paperless-ngx
 go 1.26
 
 require (
-	github.com/oapi-codegen/runtime v1.4.2
+	github.com/oapi-codegen/runtime v1.6.0
 	github.com/stretchr/testify v1.11.1
 	golang.org/x/tools v0.48.0
 )
