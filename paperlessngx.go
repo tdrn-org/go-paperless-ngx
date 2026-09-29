@@ -114,6 +114,13 @@ func (client *Client) prepareRequest() api.RequestEditorFn {
 	}
 }
 
+func (client *Client) requestContentType(contentType string) api.RequestEditorFn {
+	return func(ctx context.Context, req *http.Request) error {
+		req.Header.Set("Content-Type", contentType)
+		return nil
+	}
+}
+
 func (client *Client) operationID() string {
 	pc, _, _, _ := runtime.Caller(3)
 	caller := runtime.FuncForPC(pc)

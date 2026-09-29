@@ -117,7 +117,7 @@ func (client *Client) ConfigPartialUpdateWithBody(ctx context.Context, id int, c
 }
 
 func (client *Client) ConfigPartialUpdateWithFormdataBody(ctx context.Context, id int, body api.ConfigPartialUpdateFormdataRequestBody) (*api.ConfigPartialUpdateResponse, error) {
-	response, err := client.apiClient.ConfigPartialUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.ConfigPartialUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -165,7 +165,7 @@ func (client *Client) ConfigUpdateWithBody(ctx context.Context, id int, contentT
 }
 
 func (client *Client) ConfigUpdateWithFormdataBody(ctx context.Context, id int, body api.ConfigUpdateFormdataRequestBody) (*api.ConfigUpdateResponse, error) {
-	response, err := client.apiClient.ConfigUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.ConfigUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -201,7 +201,7 @@ func (client *Client) CorrespondentsCreateWithBody(ctx context.Context, contentT
 }
 
 func (client *Client) CorrespondentsCreateWithFormdataBody(ctx context.Context, body api.CorrespondentsCreateFormdataRequestBody) (*api.CorrespondentsCreateResponse, error) {
-	response, err := client.apiClient.CorrespondentsCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.CorrespondentsCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -261,7 +261,7 @@ func (client *Client) CorrespondentsPartialUpdateWithBody(ctx context.Context, i
 }
 
 func (client *Client) CorrespondentsPartialUpdateWithFormdataBody(ctx context.Context, id int, body api.CorrespondentsPartialUpdateFormdataRequestBody) (*api.CorrespondentsPartialUpdateResponse, error) {
-	response, err := client.apiClient.CorrespondentsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.CorrespondentsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -309,7 +309,7 @@ func (client *Client) CorrespondentsUpdateWithBody(ctx context.Context, id int, 
 }
 
 func (client *Client) CorrespondentsUpdateWithFormdataBody(ctx context.Context, id int, body api.CorrespondentsUpdateFormdataRequestBody) (*api.CorrespondentsUpdateResponse, error) {
-	response, err := client.apiClient.CorrespondentsUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.CorrespondentsUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -345,7 +345,7 @@ func (client *Client) CustomFieldsCreateWithBody(ctx context.Context, contentTyp
 }
 
 func (client *Client) CustomFieldsCreateWithFormdataBody(ctx context.Context, body api.CustomFieldsCreateFormdataRequestBody) (*api.CustomFieldsCreateResponse, error) {
-	response, err := client.apiClient.CustomFieldsCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.CustomFieldsCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -405,7 +405,7 @@ func (client *Client) CustomFieldsPartialUpdateWithBody(ctx context.Context, id 
 }
 
 func (client *Client) CustomFieldsPartialUpdateWithFormdataBody(ctx context.Context, id int, body api.CustomFieldsPartialUpdateFormdataRequestBody) (*api.CustomFieldsPartialUpdateResponse, error) {
-	response, err := client.apiClient.CustomFieldsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.CustomFieldsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -453,7 +453,7 @@ func (client *Client) CustomFieldsUpdateWithBody(ctx context.Context, id int, co
 }
 
 func (client *Client) CustomFieldsUpdateWithFormdataBody(ctx context.Context, id int, body api.CustomFieldsUpdateFormdataRequestBody) (*api.CustomFieldsUpdateResponse, error) {
-	response, err := client.apiClient.CustomFieldsUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.CustomFieldsUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -501,7 +501,7 @@ func (client *Client) DocumentTypesCreateWithBody(ctx context.Context, contentTy
 }
 
 func (client *Client) DocumentTypesCreateWithFormdataBody(ctx context.Context, body api.DocumentTypesCreateFormdataRequestBody) (*api.DocumentTypesCreateResponse, error) {
-	response, err := client.apiClient.DocumentTypesCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.DocumentTypesCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -561,7 +561,7 @@ func (client *Client) DocumentTypesPartialUpdateWithBody(ctx context.Context, id
 }
 
 func (client *Client) DocumentTypesPartialUpdateWithFormdataBody(ctx context.Context, id int, body api.DocumentTypesPartialUpdateFormdataRequestBody) (*api.DocumentTypesPartialUpdateResponse, error) {
-	response, err := client.apiClient.DocumentTypesPartialUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.DocumentTypesPartialUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -609,7 +609,7 @@ func (client *Client) DocumentTypesUpdateWithBody(ctx context.Context, id int, c
 }
 
 func (client *Client) DocumentTypesUpdateWithFormdataBody(ctx context.Context, id int, body api.DocumentTypesUpdateFormdataRequestBody) (*api.DocumentTypesUpdateResponse, error) {
-	response, err := client.apiClient.DocumentTypesUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.DocumentTypesUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -693,7 +693,7 @@ func (client *Client) DocumentsEmailCreateWithBody(ctx context.Context, id int, 
 }
 
 func (client *Client) DocumentsEmailCreateWithFormdataBody(ctx context.Context, id int, body api.DocumentsEmailCreateFormdataRequestBody) (*api.DocumentsEmailCreateResponse, error) {
-	response, err := client.apiClient.DocumentsEmailCreateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.DocumentsEmailCreateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -777,7 +777,7 @@ func (client *Client) DocumentsNotesCreateWithBody(ctx context.Context, id int, 
 }
 
 func (client *Client) DocumentsNotesCreateWithFormdataBody(ctx context.Context, id int, params *api.DocumentsNotesCreateParams, body api.DocumentsNotesCreateFormdataRequestBody) (*api.DocumentsNotesCreateResponse, error) {
-	response, err := client.apiClient.DocumentsNotesCreateWithFormdataBodyWithResponse(ctx, id, params, body)
+	response, err := client.apiClient.DocumentsNotesCreateWithFormdataBodyWithResponse(ctx, id, params, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -837,7 +837,7 @@ func (client *Client) DocumentsPartialUpdateWithBody(ctx context.Context, id int
 }
 
 func (client *Client) DocumentsPartialUpdateWithFormdataBody(ctx context.Context, id int, body api.DocumentsPartialUpdateFormdataRequestBody) (*api.DocumentsPartialUpdateResponse, error) {
-	response, err := client.apiClient.DocumentsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.DocumentsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -957,7 +957,7 @@ func (client *Client) DocumentsUpdateWithBody(ctx context.Context, id int, conte
 }
 
 func (client *Client) DocumentsUpdateWithFormdataBody(ctx context.Context, id int, body api.DocumentsUpdateFormdataRequestBody) (*api.DocumentsUpdateResponse, error) {
-	response, err := client.apiClient.DocumentsUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.DocumentsUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -993,7 +993,7 @@ func (client *Client) EmailDocumentsWithBody(ctx context.Context, contentType st
 }
 
 func (client *Client) EmailDocumentsWithFormdataBody(ctx context.Context, body api.EmailDocumentsFormdataRequestBody) (*api.EmailDocumentsResponse2, error) {
-	response, err := client.apiClient.EmailDocumentsWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.EmailDocumentsWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1029,7 +1029,7 @@ func (client *Client) GroupsCreateWithBody(ctx context.Context, contentType stri
 }
 
 func (client *Client) GroupsCreateWithFormdataBody(ctx context.Context, body api.GroupsCreateFormdataRequestBody) (*api.GroupsCreateResponse, error) {
-	response, err := client.apiClient.GroupsCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.GroupsCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1089,7 +1089,7 @@ func (client *Client) GroupsPartialUpdateWithBody(ctx context.Context, id int, c
 }
 
 func (client *Client) GroupsPartialUpdateWithFormdataBody(ctx context.Context, id int, body api.GroupsPartialUpdateFormdataRequestBody) (*api.GroupsPartialUpdateResponse, error) {
-	response, err := client.apiClient.GroupsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.GroupsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1137,7 +1137,7 @@ func (client *Client) GroupsUpdateWithBody(ctx context.Context, id int, contentT
 }
 
 func (client *Client) GroupsUpdateWithFormdataBody(ctx context.Context, id int, body api.GroupsUpdateFormdataRequestBody) (*api.GroupsUpdateResponse, error) {
-	response, err := client.apiClient.GroupsUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.GroupsUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1185,7 +1185,7 @@ func (client *Client) MailAccountProcessWithBody(ctx context.Context, id int, co
 }
 
 func (client *Client) MailAccountProcessWithFormdataBody(ctx context.Context, id int, body api.MailAccountProcessFormdataRequestBody) (*api.MailAccountProcessResponse2, error) {
-	response, err := client.apiClient.MailAccountProcessWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.MailAccountProcessWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1221,7 +1221,7 @@ func (client *Client) MailAccountTestWithBody(ctx context.Context, contentType s
 }
 
 func (client *Client) MailAccountTestWithFormdataBody(ctx context.Context, body api.MailAccountTestFormdataRequestBody) (*api.MailAccountTestResponse2, error) {
-	response, err := client.apiClient.MailAccountTestWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.MailAccountTestWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1257,7 +1257,7 @@ func (client *Client) MailAccountsCreateWithBody(ctx context.Context, contentTyp
 }
 
 func (client *Client) MailAccountsCreateWithFormdataBody(ctx context.Context, body api.MailAccountsCreateFormdataRequestBody) (*api.MailAccountsCreateResponse, error) {
-	response, err := client.apiClient.MailAccountsCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.MailAccountsCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1317,7 +1317,7 @@ func (client *Client) MailAccountsPartialUpdateWithBody(ctx context.Context, id 
 }
 
 func (client *Client) MailAccountsPartialUpdateWithFormdataBody(ctx context.Context, id int, body api.MailAccountsPartialUpdateFormdataRequestBody) (*api.MailAccountsPartialUpdateResponse, error) {
-	response, err := client.apiClient.MailAccountsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.MailAccountsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1365,7 +1365,7 @@ func (client *Client) MailAccountsUpdateWithBody(ctx context.Context, id int, co
 }
 
 func (client *Client) MailAccountsUpdateWithFormdataBody(ctx context.Context, id int, body api.MailAccountsUpdateFormdataRequestBody) (*api.MailAccountsUpdateResponse, error) {
-	response, err := client.apiClient.MailAccountsUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.MailAccountsUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1401,7 +1401,7 @@ func (client *Client) MailRulesCreateWithBody(ctx context.Context, contentType s
 }
 
 func (client *Client) MailRulesCreateWithFormdataBody(ctx context.Context, body api.MailRulesCreateFormdataRequestBody) (*api.MailRulesCreateResponse, error) {
-	response, err := client.apiClient.MailRulesCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.MailRulesCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1461,7 +1461,7 @@ func (client *Client) MailRulesPartialUpdateWithBody(ctx context.Context, id int
 }
 
 func (client *Client) MailRulesPartialUpdateWithFormdataBody(ctx context.Context, id int, body api.MailRulesPartialUpdateFormdataRequestBody) (*api.MailRulesPartialUpdateResponse, error) {
-	response, err := client.apiClient.MailRulesPartialUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.MailRulesPartialUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1509,7 +1509,7 @@ func (client *Client) MailRulesUpdateWithBody(ctx context.Context, id int, conte
 }
 
 func (client *Client) MailRulesUpdateWithFormdataBody(ctx context.Context, id int, body api.MailRulesUpdateFormdataRequestBody) (*api.MailRulesUpdateResponse, error) {
-	response, err := client.apiClient.MailRulesUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.MailRulesUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1557,7 +1557,7 @@ func (client *Client) ProcessedMailBulkDeleteCreateWithBody(ctx context.Context,
 }
 
 func (client *Client) ProcessedMailBulkDeleteCreateWithFormdataBody(ctx context.Context, body api.ProcessedMailBulkDeleteCreateFormdataRequestBody) (*api.ProcessedMailBulkDeleteCreateResponse, error) {
-	response, err := client.apiClient.ProcessedMailBulkDeleteCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.ProcessedMailBulkDeleteCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1653,7 +1653,7 @@ func (client *Client) ProfilePartialUpdateWithBody(ctx context.Context, contentT
 }
 
 func (client *Client) ProfilePartialUpdateWithFormdataBody(ctx context.Context, body api.ProfilePartialUpdateFormdataRequestBody) (*api.ProfilePartialUpdateResponse, error) {
-	response, err := client.apiClient.ProfilePartialUpdateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.ProfilePartialUpdateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1785,7 +1785,7 @@ func (client *Client) SavedViewsCreateWithBody(ctx context.Context, contentType 
 }
 
 func (client *Client) SavedViewsCreateWithFormdataBody(ctx context.Context, body api.SavedViewsCreateFormdataRequestBody) (*api.SavedViewsCreateResponse, error) {
-	response, err := client.apiClient.SavedViewsCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.SavedViewsCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1845,7 +1845,7 @@ func (client *Client) SavedViewsPartialUpdateWithBody(ctx context.Context, id in
 }
 
 func (client *Client) SavedViewsPartialUpdateWithFormdataBody(ctx context.Context, id int, body api.SavedViewsPartialUpdateFormdataRequestBody) (*api.SavedViewsPartialUpdateResponse, error) {
-	response, err := client.apiClient.SavedViewsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.SavedViewsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1893,7 +1893,7 @@ func (client *Client) SavedViewsUpdateWithBody(ctx context.Context, id int, cont
 }
 
 func (client *Client) SavedViewsUpdateWithFormdataBody(ctx context.Context, id int, body api.SavedViewsUpdateFormdataRequestBody) (*api.SavedViewsUpdateResponse, error) {
-	response, err := client.apiClient.SavedViewsUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.SavedViewsUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1953,7 +1953,7 @@ func (client *Client) ShareLinksCreateWithBody(ctx context.Context, contentType 
 }
 
 func (client *Client) ShareLinksCreateWithFormdataBody(ctx context.Context, body api.ShareLinksCreateFormdataRequestBody) (*api.ShareLinksCreateResponse, error) {
-	response, err := client.apiClient.ShareLinksCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.ShareLinksCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2049,7 +2049,7 @@ func (client *Client) StoragePathsCreateWithBody(ctx context.Context, contentTyp
 }
 
 func (client *Client) StoragePathsCreateWithFormdataBody(ctx context.Context, body api.StoragePathsCreateFormdataRequestBody) (*api.StoragePathsCreateResponse, error) {
-	response, err := client.apiClient.StoragePathsCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.StoragePathsCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2109,7 +2109,7 @@ func (client *Client) StoragePathsPartialUpdateWithBody(ctx context.Context, id 
 }
 
 func (client *Client) StoragePathsPartialUpdateWithFormdataBody(ctx context.Context, id int, body api.StoragePathsPartialUpdateFormdataRequestBody) (*api.StoragePathsPartialUpdateResponse, error) {
-	response, err := client.apiClient.StoragePathsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.StoragePathsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2157,7 +2157,7 @@ func (client *Client) StoragePathsTestCreateWithBody(ctx context.Context, conten
 }
 
 func (client *Client) StoragePathsTestCreateWithFormdataBody(ctx context.Context, body api.StoragePathsTestCreateFormdataRequestBody) (*api.StoragePathsTestCreateResponse, error) {
-	response, err := client.apiClient.StoragePathsTestCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.StoragePathsTestCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2193,7 +2193,7 @@ func (client *Client) StoragePathsUpdateWithBody(ctx context.Context, id int, co
 }
 
 func (client *Client) StoragePathsUpdateWithFormdataBody(ctx context.Context, id int, body api.StoragePathsUpdateFormdataRequestBody) (*api.StoragePathsUpdateResponse, error) {
-	response, err := client.apiClient.StoragePathsUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.StoragePathsUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2229,7 +2229,7 @@ func (client *Client) TagsCreateWithBody(ctx context.Context, contentType string
 }
 
 func (client *Client) TagsCreateWithFormdataBody(ctx context.Context, body api.TagsCreateFormdataRequestBody) (*api.TagsCreateResponse, error) {
-	response, err := client.apiClient.TagsCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.TagsCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2289,7 +2289,7 @@ func (client *Client) TagsPartialUpdateWithBody(ctx context.Context, id int, con
 }
 
 func (client *Client) TagsPartialUpdateWithFormdataBody(ctx context.Context, id int, body api.TagsPartialUpdateFormdataRequestBody) (*api.TagsPartialUpdateResponse, error) {
-	response, err := client.apiClient.TagsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.TagsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2337,7 +2337,7 @@ func (client *Client) TagsUpdateWithBody(ctx context.Context, id int, contentTyp
 }
 
 func (client *Client) TagsUpdateWithFormdataBody(ctx context.Context, id int, body api.TagsUpdateFormdataRequestBody) (*api.TagsUpdateResponse, error) {
-	response, err := client.apiClient.TagsUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.TagsUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2397,7 +2397,7 @@ func (client *Client) TasksRunCreateWithBody(ctx context.Context, params *api.Ta
 }
 
 func (client *Client) TasksRunCreateWithFormdataBody(ctx context.Context, params *api.TasksRunCreateParams, body api.TasksRunCreateFormdataRequestBody) (*api.TasksRunCreateResponse, error) {
-	response, err := client.apiClient.TasksRunCreateWithFormdataBodyWithResponse(ctx, params, body)
+	response, err := client.apiClient.TasksRunCreateWithFormdataBodyWithResponse(ctx, params, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2433,7 +2433,7 @@ func (client *Client) TokenCreateWithBody(ctx context.Context, contentType strin
 }
 
 func (client *Client) TokenCreateWithFormdataBody(ctx context.Context, body api.TokenCreateFormdataRequestBody) (*api.TokenCreateResponse, error) {
-	response, err := client.apiClient.TokenCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.TokenCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2469,7 +2469,7 @@ func (client *Client) TrashCreateWithBody(ctx context.Context, contentType strin
 }
 
 func (client *Client) TrashCreateWithFormdataBody(ctx context.Context, body api.TrashCreateFormdataRequestBody) (*api.TrashCreateResponse, error) {
-	response, err := client.apiClient.TrashCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.TrashCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2517,7 +2517,7 @@ func (client *Client) UiSettingsCreateWithBody(ctx context.Context, contentType 
 }
 
 func (client *Client) UiSettingsCreateWithFormdataBody(ctx context.Context, body api.UiSettingsCreateFormdataRequestBody) (*api.UiSettingsCreateResponse, error) {
-	response, err := client.apiClient.UiSettingsCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.UiSettingsCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2565,7 +2565,7 @@ func (client *Client) UsersCreateWithBody(ctx context.Context, contentType strin
 }
 
 func (client *Client) UsersCreateWithFormdataBody(ctx context.Context, body api.UsersCreateFormdataRequestBody) (*api.UsersCreateResponse, error) {
-	response, err := client.apiClient.UsersCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.UsersCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2637,7 +2637,7 @@ func (client *Client) UsersPartialUpdateWithBody(ctx context.Context, id int, co
 }
 
 func (client *Client) UsersPartialUpdateWithFormdataBody(ctx context.Context, id int, body api.UsersPartialUpdateFormdataRequestBody) (*api.UsersPartialUpdateResponse, error) {
-	response, err := client.apiClient.UsersPartialUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.UsersPartialUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2685,7 +2685,7 @@ func (client *Client) UsersUpdateWithBody(ctx context.Context, id int, contentTy
 }
 
 func (client *Client) UsersUpdateWithFormdataBody(ctx context.Context, id int, body api.UsersUpdateFormdataRequestBody) (*api.UsersUpdateResponse, error) {
-	response, err := client.apiClient.UsersUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.UsersUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2721,7 +2721,7 @@ func (client *Client) WorkflowActionsCreateWithBody(ctx context.Context, content
 }
 
 func (client *Client) WorkflowActionsCreateWithFormdataBody(ctx context.Context, body api.WorkflowActionsCreateFormdataRequestBody) (*api.WorkflowActionsCreateResponse, error) {
-	response, err := client.apiClient.WorkflowActionsCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.WorkflowActionsCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2781,7 +2781,7 @@ func (client *Client) WorkflowActionsPartialUpdateWithBody(ctx context.Context, 
 }
 
 func (client *Client) WorkflowActionsPartialUpdateWithFormdataBody(ctx context.Context, id int, body api.WorkflowActionsPartialUpdateFormdataRequestBody) (*api.WorkflowActionsPartialUpdateResponse, error) {
-	response, err := client.apiClient.WorkflowActionsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.WorkflowActionsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2829,7 +2829,7 @@ func (client *Client) WorkflowActionsUpdateWithBody(ctx context.Context, id int,
 }
 
 func (client *Client) WorkflowActionsUpdateWithFormdataBody(ctx context.Context, id int, body api.WorkflowActionsUpdateFormdataRequestBody) (*api.WorkflowActionsUpdateResponse, error) {
-	response, err := client.apiClient.WorkflowActionsUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.WorkflowActionsUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2865,7 +2865,7 @@ func (client *Client) WorkflowTriggersCreateWithBody(ctx context.Context, conten
 }
 
 func (client *Client) WorkflowTriggersCreateWithFormdataBody(ctx context.Context, body api.WorkflowTriggersCreateFormdataRequestBody) (*api.WorkflowTriggersCreateResponse, error) {
-	response, err := client.apiClient.WorkflowTriggersCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.WorkflowTriggersCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2925,7 +2925,7 @@ func (client *Client) WorkflowTriggersPartialUpdateWithBody(ctx context.Context,
 }
 
 func (client *Client) WorkflowTriggersPartialUpdateWithFormdataBody(ctx context.Context, id int, body api.WorkflowTriggersPartialUpdateFormdataRequestBody) (*api.WorkflowTriggersPartialUpdateResponse, error) {
-	response, err := client.apiClient.WorkflowTriggersPartialUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.WorkflowTriggersPartialUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2973,7 +2973,7 @@ func (client *Client) WorkflowTriggersUpdateWithBody(ctx context.Context, id int
 }
 
 func (client *Client) WorkflowTriggersUpdateWithFormdataBody(ctx context.Context, id int, body api.WorkflowTriggersUpdateFormdataRequestBody) (*api.WorkflowTriggersUpdateResponse, error) {
-	response, err := client.apiClient.WorkflowTriggersUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.WorkflowTriggersUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -3009,7 +3009,7 @@ func (client *Client) WorkflowsCreateWithBody(ctx context.Context, contentType s
 }
 
 func (client *Client) WorkflowsCreateWithFormdataBody(ctx context.Context, body api.WorkflowsCreateFormdataRequestBody) (*api.WorkflowsCreateResponse, error) {
-	response, err := client.apiClient.WorkflowsCreateWithFormdataBodyWithResponse(ctx, body)
+	response, err := client.apiClient.WorkflowsCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -3069,7 +3069,7 @@ func (client *Client) WorkflowsPartialUpdateWithBody(ctx context.Context, id int
 }
 
 func (client *Client) WorkflowsPartialUpdateWithFormdataBody(ctx context.Context, id int, body api.WorkflowsPartialUpdateFormdataRequestBody) (*api.WorkflowsPartialUpdateResponse, error) {
-	response, err := client.apiClient.WorkflowsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.WorkflowsPartialUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -3117,7 +3117,7 @@ func (client *Client) WorkflowsUpdateWithBody(ctx context.Context, id int, conte
 }
 
 func (client *Client) WorkflowsUpdateWithFormdataBody(ctx context.Context, id int, body api.WorkflowsUpdateFormdataRequestBody) (*api.WorkflowsUpdateResponse, error) {
-	response, err := client.apiClient.WorkflowsUpdateWithFormdataBodyWithResponse(ctx, id, body)
+	response, err := client.apiClient.WorkflowsUpdateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}

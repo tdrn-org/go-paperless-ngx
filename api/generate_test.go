@@ -33,3 +33,21 @@ func TestGenerateClientWrapper(t *testing.T) {
 	_, err = format.Source(codeBytes)
 	require.NoError(t, err)
 }
+
+func TestGenerateMock(t *testing.T) {
+	buffer := &bytes.Buffer{}
+	err := api.GenerateMock(buffer)
+	require.NoError(t, err)
+	codeBytes := buffer.Bytes()
+	_, err = format.Source(codeBytes)
+	require.NoError(t, err)
+}
+
+func TestGenerateAPITest(t *testing.T) {
+	buffer := &bytes.Buffer{}
+	err := api.GenerateAPITest(buffer)
+	require.NoError(t, err)
+	codeBytes := buffer.Bytes()
+	_, err = format.Source(codeBytes)
+	require.NoError(t, err)
+}

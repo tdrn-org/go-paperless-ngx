@@ -19,6 +19,8 @@ package api
 
 //go:generate go run github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen --config=oapi-codegen-paperless-ngx.yaml paperless-ngx.gen.yaml
 //go:generate go run ../cmd/build/build.go genwrapper ../paperlessngx.gen.go
+//go:generate go run ../cmd/build/build.go genmock ../mock/mock.gen.go
+//go:generate go run ../cmd/build/build.go genapitest ../paperlessngx_test.go
 
 import (
 	_ "embed"
