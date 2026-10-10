@@ -8,7 +8,7 @@ require (
 	github.com/go-chi/chi/v5 v5.3.2
 	github.com/oapi-codegen/runtime v1.7.0
 	github.com/stretchr/testify v1.12.1
-	golang.org/x/tools v0.50.0
+	golang.org/x/tools v0.51.0
 )
 
 require (
