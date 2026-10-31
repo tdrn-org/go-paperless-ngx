@@ -6,7 +6,7 @@ toolchain go1.27.1
 
 require (
 	github.com/go-chi/chi/v5 v5.5.0
-	github.com/oapi-codegen/runtime v1.7.0
+	github.com/oapi-codegen/runtime v1.8.0
 	github.com/stretchr/testify v1.12.1
 	golang.org/x/tools v0.52.0
 )
