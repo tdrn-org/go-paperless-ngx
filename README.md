@@ -8,13 +8,13 @@
 The [Paperless NGX DMS](https://github.com/paperless-ngx/paperless-ngx) provides a [REST API](https://docs.paperless-ngx.com/api/) to access the DMS functions. This library provides the Go wrapper for this API.
 
 ## License & Attribution
-This project is licensed under the **Apache License 2.0** (see the [LICENSE](./LICENSE) file for details).
+This project is subject to the the MIT License (see the [LICENSE](./LICENSE) file for details).
 
 #### Third-Party Notices
 This project uses the official OpenAPI specification from **[Paperless-ngx](https://github.com/paperless-ngx)** as a source for code generation.
 
-* **Component:** Paperless-ngx OpenAPI Specification (`api/paperless-ngx.gen.yaml`)
+* **Component:** Paperless-ngx OpenAPI Specification (`api/paperless-ngx.yaml`)
 * **Copyright:** Copyright (c) Paperless-ngx Contributors
-* **License:** [GNU General Public License v3.0 (GPLv3)](https://github.com/blob/main/LICENSE)
+* **License:** [GNU General Public License v3.0 (GPLv3)](https://github.com/paperless-ngx/paperless-ngx/blob/dev/LICENSE)
 
-The OpenAPI specification file remains under the terms of the GPLv3. The Go code generator itself and any newly generated output code are licensed under the Apache License 2.0.
+The OpenAPI specification file remains under the terms of the GPLv3. This module's Go code generator itself and any newly generated output code are subject to the MIT License.
