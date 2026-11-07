@@ -11,6 +11,10 @@ func (s *Server) AcknowledgeTasks(ctx context.Context, request api.AcknowledgeTa
 	return nil, nil
 }
 
+func (s *Server) BulkDownload(ctx context.Context, request api.BulkDownloadRequestObject) (api.BulkDownloadResponseObject, error) {
+	return nil, nil
+}
+
 func (s *Server) BulkEdit(ctx context.Context, request api.BulkEditRequestObject) (api.BulkEditResponseObject, error) {
 	return nil, nil
 }
@@ -115,7 +119,19 @@ func (s *Server) DocumentTypesUpdate(ctx context.Context, request api.DocumentTy
 	return nil, nil
 }
 
-func (s *Server) DocumentsBulkDownloadCreate(ctx context.Context, request api.DocumentsBulkDownloadCreateRequestObject) (api.DocumentsBulkDownloadCreateResponseObject, error) {
+func (s *Server) DocumentsAiSuggestionsRetrieve(ctx context.Context, request api.DocumentsAiSuggestionsRetrieveRequestObject) (api.DocumentsAiSuggestionsRetrieveResponseObject, error) {
+	return nil, nil
+}
+
+func (s *Server) DocumentsChatCreate(ctx context.Context, request api.DocumentsChatCreateRequestObject) (api.DocumentsChatCreateResponseObject, error) {
+	return nil, nil
+}
+
+func (s *Server) DocumentsDelete(ctx context.Context, request api.DocumentsDeleteRequestObject) (api.DocumentsDeleteResponseObject, error) {
+	return nil, nil
+}
+
+func (s *Server) DocumentsDeleteVersion(ctx context.Context, request api.DocumentsDeleteVersionRequestObject) (api.DocumentsDeleteVersionResponseObject, error) {
 	return nil, nil
 }
 
@@ -127,7 +143,11 @@ func (s *Server) DocumentsDownloadRetrieve(ctx context.Context, request api.Docu
 	return nil, nil
 }
 
-func (s *Server) DocumentsEmailCreate(ctx context.Context, request api.DocumentsEmailCreateRequestObject) (api.DocumentsEmailCreateResponseObject, error) {
+func (s *Server) DocumentsEditPdf(ctx context.Context, request api.DocumentsEditPdfRequestObject) (api.DocumentsEditPdfResponseObject, error) {
+	return nil, nil
+}
+
+func (s *Server) DocumentsEmailDocument(ctx context.Context, request api.DocumentsEmailDocumentRequestObject) (api.DocumentsEmailDocumentResponseObject, error) {
 	return nil, nil
 }
 
@@ -136,6 +156,14 @@ func (s *Server) DocumentsHistoryList(ctx context.Context, request api.Documents
 }
 
 func (s *Server) DocumentsList(ctx context.Context, request api.DocumentsListRequestObject) (api.DocumentsListResponseObject, error) {
+	return nil, nil
+}
+
+func (s *Server) DocumentsMerge(ctx context.Context, request api.DocumentsMergeRequestObject) (api.DocumentsMergeResponseObject, error) {
+	return nil, nil
+}
+
+func (s *Server) DocumentsMergeAsVersions(ctx context.Context, request api.DocumentsMergeAsVersionsRequestObject) (api.DocumentsMergeAsVersionsResponseObject, error) {
 	return nil, nil
 }
 
@@ -171,7 +199,23 @@ func (s *Server) DocumentsPreviewRetrieve(ctx context.Context, request api.Docum
 	return nil, nil
 }
 
+func (s *Server) DocumentsRemovePassword(ctx context.Context, request api.DocumentsRemovePasswordRequestObject) (api.DocumentsRemovePasswordResponseObject, error) {
+	return nil, nil
+}
+
+func (s *Server) DocumentsReprocess(ctx context.Context, request api.DocumentsReprocessRequestObject) (api.DocumentsReprocessResponseObject, error) {
+	return nil, nil
+}
+
 func (s *Server) DocumentsRetrieve(ctx context.Context, request api.DocumentsRetrieveRequestObject) (api.DocumentsRetrieveResponseObject, error) {
+	return nil, nil
+}
+
+func (s *Server) DocumentsRoot(ctx context.Context, request api.DocumentsRootRequestObject) (api.DocumentsRootResponseObject, error) {
+	return nil, nil
+}
+
+func (s *Server) DocumentsRotate(ctx context.Context, request api.DocumentsRotateRequestObject) (api.DocumentsRotateResponseObject, error) {
 	return nil, nil
 }
 
@@ -188,6 +232,14 @@ func (s *Server) DocumentsThumbRetrieve(ctx context.Context, request api.Documen
 }
 
 func (s *Server) DocumentsUpdate(ctx context.Context, request api.DocumentsUpdateRequestObject) (api.DocumentsUpdateResponseObject, error) {
+	return nil, nil
+}
+
+func (s *Server) DocumentsUpdateVersion(ctx context.Context, request api.DocumentsUpdateVersionRequestObject) (api.DocumentsUpdateVersionResponseObject, error) {
+	return nil, nil
+}
+
+func (s *Server) DocumentsUpdateVersionLabel(ctx context.Context, request api.DocumentsUpdateVersionLabelRequestObject) (api.DocumentsUpdateVersionLabelResponseObject, error) {
 	return nil, nil
 }
 
@@ -283,7 +335,7 @@ func (s *Server) OauthCallbackRetrieve(ctx context.Context, request api.OauthCal
 	return nil, nil
 }
 
-func (s *Server) ProcessedMailBulkDeleteCreate(ctx context.Context, request api.ProcessedMailBulkDeleteCreateRequestObject) (api.ProcessedMailBulkDeleteCreateResponseObject, error) {
+func (s *Server) ProcessedMailBulkDelete(ctx context.Context, request api.ProcessedMailBulkDeleteRequestObject) (api.ProcessedMailBulkDeleteResponseObject, error) {
 	return nil, nil
 }
 
@@ -335,6 +387,10 @@ func (s *Server) RetrieveLog(ctx context.Context, request api.RetrieveLogRequest
 	return nil, nil
 }
 
+func (s *Server) RunTask(ctx context.Context, request api.RunTaskRequestObject) (api.RunTaskResponseObject, error) {
+	return nil, nil
+}
+
 func (s *Server) SavedViewsCreate(ctx context.Context, request api.SavedViewsCreateRequestObject) (api.SavedViewsCreateResponseObject, error) {
 	return nil, nil
 }
@@ -364,6 +420,26 @@ func (s *Server) SearchAutocompleteList(ctx context.Context, request api.SearchA
 }
 
 func (s *Server) SearchRetrieve(ctx context.Context, request api.SearchRetrieveRequestObject) (api.SearchRetrieveResponseObject, error) {
+	return nil, nil
+}
+
+func (s *Server) ShareLinkBundlesCreate(ctx context.Context, request api.ShareLinkBundlesCreateRequestObject) (api.ShareLinkBundlesCreateResponseObject, error) {
+	return nil, nil
+}
+
+func (s *Server) ShareLinkBundlesDestroy(ctx context.Context, request api.ShareLinkBundlesDestroyRequestObject) (api.ShareLinkBundlesDestroyResponseObject, error) {
+	return nil, nil
+}
+
+func (s *Server) ShareLinkBundlesList(ctx context.Context, request api.ShareLinkBundlesListRequestObject) (api.ShareLinkBundlesListResponseObject, error) {
+	return nil, nil
+}
+
+func (s *Server) ShareLinkBundlesRebuild(ctx context.Context, request api.ShareLinkBundlesRebuildRequestObject) (api.ShareLinkBundlesRebuildResponseObject, error) {
+	return nil, nil
+}
+
+func (s *Server) ShareLinkBundlesRetrieve(ctx context.Context, request api.ShareLinkBundlesRetrieveRequestObject) (api.ShareLinkBundlesRetrieveResponseObject, error) {
 	return nil, nil
 }
 
@@ -411,7 +487,7 @@ func (s *Server) StoragePathsRetrieve(ctx context.Context, request api.StoragePa
 	return nil, nil
 }
 
-func (s *Server) StoragePathsTestCreate(ctx context.Context, request api.StoragePathsTestCreateRequestObject) (api.StoragePathsTestCreateResponseObject, error) {
+func (s *Server) StoragePathsTest(ctx context.Context, request api.StoragePathsTestRequestObject) (api.StoragePathsTestResponseObject, error) {
 	return nil, nil
 }
 
@@ -443,6 +519,10 @@ func (s *Server) TagsUpdate(ctx context.Context, request api.TagsUpdateRequestOb
 	return nil, nil
 }
 
+func (s *Server) TasksActiveList(ctx context.Context, request api.TasksActiveListRequestObject) (api.TasksActiveListResponseObject, error) {
+	return nil, nil
+}
+
 func (s *Server) TasksList(ctx context.Context, request api.TasksListRequestObject) (api.TasksListResponseObject, error) {
 	return nil, nil
 }
@@ -451,7 +531,11 @@ func (s *Server) TasksRetrieve(ctx context.Context, request api.TasksRetrieveReq
 	return nil, nil
 }
 
-func (s *Server) TasksRunCreate(ctx context.Context, request api.TasksRunCreateRequestObject) (api.TasksRunCreateResponseObject, error) {
+func (s *Server) TasksStatusCountsRetrieve(ctx context.Context, request api.TasksStatusCountsRetrieveRequestObject) (api.TasksStatusCountsRetrieveResponseObject, error) {
+	return nil, nil
+}
+
+func (s *Server) TasksSummaryList(ctx context.Context, request api.TasksSummaryListRequestObject) (api.TasksSummaryListResponseObject, error) {
 	return nil, nil
 }
 

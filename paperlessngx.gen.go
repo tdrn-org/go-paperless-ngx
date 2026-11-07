@@ -8,8 +8,8 @@ import (
 	"github.com/tdrn-org/go-paperless-ngx/api"
 )
 
-func (client *Client) AcknowledgeTasksWithBody(ctx context.Context, params *api.AcknowledgeTasksParams, contentType string, body io.Reader) (*api.AcknowledgeTasksResponse, error) {
-	response, err := client.apiClient.AcknowledgeTasksWithBodyWithResponse(ctx, params, contentType, body)
+func (client *Client) AcknowledgeTasksWithBody(ctx context.Context, contentType string, body io.Reader) (*api.AcknowledgeTasksResponse, error) {
+	response, err := client.apiClient.AcknowledgeTasksWithBodyWithResponse(ctx, contentType, body)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -20,8 +20,44 @@ func (client *Client) AcknowledgeTasksWithBody(ctx context.Context, params *api.
 	return response, err
 }
 
-func (client *Client) AcknowledgeTasks(ctx context.Context, params *api.AcknowledgeTasksParams, body api.AcknowledgeTasksJSONRequestBody) (*api.AcknowledgeTasksResponse, error) {
-	response, err := client.apiClient.AcknowledgeTasksWithResponse(ctx, params, body)
+func (client *Client) AcknowledgeTasksWithFormdataBody(ctx context.Context, body api.AcknowledgeTasksFormdataRequestBody) (*api.AcknowledgeTasksResponse, error) {
+	response, err := client.apiClient.AcknowledgeTasksWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) AcknowledgeTasks(ctx context.Context, body api.AcknowledgeTasksJSONRequestBody) (*api.AcknowledgeTasksResponse, error) {
+	response, err := client.apiClient.AcknowledgeTasksWithResponse(ctx, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) BulkDownloadWithBody(ctx context.Context, contentType string, body io.Reader) (*api.BulkDownloadResponse, error) {
+	response, err := client.apiClient.BulkDownloadWithBodyWithResponse(ctx, contentType, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) BulkDownload(ctx context.Context, body api.BulkDownloadJSONRequestBody) (*api.BulkDownloadResponse, error) {
+	response, err := client.apiClient.BulkDownloadWithResponse(ctx, body)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -632,8 +668,8 @@ func (client *Client) DocumentTypesUpdate(ctx context.Context, id int, body api.
 	return response, err
 }
 
-func (client *Client) DocumentsBulkDownloadCreateWithBody(ctx context.Context, contentType string, body io.Reader) (*api.DocumentsBulkDownloadCreateResponse, error) {
-	response, err := client.apiClient.DocumentsBulkDownloadCreateWithBodyWithResponse(ctx, contentType, body)
+func (client *Client) DocumentsAiSuggestionsRetrieve(ctx context.Context, id int) (*api.DocumentsAiSuggestionsRetrieveResponse, error) {
+	response, err := client.apiClient.DocumentsAiSuggestionsRetrieveWithResponse(ctx, id)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -644,8 +680,68 @@ func (client *Client) DocumentsBulkDownloadCreateWithBody(ctx context.Context, c
 	return response, err
 }
 
-func (client *Client) DocumentsBulkDownloadCreate(ctx context.Context, body api.DocumentsBulkDownloadCreateJSONRequestBody) (*api.DocumentsBulkDownloadCreateResponse, error) {
-	response, err := client.apiClient.DocumentsBulkDownloadCreateWithResponse(ctx, body)
+func (client *Client) DocumentsChatCreateWithBody(ctx context.Context, contentType string, body io.Reader) (*api.DocumentsChatCreateResponse, error) {
+	response, err := client.apiClient.DocumentsChatCreateWithBodyWithResponse(ctx, contentType, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsChatCreateWithFormdataBody(ctx context.Context, body api.DocumentsChatCreateFormdataRequestBody) (*api.DocumentsChatCreateResponse, error) {
+	response, err := client.apiClient.DocumentsChatCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsChatCreate(ctx context.Context, body api.DocumentsChatCreateJSONRequestBody) (*api.DocumentsChatCreateResponse, error) {
+	response, err := client.apiClient.DocumentsChatCreateWithResponse(ctx, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsDeleteVersion(ctx context.Context, id int, versionId int) (*api.DocumentsDeleteVersionResponse, error) {
+	response, err := client.apiClient.DocumentsDeleteVersionWithResponse(ctx, id, versionId)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsDeleteWithBody(ctx context.Context, contentType string, body io.Reader) (*api.DocumentsDeleteResponse, error) {
+	response, err := client.apiClient.DocumentsDeleteWithBodyWithResponse(ctx, contentType, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsDelete(ctx context.Context, body api.DocumentsDeleteJSONRequestBody) (*api.DocumentsDeleteResponse, error) {
+	response, err := client.apiClient.DocumentsDeleteWithResponse(ctx, body)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -680,8 +776,8 @@ func (client *Client) DocumentsDownloadRetrieve(ctx context.Context, id int, par
 	return response, err
 }
 
-func (client *Client) DocumentsEmailCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader) (*api.DocumentsEmailCreateResponse, error) {
-	response, err := client.apiClient.DocumentsEmailCreateWithBodyWithResponse(ctx, id, contentType, body)
+func (client *Client) DocumentsEditPdfWithBody(ctx context.Context, contentType string, body io.Reader) (*api.DocumentsEditPdfResponse, error) {
+	response, err := client.apiClient.DocumentsEditPdfWithBodyWithResponse(ctx, contentType, body)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -692,8 +788,8 @@ func (client *Client) DocumentsEmailCreateWithBody(ctx context.Context, id int, 
 	return response, err
 }
 
-func (client *Client) DocumentsEmailCreateWithFormdataBody(ctx context.Context, id int, body api.DocumentsEmailCreateFormdataRequestBody) (*api.DocumentsEmailCreateResponse, error) {
-	response, err := client.apiClient.DocumentsEmailCreateWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
+func (client *Client) DocumentsEditPdf(ctx context.Context, body api.DocumentsEditPdfJSONRequestBody) (*api.DocumentsEditPdfResponse, error) {
+	response, err := client.apiClient.DocumentsEditPdfWithResponse(ctx, body)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -704,8 +800,32 @@ func (client *Client) DocumentsEmailCreateWithFormdataBody(ctx context.Context, 
 	return response, err
 }
 
-func (client *Client) DocumentsEmailCreate(ctx context.Context, id int, body api.DocumentsEmailCreateJSONRequestBody) (*api.DocumentsEmailCreateResponse, error) {
-	response, err := client.apiClient.DocumentsEmailCreateWithResponse(ctx, id, body)
+func (client *Client) DocumentsEmailDocumentWithBody(ctx context.Context, id int, contentType string, body io.Reader) (*api.DocumentsEmailDocumentResponse, error) {
+	response, err := client.apiClient.DocumentsEmailDocumentWithBodyWithResponse(ctx, id, contentType, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsEmailDocumentWithFormdataBody(ctx context.Context, id int, body api.DocumentsEmailDocumentFormdataRequestBody) (*api.DocumentsEmailDocumentResponse, error) {
+	response, err := client.apiClient.DocumentsEmailDocumentWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsEmailDocument(ctx context.Context, id int, body api.DocumentsEmailDocumentJSONRequestBody) (*api.DocumentsEmailDocumentResponse, error) {
+	response, err := client.apiClient.DocumentsEmailDocumentWithResponse(ctx, id, body)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -730,6 +850,54 @@ func (client *Client) DocumentsHistoryList(ctx context.Context, id int, params *
 
 func (client *Client) DocumentsList(ctx context.Context, params *api.DocumentsListParams) (*api.DocumentsListResponse, error) {
 	response, err := client.apiClient.DocumentsListWithResponse(ctx, params)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsMergeAsVersionsWithBody(ctx context.Context, contentType string, body io.Reader) (*api.DocumentsMergeAsVersionsResponse, error) {
+	response, err := client.apiClient.DocumentsMergeAsVersionsWithBodyWithResponse(ctx, contentType, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsMergeAsVersions(ctx context.Context, body api.DocumentsMergeAsVersionsJSONRequestBody) (*api.DocumentsMergeAsVersionsResponse, error) {
+	response, err := client.apiClient.DocumentsMergeAsVersionsWithResponse(ctx, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsMergeWithBody(ctx context.Context, contentType string, body io.Reader) (*api.DocumentsMergeResponse, error) {
+	response, err := client.apiClient.DocumentsMergeWithBodyWithResponse(ctx, contentType, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsMerge(ctx context.Context, body api.DocumentsMergeJSONRequestBody) (*api.DocumentsMergeResponse, error) {
+	response, err := client.apiClient.DocumentsMergeWithResponse(ctx, body)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -884,8 +1052,92 @@ func (client *Client) DocumentsPreviewRetrieve(ctx context.Context, id int) (*ap
 	return response, err
 }
 
+func (client *Client) DocumentsRemovePasswordWithBody(ctx context.Context, contentType string, body io.Reader) (*api.DocumentsRemovePasswordResponse, error) {
+	response, err := client.apiClient.DocumentsRemovePasswordWithBodyWithResponse(ctx, contentType, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsRemovePassword(ctx context.Context, body api.DocumentsRemovePasswordJSONRequestBody) (*api.DocumentsRemovePasswordResponse, error) {
+	response, err := client.apiClient.DocumentsRemovePasswordWithResponse(ctx, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsReprocessWithBody(ctx context.Context, contentType string, body io.Reader) (*api.DocumentsReprocessResponse, error) {
+	response, err := client.apiClient.DocumentsReprocessWithBodyWithResponse(ctx, contentType, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsReprocess(ctx context.Context, body api.DocumentsReprocessJSONRequestBody) (*api.DocumentsReprocessResponse, error) {
+	response, err := client.apiClient.DocumentsReprocessWithResponse(ctx, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
 func (client *Client) DocumentsRetrieve(ctx context.Context, id int, params *api.DocumentsRetrieveParams) (*api.DocumentsRetrieveResponse, error) {
 	response, err := client.apiClient.DocumentsRetrieveWithResponse(ctx, id, params)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsRoot(ctx context.Context, id int) (*api.DocumentsRootResponse, error) {
+	response, err := client.apiClient.DocumentsRootWithResponse(ctx, id)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsRotateWithBody(ctx context.Context, contentType string, body io.Reader) (*api.DocumentsRotateResponse, error) {
+	response, err := client.apiClient.DocumentsRotateWithBodyWithResponse(ctx, contentType, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsRotate(ctx context.Context, body api.DocumentsRotateJSONRequestBody) (*api.DocumentsRotateResponse, error) {
+	response, err := client.apiClient.DocumentsRotateWithResponse(ctx, body)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -934,6 +1186,54 @@ func (client *Client) DocumentsSuggestionsRetrieve(ctx context.Context, id int) 
 
 func (client *Client) DocumentsThumbRetrieve(ctx context.Context, id int) (*api.DocumentsThumbRetrieveResponse, error) {
 	response, err := client.apiClient.DocumentsThumbRetrieveWithResponse(ctx, id)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsUpdateVersionLabelWithBody(ctx context.Context, id int, versionId int, contentType string, body io.Reader) (*api.DocumentsUpdateVersionLabelResponse, error) {
+	response, err := client.apiClient.DocumentsUpdateVersionLabelWithBodyWithResponse(ctx, id, versionId, contentType, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsUpdateVersionLabelWithFormdataBody(ctx context.Context, id int, versionId int, body api.DocumentsUpdateVersionLabelFormdataRequestBody) (*api.DocumentsUpdateVersionLabelResponse, error) {
+	response, err := client.apiClient.DocumentsUpdateVersionLabelWithFormdataBodyWithResponse(ctx, id, versionId, body, client.requestContentType("multipart/form-data; boundary=----test----"))
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsUpdateVersionLabel(ctx context.Context, id int, versionId int, body api.DocumentsUpdateVersionLabelJSONRequestBody) (*api.DocumentsUpdateVersionLabelResponse, error) {
+	response, err := client.apiClient.DocumentsUpdateVersionLabelWithResponse(ctx, id, versionId, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) DocumentsUpdateVersionWithBody(ctx context.Context, id int, contentType string, body io.Reader) (*api.DocumentsUpdateVersionResponse, error) {
+	response, err := client.apiClient.DocumentsUpdateVersionWithBodyWithResponse(ctx, id, contentType, body)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1544,8 +1844,8 @@ func (client *Client) OauthCallbackRetrieve(ctx context.Context) (*api.OauthCall
 	return response, err
 }
 
-func (client *Client) ProcessedMailBulkDeleteCreateWithBody(ctx context.Context, contentType string, body io.Reader) (*api.ProcessedMailBulkDeleteCreateResponse, error) {
-	response, err := client.apiClient.ProcessedMailBulkDeleteCreateWithBodyWithResponse(ctx, contentType, body)
+func (client *Client) ProcessedMailBulkDeleteWithBody(ctx context.Context, contentType string, body io.Reader) (*api.ProcessedMailBulkDeleteResponse, error) {
+	response, err := client.apiClient.ProcessedMailBulkDeleteWithBodyWithResponse(ctx, contentType, body)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1556,8 +1856,8 @@ func (client *Client) ProcessedMailBulkDeleteCreateWithBody(ctx context.Context,
 	return response, err
 }
 
-func (client *Client) ProcessedMailBulkDeleteCreateWithFormdataBody(ctx context.Context, body api.ProcessedMailBulkDeleteCreateFormdataRequestBody) (*api.ProcessedMailBulkDeleteCreateResponse, error) {
-	response, err := client.apiClient.ProcessedMailBulkDeleteCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
+func (client *Client) ProcessedMailBulkDeleteWithFormdataBody(ctx context.Context, body api.ProcessedMailBulkDeleteFormdataRequestBody) (*api.ProcessedMailBulkDeleteResponse, error) {
+	response, err := client.apiClient.ProcessedMailBulkDeleteWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1568,8 +1868,8 @@ func (client *Client) ProcessedMailBulkDeleteCreateWithFormdataBody(ctx context.
 	return response, err
 }
 
-func (client *Client) ProcessedMailBulkDeleteCreate(ctx context.Context, body api.ProcessedMailBulkDeleteCreateJSONRequestBody) (*api.ProcessedMailBulkDeleteCreateResponse, error) {
-	response, err := client.apiClient.ProcessedMailBulkDeleteCreateWithResponse(ctx, body)
+func (client *Client) ProcessedMailBulkDelete(ctx context.Context, body api.ProcessedMailBulkDeleteJSONRequestBody) (*api.ProcessedMailBulkDeleteResponse, error) {
+	response, err := client.apiClient.ProcessedMailBulkDeleteWithResponse(ctx, body)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1772,6 +2072,42 @@ func (client *Client) RetrieveLog(ctx context.Context, id string, params *api.Re
 	return response, err
 }
 
+func (client *Client) RunTaskWithBody(ctx context.Context, contentType string, body io.Reader) (*api.RunTaskResponse, error) {
+	response, err := client.apiClient.RunTaskWithBodyWithResponse(ctx, contentType, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) RunTaskWithFormdataBody(ctx context.Context, body api.RunTaskFormdataRequestBody) (*api.RunTaskResponse, error) {
+	response, err := client.apiClient.RunTaskWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) RunTask(ctx context.Context, body api.RunTaskJSONRequestBody) (*api.RunTaskResponse, error) {
+	response, err := client.apiClient.RunTaskWithResponse(ctx, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
 func (client *Client) SavedViewsCreateWithBody(ctx context.Context, contentType string, body io.Reader) (*api.SavedViewsCreateResponse, error) {
 	response, err := client.apiClient.SavedViewsCreateWithBodyWithResponse(ctx, contentType, body)
 	if err != nil {
@@ -1868,8 +2204,8 @@ func (client *Client) SavedViewsPartialUpdate(ctx context.Context, id int, body 
 	return response, err
 }
 
-func (client *Client) SavedViewsRetrieve(ctx context.Context, id int) (*api.SavedViewsRetrieveResponse, error) {
-	response, err := client.apiClient.SavedViewsRetrieveWithResponse(ctx, id)
+func (client *Client) SavedViewsRetrieve(ctx context.Context, id int, params *api.SavedViewsRetrieveParams) (*api.SavedViewsRetrieveResponse, error) {
+	response, err := client.apiClient.SavedViewsRetrieveWithResponse(ctx, id, params)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -1930,6 +2266,114 @@ func (client *Client) SearchAutocompleteList(ctx context.Context, params *api.Se
 
 func (client *Client) SearchRetrieve(ctx context.Context, params *api.SearchRetrieveParams) (*api.SearchRetrieveResponse, error) {
 	response, err := client.apiClient.SearchRetrieveWithResponse(ctx, params)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) ShareLinkBundlesCreateWithBody(ctx context.Context, contentType string, body io.Reader) (*api.ShareLinkBundlesCreateResponse, error) {
+	response, err := client.apiClient.ShareLinkBundlesCreateWithBodyWithResponse(ctx, contentType, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) ShareLinkBundlesCreateWithFormdataBody(ctx context.Context, body api.ShareLinkBundlesCreateFormdataRequestBody) (*api.ShareLinkBundlesCreateResponse, error) {
+	response, err := client.apiClient.ShareLinkBundlesCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) ShareLinkBundlesCreate(ctx context.Context, body api.ShareLinkBundlesCreateJSONRequestBody) (*api.ShareLinkBundlesCreateResponse, error) {
+	response, err := client.apiClient.ShareLinkBundlesCreateWithResponse(ctx, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) ShareLinkBundlesDestroy(ctx context.Context, id int) (*api.ShareLinkBundlesDestroyResponse, error) {
+	response, err := client.apiClient.ShareLinkBundlesDestroyWithResponse(ctx, id)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) ShareLinkBundlesList(ctx context.Context, params *api.ShareLinkBundlesListParams) (*api.ShareLinkBundlesListResponse, error) {
+	response, err := client.apiClient.ShareLinkBundlesListWithResponse(ctx, params)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) ShareLinkBundlesRebuildWithBody(ctx context.Context, id int, contentType string, body io.Reader) (*api.ShareLinkBundlesRebuildResponse, error) {
+	response, err := client.apiClient.ShareLinkBundlesRebuildWithBodyWithResponse(ctx, id, contentType, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) ShareLinkBundlesRebuildWithFormdataBody(ctx context.Context, id int, body api.ShareLinkBundlesRebuildFormdataRequestBody) (*api.ShareLinkBundlesRebuildResponse, error) {
+	response, err := client.apiClient.ShareLinkBundlesRebuildWithFormdataBodyWithResponse(ctx, id, body, client.requestContentType("multipart/form-data; boundary=----test----"))
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) ShareLinkBundlesRebuild(ctx context.Context, id int, body api.ShareLinkBundlesRebuildJSONRequestBody) (*api.ShareLinkBundlesRebuildResponse, error) {
+	response, err := client.apiClient.ShareLinkBundlesRebuildWithResponse(ctx, id, body)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
+func (client *Client) ShareLinkBundlesRetrieve(ctx context.Context, id int) (*api.ShareLinkBundlesRetrieveResponse, error) {
+	response, err := client.apiClient.ShareLinkBundlesRetrieveWithResponse(ctx, id)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2144,8 +2588,8 @@ func (client *Client) StoragePathsRetrieve(ctx context.Context, id int, params *
 	return response, err
 }
 
-func (client *Client) StoragePathsTestCreateWithBody(ctx context.Context, contentType string, body io.Reader) (*api.StoragePathsTestCreateResponse, error) {
-	response, err := client.apiClient.StoragePathsTestCreateWithBodyWithResponse(ctx, contentType, body)
+func (client *Client) StoragePathsTestWithBody(ctx context.Context, contentType string, body io.Reader) (*api.StoragePathsTestResponse, error) {
+	response, err := client.apiClient.StoragePathsTestWithBodyWithResponse(ctx, contentType, body)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2156,8 +2600,8 @@ func (client *Client) StoragePathsTestCreateWithBody(ctx context.Context, conten
 	return response, err
 }
 
-func (client *Client) StoragePathsTestCreateWithFormdataBody(ctx context.Context, body api.StoragePathsTestCreateFormdataRequestBody) (*api.StoragePathsTestCreateResponse, error) {
-	response, err := client.apiClient.StoragePathsTestCreateWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
+func (client *Client) StoragePathsTestWithFormdataBody(ctx context.Context, body api.StoragePathsTestFormdataRequestBody) (*api.StoragePathsTestResponse, error) {
+	response, err := client.apiClient.StoragePathsTestWithFormdataBodyWithResponse(ctx, body, client.requestContentType("multipart/form-data; boundary=----test----"))
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2168,8 +2612,8 @@ func (client *Client) StoragePathsTestCreateWithFormdataBody(ctx context.Context
 	return response, err
 }
 
-func (client *Client) StoragePathsTestCreate(ctx context.Context, body api.StoragePathsTestCreateJSONRequestBody) (*api.StoragePathsTestCreateResponse, error) {
-	response, err := client.apiClient.StoragePathsTestCreateWithResponse(ctx, body)
+func (client *Client) StoragePathsTest(ctx context.Context, body api.StoragePathsTestJSONRequestBody) (*api.StoragePathsTestResponse, error) {
+	response, err := client.apiClient.StoragePathsTestWithResponse(ctx, body)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2360,6 +2804,18 @@ func (client *Client) TagsUpdate(ctx context.Context, id int, body api.TagsUpdat
 	return response, err
 }
 
+func (client *Client) TasksActiveList(ctx context.Context, params *api.TasksActiveListParams) (*api.TasksActiveListResponse, error) {
+	response, err := client.apiClient.TasksActiveListWithResponse(ctx, params)
+	if err != nil {
+		return nil, client.wrapSystemError(err)
+	}
+	err = client.checkAPIResponse(response.HTTPResponse)
+	if err != nil {
+		return nil, err
+	}
+	return response, err
+}
+
 func (client *Client) TasksList(ctx context.Context, params *api.TasksListParams) (*api.TasksListResponse, error) {
 	response, err := client.apiClient.TasksListWithResponse(ctx, params)
 	if err != nil {
@@ -2372,8 +2828,8 @@ func (client *Client) TasksList(ctx context.Context, params *api.TasksListParams
 	return response, err
 }
 
-func (client *Client) TasksRetrieve(ctx context.Context, id int, params *api.TasksRetrieveParams) (*api.TasksRetrieveResponse, error) {
-	response, err := client.apiClient.TasksRetrieveWithResponse(ctx, id, params)
+func (client *Client) TasksRetrieve(ctx context.Context, id int) (*api.TasksRetrieveResponse, error) {
+	response, err := client.apiClient.TasksRetrieveWithResponse(ctx, id)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2384,8 +2840,8 @@ func (client *Client) TasksRetrieve(ctx context.Context, id int, params *api.Tas
 	return response, err
 }
 
-func (client *Client) TasksRunCreateWithBody(ctx context.Context, params *api.TasksRunCreateParams, contentType string, body io.Reader) (*api.TasksRunCreateResponse, error) {
-	response, err := client.apiClient.TasksRunCreateWithBodyWithResponse(ctx, params, contentType, body)
+func (client *Client) TasksStatusCountsRetrieve(ctx context.Context) (*api.TasksStatusCountsRetrieveResponse, error) {
+	response, err := client.apiClient.TasksStatusCountsRetrieveWithResponse(ctx)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}
@@ -2396,20 +2852,8 @@ func (client *Client) TasksRunCreateWithBody(ctx context.Context, params *api.Ta
 	return response, err
 }
 
-func (client *Client) TasksRunCreateWithFormdataBody(ctx context.Context, params *api.TasksRunCreateParams, body api.TasksRunCreateFormdataRequestBody) (*api.TasksRunCreateResponse, error) {
-	response, err := client.apiClient.TasksRunCreateWithFormdataBodyWithResponse(ctx, params, body, client.requestContentType("multipart/form-data; boundary=----test----"))
-	if err != nil {
-		return nil, client.wrapSystemError(err)
-	}
-	err = client.checkAPIResponse(response.HTTPResponse)
-	if err != nil {
-		return nil, err
-	}
-	return response, err
-}
-
-func (client *Client) TasksRunCreate(ctx context.Context, params *api.TasksRunCreateParams, body api.TasksRunCreateJSONRequestBody) (*api.TasksRunCreateResponse, error) {
-	response, err := client.apiClient.TasksRunCreateWithResponse(ctx, params, body)
+func (client *Client) TasksSummaryList(ctx context.Context, params *api.TasksSummaryListParams) (*api.TasksSummaryListResponse, error) {
+	response, err := client.apiClient.TasksSummaryListWithResponse(ctx, params)
 	if err != nil {
 		return nil, client.wrapSystemError(err)
 	}

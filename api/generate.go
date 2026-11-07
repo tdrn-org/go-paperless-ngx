@@ -308,10 +308,12 @@ const multipartFormDataContent string = "--bndry\\r\\nContent-Disposition: form-
 
 var methodContentTypeOverrideMap map[string]string = map[string]string{
 	"DocumentsPostDocumentCreateWithBodyWithResponse": multipartFormDataContentType,
+	"DocumentsUpdateVersionWithBodyWithResponse":      multipartFormDataContentType,
 }
 
 var methodContentOverrideMap map[string]string = map[string]string{
 	"DocumentsPostDocumentCreateWithBodyWithResponse": multipartFormDataContent,
+	"DocumentsUpdateVersionWithBodyWithResponse":      multipartFormDataContent,
 }
 
 func (g *apiTestGenerator) writeVarInitialization(methodName, varName string, varType types.Type) {

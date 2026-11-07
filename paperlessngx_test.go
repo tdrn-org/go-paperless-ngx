@@ -20,17 +20,34 @@ func TestAPI(t *testing.T) {
 
 	{
 		ctx := t.Context()
-		params := &api.AcknowledgeTasksParams{}
 		contentType := "application/json"
 		body := strings.NewReader("{}")
-		_, err := client.AcknowledgeTasksWithBody(ctx, params, contentType, body)
+		_, err := client.AcknowledgeTasksWithBody(ctx, contentType, body)
 		require.NoError(t, err)
 	}
 	{
 		ctx := t.Context()
-		params := &api.AcknowledgeTasksParams{}
+		body := api.AcknowledgeTasksFormdataRequestBody{}
+		_, err := client.AcknowledgeTasksWithFormdataBody(ctx, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
 		body := api.AcknowledgeTasksJSONRequestBody{}
-		_, err := client.AcknowledgeTasks(ctx, params, body)
+		_, err := client.AcknowledgeTasks(ctx, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		contentType := "application/json"
+		body := strings.NewReader("{}")
+		_, err := client.BulkDownloadWithBody(ctx, contentType, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		body := api.BulkDownloadJSONRequestBody{}
+		_, err := client.BulkDownload(ctx, body)
 		require.NoError(t, err)
 	}
 	{
@@ -373,15 +390,47 @@ func TestAPI(t *testing.T) {
 	}
 	{
 		ctx := t.Context()
-		contentType := "application/json"
-		body := strings.NewReader("{}")
-		_, err := client.DocumentsBulkDownloadCreateWithBody(ctx, contentType, body)
+		id := 0
+		_, err := client.DocumentsAiSuggestionsRetrieve(ctx, id)
 		require.NoError(t, err)
 	}
 	{
 		ctx := t.Context()
-		body := api.DocumentsBulkDownloadCreateJSONRequestBody{}
-		_, err := client.DocumentsBulkDownloadCreate(ctx, body)
+		contentType := "application/json"
+		body := strings.NewReader("{}")
+		_, err := client.DocumentsChatCreateWithBody(ctx, contentType, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		body := api.DocumentsChatCreateFormdataRequestBody{}
+		_, err := client.DocumentsChatCreateWithFormdataBody(ctx, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		body := api.DocumentsChatCreateJSONRequestBody{}
+		_, err := client.DocumentsChatCreate(ctx, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		id := 0
+		versionId := 0
+		_, err := client.DocumentsDeleteVersion(ctx, id, versionId)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		contentType := "application/json"
+		body := strings.NewReader("{}")
+		_, err := client.DocumentsDeleteWithBody(ctx, contentType, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		body := api.DocumentsDeleteJSONRequestBody{}
+		_, err := client.DocumentsDelete(ctx, body)
 		require.NoError(t, err)
 	}
 	{
@@ -399,24 +448,37 @@ func TestAPI(t *testing.T) {
 	}
 	{
 		ctx := t.Context()
+		contentType := "application/json"
+		body := strings.NewReader("{}")
+		_, err := client.DocumentsEditPdfWithBody(ctx, contentType, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		body := api.DocumentsEditPdfJSONRequestBody{}
+		_, err := client.DocumentsEditPdf(ctx, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
 		id := 0
 		contentType := "application/json"
 		body := strings.NewReader("{}")
-		_, err := client.DocumentsEmailCreateWithBody(ctx, id, contentType, body)
+		_, err := client.DocumentsEmailDocumentWithBody(ctx, id, contentType, body)
 		require.NoError(t, err)
 	}
 	{
 		ctx := t.Context()
 		id := 0
-		body := api.DocumentsEmailCreateFormdataRequestBody{}
-		_, err := client.DocumentsEmailCreateWithFormdataBody(ctx, id, body)
+		body := api.DocumentsEmailDocumentFormdataRequestBody{}
+		_, err := client.DocumentsEmailDocumentWithFormdataBody(ctx, id, body)
 		require.NoError(t, err)
 	}
 	{
 		ctx := t.Context()
 		id := 0
-		body := api.DocumentsEmailCreateJSONRequestBody{}
-		_, err := client.DocumentsEmailCreate(ctx, id, body)
+		body := api.DocumentsEmailDocumentJSONRequestBody{}
+		_, err := client.DocumentsEmailDocument(ctx, id, body)
 		require.NoError(t, err)
 	}
 	{
@@ -430,6 +492,32 @@ func TestAPI(t *testing.T) {
 		ctx := t.Context()
 		params := &api.DocumentsListParams{}
 		_, err := client.DocumentsList(ctx, params)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		contentType := "application/json"
+		body := strings.NewReader("{}")
+		_, err := client.DocumentsMergeAsVersionsWithBody(ctx, contentType, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		body := api.DocumentsMergeAsVersionsJSONRequestBody{}
+		_, err := client.DocumentsMergeAsVersions(ctx, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		contentType := "application/json"
+		body := strings.NewReader("{}")
+		_, err := client.DocumentsMergeWithBody(ctx, contentType, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		body := api.DocumentsMergeJSONRequestBody{}
+		_, err := client.DocumentsMerge(ctx, body)
 		require.NoError(t, err)
 	}
 	{
@@ -519,9 +607,54 @@ func TestAPI(t *testing.T) {
 	}
 	{
 		ctx := t.Context()
+		contentType := "application/json"
+		body := strings.NewReader("{}")
+		_, err := client.DocumentsRemovePasswordWithBody(ctx, contentType, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		body := api.DocumentsRemovePasswordJSONRequestBody{}
+		_, err := client.DocumentsRemovePassword(ctx, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		contentType := "application/json"
+		body := strings.NewReader("{}")
+		_, err := client.DocumentsReprocessWithBody(ctx, contentType, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		body := api.DocumentsReprocessJSONRequestBody{}
+		_, err := client.DocumentsReprocess(ctx, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
 		id := 0
 		params := &api.DocumentsRetrieveParams{}
 		_, err := client.DocumentsRetrieve(ctx, id, params)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		id := 0
+		_, err := client.DocumentsRoot(ctx, id)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		contentType := "application/json"
+		body := strings.NewReader("{}")
+		_, err := client.DocumentsRotateWithBody(ctx, contentType, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		body := api.DocumentsRotateJSONRequestBody{}
+		_, err := client.DocumentsRotate(ctx, body)
 		require.NoError(t, err)
 	}
 	{
@@ -547,6 +680,39 @@ func TestAPI(t *testing.T) {
 		ctx := t.Context()
 		id := 0
 		_, err := client.DocumentsThumbRetrieve(ctx, id)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		id := 0
+		versionId := 0
+		contentType := "application/json"
+		body := strings.NewReader("{}")
+		_, err := client.DocumentsUpdateVersionLabelWithBody(ctx, id, versionId, contentType, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		id := 0
+		versionId := 0
+		body := api.DocumentsUpdateVersionLabelFormdataRequestBody{}
+		_, err := client.DocumentsUpdateVersionLabelWithFormdataBody(ctx, id, versionId, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		id := 0
+		versionId := 0
+		body := api.DocumentsUpdateVersionLabelJSONRequestBody{}
+		_, err := client.DocumentsUpdateVersionLabel(ctx, id, versionId, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		id := 0
+		contentType := "multipart/form-data; boundary=bndry"
+		body := strings.NewReader("--bndry\r\nContent-Disposition: form-data; name=\"document\"\r\n\r\ndocument\r\n--bndry--\r\n")
+		_, err := client.DocumentsUpdateVersionWithBody(ctx, id, contentType, body)
 		require.NoError(t, err)
 	}
 	{
@@ -888,19 +1054,19 @@ func TestAPI(t *testing.T) {
 		ctx := t.Context()
 		contentType := "application/json"
 		body := strings.NewReader("{}")
-		_, err := client.ProcessedMailBulkDeleteCreateWithBody(ctx, contentType, body)
+		_, err := client.ProcessedMailBulkDeleteWithBody(ctx, contentType, body)
 		require.NoError(t, err)
 	}
 	{
 		ctx := t.Context()
-		body := api.ProcessedMailBulkDeleteCreateFormdataRequestBody{}
-		_, err := client.ProcessedMailBulkDeleteCreateWithFormdataBody(ctx, body)
+		body := api.ProcessedMailBulkDeleteFormdataRequestBody{}
+		_, err := client.ProcessedMailBulkDeleteWithFormdataBody(ctx, body)
 		require.NoError(t, err)
 	}
 	{
 		ctx := t.Context()
-		body := api.ProcessedMailBulkDeleteCreateJSONRequestBody{}
-		_, err := client.ProcessedMailBulkDeleteCreate(ctx, body)
+		body := api.ProcessedMailBulkDeleteJSONRequestBody{}
+		_, err := client.ProcessedMailBulkDelete(ctx, body)
 		require.NoError(t, err)
 	}
 	{
@@ -1001,6 +1167,25 @@ func TestAPI(t *testing.T) {
 		ctx := t.Context()
 		contentType := "application/json"
 		body := strings.NewReader("{}")
+		_, err := client.RunTaskWithBody(ctx, contentType, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		body := api.RunTaskFormdataRequestBody{}
+		_, err := client.RunTaskWithFormdataBody(ctx, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		body := api.RunTaskJSONRequestBody{}
+		_, err := client.RunTask(ctx, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		contentType := "application/json"
+		body := strings.NewReader("{}")
 		_, err := client.SavedViewsCreateWithBody(ctx, contentType, body)
 		require.NoError(t, err)
 	}
@@ -1053,7 +1238,8 @@ func TestAPI(t *testing.T) {
 	{
 		ctx := t.Context()
 		id := 0
-		_, err := client.SavedViewsRetrieve(ctx, id)
+		params := &api.SavedViewsRetrieveParams{}
+		_, err := client.SavedViewsRetrieve(ctx, id, params)
 		require.NoError(t, err)
 	}
 	{
@@ -1088,6 +1274,65 @@ func TestAPI(t *testing.T) {
 		ctx := t.Context()
 		params := &api.SearchRetrieveParams{}
 		_, err := client.SearchRetrieve(ctx, params)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		contentType := "application/json"
+		body := strings.NewReader("{}")
+		_, err := client.ShareLinkBundlesCreateWithBody(ctx, contentType, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		body := api.ShareLinkBundlesCreateFormdataRequestBody{}
+		_, err := client.ShareLinkBundlesCreateWithFormdataBody(ctx, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		body := api.ShareLinkBundlesCreateJSONRequestBody{}
+		_, err := client.ShareLinkBundlesCreate(ctx, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		id := 0
+		_, err := client.ShareLinkBundlesDestroy(ctx, id)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		params := &api.ShareLinkBundlesListParams{}
+		_, err := client.ShareLinkBundlesList(ctx, params)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		id := 0
+		contentType := "application/json"
+		body := strings.NewReader("{}")
+		_, err := client.ShareLinkBundlesRebuildWithBody(ctx, id, contentType, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		id := 0
+		body := api.ShareLinkBundlesRebuildFormdataRequestBody{}
+		_, err := client.ShareLinkBundlesRebuildWithFormdataBody(ctx, id, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		id := 0
+		body := api.ShareLinkBundlesRebuildJSONRequestBody{}
+		_, err := client.ShareLinkBundlesRebuild(ctx, id, body)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
+		id := 0
+		_, err := client.ShareLinkBundlesRetrieve(ctx, id)
 		require.NoError(t, err)
 	}
 	{
@@ -1201,19 +1446,19 @@ func TestAPI(t *testing.T) {
 		ctx := t.Context()
 		contentType := "application/json"
 		body := strings.NewReader("{}")
-		_, err := client.StoragePathsTestCreateWithBody(ctx, contentType, body)
+		_, err := client.StoragePathsTestWithBody(ctx, contentType, body)
 		require.NoError(t, err)
 	}
 	{
 		ctx := t.Context()
-		body := api.StoragePathsTestCreateFormdataRequestBody{}
-		_, err := client.StoragePathsTestCreateWithFormdataBody(ctx, body)
+		body := api.StoragePathsTestFormdataRequestBody{}
+		_, err := client.StoragePathsTestWithFormdataBody(ctx, body)
 		require.NoError(t, err)
 	}
 	{
 		ctx := t.Context()
-		body := api.StoragePathsTestCreateJSONRequestBody{}
-		_, err := client.StoragePathsTestCreate(ctx, body)
+		body := api.StoragePathsTestJSONRequestBody{}
+		_, err := client.StoragePathsTest(ctx, body)
 		require.NoError(t, err)
 	}
 	{
@@ -1322,6 +1567,12 @@ func TestAPI(t *testing.T) {
 	}
 	{
 		ctx := t.Context()
+		params := &api.TasksActiveListParams{}
+		_, err := client.TasksActiveList(ctx, params)
+		require.NoError(t, err)
+	}
+	{
+		ctx := t.Context()
 		params := &api.TasksListParams{}
 		_, err := client.TasksList(ctx, params)
 		require.NoError(t, err)
@@ -1329,30 +1580,18 @@ func TestAPI(t *testing.T) {
 	{
 		ctx := t.Context()
 		id := 0
-		params := &api.TasksRetrieveParams{}
-		_, err := client.TasksRetrieve(ctx, id, params)
+		_, err := client.TasksRetrieve(ctx, id)
 		require.NoError(t, err)
 	}
 	{
 		ctx := t.Context()
-		params := &api.TasksRunCreateParams{}
-		contentType := "application/json"
-		body := strings.NewReader("{}")
-		_, err := client.TasksRunCreateWithBody(ctx, params, contentType, body)
+		_, err := client.TasksStatusCountsRetrieve(ctx)
 		require.NoError(t, err)
 	}
 	{
 		ctx := t.Context()
-		params := &api.TasksRunCreateParams{}
-		body := api.TasksRunCreateFormdataRequestBody{}
-		_, err := client.TasksRunCreateWithFormdataBody(ctx, params, body)
-		require.NoError(t, err)
-	}
-	{
-		ctx := t.Context()
-		params := &api.TasksRunCreateParams{}
-		body := api.TasksRunCreateJSONRequestBody{}
-		_, err := client.TasksRunCreate(ctx, params, body)
+		params := &api.TasksSummaryListParams{}
+		_, err := client.TasksSummaryList(ctx, params)
 		require.NoError(t, err)
 	}
 	{
