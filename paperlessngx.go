@@ -20,13 +20,13 @@ import (
 	"github.com/tdrn-org/go-paperless-ngx/api"
 )
 
-// ErrClientFailure indicates a system error while invoking the Smart-Home-API.
+// ErrClientFailure indicates a system error while invoking the REST API.
 var ErrClientFailure = errors.New("client call failure")
 
-// ErrAPIFailure indicates an API error while invoking the Smart-Home-API.
+// ErrAPIFailure indicates an API error while invoking the REST API.
 var ErrAPIFailure = errors.New("API failure")
 
-// Client instances are used to access the Smart-Home-API via a given device.
+// Client instances are used to access the REST API.
 type Client struct {
 	apiURL     *url.URL
 	apiKey     string
@@ -50,7 +50,7 @@ func (f ClientOptionFunc) Apply(client *Client) {
 }
 
 // WithHttpClient sets a Client instance's [http.Client] which is used
-// to access the Smart-Home-API device.
+// to access the REST API.
 func WithHttpClient(httpClient *http.Client) ClientOptionFunc {
 	return func(client *Client) {
 		client.httpClient = httpClient
@@ -67,9 +67,6 @@ func WithLogger(logger *slog.Logger) ClientOptionFunc {
 
 // NewClient creates a new Client instance using the given
 // connect URL as well as Client options.
-//
-// Beside the actual URL to access the Smart-Home-API device
-// the connect URL must also include the login credentials.
 func NewClient(apiURL *url.URL, apiKey string, options ...ClientOption) (*Client, error) {
 	client := &Client{
 		apiURL: apiURL,
